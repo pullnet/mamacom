@@ -13,5 +13,8 @@ if(!@$nofoot){
 <?php
 }
 ?>
+<div id="popup">
+	<div class="basejavar"></div>
+</div>
 </body>
 </html>

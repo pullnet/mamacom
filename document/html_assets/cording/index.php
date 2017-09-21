@@ -30,6 +30,9 @@
 			<li>
 				<a href="category_06.php"><img src="images/top_banner06.jpg" alt="バナー"></a>
 			</li>
+			<li>
+				<a href="category_07.php"><img src="images/top_banner07.jpg" alt="地元ママ応援！地域のポータルサイト"></a>
+			</li>
 		</ul>
 	</div>
 	<div class="sec04">	

@@ -4,140 +4,24 @@
 <div class="wrapper">
 	<a href="index.php"><h2 class="mtitle">授乳室マップ</h2></a>
 	
-	<p class="serch_result_text">全35件<span>-うち20件表示-</span></p>
+	<p class="m10 h3">下記より地区をお選びください</p>
 	<div class="contents_area">
-		<a href="shop_detail.php">
 		<div class="item">
-			<div class="bs">
-				<div class="s00" style="background-image:url(images/kuyakusyo.jpg);background-size:cover;background-position:center;" ></div>
-				<div class="s01">
-					<h3>都島区役所</h3>
-					<p class="subc">入り口入って右側にあります。仕切りになっており小さいお部屋みたいになってます！</p>
-				</div>
-			</div>
+			<a href="category_06_arealist.php">
+					<h3>豊島区</h3>
 			</a>
-		</div>
-		<!--//.item-->
-		
+		</div><!--//.item-->
 		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
+			<a href="category_06_arealist.php">
+					<h3>城東区</h3>
+			</a>
+		</div><!--//.item-->
 		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->		
-		
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->		
-		
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>施設名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->		
-
+			<a href="category_06_arealist.php">
+					<h3>北区</h3>
+			</a>
+		</div><!--//.item-->
 	</div>
-	<!--//.contents_area-->
-	
-		<div class="pager mt10 ">
-			<ul class="float">
-				<li class="active"> <a href="#">1</a> </li>
-				<li class=""> <a href="#">2</a> </li>
-				<li class=""> <a href="#">3</a> </li>
-				<li class=""> <a href="#">4</a> </li>
-				<li class=""> <a href="#">5</a> </li>
-				<li><a href="#">&gt;</a></li>
-			</ul>
-		</div>		
-	
-	<!--//.wrapper-->
 </div>
 
 <?php include("common/footer.php"); ?>
