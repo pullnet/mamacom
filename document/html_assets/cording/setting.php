@@ -12,6 +12,9 @@
 				</select>
 			</dd>
 		</dl>
+
+		<input type="submit" value="設定する" class="buttons add">
+
 	</div>
 </div>
 <?php include("common/footer.php"); ?>

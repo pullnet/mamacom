@@ -190,8 +190,6 @@ textarea:focus{
 }
 select{
 	/*-webkit-appearance:none;*/
-	line-height:50px;
-	height:59px;
 }
 textarea{
 	line-height:1.5em;
@@ -1777,7 +1775,7 @@ margin-left:7px;
     width: auto;
     border: none;
 	background-color:#FFF;
-    padding: 5px 5px 5px 15px;
+	padding:5px 10px;
 	text-align:left;	
 }
 .lp_contact table tr th.need {
