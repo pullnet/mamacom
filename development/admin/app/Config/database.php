@@ -8,29 +8,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'collabos_v2_normal',
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	//マスター用DB
-	public $db_master = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'collabos_v2_master',
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	//ログ用DB
-	public $db_log = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'collabos_v2_log',
+		'database' => 'mamacom',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

@@ -221,12 +221,14 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'xczxc');
+	/* 注意！これいじったらユーザー側のパスワード設定が変になるので！！*/
+	Configure::write('Security.salt', 'grcfp');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '4465465');
+	/* 注意！これいじったらユーザー側のパスワード設定が変になるので！！*/
+	Configure::write('Security.cipherSeed', '2884922');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

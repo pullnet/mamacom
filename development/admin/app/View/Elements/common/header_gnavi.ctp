@@ -63,6 +63,43 @@
 }
 </style>
 <div class="header_gnavi">
+
+
+
+
+
+	<div class="bs">
+		<ul>
+			<li>
+				<label>コンテンツ管理</label>
+				<ul class="sub2">
+					<li><?php echo $this->Html->link("コンテンツ一覧",array("controller"=>"order","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("コンテンツ新規登録",array("controller"=>"cparty","action"=>"index")); ?></li>
+				</ul>
+			</li>
+			<li>
+				<label>緊急お役立ち管理</label>
+				<ul class="sub2">
+					<li><?php echo $this->Html->link("緊急お役立ち一覧",array("controller"=>"payment","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("緊急お役立ち新規登録",array("controller"=>"transferrequest","action"=>"index")); ?></li>
+				</ul>
+			</li>
+			<li>
+				<label>その他の管理</label>
+				<ul class="sub2">
+					<li><?php echo $this->Html->link("サイト基本設定",array("controller"=>"collabo","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("管理アカウント一覧",array("controller"=>"library","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("カテゴリー管理",array("controller"=>"collabo","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("ページ管理",array("controller"=>"library","action"=>"index")); ?></li>					
+					<li><?php echo $this->Html->link("お知らせ管理",array("controller"=>"collabo","action"=>"index")); ?></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+
+
+<!--
 	<div class="bs">
 		<ul>
 			<li>
@@ -135,4 +172,7 @@
 			</li>
 		</ul>
 	</div>
+
+-->
+	
 </div><!--//.header_gnavi-->
