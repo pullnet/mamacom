@@ -1,0 +1,170 @@
+
+.floatclear
+{
+clear:both;
+}
+.calenderbox
+{
+color:#444;
+border:solid 2px #999;
+padding:15px;
+width:100%;
+}
+.calenderbox *
+{
+box-sizing:border-box;
+}
+.calenderbox .head
+{
+width:100%;
+margin-bottom:4px;
+display:table;
+}
+.calenderbox .head .button
+{
+height:45px;
+width:14.28%;
+display:table-cell;
+vertical-align:middle;
+cursor:pointer;
+}
+.calenderbox .head .button span
+{
+display:block;
+background:#ccc;
+line-height:45px;
+}
+.calenderbox .head .next
+{
+padding-right:3px;
+padding-left:1px;
+}
+.calenderbox .head .next span
+{
+text-align:center;
+}
+.calenderbox .head .next span:before
+{
+content:"▲";
+color:#FFF;
+font-size:20px;
+}
+.calenderbox .head .back
+{
+padding-left:3px;
+}
+.calenderbox .head .back span
+{
+text-align:center;
+}
+.calenderbox .head .back span:before
+{
+content:"▼";
+color:#FFF;
+font-size:20px;
+}
+.calenderbox .head .button span:hover
+{
+background-color:#A5A5A5;
+}
+
+.calenderbox .center
+{
+display:table-cell;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+vertical-align:middle;
+}
+.calenderbox .center .set_year:after
+{
+content:"年";
+margin-right:10px;
+}
+.calenderbox .center .set_monthly:after
+{
+content:"月";
+margin-right:10px;
+}
+.calenderbox .base
+{
+width:100%;
+}
+.calenderbox .base .weekly
+{
+display:table;
+line-height:35px;
+width:100%;
+}
+.calenderbox .base .weekly .day
+{
+width:14.28%;
+display:table-cell;
+font-weight:bold;
+cursor:pointer;
+text-align:center;
+}
+.calenderbox .base .weekly .day span
+{
+display:block;
+margin:2px;
+}
+.calenderbox .base .weekly .day span:hover
+{
+background:#DDD;
+}
+.calenderbox .base .weekly .day.notnull
+{
+cursor:default
+}
+.calenderbox .base .weekly .day.notnull span:before
+{
+content:"　";
+}
+.calenderbox .base .weekly .day.notnull span:hover
+{
+background:#FFF;
+}
+
+.calenderbox .base .weekly .day.nichi span,
+.calenderbox .base .weekly .day.holiday span
+{
+background:#900;
+color:#FFF;
+}
+.calenderbox .base .weekly .day.nichi span:hover,
+.calenderbox .base .weekly .day.holiday span:hover
+{
+background:#E99;
+}
+.calenderbox .base .weekly .day.do span
+{
+background:#009;
+color:#FFF;
+}
+.calenderbox .base .weekly .day.do span:hover
+{
+background:#AAE;
+}
+.calenderbox .base .weekly .day.today span
+{
+background:#9D9;
+}
+.calenderbox .base .weekly .day.today span:hover
+{
+background:#AFA;
+}
+.calenderbox .base .weekly .day.selectday span
+{
+background:#CCF;
+}
+.calenderbox .base .weekly .day.selectday span:hover
+{
+background:#EEF;
+}
+
+.calenderbox .base .weekly .day.index span
+{
+background:#666 !important;
+color:#FFF;
+}

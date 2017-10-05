@@ -1,0 +1,457 @@
+/* style.css */
+/* デフォルトcss */
+
+*
+{
+margin:0;
+padding:0;
+list-style-type:none;
+font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+font-size:13px;
+box-sizing:border-box;
+outline:none;
+}
+body
+{
+background:#FFF;
+}
+
+/* link */
+a
+{
+text-decoration:none;
+color:#11A;
+cursor:pointer;
+}
+a:hover
+{
+opacity:0.6;
+}
+/* image */
+img
+{
+width:100%;
+}
+img.image
+{
+width:auto;
+}
+
+/* default margin */
+
+.mb5{margin-bottom:5px;}
+.mb10{margin-bottom:10px;}
+.mb15{margin-bottom:15px;}
+.mb20{margin-bottom:20px;}
+.mb30{margin-bottom:30px;}
+.mb40{margin-bottom:40px;}
+.mb50{margin-bottom:50px;}
+.mb60{margin-bottom:60px;}
+.mb70{margin-bottom:70px;}
+.mb80{margin-bottom:80px;}
+.mb90{margin-bottom:90px;}
+.mb100{margin-bottom:100px;}
+
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+.mt60{margin-top:60px;}
+.mt70{margin-top:70px;}
+.mt80{margin-top:80px;}
+.mt90{margin-top:90px;}
+.mt100{margin-top:100px;}
+
+.mm5{margin:5px 0px;}
+.mm10{margin:10px 0px;}
+.mm20{margin:20px 0px;}
+.mm30{margin:30px 0px;}
+.mm40{margin:40px 0px;}
+.mm50{margin:50px 0px;}
+.mm60{margin:60px 0px;}
+.mm70{margin:70px 0px;}
+.mm80{margin:80px 0px;}
+.mm90{margin:90px 0px;}
+.mm100{margin:100px 0px;}
+
+.mauto{margin:0px auto;}
+
+.m5{margin:5px;}
+.m10{margin:10px;}
+.m20{margin:20px;}
+.m30{margin:30px;}
+.m40{margin:40px;}
+.m50{margin:50px;}
+.m60{margin:60px;}
+.m70{margin:70px;}
+.m80{margin:80px;}
+.m90{margin:90px;}
+.m100{margin:100px;}
+
+.ml5{margin-left:5px;}
+.mr5{margin-right:5px;}
+.ml10{margin-left:10px;}
+.mr10{margin-right:10px;}
+
+
+/* align */
+
+.right{text-align:right;}
+.left{text-align:left;}
+.center{text-align:center}
+.middle{vertical-align:middle;}
+.top{vertical-align:top;}
+.bottom{vertical-align:bottom;}
+
+/* table */
+
+.table{display:table;}
+.table li{display:table-cell;vertical-align:top;}
+.t_row{display:table-row;}
+.t_cell{display:table-cell;}
+
+/* float */
+
+.float{overflow:hidden;zoom:1;}
+.float:after{clear:both;display:block;content:"";}
+.float li{float:left;}
+.f_left{float:left !important;}
+.f_right{float:right !important;}
+.f_clear{float:none !important;}
+
+/* form */
+
+input,
+select,
+textarea
+{
+border-style:none;
+border:solid 1px #999;
+line-height:16px;
+padding:2px;
+border-radius:3px;
+margin:0px;
+width:100%;
+}
+input[type=submit],
+input[type=text],
+input[type=password],
+input[type=file],
+input[type=button],
+textarea,
+button
+{
+-webkit-appearance: none;
+-ms-appearance: none;
+-o-appearance: none;
+appearance: none;
+}
+input[type=text].mini,
+select.mini
+{
+width:80px;
+}
+input[type=text].short,
+select.short
+{
+width:200px;
+}
+input[type=text].middle,
+select.middle
+{
+width:200px;
+}
+input[type=checkbox]
+{
+width:auto;
+margin-left:5px;
+margin-right:5px;
+vertical-align:middle;
+}
+input[type=submit]
+{
+cursor:pointer;
+display:inline-block;
+}
+input[type=submit]:hover
+{
+opacity:0.7;
+}
+label
+{
+cursor:pointer;
+}
+label:hover
+{
+opacity:0.7;
+}
+
+/* absolute */
+.absolute{
+position:absolute;
+}
+.relative{
+position:relative;
+}
+
+/* table */
+table
+{
+width:100%;
+border-collapse: collapse;
+}
+table tr th,
+table tr td
+{
+vertical-align:top;
+padding:10px;
+}
+table tr th
+{
+background:#F0F0F0;
+}
+table tr th.short
+{
+width:200px;
+}
+table tr th.mini
+{
+width:60px;
+}
+table tr th.middle
+{
+width:400px;
+}
+
+@media screen and (max-width:640px)
+{
+	table.responsive,
+	table.responsive tr,
+	table.responsive tbody,
+	table.responsive tr th,
+	table.responsive tr td
+	{
+		display:block;
+		width:100%;
+	}
+}
+
+/* fixed */
+
+.fixed
+{
+position:fixed;
+z-index:5;
+width:100%;
+background:#FFF;
+}
+.fixed.header
+{
+top:0px;
+}
+.fixed.footer
+{
+bottom:0px;
+}
+/* color */
+
+.red{color:#C00;}
+.green{color:#2C2;}
+.blue{color:#22C;}
+
+/* iframe */
+iframe
+{
+width:100%;
+border:none;
+min-height:300px;
+}
+
+/* iframe(動画レスポンシブ用) */
+.movie
+{
+display:block;
+position:relative;
+width:100%;
+}
+.movie:after
+{
+padding-bottom:56.25%;
+display:block;
+content:"";
+}
+.movie p
+{
+position:absolute;
+left:0;
+top:0;
+right:0;
+bottom:0;
+}
+.movie p iframe
+{
+display:table-cell;
+width:100%;
+height:100%;
+min-height:0px;
+}
+
+/* tablet */
+.tablet1000,.tablet640,.tablet480
+{
+display:none;
+}
+.pc1000,.pc640,.pc480
+{
+display:block;
+}
+
+@media screen and (max-width:1000px)
+{
+	.tablet1000{
+		display:block
+	}
+	.pc1000{
+		display:none;
+	}
+}
+@media screen and (max-width:640px)
+{
+	.tablet640{
+		display:block
+	}
+	.pc640{
+		display:none;
+	}
+}
+@media screen and (max-width:480px)
+{
+	.tablet480{
+		display:block
+	}
+	.pc480{
+		display:none;
+	}
+}
+
+/* checkbox */
+input[type=checkbox].large,
+input[type=checkbox].middle,
+input[type=checkbox].max,
+input[type=radio].large,
+input[type=radio].middle,
+input[type=radio].max
+{
+	display:none;
+}
+input[type=checkbox].large+span,
+input[type=checkbox].middle+span,
+input[type=checkbox].max+span,
+input[type=radio].large+span,
+input[type=radio].middle+span,
+input[type=radio].max+span
+{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background:#FFF;
+	font-weight:bold;
+	color:#666;
+	border:solid 2px #666;
+	text-align:center;
+	font-size:20px;
+	border-radius:5px;
+	margin-right:10px;
+}
+input[type=radio].large+span,
+input[type=radio].middle+span,
+input[type=radio].max+span
+{
+	border-radius:50%;
+}
+input[type=checkbox].large.blue+span,
+input[type=checkbox].middle.blue+span,
+input[type=checkbox].max.blue+span,
+input[type=radio].large.blue+span,
+input[type=radio].middle.blue+span,
+input[type=radio].max.blue+span
+{
+	color:#00F;
+	border:solid 2px #00F;
+}
+input[type=checkbox].large.red+span,
+input[type=checkbox].middle.red+span,
+input[type=checkbox].max.red+span,
+input[type=radio].large.red+span,
+input[type=radio].middle.red+span,
+input[type=radio].max.red+span
+{
+	color:#F00;
+	border:solid 2px #F00;
+}
+input[type=checkbox].middle+span,
+input[type=radio].middle+span
+{
+	width:20px;
+	height:20px;
+}
+input[type=checkbox].max+span,
+input[type=radio].max+span
+{
+	width:40px;
+	height:40px;
+}
+input[type=checkbox].large+span:before,
+input[type=checkbox].middle+span:before,
+input[type=checkbox].max+span:before,
+input[type=radio].large+span:before,
+input[type=radio].middle+span:before,
+input[type=radio].max+span:before
+{
+	display:block;
+	line-height:30px;
+	content:"　";
+	vertical-align:middle;
+}
+input[type=radio].large+span:before
+{
+	line-height:27px;
+}
+input[type=checkbox].middle+span:before,
+input[type=radio].middle+span:before
+{
+	font-size:13px;
+	line-height:20px;
+}
+input[type=radio].middle+span:before
+{
+	font-size:12px;
+	line-height:16px;
+}
+input[type=checkbox].max+span:before,
+input[type=radio].max+span:before
+{
+	font-size:30px;
+	line-height:40px;
+}
+input[type=radio].max+span:before
+{
+	line-height:35px;
+}
+input[type=checkbox].large:checked+span:before,
+input[type=checkbox].middle:checked+span:before,
+input[type=checkbox].max:checked+span:before
+{
+	content:"\2714";
+}
+input[type=radio].large:checked+span:before,
+input[type=radio].middle:checked+span:before,
+input[type=radio].max:checked+span:before
+{
+	content:"●";
+}
+
+
