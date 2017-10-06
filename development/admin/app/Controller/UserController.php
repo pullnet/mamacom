@@ -45,6 +45,7 @@ class UserController extends AppController {
 			$this->Adminlogin->set($data);
 			if($this->Adminlogin->validates())
 			{
+		
 				//Adminに変換
 				$logindata=array(
 					"Admin"=>array(

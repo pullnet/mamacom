@@ -115,12 +115,8 @@ CakeLog::config('error', array(
 App::build(array(
     'Controller' => array(
         ROOT.DS.APP_DIR.DS.'Controller'.DS,
-        ROOT.DS.APP_DIR.DS.'Controller'.DS.'Second'.DS,
     ),
     'Model' => array(
         ROOT.DS.APP_DIR.DS.'Model'.DS,
-        ROOT.DS.APP_DIR.DS.'Model'.DS.'DB_Master'.DS,
-        ROOT.DS.APP_DIR.DS.'Model'.DS.'DB_Log'.DS,
-        ROOT.DS.APP_DIR.DS.'Model'.DS.'Db_Log'.DS,
     )
 ));
