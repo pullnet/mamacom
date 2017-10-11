@@ -182,19 +182,15 @@ class DbComponent extends Component{
 		{
 			$output=array(
 				0=>"すべて",
-				1=>"会員のみ",
-				2=>"友達グループのみ",
-				3=>"非公開",
-				4=>"削除",
+				1=>"非公開",
+				2=>"削除",
 			);
 		}
 		else if($pattern==1)
 		{
 			$output=array(
 				0=>"公開",
-				1=>"会員限定",
-				2=>"仲間限定",
-				3=>"非公開",
+				1=>"非公開",
 			);
 		}
 		return $output;

@@ -1,9 +1,9 @@
-<div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　ページカテゴリー一覧</div>
-<h1>ページカテゴリー一覧</h1>
+<div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　フリーページカテゴリー一覧</div>
+<h1>フリーページカテゴリー一覧</h1>
 <div class="gnavi">
 	<ul class="float">
-		<li><?php echo $this->Html->link("固定ページ一覧",array("controller"=>"freepage","action"=>"index")); ?></li>
-		<li class="active"><?php echo $this->Html->link("ページカテゴリー一覧",array("controller"=>"pagecategory","action"=>"index",$page)); ?></li>
+		<li><?php echo $this->Html->link("フリーページ一覧",array("controller"=>"freepage","action"=>"index")); ?></li>
+		<li class="active"><?php echo $this->Html->link("フリーページカテゴリー一覧",array("controller"=>"pagecategory","action"=>"index",$page)); ?></li>
 	</ul>
 </div>
 <?php
@@ -15,7 +15,7 @@ if(isset($alert))
 }
 ?>
 <div class="right mb10">
-	<?php echo $this->Html->link("ページカテゴリー新規登録",array("controller"=>"pagecategory","action"=>"edit"),array("class"=>"buttons")); ?>
+	<?php echo $this->Html->link("フリーページカテゴリー新規登録",array("controller"=>"pagecategory","action"=>"edit"),array("class"=>"buttons")); ?>
 </div>
 <p class="h3">全<?php echo $totalcount; ?>件</p>
 <p class="mb10">(<?php echo $page; ?>P/<?php echo $totalpage; ?>P)</p>
@@ -24,7 +24,7 @@ if(isset($alert))
 	<tr>
 		<th class="micro">No</th>
 		<th class="minishort">登録日</th>
-		<th>ページカテゴリー名</th>
+		<th>フリーページカテゴリー名</th>
 		<th class="minishort">パーマリンク</th>
 		<th class="minishort"></th>
 	</tr>
@@ -40,6 +40,7 @@ if(isset($alert))
 		<td><?php echo $this->Html->link(h($r_["Freepagecategory"]["permalink"]),$wwwurl."lp/".$r_["Freepagecategory"]["permalink"],array("target"=>"_blank")); ?></td>
 		<td>
 			<?php echo $this->Html->link("編集",array("controller"=>"pagecategory","action"=>"edit",$r_["Freepagecategory"]["id"]),array("class"=>"buttons")); ?>
+			<!-- 
 			<label for="delete_<?php echo $count; ?>" class="buttons del">削除</label>
 			<div id="popup">
 				<input type="checkbox" id="delete_<?php echo $count; ?>" class="checks">
@@ -55,6 +56,7 @@ if(isset($alert))
 					</div>
 				</div>
 			</div>
+			-->
 		</td>
 	</tr>
 	<?php

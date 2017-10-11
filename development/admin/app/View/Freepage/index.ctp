@@ -1,11 +1,13 @@
-<div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　LP・固定ページ設定</div>
-<h1>LP・固定ページ設定</h1>
+<div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　フリーページ設定</div>
+<h1>フリーページ設定</h1>
+
 <div class="gnavi">
 	<ul class="float">
-		<li class="active"><?php echo $this->Html->link("固定ページ一覧",array("controller"=>"freepage","action"=>"index",$page)); ?></li>
-		<li><?php echo $this->Html->link("ページカテゴリー一覧",array("controller"=>"pagecategory","action"=>"index")); ?></li>
+		<li class="active"><?php echo $this->Html->link("フリーページ一覧",array("controller"=>"freepage","action"=>"index",$page)); ?></li>
+		<li><?php echo $this->Html->link("フリーページカテゴリー一覧",array("controller"=>"pagecategory","action"=>"index")); ?></li>
 	</ul>
 </div>
+
 <?php
 if(isset($alert))
 {
@@ -49,6 +51,7 @@ if(isset($alert))
 		<?php echo $this->Form->end(); ?>
 	</div><!--//.window-->
 </div><!--//.search-->
+
 <div class="right mb10">
 	<?php echo $this->Html->link("ページ新規登録",array("controller"=>"freepage","action"=>"edit"),array("class"=>"buttons")); ?>
 </div>
@@ -60,7 +63,7 @@ if(isset($alert))
 		<th class="micro">No</th>
 		<th class="minishort">登録日</th>
 		<th>ページタイトル/URL</th>
-		<th class="minishort">スマホ対応</th>
+		<!--<th class="minishort">スマホ対応</th>-->
 		<th class="minishort">表示/公開設定</th>
 		<th class="minishort"></th>
 	</tr>
@@ -73,8 +76,12 @@ if(isset($alert))
 			<td class="center"><?php echo $count; ?></td>
 			<td><?php echo date("Y.m.d H:i",strtotime($r_["Freepage"]["createdate"])); ?></td>
 			<td>
-			<?php echo $r_["Freepage"]["name"]; ?>
-			<br>
+			
+	<?php
+	/*debug(   $wwwurl  );*/
+	?>
+			
+			<?php echo $r_["Freepage"]["name"]; ?>　　
 			<?php
 			if($r_["Freepagecategory"]){
 				$aurl_short=$r_["Freepagecategory"]["permalink"]."/".$r_["Freepage"]["permalink"];
@@ -87,6 +94,7 @@ if(isset($alert))
 			}
 			echo $this->Html->link($aurl_short,$aurl,array("target"=>"_blank","class"=>"underline")); ?>
 			</td>
+			<!--
 			<td>
 				<?php
 				if($r_["Freepage"]["smp_status"]==0){
@@ -98,9 +106,12 @@ if(isset($alert))
 				}
 				?>
 			</td>
+			-->
 			<td><?php echo $page_status[$r_["Freepage"]["page_status"]]; ?>/<?php echo $open_status[$r_["Freepage"]["open_status"]]; ?></td>
 			<td>
 				<?php echo $this->Html->link("編集",array("controller"=>"freepage","action"=>"edit",$r_["Freepage"]["id"]),array("class"=>"buttons")); ?>
+				
+				<!--
 				<label for="deletepop<?php echo $count; ?>" class="buttons">削除</label>
 				<div id="popup">
 					<input type="checkbox" id="deletepop<?php echo $count; ?>" class="checks">
@@ -116,6 +127,8 @@ if(isset($alert))
 						</div>
 					</div>
 				</div>
+				-->
+				
 			</td>
 		</tr>
 	<?php
