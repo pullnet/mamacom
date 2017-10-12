@@ -10,7 +10,7 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 
-<title>collabos - 管理画面 - </title>
+<title>mamacom - 管理画面 - </title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 <div class="collabos_header">
 	<div class="base">
 		<div class="area left">
-			<?php echo $this->Html->link($this->Html->image("logo.png",array("alt"=>"COLLABOS")),"/",array("escape"=>false)); ?>
+			<?php echo $this->Html->link($this->Html->image("logo.png",array("alt"=>"mamacom")),"/",array("escape"=>false)); ?>
 		</div>
 		<div class="area center">
 			管理者画面
@@ -55,7 +55,7 @@
 
 <div class="footer">
     <div class="base">
-        <div class="copylight"><span class="hidden520">Copyright </span>(C) PULL-NET Inc. All rights reserved.</div>
+        <div class="copylight"><span class="hidden520">Copyright </span>(C) mamacom. All rights reserved.</div>
     </div><!--//.base-->
 </div><!--//.footer-->
 

@@ -1,5 +1,6 @@
 <div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　サイト基本設定</div>
 	<h1>サイト基本設定</h1>
+	
 	<?php
 		if(isset($alert)){
 	?>
@@ -8,8 +9,9 @@
 		}
 	?>
 
+
 	<div class="main_content">
-		<?php echo $this->Element("common/hpset_gnavi"); ?>
+		<?php /* echo $this->Element("common/hpset_gnavi"); */ ?>
 		<?php echo $this->Form->create("Defaultbasic",array(
 			"inputDefaults"=>array(
 				"div"=>false,
@@ -19,6 +21,7 @@
 			),
 		));
 		?>
+		
 		<table cellspacing="0" cellpadding="0">
 		<tr>
 			<th>稼働設定</th>
@@ -57,6 +60,7 @@
 				</table>
 			</td>
 		</tr>
+<!--
 		<tr>
 			<th>メール設定</th>
 			<td>
@@ -139,11 +143,18 @@
 			</table>
 		</td>
 	</tr>
+	
+-->
+	
 	</table>
-
+	
+<!--
 	<div class="right mt20 mb20">
 		<?php echo $this->Html->link("メール送信確認テスト",array("controller"=>"hpset","action"=>"sendmailtest")); ?>
 	</div>
+-->
+
+
 	<div class="center mt20 mb20">
 		<?php echo $this->Form->submit("基本情報を更新する",array("class"=>"buttons","div"=>false)); ?>
 	</div>

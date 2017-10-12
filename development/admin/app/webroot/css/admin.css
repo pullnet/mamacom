@@ -131,7 +131,6 @@ label{cursor:pointer;}
 	overflow:hidden;
 	zoom:1;
 	margin:0px auto;
-	margin-top:10px;
 }
 .collabos_header .base:after
 {
@@ -145,19 +144,19 @@ label{cursor:pointer;}
 }
 .collabos_header .base .left img
 {
-	width:150px;
+	width:284px;
 }
 .collabos_header .base .center
 {
-	margin-top:10px;
-	margin-left:10px;
+	margin-top:19px;
+	margin-left:0px;
 }
 .collabos_header .base .right
 {
 	float:right;
 }
-.collabos_header .base .right a
-{
+.collabos_header .base .right a{
+	margin-top:10px;
 	display: inline-block;
 	vertical-align: top;
 	padding: 0px 30px;
@@ -953,7 +952,7 @@ table.list tr th.mini{
 	width:90px;
 }
 table.list tr th.minishort{
-	width:150px;
+	width:200px;
 }
 table.list tr th.short{
 	width:200px;
@@ -987,7 +986,7 @@ body{
 
 	table tr th,
 	table tr td{
-		padding:2px !important;
+		padding:2px 10px !important;
 		line-height:1.8em;
 	}
 	table tr td p{
@@ -998,7 +997,7 @@ body{
 
 @media screen and (max-width:1200px){
 	table.list tr th.minishort{
-		width:100px;
+		width:150px;
 	}
 	table.list tr th.short{
 		width:160px;
