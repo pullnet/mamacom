@@ -20,7 +20,7 @@ class LoadbasicComponent extends Component{
 		$loadModel = ClassRegistry::init('Sitedefault');
 
 		//sessionから取得
-		$loadbasic=@$this->Session->read("collabos_loadbasic");
+		$loadbasic=@$this->Session->read("mamacom_loadbasic");
 
 		//有効期限が過ぎたら、session内は一回消す	
 
@@ -51,7 +51,7 @@ class LoadbasicComponent extends Component{
 			//有効期限を設定(24時間)
 			$result["cache_limit"]=date("Y-m-d H:i:s",strtotime("+24 hour"));
 
-			$this->Session->write("collabos_loadbasic",$result);
+			$this->Session->write("mamacom_loadbasic",$result);
 
 			if($colum)
 			{

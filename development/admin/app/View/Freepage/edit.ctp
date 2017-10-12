@@ -3,8 +3,8 @@ echo $this->Html->script("ace.js");
 echo $this->Html->script("ace_advance.js");
 ?>
 
-<div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　LP・固定ページ編集</div>
-<h1>LP・固定ページ編集</h1>
+<div class="bread"><?php echo $this->Html->link("管理TOP","/"); ?>　＞　フリーページ編集</div>
+<h1>フリーページ編集</h1>
 <div class="main_content">
 
 <?php echo $this->Form->create("Freepage",array(
@@ -46,6 +46,7 @@ echo $this->Html->script("ace_advance.js");
 			<?php echo $this->Form->input("title"); ?>
 		</td>
 	</tr>
+	<!--
 	<tr>
 		<th>スマホ画面対応</th>
 		<td>
@@ -54,6 +55,7 @@ echo $this->Html->script("ace_advance.js");
 			</div>
 		</td>
 	</tr>
+	-->
 	<tr>
 		<th>htmlタグ</th>
 		<td>
@@ -62,6 +64,7 @@ echo $this->Html->script("ace_advance.js");
 			<?php echo $this->Form->error("html"); ?>
 		</td>
 	</tr>
+	<!--
 	<tr class="type_smp">
 		<th>スマホ判別画面幅</th>
 		<td>
@@ -75,6 +78,8 @@ echo $this->Html->script("ace_advance.js");
 			<div class="ace_textarea" id="smp_html_textarea"></div>
 		</td>
 	</tr>
+	-->	
+	
 	<tr>
 		<th>ヘッダーフッター表示</th>
 		<td>
@@ -87,13 +92,13 @@ echo $this->Html->script("ace_advance.js");
 		<th>公開設定</th>
 		<td>
 			<div id="swradio">
-				<?php echo $this->Form->radio("open_status",array(0=>"公開",1=>"会員のみ",2=>"非公開"),array("legend"=>false,"default"=>0)); ?>
+				<?php echo $this->Form->radio("open_status",array(0=>"公開",1=>"非公開"),array("legend"=>false,"default"=>0)); ?>
 			</div>
 		</td>
 	</tr>
 	</table>
 	<div class="center mb20">
-		<?php echo $this->Form->submit("固定ページを設定する",array("class"=>"buttons","div"=>false)); ?>
+		<?php echo $this->Form->submit("フリーページを設定する",array("class"=>"buttons","div"=>false)); ?>
 	</div>
 </div>
 

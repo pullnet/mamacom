@@ -20,6 +20,7 @@ class Defaultbasic extends AppModel {
 
 	//バリデーション
 	public $validate=array(
+	/*
 		'mail_host' => array(
 			array(
 				"rule"=>"notBlank",
@@ -48,6 +49,7 @@ class Defaultbasic extends AppModel {
 				"message"=>"ポート番号が入力されていません。",
 			),
 		),
+	*/
 		'wwwurl' => array(
 			array(
 				"rule"=>"notBlank",
@@ -76,6 +78,7 @@ class Defaultbasic extends AppModel {
 				"message"=>"専用APIドメインが入力されていません。",
 			),
 		),
+	/*
 		'mail_username' => array(
 			array(
 				"rule"=>"notBlank",
@@ -90,6 +93,7 @@ class Defaultbasic extends AppModel {
 				"message"=>"パスワードが入力されていません。",
 			),
 		),
+	*/
 
 	);
 

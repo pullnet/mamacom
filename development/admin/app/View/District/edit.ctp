@@ -4,12 +4,12 @@ echo $this->Html->script("ace_advance.js");
 ?>
 <div class="bread">
 <?php echo $this->Html->link("管理TOP","/"); ?>　＞　
-<?php echo $this->Html->link("フリーページカテゴリー編集",array("controller"=>"pagecategory","action"=>"index")); ?>　＞　
-フリーページカテゴリー編集
+<?php echo $this->Html->link("地区編集",array("controller"=>"category","action"=>"index")); ?>　＞　
+地区編集
 </div>
-<h1>フリーページカテゴリー編集</h1>
+<h1>地区編集</h1>
 <?php
-echo $this->Form->create("Freepagecategory",array(
+echo $this->Form->create("District",array(
 	"inputDefaults"=>array(
 		"div"=>false,
 		"label"=>false,
@@ -22,29 +22,19 @@ echo $this->Form->hidden("id");
 ?>
 <table cellspacing="0" cellpadding="0" class="mb30">
 <tr>
-	<th>フリーページカテゴリー名</th>
+	<th>地区名</th>
 	<td>
 		<?php echo $this->Form->input("name",array("error"=>false)); ?>
 		<?php echo $this->Form->error("name"); ?>
 	</td>
 </tr>
 <tr>
-	<th>カテゴリーURL</th>
+	<th>親カテゴリー</th>
 	<td>
-		<?php echo $this->Form->input("permalink",array("class"=>"short","error"=>false)); ?>
-		<?php echo $this->Form->error("permalink"); ?>
+		<?php echo $this->Form->input("name",array("error"=>false)); ?>
+		<?php echo $this->Form->error("name"); ?>
 	</td>
 </tr>
-<!--
-<tr>
-	<th>スマホ画面対応</th>
-	<td>
-		<div id="swradio">
-			<?php echo $this->Form->radio("smp_status",array(0=>"PCのみ又はレスポンシブ",1=>"スマホ用htmlを設置"),array("legend"=>false,"default"=>0,"class"=>"radio_smp_status")); ?>
-		</div>
-	</td>
-</tr>
--->
 <tr>
 	<th>html情報</th>
 	<td>
@@ -52,25 +42,10 @@ echo $this->Form->hidden("id");
 		<div class="ace_textarea" id="html_textarea"></div>
 	</td>
 </tr>
-<!--
-<tr class="type_smp">
-	<th>スマホ判別画面幅</th>
-	<td>
-		<?php echo $this->Form->input("smp_maxwidth",array("class"=>"mini","default"=>"780")); ?> px
-	</td>
-</tr>
-<tr class="type_smp">
-	<th>スマホ画面用htmlタグ</th>
-	<td>
-		<?php echo $this->Form->textarea("smp_html",array("id"=>"smp_html_data","style"=>"display:none")); ?>
-		<div class="ace_textarea" id="smp_html_textarea"></div>
-	</td>
-</tr>
--->
 </table>
 
 <div class="center mb30">
-	<?php echo $this->Form->submit("フリーページカテゴリーを設定",array("div"=>false,"class"=>"buttons")); ?>
+	<?php echo $this->Form->submit("地区を設定",array("div"=>false,"class"=>"buttons")); ?>
 </div>
 
 <?php echo $this->Form->end(); ?>
@@ -103,7 +78,6 @@ $(function(){
 
 		}
 	}
-
 });
 </script>
 </script>

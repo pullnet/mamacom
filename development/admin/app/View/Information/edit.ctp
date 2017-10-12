@@ -25,6 +25,7 @@
 			<?php echo $this->Form->error("title"); ?>
 		</td>
 	</tr>
+<!--
 	<tr>
 		<th>カテゴリー</th>
 		<td>
@@ -37,6 +38,7 @@
 			echo $this->Form->select("information_category",$information_category,array("class"=>"short","empty"=>"------","error"=>false)); ?>
 		</td>
 	</tr>
+-->
 	<tr>
 		<th colspan="2" class="center middle">内容</th>
 	</tr>
