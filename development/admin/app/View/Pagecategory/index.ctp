@@ -40,7 +40,7 @@ if(isset($alert))
 		<td><?php echo $this->Html->link(h($r_["Freepagecategory"]["permalink"]),$wwwurl."lp/".$r_["Freepagecategory"]["permalink"],array("target"=>"_blank")); ?></td>
 		<td>
 			<?php echo $this->Html->link("編集",array("controller"=>"pagecategory","action"=>"edit",$r_["Freepagecategory"]["id"]),array("class"=>"buttons")); ?>
-			<!-- 
+
 			<label for="delete_<?php echo $count; ?>" class="buttons del">削除</label>
 			<div id="popup">
 				<input type="checkbox" id="delete_<?php echo $count; ?>" class="checks">
@@ -56,7 +56,7 @@ if(isset($alert))
 					</div>
 				</div>
 			</div>
-			-->
+
 		</td>
 	</tr>
 	<?php

@@ -32,11 +32,7 @@ if(isset($alert))
 		<tr>
 			<td class="center"><?php echo $count; ?></td>
 			<td><?php echo date("Y.m.d H:i",strtotime($r_["Information"]["createdate"])); ?></td>
-			<td>
-			<?php
-			$aurl=$wwwurl."info/".date("YmdHis",strtotime($r_["Information"]["post_date"]));
-			echo $this->Html->link($r_["Information"]["title"],$aurl,array("target"=>"_blank","class"=>"underline")); ?>
-			</td>
+			<td><?php echo $this->Html->link( $r_["Information"]["title"] ,array("controller"=>"test_view","action"=>"information",$r_["Information"]["id"]),array("class"=>"")); ?>	</td>
 			<td>
 				<?php echo $this->Html->link("編集",array("controller"=>"information","action"=>"edit",$r_["Information"]["id"]),array("class"=>"buttons")); ?>
 				<label for="deletepop<?php echo $count; ?>" class="buttons">削除</label>

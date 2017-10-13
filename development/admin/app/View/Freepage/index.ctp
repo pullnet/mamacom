@@ -62,8 +62,8 @@ if(isset($alert))
 	<tr>
 		<th class="micro">No</th>
 		<th class="minishort">登録日</th>
-		<th>ページタイトル/URL</th>
-		<!--<th class="minishort">スマホ対応</th>-->
+		<th>ページタイトル</th>
+		<th class="minishort">カテゴリー</th>
 		<th class="minishort">表示/公開設定</th>
 		<th class="minishort"></th>
 	</tr>
@@ -75,12 +75,12 @@ if(isset($alert))
 		<tr>
 			<td class="center"><?php echo $count; ?></td>
 			<td><?php echo date("Y.m.d H:i",strtotime($r_["Freepage"]["createdate"])); ?></td>
-			<td>
 			
-	<?php
-	/*debug(   $wwwurl  );*/
-	?>
 			
+			
+			<td><?php echo $this->Html->link( $r_["Freepage"]["name"] ,array("controller"=>"test_view","action"=>"freepage",$r_["Freepage"]["id"]),array("class"=>"")); ?>	</td>
+
+<!--		
 			<?php echo $r_["Freepage"]["name"]; ?>　　
 			<?php
 			if($r_["Freepagecategory"]){
@@ -93,25 +93,15 @@ if(isset($alert))
 				$aurl=$wwwurl."lp/".$r_["Freepage"]["permalink"];
 			}
 			echo $this->Html->link($aurl_short,$aurl,array("target"=>"_blank","class"=>"underline")); ?>
-			</td>
-			<!--
-			<td>
-				<?php
-				if($r_["Freepage"]["smp_status"]==0){
-					echo "PCのみ";
-				}
-				else
-				{
-					echo "スマホ別画面";
-				}
-				?>
-			</td>
-			-->
+-->
+	
+			
+			<td><?php echo $category_list[$r_["Freepage"]["freepagecategory_id"]]; ?></td>
+
 			<td><?php echo $page_status[$r_["Freepage"]["page_status"]]; ?>/<?php echo $open_status[$r_["Freepage"]["open_status"]]; ?></td>
 			<td>
 				<?php echo $this->Html->link("編集",array("controller"=>"freepage","action"=>"edit",$r_["Freepage"]["id"]),array("class"=>"buttons")); ?>
 				
-				<!--
 				<label for="deletepop<?php echo $count; ?>" class="buttons">削除</label>
 				<div id="popup">
 					<input type="checkbox" id="deletepop<?php echo $count; ?>" class="checks">
@@ -127,7 +117,6 @@ if(isset($alert))
 						</div>
 					</div>
 				</div>
-				-->
 				
 			</td>
 		</tr>

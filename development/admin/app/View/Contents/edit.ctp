@@ -21,122 +21,93 @@ echo $this->Form->hidden("id");
 
 ?>
 <table cellspacing="0" cellpadding="0" class="mb30">
-<tr>
-	<th>タイトル</th>
-	<td>
-		<?php echo $this->Form->input("title",array("error"=>false)); ?>
-		<?php echo $this->Form->error("name"); ?>
-	</td>
-</tr>
-<tr>
-	<th>管理番号(任意)</th>
-	<td>
-		<?php echo $this->Form->input("number",array("error"=>false)); ?>
-		<?php echo $this->Form->error("number"); ?>
-	</td>
-</tr>
-<tr>
-	<th>カテゴリー</th>
-	<td>
-		<?php echo $this->Form->input("category_id",array("error"=>false)); ?>
-		<?php echo $this->Form->error("category_id"); ?>
-	</td>
-</tr>
-<tr>
-	<th>地区</th>
-	<td>
-		<?php echo $this->Form->input("district_id",array("error"=>false)); ?>
-		<?php echo $this->Form->error("district_id"); ?>
-	</td>
-</tr>
-<tr>
-	<th colspan="2">イメージ</th>
-</tr>
-<tr>
-	<th>メイン</th>
-	<td></td>
-</tr>
-<tr>
-	<th>サブ1</th>
-	<td></td>
-</tr>
-<tr>
-	<th>サブ2</th>
-	<td></td>
-</tr>
-<tr>
-	<th colspan="2">詳細内容</th>
-</tr>
-<tr>
-	<th>セクションタイトル1</th>
-	<td></td>
-</tr>
-<tr>
-	<th>詳細テキスト1</th>
-	<td></td>
-</tr>
-<tr>
-	<th>セクションタイトル2</th>
-	<td></td>
-</tr>
-<tr>
-	<th>詳細テキスト2</th>
-	<td></td>
-</tr>
-<tr>
-	<th>セクションタイトル3</th>
-	<td></td>
-</tr>
-<tr>
-	<th>詳細テキスト3</th>
-	<td></td>
-</tr>
-<tr>
-	<th>セクションタイトル4</th>
-	<td></td>
-</tr>
-<tr>
-	<th>詳細テキスト4</th>
-	<td></td>
-</tr>
-
-
-
-
-
-<tr>
-	<th></th>
-	<td>
-		セクション1・タイトル
-		セクション1・詳細テキスト
-		セクション2・タイトル
-		セクション2・詳細テキスト	
-		セクション3・タイトル
-		セクション3・詳細テキスト	
-		セクション4・タイトル
-		セクション4・詳細テキスト	
-		セクション5・タイトル
-		セクション5・詳細テキスト			
-	</td>
-</tr>
-<tr>
-	<th>店舗情報</th>
-	<td>
-		住所：大阪市中央区南船場3-10-26-吉川ビル6F
-		郵便番号：〒542-0081
-		電話番号：06-6243-7757
-		電話番号補足：【受付時間】10:00 ～ 19:00
-	</td>
-</tr>
-
-	<tr>
-		<th>公開設定</th>
-		<td>
-			<div id="swradio">
-				<?php echo $this->Form->radio("open_status",array(0=>"公開",1=>"非公開"),array("legend"=>false,"default"=>0)); ?>
-			</div>
-		</td>
-	</tr>
+		<tr>
+			<th>タイトル</th>
+			<td>
+				<?php echo $this->Form->input("title",array("error"=>false,"class"=>"","width"=>"50")); ?>
+				<?php echo $this->Form->error("name"); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>管理番号(任意)</th>
+			<td>
+				<?php echo $this->Form->input("number",array("error"=>false,"class"=>"short")); ?>
+				<?php echo $this->Form->error("number"); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>カテゴリー</th>
+			<td>
+				<?php echo $this->Form->select("category_id",$category_list,array("class"=>"long","empty"=>"----")); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>地区</th>
+			<td>
+				<?php echo $this->Form->select("district_id",$district_list,array("class"=>"long","empty"=>"----")); ?>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">イメージ</th>
+		</tr>
+		<tr>
+			<th>メイン</th>
+			<td><?php echo $this->Form->input("img_file1",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
+		</tr>
+		<tr>
+			<th>サブ 1</th>
+			<td><?php echo $this->Form->input("img_file2",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
+		</tr>
+		<tr>
+			<th>サブ 2</th>
+			<td><?php echo $this->Form->input("img_file3",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
+		</tr>
+		<tr>
+			<th colspan="2">詳細内容</th>
+		</tr>
+		<tr>
+			<th>項目1</th>
+			<td><?php echo $this->Form->input("ttl1",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th>詳細文1</th>
+			<td><?php echo $this->Form->input("text1",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th>項目2</th>
+			<td><?php echo $this->Form->input("ttl2",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th>詳細文2</th>
+			<td><?php echo $this->Form->input("text2",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th colspan="2">店舗情報</th>
+		</tr>
+		<tr>
+			<th>郵便番号</th>
+			<td><?php echo $this->Form->input("postnumber",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>		
+		<tr>
+			<th>住所</th>
+			<td><?php echo $this->Form->input("address",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th>電話番号</th>
+			<td><?php echo $this->Form->input("tel",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th>補足（受付時間など）</th>
+			<td><?php echo $this->Form->input("shop_text",array("error"=>false,"class"=>"short")); ?></td>
+		</tr>
+		<tr>
+			<th>公開設定</th>
+			<td>
+				<div id="swradio">
+					<?php echo $this->Form->radio("open_status",array(0=>"公開",1=>"非公開"),array("legend"=>false,"default"=>0)); ?>
+				</div>
+			</td>
+		</tr>
 </table>
 
 <div class="center mb30">

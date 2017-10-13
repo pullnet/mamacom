@@ -118,4 +118,25 @@ class AccountController extends AppController {
 
 		$this->Render("../Csv/dataexport");
 	}
+	
+	//★地区・削除
+	public function delete($id){
+		
+		$this->autoRender=false;
+		
+		//idでItemcategoryテーブルデータ取得
+		$result=$this->Admin->find("first",array(
+			'conditions' => array(
+				'Admin.id' => $id,
+			)
+		));
+		//idでItemcategoryテーブルデータ削除
+		$this->Admin->delete($id);
+		
+		//テキスト表示とリダイレクト
+		$this->Session->write("alert", "地区を削除いたしました。");
+		$this->redirect(array("controller"=>"account","action"=>"index"));
+
+	}	
+	
 }

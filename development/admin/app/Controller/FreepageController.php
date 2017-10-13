@@ -140,7 +140,7 @@ class FreepageController extends AppController{
 
 		$this->Render("../Csv/dataexport");
 	}
-
+	/*
 	//★削除メソッド(論理)
 	public function delete_logic($id){
 		$this->autoRender=false;
@@ -153,15 +153,15 @@ class FreepageController extends AppController{
 		$this->Session->write("alert","ページを１件削除しました");
 		$this->redirect(array("controller"=>"freepage","action"=>"index"));
 	}
+	*/
 	//★削除メソッド(物理消去)
-	public function delete_phys($id){
+	public function delete($id){
 		$this->autoRender=false;
 		$this->Freepage->delete($id);
 
 		$this->Session->write("alert","ページを１件完全に削除しました");
 		$this->redirect(array("controller"=>"freepage","action"=>"index"));
 	}
-
 
 	//★画像管理
 	public function image(){
