@@ -15,7 +15,7 @@ App::uses('AppController', 'Controller');
 class DistrictController extends AppController{
 
 	public $uses=array(
-		"District",
+		"Category",
 	);
 
 	public $components=array(
@@ -28,36 +28,43 @@ class DistrictController extends AppController{
 	public function beforeFilter(){
 		parent::beforeFilter();
 	}
-	//★ページカテゴリー一覧
+	//★地区一覧
 	public function index($page=1){
 		$limit=30;
 		$this->set("page",$page);
 		$this->set("limit",$limit);
 
-		$result=$this->District->find("all",array(
+		$result=$this->Category->find("all",array(
+			"conditions"=>array(
+				"Category.type_mode"=>"1",						
+			),
 			"limit"=>$limit,
 			"page"=>$page,
 		));
 		$this->set("result",$result);
 
-		$totalcount=$result=$this->District->find("count");
+		$totalcount=$this->Category->find("count",array(
+			"conditions"=>array(
+				"Category.type_mode"=>"1",						
+			),
+		));		
 		$totalpage=ceil($totalcount/$limit);
 		$this->set("totalcount",$totalcount);
 		$this->set("totalpage",$totalpage);
 
 		$this->set("wwwurl",$this->Loadbasic->load("wwwurl"));
 	}
-	//★ページカテゴリー登録・編集
+	//★地区登録・編集
 	public function edit($id=null){
 
 
 		if($this->request->data){
 			$post=$this->request->data;
 
-			$this->District->set($post);
-			if($this->District->validates()){
+			$this->Category->set($post);
+			if($this->Category->validates()){
 
-				$this->District->save($post,false);
+				$this->Category->save($post,false);
 
 				$this->Session->write("alert","地区を１件設定しました。");
 				$this->redirect(array("controller"=>"district","action"=>"index"));
@@ -67,9 +74,10 @@ class DistrictController extends AppController{
 		else{
 			if($id){
 
-				$post=$this->District->find("first",array(
+				$post=$this->Category->find("first",array(
 					"conditions"=>array(
-						"District.id"=>$id,
+						"Category.id"=>$id,
+						"Category.type_mode"=>"1",			
 					),
 				));
 				$this->request->data=$post;
@@ -77,4 +85,25 @@ class DistrictController extends AppController{
 		}
 
 	}
+	
+	//★地区・削除
+	public function delete($id){
+		
+		$this->autoRender=false;
+		
+		//idでテーブルデータ取得
+		$result=$this->Category->find("first",array(
+			'conditions' => array(
+				'Category.id' => $id,
+			)
+		));
+		//idでテーブルデータ削除
+		$this->Category->delete($id);
+		
+		//テキスト表示とリダイレクト
+		$this->Session->write("alert", "地区を削除いたしました。");
+		$this->redirect(array("controller"=>"district","action"=>"index"));
+
+	}		
+	
 }

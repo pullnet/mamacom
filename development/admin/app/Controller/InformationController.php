@@ -89,4 +89,25 @@ class InformationController extends AppController{
 		}
 	
 	}
+	
+	//★削除
+	public function delete($id){
+		
+		$this->autoRender=false;
+		
+		//idでテーブルデータ取得
+		$result=$this->Information->find("first",array(
+			'conditions' => array(
+				'Information.id' => $id,
+			)
+		));
+		//idでテーブルデータ削除
+		$this->Information->delete($id);
+		
+		//テキスト表示とリダイレクト
+		$this->Session->write("alert", "地区を削除いたしました。");
+		$this->redirect(array("controller"=>"information","action"=>"index"));
+
+	}		
+
 }

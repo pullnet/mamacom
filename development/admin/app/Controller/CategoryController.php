@@ -28,26 +28,33 @@ class CategoryController extends AppController{
 	public function beforeFilter(){
 		parent::beforeFilter();
 	}
-	//★ページカテゴリー一覧
+	//★カテゴリー一覧
 	public function index($page=1){
 		$limit=30;
 		$this->set("page",$page);
 		$this->set("limit",$limit);
 
 		$result=$this->Category->find("all",array(
+			"conditions"=>array(
+				"Category.type_mode"=>"0",						
+			),
 			"limit"=>$limit,
 			"page"=>$page,
 		));
 		$this->set("result",$result);
 
-		$totalcount=$result=$this->Category->find("count");
+		$totalcount=$this->Category->find("count",array(
+			"conditions"=>array(
+				"Category.type_mode"=>"0",						
+			),
+		));		
 		$totalpage=ceil($totalcount/$limit);
 		$this->set("totalcount",$totalcount);
 		$this->set("totalpage",$totalpage);
 
 		$this->set("wwwurl",$this->Loadbasic->load("wwwurl"));
 	}
-	//★ページカテゴリー登録・編集
+	//★カテゴリー登録・編集
 	public function edit($id=null){
 
 
@@ -58,7 +65,6 @@ class CategoryController extends AppController{
 			if($this->Category->validates()){
 
 				$this->Category->save($post,false);
-
 
 				$this->Session->write("alert","カテゴリーを１件設定しました。");
 				$this->redirect(array("controller"=>"category","action"=>"index"));
@@ -71,6 +77,7 @@ class CategoryController extends AppController{
 				$post=$this->Category->find("first",array(
 					"conditions"=>array(
 						"Category.id"=>$id,
+						"Category.type_mode"=>"0",						
 					),
 				));
 				$this->request->data=$post;
@@ -78,4 +85,26 @@ class CategoryController extends AppController{
 		}
 
 	}
+	
+	//★カテゴリー登録・削除
+	public function delete($id){
+		
+		$this->autoRender=false;
+		
+		//idでItemcategoryテーブルデータ取得
+		$result=$this->Category->find("first",array(
+			'conditions' => array(
+				'Category.id' => $id,
+			)
+		));
+		//idでItemcategoryテーブルデータ削除
+		$this->Category->delete($id);
+		
+		//テキスト表示とリダイレクト
+		$this->Session->write("alert", "カテゴリーを削除いたしました。");
+		$this->redirect(array("controller"=>"category","action"=>"index"));
+
+	}	
+	
+
 }
