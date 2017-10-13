@@ -9,7 +9,7 @@ echo $this->Html->script("ace_advance.js");
 </div>
 <h1>地区編集</h1>
 <?php
-echo $this->Form->create("District",array(
+echo $this->Form->create("Category",array(
 	"inputDefaults"=>array(
 		"div"=>false,
 		"label"=>false,
@@ -18,18 +18,12 @@ echo $this->Form->create("District",array(
 	),
 ));
 echo $this->Form->hidden("id");
+echo $this->Form->hidden("type_mode",array("value"=>"1"));
 
 ?>
 <table cellspacing="0" cellpadding="0" class="mb30">
 <tr>
 	<th>地区名</th>
-	<td>
-		<?php echo $this->Form->input("name",array("error"=>false)); ?>
-		<?php echo $this->Form->error("name"); ?>
-	</td>
-</tr>
-<tr>
-	<th>親カテゴリー</th>
 	<td>
 		<?php echo $this->Form->input("name",array("error"=>false)); ?>
 		<?php echo $this->Form->error("name"); ?>

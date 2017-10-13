@@ -24,7 +24,7 @@ if(isset($alert))
 	<tr>
 		<th class="micro">No</th>
 		<th class="minishort">登録日</th>
-		<th>カテゴリー名</th>
+		<th>地区名</th>
 		<th class="minishort"></th>
 	</tr>
 	<?php
@@ -34,11 +34,11 @@ if(isset($alert))
 	?>
 	<tr>
 		<td class="center"><?php echo $count; ?></td>
-		<td><?php echo date("Y.m.d H:i",strtotime($r_["District"]["createdate"])); ?></td>
-		<td><?php echo h($r_["District"]["name"]); ?></td>
+		<td><?php echo date("Y.m.d H:i",strtotime($r_["Category"]["createdate"])); ?></td>
+		<td><?php echo h($r_["Category"]["name"]); ?></td>
 		<td>
-			<?php echo $this->Html->link("編集",array("controller"=>"category","action"=>"edit",$r_["District"]["id"]),array("class"=>"buttons")); ?>
-			<!-- 
+			<?php echo $this->Html->link("編集",array("controller"=>"district","action"=>"edit",$r_["Category"]["id"]),array("class"=>"buttons")); ?>
+
 			<label for="delete_<?php echo $count; ?>" class="buttons del">削除</label>
 			<div id="popup">
 				<input type="checkbox" id="delete_<?php echo $count; ?>" class="checks">
@@ -46,15 +46,15 @@ if(isset($alert))
 				<div class="basejavar"></div>
 				<div class="window short">
 					<div class="bs">
-						<h2 class="mb30">「<?php echo $r_["District"]["name"]; ?>」のページカテゴリーを削除します</h2>
+						<h2 class="mb30">「<?php echo $r_["Category"]["name"]; ?>」のページカテゴリーを削除します</h2>
 						<div class="center">
 							<label for="delete_<?php echo $count; ?>" class="buttons">キャンセル</label>
-							<?php echo $this->Html->link("削除する",array("controller"=>"district","action"=>"delete",$r_["District"]["id"]),array("class"=>"buttons del")); ?>
+							<?php echo $this->Html->link("削除する",array("controller"=>"district","action"=>"delete",$r_["Category"]["id"]),array("class"=>"buttons del")); ?>
 						</div>
 					</div>
 				</div>
 			</div>
-			-->
+
 		</td>
 	</tr>
 	<?php

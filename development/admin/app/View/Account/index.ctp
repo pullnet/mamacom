@@ -9,9 +9,7 @@
 		<?php
 		}
 		?>
-		<style>
 
-		</style>
 		<p class="h3">全<?php echo $totalcount; ?>件</p>
 		<p class="mb10">(<?php echo $page; ?>P/<?php echo $totalpage; ?>P)</p>
 		<div class="right mb20">
@@ -44,7 +42,9 @@
 			</td>
 			<td>
 				<?php echo $this->Html->link("編集",array("controller"=>"account","action"=>"edit",$r_["Admin"]["id"]),array("class"=>"buttons")); ?>
+				<?php if($r_["Admin"]["name"] != "初期アカウント"){ ?>
 				<label for="delete_<?php echo $count; ?>" class="buttons delete">削除</label>
+				<?php } ?>
 <div id="popup">
 	<input type="checkbox" id="delete_<?php echo $count; ?>" class="checks">
 	<label></label>
@@ -106,7 +106,5 @@
 		<?php
 		}
 		?>
-		<div class="right">
-			<?php echo $this->Html->link("一覧情報をcsv出力",array("controller"=>"account","action"=>"dataexport"),array("class"=>"buttons")); ?>
-		</div>
+
 	</div>

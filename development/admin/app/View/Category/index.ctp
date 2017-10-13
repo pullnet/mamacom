@@ -41,7 +41,7 @@ if(isset($alert))
 		<td><?php echo h($r_["Category"]["name"]); ?></td>
 		<td>
 			<?php echo $this->Html->link("編集",array("controller"=>"category","action"=>"edit",$r_["Category"]["id"]),array("class"=>"buttons")); ?>
-			<!-- 
+
 			<label for="delete_<?php echo $count; ?>" class="buttons del">削除</label>
 			<div id="popup">
 				<input type="checkbox" id="delete_<?php echo $count; ?>" class="checks">
@@ -57,7 +57,7 @@ if(isset($alert))
 					</div>
 				</div>
 			</div>
-			-->
+
 		</td>
 	</tr>
 	<?php
