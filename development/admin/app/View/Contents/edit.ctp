@@ -20,12 +20,13 @@ echo $this->Form->create("Contents",array(
 echo $this->Form->hidden("id");
 
 ?>
+
 <table cellspacing="0" cellpadding="0" class="mb30">
 		<tr>
-			<th>タイトル</th>
+			<th>タイトル<span class="required_red">[必須]</span></th>
 			<td>
 				<?php echo $this->Form->input("title",array("error"=>false,"class"=>"","width"=>"50")); ?>
-				<?php echo $this->Form->error("name"); ?>
+				<?php echo $this->Form->error("title"); ?>
 			</td>
 		</tr>
 		<tr>
@@ -36,22 +37,24 @@ echo $this->Form->hidden("id");
 			</td>
 		</tr>
 		<tr>
-			<th>カテゴリー</th>
+			<th>カテゴリー<span class="required_red">[必須]</span></th>
 			<td>
-				<?php echo $this->Form->select("category_id",$category_list,array("class"=>"long","empty"=>"----")); ?>
+				<?php echo $this->Form->select("category_id",$category_list,array("class"=>"long","empty"=>"----","required"=>false)); ?>
+				<?php echo $this->Form->error("category_id"); ?>
 			</td>
 		</tr>
 		<tr>
-			<th>地区</th>
+			<th>地区<span class="required_red">[必須]</span></th>
 			<td>
-				<?php echo $this->Form->select("district_id",$district_list,array("class"=>"long","empty"=>"----")); ?>
+				<?php echo $this->Form->select("district_id",$district_list,array("class"=>"long","empty"=>"----","required"=>false)); ?>
+				<?php echo $this->Form->error("district_id"); ?>
 			</td>
 		</tr>
 		<tr>
 			<th colspan="2">イメージ</th>
 		</tr>
 		<tr>
-			<th>メイン</th>
+			<th>メイン<span class="required_red">[必須]</span></th>
 			<td><?php echo $this->Form->input("img_file1",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
 		</tr>
 		<tr>
@@ -65,40 +68,70 @@ echo $this->Form->hidden("id");
 		<tr>
 			<th colspan="2">詳細内容</th>
 		</tr>
-		<tr>
-			<th>項目1</th>
-			<td><?php echo $this->Form->input("ttl1",array("error"=>false,"class"=>"short")); ?></td>
+		
+		
+		<!-- カテゴリーで表示変更 -->
+		<?php echo $this->Form->hidden("ttl1",array("value"=>"-","class"=>"")); ?>
+		<?php echo $this->Form->hidden("ttl2",array("value"=>"-","class"=>"")); ?>
+		<?php echo $this->Form->hidden("ttl3",array("value"=>"-","class"=>"")); ?>
+		<?php echo $this->Form->hidden("ttl4",array("value"=>"-","class"=>"")); ?>
+		<?php echo $this->Form->hidden("ttl5",array("value"=>"-","class"=>"")); ?>
+		
+		<tr class="row_display1">
+			<th>
+				<span class="ttl01">概要</span>
+			</th>
+			<td><?php echo $this->Form->textarea("text1",array("error"=>false,"class"=>"","required"=>false)); ?></td>
+				
 		</tr>
-		<tr>
-			<th>詳細文1</th>
-			<td><?php echo $this->Form->input("text1",array("error"=>false,"class"=>"short")); ?></td>
-		</tr>
-		<tr>
-			<th>項目2</th>
-			<td><?php echo $this->Form->input("ttl2",array("error"=>false,"class"=>"short")); ?></td>
-		</tr>
-		<tr>
-			<th>詳細文2</th>
-			<td><?php echo $this->Form->input("text2",array("error"=>false,"class"=>"short")); ?></td>
-		</tr>
+		<tr class="row_display2">
+			<th>
+				<span class="ttl02">補足・その他</span>
+			</th>
+			<td><?php echo $this->Form->textarea("text2",array("error"=>false,"class"=>"","required"=>false)); ?></td>
+		</tr>		
+		<tr class="row_display3">
+			<th>
+				<span class="ttl03">-</span>
+			
+			</th>
+			<td><?php echo $this->Form->textarea("text3",array("error"=>false,"class"=>"","required"=>false)); ?></td>
+		</tr>		
+		
+		<tr class="row_display4">
+			<th>
+				<span class="ttl04">-</span>
+			</th>
+			<td><?php echo $this->Form->textarea("text4",array("error"=>false,"class"=>"","required"=>false)); ?></td>
+		</tr>			
+		
+		<tr class="row_display5">
+			<th>
+				<span class="ttl05">-</span>
+			</th>
+			<td><?php echo $this->Form->textarea("text5",array("error"=>false,"class"=>"","required"=>false)); ?></td>
+		</tr>			
+
+		<!-- カテゴリーで表示変更 -->
+			
 		<tr>
 			<th colspan="2">店舗情報</th>
 		</tr>
 		<tr>
-			<th>郵便番号</th>
-			<td><?php echo $this->Form->input("postnumber",array("error"=>false,"class"=>"short")); ?></td>
-		</tr>		
-		<tr>
-			<th>住所</th>
-			<td><?php echo $this->Form->input("address",array("error"=>false,"class"=>"short")); ?></td>
+			<th>郵便番号<span class="required_red">[必須]</span></th>
+			<td><?php echo $this->Form->input("postnumber",array("error"=>false,"class"=>"short")); ?><?php echo $this->Form->error("postnumber"); ?></td>
 		</tr>
 		<tr>
-			<th>電話番号</th>
-			<td><?php echo $this->Form->input("tel",array("error"=>false,"class"=>"short")); ?></td>
+			<th>住所<span class="required_red">[必須]</span></th>
+			<td><?php echo $this->Form->input("address",array("error"=>false,"class"=>"")); ?><?php echo $this->Form->error("address"); ?></td>
+		</tr>
+		<tr>
+			<th>電話番号<span class="required_red">[必須]</span></th>
+			<td><?php echo $this->Form->input("tel",array("error"=>false,"class"=>"short")); ?><?php echo $this->Form->error("tel"); ?></td>
 		</tr>
 		<tr>
 			<th>補足（受付時間など）</th>
-			<td><?php echo $this->Form->input("shop_text",array("error"=>false,"class"=>"short")); ?></td>
+			<td><?php echo $this->Form->input("shop_text",array("error"=>false,"class"=>"")); ?></td>
 		</tr>
 		<tr>
 			<th>公開設定</th>
@@ -116,34 +149,122 @@ echo $this->Form->hidden("id");
 
 <?php echo $this->Form->end(); ?>
 
+<style>
+.required_red{
+	display:inline-block;
+	vertical-align:middle;
+	color:#C00;
+	font-size:80%;
+}
+textarea {
+  line-height: 1.4em;
+	height:125px;
+}
+</style>
+
 <script type="text/javascript">
-	aceeditor({
-		textarea:"html_textarea",
-		textdata:"html_data",
-	});
-	aceeditor({
-		textarea:"smp_html_textarea",
-		textdata:"smp_html_data",
-	});
+
 $(function(){
-	radio_smp_status();
-	$(".radio_smp_status").on("change",function(){
-		radio_smp_status();
-	});
+	
+		//一旦全部消す関数
+		function clear_display(){
+			$('.row_display1').css('display','none');		
+			$('.row_display2').css('display','none');						
+			$('.row_display3').css('display','none');						
+			$('.row_display4').css('display','none');						
+			$('.row_display5').css('display','none');	
+		}	
 
-	function radio_smp_status(){
-		var index=$(".radio_smp_status:checked").val();
-		console.log(index);
-		if(index==0){
-			$(".type_smp").css("display","none");
+		function display_set(){
+				
+				var val = $('#ContentsCategoryId').val();
 
+				if(val == "1"){
+					clear_display();
+					$('.ttl01').text('お店の概要');
+					$('.ttl02').text('補足・その他');
+					$('#ContentsTtl1').val('お店の概要');
+					$('#ContentsTtl2').val('補足・その他');
+					$('.cate01').css('display','block');
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');
+				}
+				else if(val == "2"){
+					clear_display();	
+					$('.ttl01').text('社名');
+					$('.ttl02').text('給与');		
+					$('.ttl03').text('雇用形態');
+					$('.ttl04').text('最寄駅');						
+					$('.ttl05').text('補足・その他');	
+					$('#ContentsTtl1').val('社名');
+					$('#ContentsTtl2').val('給与');					
+					$('#ContentsTtl3').val('雇用形態');
+					$('#ContentsTtl4').val('最寄駅');					
+					$('#ContentsTtl5').val('補足・その他');																	
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');
+					$('.row_display3').css('display','table-row');						
+					$('.row_display4').css('display','table-row');						
+					$('.row_display5').css('display','table-row');
+				}		
+				else if(val == "3"){
+					clear_display();
+					$('.ttl01').text('支援室の概要');
+					$('.ttl02').text('補足・その他');	
+					$('#ContentsTtl1').val('支援室の概要');
+					$('#ContentsTtl2').val('補足・その他');															
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');			
+				}		
+				else if(val == "4"){
+					clear_display();
+					$('.ttl01').text('公園の概要');
+					$('.ttl02').text('補足・その他');	
+					$('#ContentsTtl1').val('公園の概要');
+					$('#ContentsTtl2').val('補足・その他');												
+					$('.cate04').css('display','block');
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');	
+				}
+				else if(val == "5"){
+					clear_display();
+					$('.ttl01').text('授乳室の概要');
+					$('.ttl02').text('補足・その他');	
+					$('#ContentsTtl1').val('授乳室の概要');
+					$('#ContentsTtl2').val('補足・その他');												
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');		
+				}
+				else if(val == "6"){
+					clear_display();
+					$('.ttl01').text('サイトの概要');
+					$('.ttl02').text('補足・その他');	
+					$('#ContentsTtl1').val('サイトの概要');
+					$('#ContentsTtl2').val('補足・その他');												
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');			
+				}
+				else{
+					clear_display();								
+					$('.ttl01').text('概要');
+					$('.ttl02').text('補足・その他');
+					$('#ContentsTtl1').val('概要');
+					$('#ContentsTtl2').val('補足・その他');					
+					$('.row_display1').css('display','table-row');		
+					$('.row_display2').css('display','table-row');	
+				}
 		}
-		else
-		{
-			$(".type_smp").css("display","");
 
-		}
-	}
+		//読み込み後の処理js
+		$(window).load(function () {
+			display_set();
+		});
+
+		//カテゴリを変更する度の処理js
+		$('#ContentsCategoryId').bind('change', function() {
+			display_set();
+		});
+
 
 });
 </script>

@@ -100,9 +100,16 @@ class ContentsController extends AppController{
 				$caption=json_encode(array(
 					"ttl1"=>$post["Contents"]["ttl1"],
 					"ttl2"=>$post["Contents"]["ttl2"],
+					"ttl3"=>$post["Contents"]["ttl3"],
+					"ttl4"=>$post["Contents"]["ttl4"],
+					"ttl5"=>$post["Contents"]["ttl5"],
 					"text1"=>$post["Contents"]["text1"],
-					"text2"=>$post["Contents"]["text2"],	
+					"text2"=>$post["Contents"]["text2"],
+					"text3"=>$post["Contents"]["text3"],
+					"text4"=>$post["Contents"]["text4"],
+					"text5"=>$post["Contents"]["text5"],
 				),JSON_UNESCAPED_UNICODE);
+				
 				$post["Contents"]["caption"]=$caption;
 
 				//店舗情報をJSON化して登録・更新
@@ -165,7 +172,6 @@ class ContentsController extends AppController{
 		$this->Session->write("alert", "地区を削除いたしました。");
 		$this->redirect(array("controller"=>"contents","action"=>"index"));
 
-	}	
-
+	}
 	
 }
