@@ -3,20 +3,117 @@
 <div style="display:none" id="url_iconedit"><?php echo $this->Html->url(array("controller"=>"jsonmethod","action"=>"iconimgedit",$set_width,$set_height)); ?></div>
 
 <style>
-#kitao_promo17 #Modal.iconedit .thumbnail .squrea{
+#Modal{
+	display:block;
+}
+#Modal .window{
+	position:fixed;
+	z-index:-2;
+	background:#FFF;
+	width:80%;
+	max-height:80%;
+	left:10%;
+	top:10%;
+	opacity:0;
+	overflow:hidden;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-ms-opacity:0;
+	-o-opacity:0;
+}
+#Modal .basejavar{
+	position:fixed;
+	z-index:-1;
+	opacity:0;
+	background:#000;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow-y:auto;
+}
+#Modal input.checks{
+	display:none;
+}
+#Modal input.checks:checked+label~.basejavar,
+#Modal input.checks:checked+label~.window{
+	z-index:100;
+}
+#Modal input.checks:checked+label~.window{
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+	animation:Modal_open 0.3s;
+	opacity:1;
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-ms-opacity:1;
+	-o-opacity:1;
+}
+#Modal input.checks:checked+label~.basejavar{
+	animation:Modal_open_bsj 0.3s;
+	opacity:0.8;
+	-webkit-opacity:0.8;
+	-moz-opacity:0.8;
+	-ms-opacity:0.8;
+	-o-opacity:0.8;
+}
+#Modal .window.table{
+	height:80%;
+}
+#Modal .window .tr{
+	display:table-row;
+}
+#Modal .window .tr .hf{
+	display:table-cell;
+	height:50px;
+	padding:15px;
+}
+#Modal .window .tr .hf.head{
+	background:#444;
+	color:#FFF;
+	position:relative;
+}
+#Modal .window .tr .main{
+	display:table-cell;
+	padding:10px 15px;
+	position:relative;
+}
+#Modal .window .tr .main .bs{
+	position:absolute;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow:auto;
+}
+#Modal .window.short{
+	width:640px;
+	left:50%;
+	margin-left:-320px;
+}
+#Modal .window.dialog{
+	width:400px;
+	height:300px;
+	left:50%;
+	margin-left:-200px;
+	top:50%;
+	margin-top:-150px;
+}
+
+#Modal.iconedit .thumbnail .squrea{
 	padding-bottom:<?php echo ($set_height/$set_width)*100; ?>%;
 }
-#kitao_promo17 #Modal.iconedit .thumbnail{
+#Modal.iconedit .thumbnail{
 	max-width:300px;
 	margin:0px auto;
 }
-#kitao_promo17 #Modal.iconedit .thumbnail .squrea {
+#Modal.iconedit .thumbnail .squrea {
     border: solid 1px #999;
     margin: 10px auto;
     position: relative;
     overflow: hidden;
 }
-#kitao_promo17 #Modal.iconedit .thumbnail .squrea #buff_trims {
+#Modal.iconedit .thumbnail .squrea #buff_trims {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -25,20 +122,20 @@
     width: 100%;
     cursor: pointer;
 }
-#kitao_promo17 #Modal.iconedit .thumbnail .squrea #buff_trims img {
+#Modal.iconedit .thumbnail .squrea #buff_trims img {
     position: absolute;
     left: 0px;
     top: 0px;
     cursor: pointer;
 }
-#kitao_promo17 #Modal.iconedit .gages {
+#Modal.iconedit .gages {
     background: #F0F0F0;
     height: 25px;
     position: relative;
     cursor: pointer;
     margin-bottom:20px;
 }
-#kitao_promo17 #Modal.iconedit .gages .value {
+#Modal.iconedit .gages .value {
     position: absolute;
     width: 0%;
     height: 25px;
@@ -74,7 +171,7 @@
 							<div class="thumbnail">
 								<div class="squrea">
 									<div class="bse" id="buff_trims">
-										<?php echo $this->Html->image(null,array("id"=>"buffer_iconimage","onerror"=>'this.src="'.Router::url("/",true).'img/no_image.png"',"class"=>"image")); ?>
+										<?php echo $this->Html->image(null,array("id"=>"buffer_iconimage","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"class"=>"image")); ?>
 									</div>
 								</div>
 							</div>
@@ -134,9 +231,9 @@ $(function(){
 		        async: false,//同期させる
 			success:function(data){
 				var result=JSON.parse(data);
-				$("#buffer_iconimage").attr("src",result.path+result.data);
-				$("#buffer_icontag_original").val(result.data);
-				$("#buffer_icontag").val(result.uniqid);
+				$("#buffer_iconimage").attr("src",result.url+"?"+result.number);
+				$("#buffer_icontag_original").val(result.url);
+				$("#buffer_icontag").val(result.number);
 				$(".iconedit .sec01").css({"display":"none"});
 				$(".iconedit .sec02").css("display","");
 
