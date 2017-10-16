@@ -55,15 +55,35 @@ echo $this->Form->hidden("id");
 		</tr>
 		<tr>
 			<th>メイン<span class="required_red">[必須]</span></th>
-			<td><?php echo $this->Form->input("img_file1",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
+			<td>
+				<div style="width:300px;margin-top:10px;">
+					<?php echo $this->Html->image("noimage.png",array("style"=>"width:100%;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image")); ?>
+				</div>
+				<p class="mt5 mb5">
+					<label for="editimage" class="buttons">画像を設定</label>
+				</p>
+				<?php echo $this->Form->hidden("img_file1",array("id"=>"image_tag")); ?>
+				<?php echo $this->Form->hidden("img_file1_changed",array("id"=>"image_tag_changed")); ?>
+				<?php // echo $this->Form->input("img_file1",array('type'=>'file',"error"=>false,"class"=>"")); ?>
+			</td>
 		</tr>
 		<tr>
 			<th>サブ 1</th>
-			<td><?php echo $this->Form->input("img_file2",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
+			<td>
+				<p class="mt5 mb5">
+					<label for="" class="buttons">画像を設定</label>
+				</p>
+				<?php // echo $this->Form->input("img_file2",array('type'=>'file',"error"=>false,"class"=>"")); ?>
+			</td>
 		</tr>
 		<tr>
 			<th>サブ 2</th>
-			<td><?php echo $this->Form->input("img_file3",array('type'=>'file',"error"=>false,"class"=>"")); ?></td>
+			<td>
+				<p class="mt5 mb5">
+					<label for="" class="buttons">画像を設定</label>
+				</p>
+				<?php // echo $this->Form->input("img_file3",array('type'=>'file',"error"=>false,"class"=>"")); ?>
+			</td>
 		</tr>
 		<tr>
 			<th colspan="2">詳細内容</th>
@@ -268,4 +288,8 @@ $(function(){
 
 });
 </script>
-</script>
+
+<?php
+$this->set("set_width",600);
+$this->set("set_height",600);
+echo $this->Element("image/imageedit"); ?>
