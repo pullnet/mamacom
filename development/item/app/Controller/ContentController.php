@@ -16,8 +16,7 @@ class ContentController extends Controller {
 
 	public $components=array(
 		"Loadbasic",
-	);・
-
+	);
 	public function beforefilter(){
 		parent::beforefilter();
 	}
