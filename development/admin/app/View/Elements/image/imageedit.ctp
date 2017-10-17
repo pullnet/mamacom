@@ -399,6 +399,7 @@ $(function(){
 
 				$("#thumbnail_image").attr("src",result.url+"?"+dst.getTime());
 				$("#image_tag").val(result.number);
+				$("#image_source").val(result.url);
 				$("#image_tag_changed").val(true);
 			},
 		});

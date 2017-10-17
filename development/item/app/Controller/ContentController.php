@@ -48,7 +48,7 @@ class ContentController extends Controller {
 
 			$key=explode(":",$key);
 
-			if($key[0]==$this->Loadbasic->load("img_service_secret") && $key[0]==$this->Loadbasic->load("img_lisence_key")){
+			if($key[0]==$this->Loadbasic->load("img_service_secret") && $key[1]==$this->Loadbasic->load("img_lisence_key")){
 				return true;
 			}
 			else

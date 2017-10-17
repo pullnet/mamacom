@@ -9,5 +9,4 @@
 App::uses('AppModel', 'Model');
 class Sitedefault extends AppModel {
 
-	public $useDbConfig="db_master";
 }

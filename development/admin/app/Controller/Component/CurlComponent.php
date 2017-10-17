@@ -1,13 +1,9 @@
 <?php
 /* ------------------------------------------------------------------- 	*/
 /*	PULL-NET.Inc							*/
-/*	Masato Nakatsuji						*/
-/*	2016/12/22							*/
+/*	2016/07/28							*/
 /*									*/
-/*	Collabos_ver2.0(管理)						*/
-/*	https://admin.collabos.jp					*/
-/*									*/
-/*	Curl用コンポーネント						*/
+/*	コンテンツ管理アクセス用コンポーネント				*/
 /*	CurlComponent.php						*/
 /* ------------------------------------------------------------------- 	*/
 class CurlComponent extends Component{
@@ -25,6 +21,7 @@ class CurlComponent extends Component{
 			$url.=$params_key[$icount]."=".$p_."&";
 			$icount++;
 		}
+
 		$result_curl=array();
 		//curlで画像変更手続き
 		$ch = curl_init();
@@ -33,9 +30,10 @@ class CurlComponent extends Component{
 		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);//4/28追加　CURLはSSL接続したものに対してはバグるのでそれ会費用
 		$result_curl = curl_exec($ch);
 		curl_close($ch);
+debug($result_curl);
 
 		if($jsonoutupt){
-			return json_decode($result_curl,true);
+			return json_decode($result_curl);
 		}
 		else
 		{
