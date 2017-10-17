@@ -8,17 +8,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'collabos_v2_normal',
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	public $db_master = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'collabos_v2_master',
+		'database' => 'mamacom',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
