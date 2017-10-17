@@ -24,8 +24,8 @@ class JsonmethodController extends AppController {
 	}
 	
 	
-	//★test
-	public function buffersave_sub(){
+	//★サブ画像
+	public function buffersave_sub1(){
 		
 		if($this->request->data){
 			
@@ -36,12 +36,124 @@ class JsonmethodController extends AppController {
 			@mkdir("buffer");
 			@mkdir($folder);
 			
-			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub"]["upfile_sub"]["tmp_name"]);
+			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub1"]["upfile_sub1"]["tmp_name"]);
 			
 			$copy_url=$folder."/".$tag;
 			
 			//ファイルをバッファ領域へコピー(でかい場合は縮小をかける)
-			$this->buffersave_maxwidthedit($data["Uploadimage_sub"]["upfile_sub"]["tmp_name"],$copy_url,1000);
+			$this->buffersave_maxwidthedit($data["Uploadimage_sub1"]["upfile_sub1"]["tmp_name"],$copy_url,1000);
+
+			$result=array(
+				"url"=>Router::url("/",true).$copy_url,
+				"number"=>$tag,
+				"number_copy"=>$tag."_1",
+			);
+				
+			return json_encode($result,JSON_UNESCAPED_UNICODE);
+		}
+	}
+
+	public function buffersave_sub2(){
+		
+		if($this->request->data){
+			
+			
+			$data=$this->request->data;
+			
+			$folder="buffer/".date("Ymd");
+			@mkdir("buffer");
+			@mkdir($folder);
+			
+			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub2"]["upfile_sub2"]["tmp_name"]);
+			
+			$copy_url=$folder."/".$tag;
+			
+			//ファイルをバッファ領域へコピー(でかい場合は縮小をかける)
+			$this->buffersave_maxwidthedit($data["Uploadimage_sub2"]["upfile_sub2"]["tmp_name"],$copy_url,1000);
+
+			$result=array(
+				"url"=>Router::url("/",true).$copy_url,
+				"number"=>$tag,
+				"number_copy"=>$tag."_1",
+			);
+				
+			return json_encode($result,JSON_UNESCAPED_UNICODE);
+		}
+	}
+	
+	public function buffersave_sub3(){
+		
+		if($this->request->data){
+			
+			
+			$data=$this->request->data;
+			
+			$folder="buffer/".date("Ymd");
+			@mkdir("buffer");
+			@mkdir($folder);
+			
+			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub3"]["upfile_sub3"]["tmp_name"]);
+			
+			$copy_url=$folder."/".$tag;
+			
+			//ファイルをバッファ領域へコピー(でかい場合は縮小をかける)
+			$this->buffersave_maxwidthedit($data["Uploadimage_sub3"]["upfile_sub3"]["tmp_name"],$copy_url,1000);
+
+			$result=array(
+				"url"=>Router::url("/",true).$copy_url,
+				"number"=>$tag,
+				"number_copy"=>$tag."_1",
+			);
+				
+			return json_encode($result,JSON_UNESCAPED_UNICODE);
+		}
+	}	
+	
+	public function buffersave_sub4(){
+		
+		if($this->request->data){
+			
+			
+			$data=$this->request->data;
+			
+			$folder="buffer/".date("Ymd");
+			@mkdir("buffer");
+			@mkdir($folder);
+			
+			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub4"]["upfile_sub4"]["tmp_name"]);
+			
+			$copy_url=$folder."/".$tag;
+			
+			//ファイルをバッファ領域へコピー(でかい場合は縮小をかける)
+			$this->buffersave_maxwidthedit($data["Uploadimage_sub4"]["upfile_sub4"]["tmp_name"],$copy_url,1000);
+
+			$result=array(
+				"url"=>Router::url("/",true).$copy_url,
+				"number"=>$tag,
+				"number_copy"=>$tag."_1",
+			);
+				
+			return json_encode($result,JSON_UNESCAPED_UNICODE);
+		}
+	}		
+	
+	public function buffersave_sub5(){
+		
+		if($this->request->data){
+			
+			
+			$data=$this->request->data;
+			
+			$folder="buffer/".date("Ymd");
+			@mkdir("buffer");
+			@mkdir($folder);
+			
+			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub5"]["upfile_sub5"]["tmp_name"]);
+			
+			$copy_url=$folder."/".$tag;
+			
+			//ファイルをバッファ領域へコピー(でかい場合は縮小をかける)
+			$this->buffersave_maxwidthedit($data["Uploadimage_sub5"]["upfile_sub5"]["tmp_name"],$copy_url,1000);
 
 			$result=array(
 				"url"=>Router::url("/",true).$copy_url,

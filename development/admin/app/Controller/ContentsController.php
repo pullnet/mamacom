@@ -25,12 +25,14 @@ class ContentsController extends AppController{
 		"Db",
 		"Loadbasic",
 		"Csv",
+		"Curl",
 	);
 
 	public function beforeFilter(){
 		parent::beforeFilter();
 	}
-	//★ページカテゴリー一覧
+	
+	//★コンテンツ一覧
 	public function index($page=1){
 		$limit=30;
 		$this->set("page",$page);
@@ -69,9 +71,18 @@ class ContentsController extends AppController{
 
 		$this->set("wwwurl",$this->Loadbasic->load("wwwurl"));
 	}
-	//★ページカテゴリー登録・編集
+	
+	
+	
+	//★コンテンツ登録・編集
 	public function edit($id=null){
 		
+		$locationarea=$this->Db->locationarea();	
+		$this->set("locationarea",$locationarea);
+				
+		$domain_item=$this->Loadbasic->load("itemurl");	
+		$this->set("domain_item",$domain_item);
+				
 		//カテゴリー情報をset
 		$category_list=$this->Category->find("list",array(
 			"fields"=>array("id","name"),
@@ -90,75 +101,254 @@ class ContentsController extends AppController{
 		));
 		$this->set("district_list",$district_list);		
 
-
 		if($this->request->data){
 			$post=$this->request->data;
 
 			$this->Contents->set($post);
 			if($this->Contents->validates()){
+				
+				try{
+					
+								$this->Contents->begin();
+								
+								//詳細情報をJSON化して登録・更新
+								$caption=json_encode(array(
+									"ttl1"=>$post["Contents"]["ttl1"],
+									"ttl2"=>$post["Contents"]["ttl2"],
+									"ttl3"=>$post["Contents"]["ttl3"],
+									"ttl4"=>$post["Contents"]["ttl4"],
+									"ttl5"=>$post["Contents"]["ttl5"],
+									"text1"=>$post["Contents"]["text1"],
+									"text2"=>$post["Contents"]["text2"],
+									"text3"=>$post["Contents"]["text3"],
+									"text4"=>$post["Contents"]["text4"],
+									"text5"=>$post["Contents"]["text5"],
+								),JSON_UNESCAPED_UNICODE);
+								$post["Contents"]["caption"]=$caption;
+				
+								//店舗情報をJSON化して登録・更新
+								$shop_info=json_encode(array(
+									"postnumber"=>$post["Contents"]["postnumber"],
+									"address"=>$post["Contents"]["address"],
+									"tel"=>$post["Contents"]["tel"],
+									"shop_text"=>$post["Contents"]["shop_text"],	
+								),JSON_UNESCAPED_UNICODE);
+								$post["Contents"]["shop_info"]=$shop_info;
+								
+								//住所をJSON化して登録・更新
+								$address=json_encode(array(
+									"address1"=>$post["Contents"]["address1"],
+									"address2"=>$post["Contents"]["address2"],
+								),JSON_UNESCAPED_UNICODE);
+								$post["Contents"]["address"]=$address;								
 
-				//詳細情報をJSON化して登録・更新
-				$caption=json_encode(array(
-					"ttl1"=>$post["Contents"]["ttl1"],
-					"ttl2"=>$post["Contents"]["ttl2"],
-					"ttl3"=>$post["Contents"]["ttl3"],
-					"ttl4"=>$post["Contents"]["ttl4"],
-					"ttl5"=>$post["Contents"]["ttl5"],
-					"text1"=>$post["Contents"]["text1"],
-					"text2"=>$post["Contents"]["text2"],
-					"text3"=>$post["Contents"]["text3"],
-					"text4"=>$post["Contents"]["text4"],
-					"text5"=>$post["Contents"]["text5"],
-				),JSON_UNESCAPED_UNICODE);
+								
+								$save_result = $this->Contents->save($post,false);
+								if(!$save_result){
+									$this->Contents->rollback();
+								}								
+								
+								
+								//画像関連↓↓↓↓
+								//上書き用の確認find					
+								$find_additem0=$this->Additems->find("first",array(
+									"conditions"=>array(
+										"Additems.content_id"=>$id,
+										"Additems.type"=>0,
+									),
+								));				
+								$find_additem1=$this->Additems->find("first",array(
+									"conditions"=>array(
+										"Additems.content_id"=>$id,
+										"Additems.type"=>1,
+									),
+								));								
+								$find_additem2=$this->Additems->find("first",array(
+									"conditions"=>array(
+										"Additems.content_id"=>$id,
+										"Additems.type"=>2,
+									),
+								));					
+								$find_additem3=$this->Additems->find("first",array(
+									"conditions"=>array(
+										"Additems.content_id"=>$id,
+										"Additems.type"=>3,
+									),
+								));	
+								$find_additem4=$this->Additems->find("first",array(
+									"conditions"=>array(
+										"Additems.content_id"=>$id,
+										"Additems.type"=>4,
+									),
+								));	
+								$find_additem5=$this->Additems->find("first",array(
+									"conditions"=>array(
+										"Additems.content_id"=>$id,
+										"Additems.type"=>5,
+									),
+								));	
 				
-				$post["Contents"]["caption"]=$caption;
-
-				//店舗情報をJSON化して登録・更新
-				$shop_info=json_encode(array(
-					"postnumber"=>$post["Contents"]["postnumber"],
-					"address"=>$post["Contents"]["address"],
-					"tel"=>$post["Contents"]["tel"],
-					"shop_text"=>$post["Contents"]["shop_text"],	
-				),JSON_UNESCAPED_UNICODE);
-				$post["Contents"]["shop_info"]=$shop_info;
+								//メイン画像をadditemに追加する
+								if($post["Contents"]["img_file_changed"]){
+									
+										$save=array(
+											"Additems"=>array(
+												"id"=>@$find_additem0["Additems"]["id"],
+												"content_id"=>$save_result["Contents"]["id"],
+												"type"=>0,
+												"content"=>$post["Contents"]["img_file"],
+											),						
+										);
+										
+										$res = $this->Additems->save($save,false);
+										if(!$res){
+											$this->Additems->rollback();
+										}
+										
+										//画像アップロード
+										$url=$domain_item."content/save";
+										$curl_params=array(
+											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+											"source"=>$post["Contents"]["img_file_source"],
+											"filename"=>$post["Contents"]["img_file"],
+										);
+										$this->Curl->access($url,$curl_params);
+								}
+								
+								//サブ画像をadditemに追加する
+								if($post["Contents"]["img_file_changed_sub1"]){
+						
+										$save=array(
+											"Additems"=>array(
+												"id"=>@$find_additem1["Additems"]["id"],
+												"content_id"=>$save_result["Contents"]["id"],
+												"type"=>1,
+												"content"=>$post["Contents"]["img_file_sub1"],
+											),						
+										);
 				
-				$save_result = $this->Contents->save($post,false);	
+										$res = $this->Additems->save($save,false);
+										if(!$res){
+											$this->Additems->rollback();
+										}			
+										
+										$url=$domain_item."content/save";
+										$curl_params=array(
+											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+											"source"=>$post["Contents"]["img_file_source_sub1"],
+											"filename"=>$post["Contents"]["img_file_sub1"],
+										);
+										
+										$this->Curl->access($url,$curl_params);
+								}				
+								
+								if($post["Contents"]["img_file_changed_sub2"]){
+										$save=array(
+											"Additems"=>array(
+												"id"=>@$find_additem2["Additems"]["id"],
+												"content_id"=>$save_result["Contents"]["id"],
+												"type"=>2,
+												"content"=>$post["Contents"]["img_file_sub2"],
+											),						
+										);
 				
-				//メイン画像をadditemに追加する
-				//上書き用の確認find					
-				$find_additem=$this->Additems->find("first",array(
-					"conditions"=>array(
-						"Additems.content_id"=>$id,
-						"Additems.type"=>0,
-					),
-				));
-				if($post["Contents"]["img_file1_changed"]){
-						if($find_additem){ $post["Additems"]["id"]=$find_additem["Additems"]["id"];}
-						$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
-						$post["Additems"]["type"]=0;
-						$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
-						$post["Additems"]["shortimgtag"]=$post["Contents"]["img_file_source"];				
-				$this->Additems->save($post,false);				
+										$res = $this->Additems->save($save,false);
+										if(!$res){
+											$this->Additems->rollback();
+										}						
+										
+										$url=$domain_item."content/save";
+										$curl_params=array(
+											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+											"source"=>$post["Contents"]["img_file_source_sub2"],
+											"filename"=>$post["Contents"]["img_file_sub2"],
+										);
+										
+										$this->Curl->access($url,$curl_params);
+								}					
+								
+								if($post["Contents"]["img_file_changed_sub3"]){
+										$save=array(
+											"Additems"=>array(
+												"id"=>@$find_additem3["Additems"]["id"],
+												"content_id"=>$save_result["Contents"]["id"],
+												"type"=>3,
+												"content"=>$post["Contents"]["img_file_sub3"],
+											),						
+										);
+				
+										$res = $this->Additems->save($save,false);
+										if(!$res){
+											$this->Additems->rollback();
+										}
+										
+										$url=$domain_item."content/save";
+										$curl_params=array(
+											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+											"source"=>$post["Contents"]["img_file_source_sub3"],
+											"filename"=>$post["Contents"]["img_file_sub3"],
+										);
+										
+										$this->Curl->access($url,$curl_params);
+								}					
+								
+								if($post["Contents"]["img_file_changed_sub4"]){
+										$save=array(
+											"Additems"=>array(
+												"id"=>@$find_additem4["Additems"]["id"],
+												"content_id"=>$save_result["Contents"]["id"],
+												"type"=>4,
+												"content"=>$post["Contents"]["img_file_sub4"],
+											),						
+										);
+				
+										$res = $this->Additems->save($save,false);
+										if(!$res){
+											$this->Additems->rollback();
+										}
+										
+										$url=$domain_item."content/save";
+										$curl_params=array(
+											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+											"source"=>$post["Contents"]["img_file_source_sub4"],
+											"filename"=>$post["Contents"]["img_file_sub4"],
+										);
+										
+										$this->Curl->access($url,$curl_params);
+								}						
+								
+								if($post["Contents"]["img_file_changed_sub5"]){
+										$save=array(
+											"Additems"=>array(
+												"id"=>@$find_additem5["Additems"]["id"],
+												"content_id"=>$save_result["Contents"]["id"],
+												"type"=>5,
+												"content"=>$post["Contents"]["img_file_sub5"],
+											),						
+										);
+				
+										$res = $this->Additems->save($save,false);
+										if(!$res){
+											$this->Additems->rollback();
+										}
+										
+										$url=$domain_item."content/save";
+										$curl_params=array(
+											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+											"source"=>$post["Contents"]["img_file_source_sub5"],
+											"filename"=>$post["Contents"]["img_file_sub5"],
+										);
+										
+										$this->Curl->access($url,$curl_params);
+								}
+									
+								$this->Contents->commit();
+						
+				}catch(Exception $e_){
+						$this->Contents->rollback();
 				}
-
-				//サブ画像をadditemに追加する
-				//上書き用の確認find
-				$find_additem=$this->Additems->find("first",array(
-					"conditions"=>array(
-						"Additems.content_id"=>$id,
-						"Additems.type"=>1,
-					),
-				));
-				//画像がセットされた時のみ情報を保存
-				if($post["Contents"]["imgsub_file_changed"]){
-						if($find_additem){ $post["Additems"]["id"]=$find_additem["Additems"]["id"];}
-						$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
-						$post["Additems"]["type"]=1;
-						$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
-						$post["Additems"]["shortimgtag"]=$post["Contents"]["imgsub_file_source"];	
-						$this->Additems->save($post,false);	
-				}
-
+				//exit;
+				
 				$this->Session->write("alert","コンテンツを１件設定しました。");
 				$this->redirect(array("controller"=>"contents","action"=>"index"));
 				
@@ -172,7 +362,8 @@ class ContentsController extends AppController{
 						"Contents.id"=>$id,
 					),
 				));
-	
+
+				//jsonをエンコードしてセット
 				$caption=json_decode(@$post["Contents"]["caption"],true);
 				if(@$caption){
 					$post["Contents"]=array_merge($post["Contents"],@$caption);
@@ -180,16 +371,77 @@ class ContentsController extends AppController{
 				$shop_info=json_decode(@$post["Contents"]["shop_info"],true);
 				if(@$shop_info){
 					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
-				}				
-
-				$find_additem=$this->Additems->find("first",array(
+				}	
+				$address=json_decode(@$post["Contents"]["address"],true);
+				if(@$shop_info){
+					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
+				}						
+		
+				
+				//各画像の初期配置
+				$find_additem0=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>0,
+					),
+				));				
+				$find_additem1=$this->Additems->find("first",array(
 					"conditions"=>array(
 						"Additems.content_id"=>$id,
 						"Additems.type"=>1,
 					),
-				));
-				
-				$this->set("find_additem",$find_additem);
+				));								
+				$find_additem2=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>2,
+					),
+				));					
+				$find_additem3=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>3,
+					),
+				));	
+				$find_additem4=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>4,
+					),
+				));	
+				$find_additem5=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>5,
+					),
+				));	
+
+
+				if(@$find_additem0){
+					$this->set("find_additem0",$find_additem0);					
+					$post["Contents"]["img_file"] = $find_additem0["Additems"]["content"];					
+				}			
+				if(@$find_additem1){
+					$this->set("find_additem1",$find_additem1);					
+					$post["Contents"]["img_file_sub1"] = $find_additem1["Additems"]["content"];					
+				}
+				if(@$find_additem2){
+					$this->set("find_additem2",$find_additem2);					
+					$post["Contents"]["img_file_sub2"] = $find_additem2["Additems"]["content"];					
+				}
+				if(@$find_additem3){
+					$this->set("find_additem3",$find_additem3);					
+					$post["Contents"]["img_file_sub3"] = $find_additem3["Additems"]["content"];					
+				}
+				if(@$find_additem4){
+					$this->set("find_additem4",$find_additem4);					
+					$post["Contents"]["img_file_sub4"] = $find_additem4["Additems"]["content"];					
+				}
+				if(@$find_additem5){
+					$this->set("find_additem5",$find_additem5);					
+					$post["Contents"]["img_file_sub5"] = $find_additem5["Additems"]["content"];					
+				}				
+								
 				$this->request->data=$post;
 				
 			}
@@ -200,18 +452,13 @@ class ContentsController extends AppController{
 	public function delete($id){
 		
 		$this->autoRender=false;
-		
-		//idでテーブルデータ取得
-		$result=$this->Contents->find("first",array(
-			'conditions' => array(
-				'Contents.id' => $id,
-			)
-		));
+
 		//idでテーブルデータ削除
 		$this->Contents->delete($id);
+		$this->Additems->deleteAll(array('Additems.content_id' => $id));
 		
 		//テキスト表示とリダイレクト
-		$this->Session->write("alert", "地区を削除いたしました。");
+		$this->Session->write("alert", "コンテンツを削除いたしました。");
 		$this->redirect(array("controller"=>"contents","action"=>"index"));
 
 	}
