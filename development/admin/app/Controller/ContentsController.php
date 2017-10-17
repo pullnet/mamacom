@@ -15,6 +15,7 @@ App::uses('AppController', 'Controller');
 class ContentsController extends AppController{
 
 	public $uses=array(
+		"Additems",
 		"Contents",
 		"Category",
 		"District",
@@ -121,14 +122,26 @@ class ContentsController extends AppController{
 				),JSON_UNESCAPED_UNICODE);
 				$post["Contents"]["shop_info"]=$shop_info;
 				
-				//画像をadditem登録・更新
-
-				$post["Additems"]["content_id"]=$post["Contents"]["id"];
-
-				$this->Contents->save($post,false);
+				$save_result = $this->Contents->save($post,false);	
+				
+				//メイン画像をadditemに追加する			
+				if($post["Contents"]["img_file1_changed"]){
+				$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
+				$post["Additems"]["type"]=0;
+				$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+				$this->Additems->save($post,false);				
+				}
+				//サブ画像をadditemに追加する			
+				if($post["Contents"]["imgsub_file_changed"]){
+				$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
+				$post["Additems"]["type"]=1;
+				$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+				$this->Additems->save($post,false);				
+				}
 
 				$this->Session->write("alert","コンテンツを１件設定しました。");
 				$this->redirect(array("controller"=>"contents","action"=>"index"));
+				
 			}
 		}
 		else{
@@ -149,12 +162,21 @@ class ContentsController extends AppController{
 					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
 				}				
 
+				$test=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>1,
+					),
+				));
+				
+				$this->set("test",$test);
 				$this->request->data=$post;
+				
 			}
 		}
 	}
 
-	//★地区・削除
+	//★削除
 	public function delete($id){
 		
 		$this->autoRender=false;

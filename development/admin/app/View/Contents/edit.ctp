@@ -53,6 +53,8 @@ echo $this->Form->hidden("id");
 		<tr>
 			<th colspan="2">イメージ</th>
 		</tr>
+		
+		<!-- カテゴリーで表示変更 -->
 		<tr>
 			<th>メイン<span class="required_red">[必須]</span></th>
 			<td>
@@ -64,31 +66,58 @@ echo $this->Form->hidden("id");
 				</p>
 				<?php echo $this->Form->hidden("img_file1",array("id"=>"image_tag")); ?>
 				<?php echo $this->Form->hidden("img_file1_changed",array("id"=>"image_tag_changed")); ?>
-				<?php // echo $this->Form->input("img_file1",array('type'=>'file',"error"=>false,"class"=>"")); ?>
 			</td>
 		</tr>
 		<tr>
 			<th>サブ 1</th>
 			<td>
+				<div style="width:150px;margin-top:10px;">
+					<?php echo $this->Html->image("noimage.png",array("style"=>"width:100%;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub")); ?>
+				</div>
 				<p class="mt5 mb5">
-					<label for="" class="buttons">画像を設定</label>
+					<label for="upfiles_sub" class="buttons">画像を設定</label>
 				</p>
-				<?php // echo $this->Form->input("img_file2",array('type'=>'file',"error"=>false,"class"=>"")); ?>
+				<?php echo $this->Form->hidden("imgsub_file",array("id"=>"imagesub_tag")); ?>
+				<?php echo $this->Form->hidden("imgsub_file_source",array("id"=>"imagesub_source")); ?>
+				<?php echo $this->Form->hidden("imgsub_file_changed",array("id"=>"imagesub_tag_changed")); ?>	
 			</td>
-		</tr>
+		</tr>		
 		<tr>
 			<th>サブ 2</th>
 			<td>
 				<p class="mt5 mb5">
-					<label for="" class="buttons">画像を設定</label>
-				</p>
-				<?php // echo $this->Form->input("img_file3",array('type'=>'file',"error"=>false,"class"=>"")); ?>
+					<label for="upfiles2" class="buttons">画像を設定</label>
+				</p>			
 			</td>
 		</tr>
 		<tr>
-			<th colspan="2">詳細内容</th>
+			<th>サブ 3</th>
+			<td>
+				<p class="mt5 mb5">
+					<label for="upfiles3" class="buttons">画像を設定</label>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<th>サブ 4</th>
+			<td>
+				<p class="mt5 mb5">
+					<label for="upfiles4" class="buttons">画像を設定</label>
+				</p>
+			</td>
+		</tr>	
+		<tr>
+			<th>サブ 4</th>
+			<td>
+				<p class="mt5 mb5">
+					<label for="upfiles5" class="buttons">画像を設定</label>
+				</p>
+			</td>
 		</tr>
 		
+		<tr>
+			<th colspan="2">詳細内容</th>
+		</tr>
 		
 		<!-- カテゴリーで表示変更 -->
 		<?php echo $this->Form->hidden("ttl1",array("value"=>"-","class"=>"")); ?>
@@ -101,8 +130,7 @@ echo $this->Form->hidden("id");
 			<th>
 				<span class="ttl01">概要</span>
 			</th>
-			<td><?php echo $this->Form->textarea("text1",array("error"=>false,"class"=>"","required"=>false)); ?></td>
-				
+			<td><?php echo $this->Form->textarea("text1",array("error"=>false,"class"=>"","required"=>false)); ?></td>			
 		</tr>
 		<tr class="row_display2">
 			<th>
@@ -113,26 +141,22 @@ echo $this->Form->hidden("id");
 		<tr class="row_display3">
 			<th>
 				<span class="ttl03">-</span>
-			
 			</th>
 			<td><?php echo $this->Form->textarea("text3",array("error"=>false,"class"=>"","required"=>false)); ?></td>
-		</tr>		
-		
+		</tr>			
 		<tr class="row_display4">
 			<th>
 				<span class="ttl04">-</span>
 			</th>
 			<td><?php echo $this->Form->textarea("text4",array("error"=>false,"class"=>"","required"=>false)); ?></td>
-		</tr>			
-		
+		</tr>				
 		<tr class="row_display5">
 			<th>
 				<span class="ttl05">-</span>
 			</th>
 			<td><?php echo $this->Form->textarea("text5",array("error"=>false,"class"=>"","required"=>false)); ?></td>
 		</tr>			
-
-		<!-- カテゴリーで表示変更 -->
+		<!-- カテゴリーで表示変更終わり -->		
 			
 		<tr>
 			<th colspan="2">店舗情報</th>
@@ -180,6 +204,7 @@ textarea {
   line-height: 1.4em;
 	height:125px;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -289,7 +314,73 @@ $(function(){
 });
 </script>
 
+
+
+
+
+
 <?php
+
+/*-メイン画像処理-*/
 $this->set("set_width",600);
 $this->set("set_height",600);
-echo $this->Element("image/imageedit"); ?>
+echo $this->Element("image/imageedit");
+
+?>
+
+
+<?php
+/*-サブ画像処理-*/
+?>
+
+<div id="url_filebuffer_sub" style="display:none">
+<?php echo $this->Html->url(array("controller"=>"jsonmethod","action"=>"buffersave_sub")); //リンクの配置 ?>
+</div>
+
+<?php
+echo $this->Form->create("Uploadimage_sub",array(
+	"type"=>"file",
+	"id"=>"Uploadimage_sub",
+));
+echo $this->Form->file("upfile_sub",array("id"=>"upfiles_sub","style"=>"display:none"));
+echo $this->Form->end();
+?>
+
+
+
+<script type="text/javascript">
+$(function(){
+	
+	$("#upfiles_sub").on("change",function(){
+		filebuffer();
+	});	
+
+	function filebuffer(){
+		
+		$.ajax({
+			url:$("#url_filebuffer_sub").text(),
+			type:"POST",
+			data:new FormData($("#Uploadimage_sub").get(0)),
+			processData: false,
+			contentType: false,
+		        async: false,//同期させる
+
+			success:function(data){
+				var result=JSON.parse(data);
+				console.log(result);
+
+  			$("#thumbnail_image_sub").attr("src",result.url);
+				$('#imagesub_tag').val(result.number);
+				$('#imagesub_source').val(result.url);
+  			$("#imagesub_tag_changed").val(true);
+			},
+
+		});
+	}
+});
+</script>
+
+
+<?php
+debug($test);
+?>
