@@ -65,6 +65,7 @@ echo $this->Form->hidden("id");
 					<label for="editimage" class="buttons">画像を設定</label>
 				</p>
 				<?php echo $this->Form->hidden("img_file1",array("id"=>"image_tag")); ?>
+				<?php echo $this->Form->hidden("img_file_source",array("id"=>"image_source")); ?>
 				<?php echo $this->Form->hidden("img_file1_changed",array("id"=>"image_tag_changed")); ?>
 			</td>
 		</tr>
@@ -72,7 +73,7 @@ echo $this->Form->hidden("id");
 			<th>サブ 1</th>
 			<td>
 				<div style="width:150px;margin-top:10px;">
-					<?php echo $this->Html->image("noimage.png",array("style"=>"width:100%;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub")); ?>
+					<?php echo $this->Html->image($find_additem["Additems"]["shortimgtag"],array("style"=>"width:100%;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub")); ?>
 				</div>
 				<p class="mt5 mb5">
 					<label for="upfiles_sub" class="buttons">画像を設定</label>
@@ -382,5 +383,5 @@ $(function(){
 
 
 <?php
-debug($test);
+debug($find_additem);
 ?>

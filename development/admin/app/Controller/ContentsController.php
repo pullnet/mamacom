@@ -124,19 +124,39 @@ class ContentsController extends AppController{
 				
 				$save_result = $this->Contents->save($post,false);	
 				
-				//メイン画像をadditemに追加する			
+				//メイン画像をadditemに追加する
+				//上書き用の確認find					
+				$find_additem=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>0,
+					),
+				));
 				if($post["Contents"]["img_file1_changed"]){
-				$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
-				$post["Additems"]["type"]=0;
-				$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+						if($find_additem){ $post["Additems"]["id"]=$find_additem["Additems"]["id"];}
+						$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
+						$post["Additems"]["type"]=0;
+						$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+						$post["Additems"]["shortimgtag"]=$post["Contents"]["img_file_source"];				
 				$this->Additems->save($post,false);				
 				}
-				//サブ画像をadditemに追加する			
+
+				//サブ画像をadditemに追加する
+				//上書き用の確認find
+				$find_additem=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>1,
+					),
+				));
+				//画像がセットされた時のみ情報を保存
 				if($post["Contents"]["imgsub_file_changed"]){
-				$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
-				$post["Additems"]["type"]=1;
-				$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
-				$this->Additems->save($post,false);				
+						if($find_additem){ $post["Additems"]["id"]=$find_additem["Additems"]["id"];}
+						$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
+						$post["Additems"]["type"]=1;
+						$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+						$post["Additems"]["shortimgtag"]=$post["Contents"]["imgsub_file_source"];	
+						$this->Additems->save($post,false);	
 				}
 
 				$this->Session->write("alert","コンテンツを１件設定しました。");
@@ -162,14 +182,14 @@ class ContentsController extends AppController{
 					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
 				}				
 
-				$test=$this->Additems->find("first",array(
+				$find_additem=$this->Additems->find("first",array(
 					"conditions"=>array(
 						"Additems.content_id"=>$id,
 						"Additems.type"=>1,
 					),
 				));
 				
-				$this->set("test",$test);
+				$this->set("find_additem",$find_additem);
 				$this->request->data=$post;
 				
 			}

@@ -59,8 +59,7 @@
 				</tr>
 				</table>
 			</td>
-		</tr>
-					
+		</tr>				
 		<tr>
 			<th>img service secret</th>
 			<td>
@@ -73,7 +72,6 @@
 					<?php echo $this->Form->input("img_lisence_key"); ?>
 			</td>
 		</tr>
-
 
 <!--
 		<tr>
