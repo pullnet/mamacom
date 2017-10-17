@@ -43,7 +43,7 @@ class ContentsController extends AppController{
 		$category_list=$this->Category->find("list",array(
 			"fields"=>array("id","name"),
 			"conditions"=>array(
-				"Category.type_mode"=>"0",						
+				"Category.type_mode"=>"0",
 			),
 		));
 		$this->set("category_list",$category_list);
@@ -52,10 +52,10 @@ class ContentsController extends AppController{
 		$district_list=$this->Category->find("list",array(
 			"fields"=>array("id","name"),
 			"conditions"=>array(
-				"Category.type_mode"=>"1",						
+				"Category.type_mode"=>"1",
 			),
 		));
-		$this->set("district_list",$district_list);		
+		$this->set("district_list",$district_list);
 		
 		//コンテンツ情報をset
 		$result=$this->Contents->find("all",array(
@@ -77,7 +77,7 @@ class ContentsController extends AppController{
 	//★コンテンツ登録・編集
 	public function edit($id=null){
 		
-		$locationarea=$this->Db->locationarea();	
+		$locationarea=$this->Db->locationarea();
 		$this->set("locationarea",$locationarea);
 				
 		$domain_item=$this->Loadbasic->load("itemurl");	
@@ -87,7 +87,7 @@ class ContentsController extends AppController{
 		$category_list=$this->Category->find("list",array(
 			"fields"=>array("id","name"),
 			"conditions"=>array(
-				"Category.type_mode"=>"0",						
+				"Category.type_mode"=>"0",
 			),
 		));
 		$this->set("category_list",$category_list);
@@ -96,10 +96,10 @@ class ContentsController extends AppController{
 		$district_list=$this->Category->find("list",array(
 			"fields"=>array("id","name"),
 			"conditions"=>array(
-				"Category.type_mode"=>"1",						
+				"Category.type_mode"=>"1",
 			),
 		));
-		$this->set("district_list",$district_list);		
+		$this->set("district_list",$district_list)
 
 		if($this->request->data){
 			$post=$this->request->data;
@@ -107,247 +107,238 @@ class ContentsController extends AppController{
 			$this->Contents->set($post);
 			if($this->Contents->validates()){
 				
+				//トランザクション開始
 				try{
-					
-								$this->Contents->begin();
+					$this->Contents->begin();
 								
-								//詳細情報をJSON化して登録・更新
-								$caption=json_encode(array(
-									"ttl1"=>$post["Contents"]["ttl1"],
-									"ttl2"=>$post["Contents"]["ttl2"],
-									"ttl3"=>$post["Contents"]["ttl3"],
-									"ttl4"=>$post["Contents"]["ttl4"],
-									"ttl5"=>$post["Contents"]["ttl5"],
-									"text1"=>$post["Contents"]["text1"],
-									"text2"=>$post["Contents"]["text2"],
-									"text3"=>$post["Contents"]["text3"],
-									"text4"=>$post["Contents"]["text4"],
-									"text5"=>$post["Contents"]["text5"],
-								),JSON_UNESCAPED_UNICODE);
-								$post["Contents"]["caption"]=$caption;
+					//詳細情報をJSON化して登録・更新
+					$caption=json_encode(array(
+						"ttl1"=>$post["Contents"]["ttl1"],
+						"ttl2"=>$post["Contents"]["ttl2"],
+						"ttl3"=>$post["Contents"]["ttl3"],
+						"ttl4"=>$post["Contents"]["ttl4"],
+						"ttl5"=>$post["Contents"]["ttl5"],
+						"text1"=>$post["Contents"]["text1"],
+						"text2"=>$post["Contents"]["text2"],
+						"text3"=>$post["Contents"]["text3"],
+						"text4"=>$post["Contents"]["text4"],
+						"text5"=>$post["Contents"]["text5"],
+					),JSON_UNESCAPED_UNICODE);
+					$post["Contents"]["caption"]=$caption;
 				
-								//店舗情報をJSON化して登録・更新
-								$shop_info=json_encode(array(
-									"postnumber"=>$post["Contents"]["postnumber"],
-									"address"=>$post["Contents"]["address"],
-									"tel"=>$post["Contents"]["tel"],
-									"shop_text"=>$post["Contents"]["shop_text"],	
-								),JSON_UNESCAPED_UNICODE);
-								$post["Contents"]["shop_info"]=$shop_info;
-								
-								//住所をJSON化して登録・更新
-								$address=json_encode(array(
-									"address1"=>$post["Contents"]["address1"],
-									"address2"=>$post["Contents"]["address2"],
-								),JSON_UNESCAPED_UNICODE);
-								$post["Contents"]["address"]=$address;								
+					//店舗情報をJSON化して登録・更新
+					$shop_info=json_encode(array(
+						"postnumber"=>$post["Contents"]["postnumber"],
+						"address"=>$post["Contents"]["address"],
+						"tel"=>$post["Contents"]["tel"],
+						"shop_text"=>$post["Contents"]["shop_text"],
+					),JSON_UNESCAPED_UNICODE);
+					$post["Contents"]["shop_info"]=$shop_info;
 
-								
-								$save_result = $this->Contents->save($post,false);
-								if(!$save_result){
-									$this->Contents->rollback();
-								}								
-								
-								
-								//画像関連↓↓↓↓
-								//上書き用の確認find					
-								$find_additem0=$this->Additems->find("first",array(
-									"conditions"=>array(
-										"Additems.content_id"=>$id,
-										"Additems.type"=>0,
-									),
-								));				
-								$find_additem1=$this->Additems->find("first",array(
-									"conditions"=>array(
-										"Additems.content_id"=>$id,
-										"Additems.type"=>1,
-									),
-								));								
-								$find_additem2=$this->Additems->find("first",array(
-									"conditions"=>array(
-										"Additems.content_id"=>$id,
-										"Additems.type"=>2,
-									),
-								));					
-								$find_additem3=$this->Additems->find("first",array(
-									"conditions"=>array(
-										"Additems.content_id"=>$id,
-										"Additems.type"=>3,
-									),
-								));	
-								$find_additem4=$this->Additems->find("first",array(
-									"conditions"=>array(
-										"Additems.content_id"=>$id,
-										"Additems.type"=>4,
-									),
-								));	
-								$find_additem5=$this->Additems->find("first",array(
-									"conditions"=>array(
-										"Additems.content_id"=>$id,
-										"Additems.type"=>5,
-									),
-								));	
+					//住所をJSON化して登録・更新
+					$address=json_encode(array(
+						"address1"=>$post["Contents"]["address1"],
+						"address2"=>$post["Contents"]["address2"],
+					),JSON_UNESCAPED_UNICODE);
+					$post["Contents"]["address"]=$address;
+
+					$save_result = $this->Contents->save($post,false);
+					if(!$save_result){
+						$this->Contents->rollback();
+					}
+
+					//画像関連↓↓↓↓
+					//上書き用の確認find
+					$find_additem0=$this->Additems->find("first",array(
+						"conditions"=>array(
+							"Additems.content_id"=>$id,
+							"Additems.type"=>0,
+						),
+					));
+					$find_additem1=$this->Additems->find("first",array(
+						"conditions"=>array(
+						"Additems.content_id"=>$id,
+							"Additems.type"=>1,
+						),
+					));
+					$find_additem2=$this->Additems->find("first",array(
+						"conditions"=>array(
+							"Additems.content_id"=>$id,
+							"Additems.type"=>2,
+						),
+					));
+					$find_additem3=$this->Additems->find("first",array(
+						"conditions"=>array(
+							"Additems.content_id"=>$id,
+							"Additems.type"=>3,
+						),
+					));
+					$find_additem4=$this->Additems->find("first",array(
+						"conditions"=>array(
+							"Additems.content_id"=>$id,
+							"Additems.type"=>4,
+						),
+					));
+					$find_additem5=$this->Additems->find("first",array(
+						"conditions"=>array(
+							"Additems.content_id"=>$id,
+							"Additems.type"=>5,
+						),
+					));
+					//メイン画像をadditemに追加する
+					if($post["Contents"]["img_file_changed"]){
+						$save=array(
+							"Additems"=>array(
+								"id"=>@$find_additem0["Additems"]["id"],
+								"content_id"=>$save_result["Contents"]["id"],
+								"type"=>0,
+								"content"=>$post["Contents"]["img_file"],
+							),
+						);
+						$res = $this->Additems->save($save,false);
+						if(!$res){
+							$this->Additems->rollback();
+						}
+
+						//画像アップロード
+						$url=$domain_item."content/save";
+						$curl_params=array(
+							"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+							"source"=>$post["Contents"]["img_file_source"],
+							"filename"=>$post["Contents"]["img_file"],
+						);
+						$this->Curl->access($url,$curl_params);
+					}
+
+					//サブ画像をadditemに追加する
+					if($post["Contents"]["img_file_changed_sub1"]){
+						$save=array(
+							"Additems"=>array(
+								"id"=>@$find_additem1["Additems"]["id"],
+								"content_id"=>$save_result["Contents"]["id"],
+								"type"=>1,
+								"content"=>$post["Contents"]["img_file_sub1"],
+							),
+						);
+
+						$res = $this->Additems->save($save,false);
+						if(!$res){
+							$this->Additems->rollback();
+						}
+
+						$url=$domain_item."content/save";
+						$curl_params=array(
+							"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+							"source"=>$post["Contents"]["img_file_source_sub1"],
+							"filename"=>$post["Contents"]["img_file_sub1"],
+						);
+
+						$this->Curl->access($url,$curl_params);
+					}
+
+					if($post["Contents"]["img_file_changed_sub2"]){
+						$save=array(
+							"Additems"=>array(
+								"id"=>@$find_additem2["Additems"]["id"],
+								"content_id"=>$save_result["Contents"]["id"],
+								"type"=>2,
+								"content"=>$post["Contents"]["img_file_sub2"],
+							),						
+						);
+
+						$res = $this->Additems->save($save,false);
+						if(!$res){
+							$this->Additems->rollback();
+						}
+
+						$url=$domain_item."content/save";
+						$curl_params=array(
+							"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+							"source"=>$post["Contents"]["img_file_source_sub2"],
+							"filename"=>$post["Contents"]["img_file_sub2"],
+						);
+						$this->Curl->access($url,$curl_params);
+					}
+
+					if($post["Contents"]["img_file_changed_sub3"]){
+						$save=array(
+							"Additems"=>array(
+								"id"=>@$find_additem3["Additems"]["id"],
+								"content_id"=>$save_result["Contents"]["id"],
+								"type"=>3,
+								"content"=>$post["Contents"]["img_file_sub3"],
+							),
+						);
+
+						$res = $this->Additems->save($save,false);
+						if(!$res){
+							$this->Additems->rollback();
+						}
+
+						$url=$domain_item."content/save";
+						$curl_params=array(
+							"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+							"source"=>$post["Contents"]["img_file_source_sub3"],
+							"filename"=>$post["Contents"]["img_file_sub3"],
+						);
+
+						$this->Curl->access($url,$curl_params);
+					}
+
+					if($post["Contents"]["img_file_changed_sub4"]){
+						$save=array(
+							"Additems"=>array(
+								"id"=>@$find_additem4["Additems"]["id"],
+								"content_id"=>$save_result["Contents"]["id"],
+								"type"=>4,
+								"content"=>$post["Contents"]["img_file_sub4"],
+							),
+						);
+
+						$res = $this->Additems->save($save,false);
+						if(!$res){
+							$this->Additems->rollback();
+						}
+										
+						$url=$domain_item."content/save";
+						$curl_params=array(
+							"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+							"source"=>$post["Contents"]["img_file_source_sub4"],
+							"filename"=>$post["Contents"]["img_file_sub4"],
+						);
+
+						$this->Curl->access($url,$curl_params);
+					}
+
+					if($post["Contents"]["img_file_changed_sub5"]){
+						$save=array(
+							"Additems"=>array(
+								"id"=>@$find_additem5["Additems"]["id"],
+								"content_id"=>$save_result["Contents"]["id"],
+								"type"=>5,
+								"content"=>$post["Contents"]["img_file_sub5"],
+							),
+						);
 				
-								//メイン画像をadditemに追加する
-								if($post["Contents"]["img_file_changed"]){
-									
-										$save=array(
-											"Additems"=>array(
-												"id"=>@$find_additem0["Additems"]["id"],
-												"content_id"=>$save_result["Contents"]["id"],
-												"type"=>0,
-												"content"=>$post["Contents"]["img_file"],
-											),						
-										);
-										
-										$res = $this->Additems->save($save,false);
-										if(!$res){
-											$this->Additems->rollback();
-										}
-										
-										//画像アップロード
-										$url=$domain_item."content/save";
-										$curl_params=array(
-											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
-											"source"=>$post["Contents"]["img_file_source"],
-											"filename"=>$post["Contents"]["img_file"],
-										);
-										$this->Curl->access($url,$curl_params);
-								}
-								
-								//サブ画像をadditemに追加する
-								if($post["Contents"]["img_file_changed_sub1"]){
-						
-										$save=array(
-											"Additems"=>array(
-												"id"=>@$find_additem1["Additems"]["id"],
-												"content_id"=>$save_result["Contents"]["id"],
-												"type"=>1,
-												"content"=>$post["Contents"]["img_file_sub1"],
-											),						
-										);
-				
-										$res = $this->Additems->save($save,false);
-										if(!$res){
-											$this->Additems->rollback();
-										}			
-										
-										$url=$domain_item."content/save";
-										$curl_params=array(
-											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
-											"source"=>$post["Contents"]["img_file_source_sub1"],
-											"filename"=>$post["Contents"]["img_file_sub1"],
-										);
-										
-										$this->Curl->access($url,$curl_params);
-								}				
-								
-								if($post["Contents"]["img_file_changed_sub2"]){
-										$save=array(
-											"Additems"=>array(
-												"id"=>@$find_additem2["Additems"]["id"],
-												"content_id"=>$save_result["Contents"]["id"],
-												"type"=>2,
-												"content"=>$post["Contents"]["img_file_sub2"],
-											),						
-										);
-				
-										$res = $this->Additems->save($save,false);
-										if(!$res){
-											$this->Additems->rollback();
-										}						
-										
-										$url=$domain_item."content/save";
-										$curl_params=array(
-											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
-											"source"=>$post["Contents"]["img_file_source_sub2"],
-											"filename"=>$post["Contents"]["img_file_sub2"],
-										);
-										
-										$this->Curl->access($url,$curl_params);
-								}					
-								
-								if($post["Contents"]["img_file_changed_sub3"]){
-										$save=array(
-											"Additems"=>array(
-												"id"=>@$find_additem3["Additems"]["id"],
-												"content_id"=>$save_result["Contents"]["id"],
-												"type"=>3,
-												"content"=>$post["Contents"]["img_file_sub3"],
-											),						
-										);
-				
-										$res = $this->Additems->save($save,false);
-										if(!$res){
-											$this->Additems->rollback();
-										}
-										
-										$url=$domain_item."content/save";
-										$curl_params=array(
-											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
-											"source"=>$post["Contents"]["img_file_source_sub3"],
-											"filename"=>$post["Contents"]["img_file_sub3"],
-										);
-										
-										$this->Curl->access($url,$curl_params);
-								}					
-								
-								if($post["Contents"]["img_file_changed_sub4"]){
-										$save=array(
-											"Additems"=>array(
-												"id"=>@$find_additem4["Additems"]["id"],
-												"content_id"=>$save_result["Contents"]["id"],
-												"type"=>4,
-												"content"=>$post["Contents"]["img_file_sub4"],
-											),						
-										);
-				
-										$res = $this->Additems->save($save,false);
-										if(!$res){
-											$this->Additems->rollback();
-										}
-										
-										$url=$domain_item."content/save";
-										$curl_params=array(
-											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
-											"source"=>$post["Contents"]["img_file_source_sub4"],
-											"filename"=>$post["Contents"]["img_file_sub4"],
-										);
-										
-										$this->Curl->access($url,$curl_params);
-								}						
-								
-								if($post["Contents"]["img_file_changed_sub5"]){
-										$save=array(
-											"Additems"=>array(
-												"id"=>@$find_additem5["Additems"]["id"],
-												"content_id"=>$save_result["Contents"]["id"],
-												"type"=>5,
-												"content"=>$post["Contents"]["img_file_sub5"],
-											),						
-										);
-				
-										$res = $this->Additems->save($save,false);
-										if(!$res){
-											$this->Additems->rollback();
-										}
-										
-										$url=$domain_item."content/save";
-										$curl_params=array(
-											"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
-											"source"=>$post["Contents"]["img_file_source_sub5"],
-											"filename"=>$post["Contents"]["img_file_sub5"],
-										);
-										
-										$this->Curl->access($url,$curl_params);
-								}
-									
-								$this->Contents->commit();
+						$res = $this->Additems->save($save,false);
+						if(!$res){
+							$this->Additems->rollback();
+						}
+											
+						$url=$domain_item."content/save";
+						$curl_params=array(
+							"access_token"=>base64_encode($this->Loadbasic->load("img_service_secret").":".$this->Loadbasic->load("img_lisence_key")),
+							"source"=>$post["Contents"]["img_file_source_sub5"],
+							"filename"=>$post["Contents"]["img_file_sub5"],
+						);
+						$this->Curl->access($url,$curl_params);
+					}
+
+					$this->Contents->commit();
 						
 				}catch(Exception $e_){
-						$this->Contents->rollback();
+					$this->Contents->rollback();
 				}
-				//exit;
 				
 				$this->Session->write("alert","コンテンツを１件設定しました。");
 				$this->redirect(array("controller"=>"contents","action"=>"index"));
