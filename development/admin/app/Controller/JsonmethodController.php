@@ -22,6 +22,38 @@ class JsonmethodController extends AppController {
 	public function beforeFilter(){
 		parent::beforeFilter();
 	}
+	
+	
+	//★test
+	public function buffersave_sub(){
+		
+		if($this->request->data){
+			
+			
+			$data=$this->request->data;
+			
+			$folder="buffer/".date("Ymd");
+			@mkdir("buffer");
+			@mkdir($folder);
+			
+			$tag=hash("sha256",date("YmdHis").$data["Uploadimage_sub"]["upfile_sub"]["tmp_name"]);
+			
+			$copy_url=$folder."/".$tag;
+			
+			//ファイルをバッファ領域へコピー(でかい場合は縮小をかける)
+			$this->buffersave_maxwidthedit($data["Uploadimage_sub"]["upfile_sub"]["tmp_name"],$copy_url,1000);
+
+			$result=array(
+				"url"=>Router::url("/",true).$copy_url,
+				"number"=>$tag,
+				"number_copy"=>$tag."_1",
+			);
+				
+			return json_encode($result,JSON_UNESCAPED_UNICODE);
+		}
+	}
+	
+	
 	//★ファイルをバッファにセット
 	public function buffersave(){
 		if($this->request->data){
@@ -45,6 +77,8 @@ class JsonmethodController extends AppController {
 			return json_encode($result,JSON_UNESCAPED_UNICODE);
 		}
 	}
+	
+	
 	//★アイコン画像のトリミング保存
 	public function iconimgedit()
 	{

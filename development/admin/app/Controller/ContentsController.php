@@ -15,6 +15,7 @@ App::uses('AppController', 'Controller');
 class ContentsController extends AppController{
 
 	public $uses=array(
+		"Additems",
 		"Contents",
 		"Category",
 		"District",
@@ -121,14 +122,46 @@ class ContentsController extends AppController{
 				),JSON_UNESCAPED_UNICODE);
 				$post["Contents"]["shop_info"]=$shop_info;
 				
-				//画像をadditem登録・更新
+				$save_result = $this->Contents->save($post,false);	
+				
+				//メイン画像をadditemに追加する
+				//上書き用の確認find					
+				$find_additem=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>0,
+					),
+				));
+				if($post["Contents"]["img_file1_changed"]){
+						if($find_additem){ $post["Additems"]["id"]=$find_additem["Additems"]["id"];}
+						$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
+						$post["Additems"]["type"]=0;
+						$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+						$post["Additems"]["shortimgtag"]=$post["Contents"]["img_file_source"];				
+				$this->Additems->save($post,false);				
+				}
 
-				$post["Additems"]["content_id"]=$post["Contents"]["id"];
-
-				$this->Contents->save($post,false);
+				//サブ画像をadditemに追加する
+				//上書き用の確認find
+				$find_additem=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>1,
+					),
+				));
+				//画像がセットされた時のみ情報を保存
+				if($post["Contents"]["imgsub_file_changed"]){
+						if($find_additem){ $post["Additems"]["id"]=$find_additem["Additems"]["id"];}
+						$post["Additems"]["content_id"]=$save_result["Contents"]["id"];
+						$post["Additems"]["type"]=1;
+						$post["Additems"]["content"]=$post["Contents"]["imgsub_file"];
+						$post["Additems"]["shortimgtag"]=$post["Contents"]["imgsub_file_source"];	
+						$this->Additems->save($post,false);	
+				}
 
 				$this->Session->write("alert","コンテンツを１件設定しました。");
 				$this->redirect(array("controller"=>"contents","action"=>"index"));
+				
 			}
 		}
 		else{
@@ -149,12 +182,21 @@ class ContentsController extends AppController{
 					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
 				}				
 
+				$find_additem=$this->Additems->find("first",array(
+					"conditions"=>array(
+						"Additems.content_id"=>$id,
+						"Additems.type"=>1,
+					),
+				));
+				
+				$this->set("find_additem",$find_additem);
 				$this->request->data=$post;
+				
 			}
 		}
 	}
 
-	//★地区・削除
+	//★削除
 	public function delete($id){
 		
 		$this->autoRender=false;

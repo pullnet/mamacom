@@ -59,7 +59,20 @@
 				</tr>
 				</table>
 			</td>
+		</tr>				
+		<tr>
+			<th>img service secret</th>
+			<td>
+					<?php echo $this->Form->input("img_service_secret"); ?>
+			</td>
+		</tr>			
+		<tr>
+			<th>img lisence key</th>
+			<td>
+					<?php echo $this->Form->input("img_lisence_key"); ?>
+			</td>
 		</tr>
+
 <!--
 		<tr>
 			<th>メール設定</th>
