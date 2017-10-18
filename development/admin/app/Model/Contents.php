@@ -51,7 +51,14 @@ class Contents extends AppModel {
 				"message"=>"郵便番号は半角数字で入力してください",
 			),
 		),
-		'address' => array(
+		'address1' => array(
+			"a1" => array(
+				"rule"=>"notBlank",
+				"required"=>true,
+				'message' => "都道府県が設定されていません。",
+			),
+		),		
+		'address2' => array(
 			"a1" => array(
 				"rule"=>"notBlank",
 				"required"=>true,
