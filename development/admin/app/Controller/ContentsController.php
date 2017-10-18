@@ -147,8 +147,7 @@ class ContentsController extends AppController{
 								if(!$save_result){
 									$this->Contents->rollback();
 								}								
-								
-								
+
 								//画像関連↓↓↓↓
 								//上書き用の確認find					
 								$find_additem0=$this->Additems->find("first",array(
@@ -373,8 +372,8 @@ class ContentsController extends AppController{
 					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
 				}	
 				$address=json_decode(@$post["Contents"]["address"],true);
-				if(@$shop_info){
-					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
+				if(@$address){
+					$post["Contents"]=array_merge($post["Contents"],@$address);
 				}						
 		
 				
