@@ -59,6 +59,9 @@ class ContentsController extends AppController{
 		
 		//コンテンツ情報をset
 		$result=$this->Contents->find("all",array(
+			'order' => array(
+				'Contents.id' => 'desc',
+			),
 			"limit"=>$limit,
 			"page"=>$page,
 		));
@@ -129,20 +132,14 @@ class ContentsController extends AppController{
 								//店舗情報をJSON化して登録・更新
 								$shop_info=json_encode(array(
 									"postnumber"=>$post["Contents"]["postnumber"],
-									"address"=>$post["Contents"]["address"],
+									"address1"=>$post["Contents"]["address1"],
+									"address2"=>$post["Contents"]["address2"],
 									"tel"=>$post["Contents"]["tel"],
 									"shop_text"=>$post["Contents"]["shop_text"],	
 								),JSON_UNESCAPED_UNICODE);
 								$post["Contents"]["shop_info"]=$shop_info;
 								
-								//住所をJSON化して登録・更新
-								$address=json_encode(array(
-									"address1"=>$post["Contents"]["address1"],
-									"address2"=>$post["Contents"]["address2"],
-								),JSON_UNESCAPED_UNICODE);
-								$post["Contents"]["address"]=$address;								
-
-								
+						
 								$save_result = $this->Contents->save($post,false);
 								if(!$save_result){
 									$this->Contents->rollback();
@@ -371,12 +368,8 @@ class ContentsController extends AppController{
 				if(@$shop_info){
 					$post["Contents"]=array_merge($post["Contents"],@$shop_info);
 				}	
-				$address=json_decode(@$post["Contents"]["address"],true);
-				if(@$address){
-					$post["Contents"]=array_merge($post["Contents"],@$address);
-				}						
-		
 				
+		
 				//各画像の初期配置
 				$find_additem0=$this->Additems->find("first",array(
 					"conditions"=>array(
