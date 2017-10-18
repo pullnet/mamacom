@@ -72,7 +72,24 @@
 					<?php echo $this->Form->input("img_lisence_key"); ?>
 			</td>
 		</tr>
-
+		<tr>
+			<th>API service_secret</th>
+			<td>
+					<?php echo $this->Form->input("service_secret"); ?>
+			</td>
+		</tr>			
+		<tr>
+			<th>API lisence_key</th>
+			<td>
+					<?php echo $this->Form->input("lisence_key"); ?>
+			</td>
+		</tr>
+		<tr>
+			<th>access token</th>
+			<td>
+					<?php echo $this->Form->input("token"); ?>
+			</td>
+		</tr>
 <!--
 		<tr>
 			<th>メール設定</th>

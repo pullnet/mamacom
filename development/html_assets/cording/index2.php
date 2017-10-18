@@ -2,11 +2,10 @@
 <?php $active_index = true;?>
 <?php include("common/header.php"); ?>
 
-
-
-
 <div style="display:none">
+
 <div class="test_mess_box mt20" style="display:none"></div>
+
 <div>
 <ul>
 <li class="mt20"><button id="token_test">tokenテスト</button></li>
@@ -14,11 +13,12 @@
 <li class="mt20"><button id="token">○○テスト</button></li>
 </ul>
 </div>
+
 <script type="text/jscript">
 
 $('#token_test').on('click', function() {
 	
-	var url_method="test/token_test";
+	var url_method="token/get_token_test";
 	var token=JSession.read("token");
 	
 	if(token==null){
@@ -42,19 +42,22 @@ $('#token_test').on('click', function() {
 				
 				if(result.enable){
 				$('.test_mess_box').css('display','block');
-				$('.test_mess_box').text("アクセスOK!");				
+				$('.test_mess_box').text("アクセスが許可されています。");				
 				}
 				else{
 				$('.test_mess_box').css('display','block');	
-				$('.test_mess_box').html("アクセスが許可されていません。"+"<br>"+result.error);				
+				$('.test_mess_box').text("アクセスが許可されていません。"+result.error);				
 				}
 
 			}
 		});
 	}
 });
+
 </script>
+
 </div>
+
 
 
 
@@ -100,15 +103,3 @@ $('#token_test').on('click', function() {
 	</div>
 		
 <?php include("common/footer.php"); ?>
-
-
-
-
-
-
-
-
-
-
-
-

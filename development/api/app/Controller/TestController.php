@@ -1,23 +1,21 @@
 <?php
 
 
-App::uses('Controller', 'Controller');
+App::uses('AppController', 'Controller');
 
 
-class AppController extends Controller {
-	
-	public $autoRender=false;
-	public $layout=false;
-
+class TestController extends AppController{
 
 	public $components=array(
 		"Loadbasic",
 	);
-
-	//前処理
-	public function beforeFilter(){
 	
-		header("Access-Control-Allow-Origin:*");
+	public function beforeFilter(){
+		parent::beforeFilter();
+	}
+
+	public function token_test(){
+	
 		$token=$this->Loadbasic->load("token");	
 	
 		if($this->request->data){
@@ -35,7 +33,12 @@ class AppController extends Controller {
 			}
 			else{
 				
-			
+				$result=array(
+					"enable"=>true,
+					"error"=>"",
+				);
+				return json_encode($result,JSON_UNESCAPED_UNICODE);	
+							
 			}
 		}
 		else{
@@ -50,4 +53,8 @@ class AppController extends Controller {
 	}
 
 
+
+
+	
 }
+
