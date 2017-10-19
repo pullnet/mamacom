@@ -89,7 +89,7 @@ $(function(){
 
 
 <script type="text/javascript">
-$(function(){
+$('.menubtn').on('click', function() {
 	
 	//地区の処理
 	var url_method="category/ditrict_list";

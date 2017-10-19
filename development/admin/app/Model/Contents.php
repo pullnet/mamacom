@@ -72,9 +72,9 @@ class Contents extends AppModel {
 				"message"=>"電話番号が入力されていません。",
 			),			
 			"a2" => array(
-				"rule"=>"Numeric",
+				"rule"=>"alphaNumeric",
 				"required"=>true,
-				"message"=>"電話番号は半角数字で入力してください",
+				"message"=>"電話番号は半角数字とハイフンで入力してください",
 			),
 		),
 	);

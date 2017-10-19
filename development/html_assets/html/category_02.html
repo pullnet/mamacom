@@ -16,8 +16,10 @@
 <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0">
 <!--<meta name="viewport" content="width=640px,maximum-scale=1,user-scalable=0">-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/default_m.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/api-sample.js"></script>
+
 </head>
 <body>
 	<div class="header">
@@ -48,45 +50,132 @@
 				<p><a href="contact.html"><img src="images/sidemenu_04.jpg" alt="お問い合わせ"></a></p>
 				<p class="httl">地域情報</p>
 				<div class="area_list">
-					<p><a href="area.html">都島区</a></p>
-					<p><a href="area.html">城東区</a></p>
-					<p><a href="area.html">北区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-			</div>
+				<!--js処理-->
+				</div>
 		</div><!--//.window-->
 	</div>
 	<div class="header_dmy"></div>
-<div class="wrapper">
+
+<script type="text/javascript">
+$(function(){
+
+	var url_get_token="token/get_token";
+	var token=JSession.read("token");
+	
+	if(token==null){
+		$.ajax({
+			url:API.domain+url_get_token,
+			type:"post",
+			data:{
+				service_secret:API.service_secret,
+				lisence_key:API.lisence_key
+			},
+			success:function(data){
+				
+				var result=JSON.parse(data);
+				JSession.write("token",result.access_token);
+
+			}
+		});
+	}
+});
+</script>
+
+
+<script type="text/javascript">
+$(function(){
+	
+	//地区の処理
+	var url_method="category/ditrict_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				
+				var ditrict_count = Object.keys(result).length;
+				for(var i = 0; i < ditrict_count; i++){
+					
+					$(".contents_source2 a").text(result[i].name);
+					$(".contents_source2 *[content_link]").attr("href",$(".contents_source2 *[content_link]").attr("hrefs")+"?id="+result[i].id);
+					
+					//書き換え処理
+					$('.area_list').append($(".contents_source2").html());
+				}
+
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}	
+
+});
+</script>
+
+	<div class="contents_source2" style="display:none">
+		<p><a hrefs="area.html" content_link></a></p>
+	</div><!--//.contents_source-->	<div class="wrapper">
 	<a href="index.html"><h2 class="mtitle">アレルギー対応店</h2></a>
 	
 	<p class="m10 h3">下記より地区をお選びください</p>
+	
 	<div class="contents_area">
-		<div class="item">
-			<a href="category_02_arealist.html">
-					<h3>豊島区</h3>
-			</a>
-		</div><!--//.item-->
-		<div class="item">
-			<a href="category_02_arealist.html">
-					<h3>城東区</h3>
-			</a>
-		</div><!--//.item-->
-		<div class="item">
-			<a href="category_02_arealist.html">
-					<h3>北区</h3>
-			</a>
-		</div><!--//.item-->
 	</div>
+	
 </div>
+
+
+<script type="text/javascript">
+$(function(){
+	
+	//地区の処理
+	var url_method="category/ditrict_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				
+				var ditrict_count = Object.keys(result).length;
+				for(var i = 0; i < ditrict_count; i++){
+					
+					$(".contents_source h3").text(result[i].name);
+					$(".contents_source *[content_link]").attr("href",$(".contents_source *[content_link]").attr("hrefs")+"?id="+result[i].id);
+					
+					//書き換え処理
+					$('.contents_area').append($(".contents_source").html());
+				}
+
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}	
+
+});
+</script>
+
+	<div class="contents_source" style="display:none">
+		<div class="item">
+			<a hrefs="category_02_arealist.html" content_link>
+					<h3></h3>
+			</a>
+		</div>
+	</div><!--//.contents_source-->
 
 <div class="footer_dmy"></div>
 <div class="footer">
