@@ -359,7 +359,7 @@ class ContentsController extends AppController{
 					),
 				));
 
-				//jsonをエンコードしてセット
+				//jsonをデコードしてセット
 				$caption=json_decode(@$post["Contents"]["caption"],true);
 				if(@$caption){
 					$post["Contents"]=array_merge($post["Contents"],@$caption);
