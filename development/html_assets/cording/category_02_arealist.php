@@ -53,3 +53,65 @@
 </div>
 
 <?php include("common/footer.php"); ?>
+
+
+
+<script type="text/javascript">
+$(function(){
+	
+	//パラメータから地区ID取得
+	var arg  = new Object;
+	url = location.search.substring(1).split('&');
+	for(i=0; url[i]; i++) {
+		var k = url[i].split('=');
+		arg[k[0]] = k[1];
+	}
+	var ditrict_id = arg.id;
+	
+	
+	//地区の処理
+	var url_method="category/ditrict_name";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token,
+				id:ditrict_id,
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				console.log(result[0].name);
+				
+				$("h2").text(result[0].name);
+				
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
