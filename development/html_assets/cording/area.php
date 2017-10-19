@@ -1,6 +1,6 @@
 <?php include("common/header.php"); ?>
 <div class="wrapper">
-	<a href="index.php"><h2 class="mtitle">○○区</h2></a>
+	<a href="index.php"><h2 class="mtitle"><!--js処理--></h2></a>
 	<div class="m5">
 		<ul class="float colum2">
 			<li class="category_02">

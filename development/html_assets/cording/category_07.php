@@ -58,3 +58,21 @@ $(function(){
 	</div><!--//.contents_source-->
 
 <?php include("common/footer.php"); ?>
+
+
+
+
+<style>
+.mtitle::after {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 35px;
+    left: 20px;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #5F4B3E;
+    border-right: 2px solid #5F4B3E;
+    transform: rotate(-135deg);
+}
+</style>

@@ -248,7 +248,7 @@ echo $this->Form->hidden("id");
 		</tr>
 		<tr>
 			<th>電話番号<span class="required_red">[必須]</span></th>
-			<td><?php echo $this->Form->input("tel",array("error"=>false,"class"=>"short")); ?><?php echo $this->Form->error("tel"); ?></td>
+			<td><?php echo $this->Form->input("tel",array("error"=>false,"class"=>"short")); ?><?php echo $this->Form->error("tel"); ?><span>ハイフン付きで入力して下さい。例:06-0555-0000</span></td>
 		</tr>
 		<tr>
 			<th>補足（受付時間など）</th>

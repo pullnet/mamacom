@@ -16,8 +16,10 @@
 <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0">
 <!--<meta name="viewport" content="width=640px,maximum-scale=1,user-scalable=0">-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/default_m.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/api-sample.js"></script>
+
 </head>
 <body>
 	<div class="header">
@@ -48,49 +50,153 @@
 				<p><a href="contact.html"><img src="images/sidemenu_04.jpg" alt="お問い合わせ"></a></p>
 				<p class="httl">地域情報</p>
 				<div class="area_list">
-					<p><a href="area.html">都島区</a></p>
-					<p><a href="area.html">城東区</a></p>
-					<p><a href="area.html">北区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-					<p><a href="area.html">○○○区</a></p>
-			</div>
+				<!--js処理-->
+				</div>
 		</div><!--//.window-->
 	</div>
 	<div class="header_dmy"></div>
-<div class="wrapper">
-	<a href="index.html"><h2 class="mtitle">○○区</h2></a>
+
+<script type="text/javascript">
+$(function(){
+
+	var url_get_token="token/get_token";
+	var token=JSession.read("token");
+	
+	if(token==null){
+		$.ajax({
+			url:API.domain+url_get_token,
+			type:"post",
+			data:{
+				service_secret:API.service_secret,
+				lisence_key:API.lisence_key
+			},
+			success:function(data){
+				
+				var result=JSON.parse(data);
+				JSession.write("token",result.access_token);
+
+			}
+		});
+	}
+});
+</script>
+
+
+<script type="text/javascript">
+$(function(){
+	
+	//地区の処理
+	var url_method="category/ditrict_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				
+				var ditrict_count = Object.keys(result).length;
+				for(var i = 0; i < ditrict_count; i++){
+					
+					$(".contents_source2 a").text(result[i].name);
+					$(".contents_source2 *[content_link]").attr("href",$(".contents_source2 *[content_link]").attr("hrefs")+"?id="+result[i].id);
+					
+					//書き換え処理
+					$('.area_list').append($(".contents_source2").html());
+				}
+
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}	
+
+});
+</script>
+
+	<div class="contents_source2" style="display:none">
+		<p><a hrefs="area.html" content_link></a></p>
+	</div><!--//.contents_source-->	<div class="wrapper">
+	<a href="index.html"><h2 class="mtitle"><!--js処理--></h2></a>
 	<div class="m5">
 		<ul class="float colum2">
-			<li>
+			<li class="category_02">
 				<a href="category_02_arealist.html"><img src="images/top_banner02.jpg" alt="バナー"></a>
 			</li>
-			<li>
+			<li class="category_03">
 				<a href="category_03_arealist.html"><img src="images/top_banner03.jpg" alt="バナー"></a>
 			</li>
-			<li>
+			<li class="category_04">
 				<a href="category_04_arealist.html"><img src="images/top_banner04.jpg" alt="バナー"></a>
 			</li>
-			<li>
+			<li class="category_05">
 				<a href="category_05_arealist.html"><img src="images/top_banner05.jpg" alt="バナー"></a>
 			</li>
-			<li>
+			<li class="category_06">
 				<a href="category_06_arealist.html"><img src="images/top_banner06.jpg" alt="バナー"></a>
 			</li>
-			<li>
+			<li class="category_07">
 				<a href="category_07.html"><img src="images/top_banner07.jpg" alt="地元ママ応援！地域のポータルサイト"></a>
 			</li>
 		</ul>
 	</div>
-
 </div>
+
+
+
+<script type="text/javascript">
+$(function(){
+	
+	//パラメータから地区ID取得
+	var arg  = new Object;
+	url = location.search.substring(1).split('&');
+	for(i=0; url[i]; i++) {
+		var k = url[i].split('=');
+		arg[k[0]] = k[1];
+	}
+	
+	var ditrict_id = arg.id;
+	//console.log(ditrict_id);
+	
+	//地区の処理
+	var url_method="category/ditrict_name";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token,
+				id:ditrict_id,
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				console.log(result[0].name);
+				
+				$(".mtitle").text(result[0].name);
+				$(".category_02 a").attr("href", "category_02_arealist.html"+"?id="+result[0].id);
+				$(".category_03 a").attr("href", "category_03_arealist.html"+"?id="+result[0].id);
+				$(".category_04 a").attr("href", "category_04_arealist.html"+"?id="+result[0].id);
+				$(".category_05 a").attr("href", "category_05_arealist.html"+"?id="+result[0].id);
+				$(".category_06 a").attr("href", "category_06_arealist.html"+"?id="+result[0].id);
+				$(".category_07 a").attr("href", "category_07_arealist.html"+"?id="+result[0].id);
+				
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}
+
+});
+</script>
+
 
 <div class="footer_dmy"></div>
 <div class="footer">

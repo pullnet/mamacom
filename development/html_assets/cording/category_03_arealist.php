@@ -1,146 +1,138 @@
+
+
 <?php $title="ライブラリの検索結果";?>
 <?php include("common/header.php"); ?>
 
 <div class="wrapper">
-	<a href="category_03.php"><h2 class="mtitle">ママ求人</h2></a>
-	<h2 class="m10">○○区</h2>
-	<p class="serch_result_text">全35件<span>-うち20件表示-</span></p>
+	<a href="javascript:history.back();"><h2 class="mtitle">ママ求人</h2></a>
+	<h2 class="subttl m10"><!--js処理--></h2>
+	<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
+
 	<div class="contents_area">
-		<a href="job_detail.php">
+
+	</div>
+	<!--//.contents_area-->
+	
+	<div class="pager mt10 ">
+		<ul class="float">
+			<li class="active"> <a href="#">1</a> </li>
+			<li class=""> <a href="#">2</a> </li>
+			<li class=""> <a href="#">3</a> </li>
+			<li class=""> <a href="#">4</a> </li>
+			<li class=""> <a href="#">5</a> </li>
+			<li><a href="#">&gt;</a></li>
+		</ul>
+	</div><!--//.wrapper-->
+</div>
+
+<?php include("common/footer.php"); ?>
+
+
+<script type="text/javascript">
+$(function(){
+
+
+	//パラメータから地区ID取得
+	var arg  = new Object;
+	url = location.search.substring(1).split('&');
+	for(i=0; url[i]; i++) {
+		var k = url[i].split('=');
+		arg[k[0]] = k[1];
+	}
+	var ditrict_id = arg.id;
+		
+		
+	//地区の処理
+	var url_method="category/ditrict_name";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token,
+				id:ditrict_id,
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				
+				$(".subttl").text(result[0].name);
+				
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}
+	
+	//コンテンツの処理
+	var url_method="contents/contents_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token,
+				id:ditrict_id,
+				cid:"2",//カテゴリー指定
+			},
+			success:function(data){
+				
+				console.log("test");
+				
+				var result=JSON.parse(data);
+				console.log(result);
+				
+				var item_count = Object.keys(result).length;				
+			
+			
+			
+				for(var i = 0; i < item_count; i++){		
+					//一部Jsonパース
+					var caption = JSON.parse(result[i]["Contents"].caption);//console.log(caption);
+					
+					
+					//テンプレに記入	
+					$(".copy_base .item .k02").text(caption.text1);									
+					$(".copy_base .item .k03").text(result[i]["Contents"].title);
+					$(".copy_base .item .k04").text(caption.text5);
+					$(".copy_base .item .s00 img").attr("src",result[i]["Contents"].content);
+					$(".copy_base *[content_link]").attr("href",$(".copy_base *[content_link]").attr("hrefs")+"?id="+result[i]["Contents"].id);					
+								
+							
+					//書き換え処理
+					$('.contents_area').append($(".copy_base").html());
+					
+				}
+						
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}	
+	
+
+});
+</script>
+
+	<div class="copy_base" style="display:none;">
 		<div class="item">
+			<a hrefs="job_detail.php" content_link>
 			<div class="bs">
-				<div class="s00" style="background-image:url(images/pullnet.jpg);background-size:cover;background-position:center;" ></div>
+				<div class="s00" style=""><img src=""></div>
 				<div class="s01">
-					<p>株式会社pull-net</p>
-					<h3>WEBデザイナー</h3>
-					<p class="subc">未経験者の方も大募集！デザインに興味ある方。週3日2h～から要相談。</p>
-					<p class="subc red">時給制:1000円～</p>
+					<p class="k02"></p>
+					<h3 class="k03">WEBデザイナー</h3>
+					<p class="subc k04">未経験者の方も大募集！デザインに興味ある方。週3日2h～から要相談。</p>
+					<p class="subc red k05">時給制:1000円～</p>
 				</div>
 			</div>
 			</a>
 		</div>
 		<!--//.item-->
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->		
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->		
-		
-		<div class="item">
-		<a href="job_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<p>企業名</p>
-					<h3>職種テキスト</h3>
-					<p class="subc">労働内容などの説明テキストが入ります。</p>
-					<p class="subc red">時給テキスト</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->	
-
 	</div>
-	<!--//.contents_area-->
-	
-		<div class="pager mt10 ">
-			<ul class="float">
-				<li class="active"> <a href="#">1</a> </li>
-				<li class=""> <a href="#">2</a> </li>
-				<li class=""> <a href="#">3</a> </li>
-				<li class=""> <a href="#">4</a> </li>
-				<li class=""> <a href="#">5</a> </li>
-				<li><a href="#">&gt;</a></li>
-			</ul>
-		</div>		
-	
-	<!--//.wrapper-->
-</div>
 
-<?php include("common/footer.php"); ?>

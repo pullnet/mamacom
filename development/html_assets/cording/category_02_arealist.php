@@ -2,41 +2,12 @@
 <?php include("common/header.php"); ?>
 
 <div class="wrapper">
-	<a href="category_02.php"><h2 class="mtitle">アレルギー対応店</h2></a>
-	<h2 class="m10">○○区</h2>
-	<p class="serch_result_text">全35件<span>-うち20件表示-</span></p>
+	<a href="javascript:history.back();"><h2 class="mtitle">アレルギー対応店</h2></a>
+	<h2 class="subttl m10"><!--js処理--></h2>
+	<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 
 	<div class="contents_area">
-		<a href="shop_detail.php">
-		<div class="item">
-			<div class="bs">
-				<div class="s00" style="background-image:url(images/risbon.png);background-size:cover;background-position:center;" ></div>
-				<div class="s01">
-					<h3>PATISSERIE LIBO(リスボン)</h3>
-					<p class="subc">千林で３０年近く愛されてきた洋菓子店。味と伝統を守りつつ、新しい味に挑戦中！季節ごとに色々なスイーツを味わえる。</p>
-				</div>
-			</div>
-			</a>
-		</div>
-		<!--//.item-->
-		<?php
-		for($v1=0;$v1<5;$v1++){
-		?>
-		<div class="item">
-		<a href="shop_detail.php">
-			<div class="bs">
-				<div class="s00"></div>
-				<div class="s01">
-					<h3>店名テキスト</h3>
-					<p class="subc">説明テキストが入ります。</p>
-				</div>
-			</div>
-		</a>
-		</div>
-		<!--//.item-->
-		<?php
-		}
-		?>
+
 	</div>
 	<!--//.contents_area-->
 	
@@ -58,7 +29,8 @@
 
 <script type="text/javascript">
 $(function(){
-	
+
+
 	//パラメータから地区ID取得
 	var arg  = new Object;
 	url = location.search.substring(1).split('&');
@@ -67,8 +39,8 @@ $(function(){
 		arg[k[0]] = k[1];
 	}
 	var ditrict_id = arg.id;
-	
-	
+		
+		
 	//地区の処理
 	var url_method="category/ditrict_name";
 	var token=JSession.read("token");
@@ -83,9 +55,9 @@ $(function(){
 			},
 			success:function(data){
 				var result=JSON.parse(data);
-				console.log(result[0].name);
+				//console.log(result[0].name);
 				
-				$("h2").text(result[0].name);
+				$(".subttl").text(result[0].name);
 				
 			}
 		});
@@ -93,25 +65,67 @@ $(function(){
 	else{
 		view_error_page();
 	}
+	
+	//コンテンツの処理
+	var url_method="contents/contents_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token,
+				id:ditrict_id,
+				cid:"1",//カテゴリー指定
+			},
+			success:function(data){
+				
+				var result=JSON.parse(data);
+				//console.log(result);
+				
+				var item_count = Object.keys(result).length;				
+			
+				for(var i = 0; i < item_count; i++){		
+					//一部Jsonパース
+					var caption = JSON.parse(result[i]["Contents"].caption);//console.log(caption);
+					
+					//テンプレに記入					
+					$(".copy_base .item .s01 h3").text(result[i]["Contents"].title);
+					$(".copy_base .item .s01 p").text(caption.text1);
+					$(".copy_base .item .s00 img").attr("src",result[i]["Contents"].content);
+					$(".copy_base *[content_link]").attr("href",$(".copy_base *[content_link]").attr("hrefs")+"?id="+result[i]["Contents"].id);
+							
+					//書き換え処理
+					$('.contents_area').append($(".copy_base").html());
+				}
+
+				//ページャー処理保留
+				//$(".serch_result_text b").text("全 "+item_count+" 件");
+
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}	
+	
 
 });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<div class="copy_base" style="display:none;">
+		<div class="item">
+			<a hrefs="shop_detail.php" content_link>
+			<div class="bs">
+				<div class="s00" style=""><img src="images/risbon.png"></div>
+				<div class="s01">
+					<h3>店舗名</h3>
+					<p class="subc">説明テキスト</p>
+				</div>
+			</div>
+			</a>
+		</div>
+	</div>
 
 
