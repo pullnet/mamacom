@@ -62,6 +62,7 @@ $(function(){
 			data:{
 				send_token:token,
 				article_limit:"3",
+				info_id:"0",
 			},
 			success:function(data){
 				
@@ -75,9 +76,9 @@ $(function(){
 					//テンプレに記入					
 					$(".copy_base_info span").text(result[i]["Information"].post_date);
 					$(".copy_base_info a").text(result[i]["Information"].title);
-					
-					
-					
+					$(".copy_base_info a").text(result[i]["Information"].title);
+					$(".copy_base_info *[content_link]").attr("href",$(".copy_base_info *[content_link]").attr("hrefs")+"?id="+result[i]["Information"].id);
+
 					//newアイコン処理　　　　　
 					//更新月が1か月経過でアイコンを消す（1か月：1555200000ミリ秒）
 					var today_date =new Date();
@@ -111,8 +112,8 @@ $(function(){
 
 	<div class="copy_base_info" style="display:none;">
       <p class="mb5">
-				<span class="">2017.09.01</span>
-				<a href="info.php" content_link></a>
+				<span class=""></span>
+				<a hrefs="info.php" content_link></a>
 			</p>
 	</div>
 
