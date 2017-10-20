@@ -102,9 +102,6 @@ $(function(){
 					$('.contents_area').append($(".copy_base").html());
 				}
 
-				//ページャー処理保留
-				//$(".serch_result_text b").text("全 "+item_count+" 件");
-
 			}
 		});
 	}

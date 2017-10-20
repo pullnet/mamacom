@@ -2,14 +2,6 @@
 <?php $active_info = true;?>
 <?php include("common/header.php"); ?>
 
-<style>
-.s01 .block{
-	padding:4%;
-}
-</style>
-
-
-
 <div class="wrapper category_01">
 	<a href="index.php"><h2 class="mtitle">お知らせ</h2></a>
 
@@ -29,15 +21,26 @@
 <?php include("common/footer.php"); ?>
 
 
-
-
-
-
-
-
-
 <script type="text/javascript">
 $(function(){
+	
+	//パラメータからコンテンツID取得
+	var arg  = new Object;
+	url = location.search.substring(1).split('&');
+	for(i=0; url[i]; i++) {
+		var k = url[i].split('=');
+		arg[k[0]] = k[1];
+	}
+	var post_id = arg.id;	
+	var article;
+	
+	if (typeof(post_id) == "undefined"){
+		post_id=0;
+		article=50;
+	}
+	else{
+		article=1;
+	}
 
 	//コンテンツの処理
 	var url_method="information/information_list";
@@ -49,7 +52,8 @@ $(function(){
 			type:"post",
 			data:{
 				send_token:token,
-				article_limit:"3",
+				article_limit:article,
+				info_id:post_id,
 			},
 			success:function(data){
 				
@@ -93,8 +97,6 @@ $(function(){
 			</div>
 	</div>
 	
-	
-	
 <style>
 .category_01 .bs h3 {
     font-size: 16px;
@@ -103,6 +105,7 @@ $(function(){
     color: #FFF;
     background-color: #FF6486;
     padding: 8px;
+  border-radius: 5px 5px 0px 0px / 5px 5px 0px 0px;
 }
 body{
 		background-color: #FFD0DB;
@@ -111,6 +114,12 @@ body{
 		text-align:center;
 		margin:2px 5px 0;
 		font-size:10px;
+}
+
+.s01 .block{
+	padding:4%;
+	padding-bottom:5%;
+  border-radius: 0px 0px 5px 5px / 0px 0px 5px 5px;
 }
 
 </style>
