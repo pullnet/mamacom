@@ -105,7 +105,7 @@ class InformationController extends AppController{
 		$this->Information->delete($id);
 		
 		//テキスト表示とリダイレクト
-		$this->Session->write("alert", "地区を削除いたしました。");
+		$this->Session->write("alert", "お知らせを削除いたしました。");
 		$this->redirect(array("controller"=>"information","action"=>"index"));
 
 	}		

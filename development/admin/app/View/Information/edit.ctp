@@ -44,6 +44,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
+		
 			<?php echo $this->Form->textarea("caption",array("class"=>"maxhigh","error"=>false,"required"=>false)); ?>
 			<?php echo $this->Form->error("caption"); ?>
 		</td>
@@ -53,3 +54,45 @@
 		<?php echo $this->Form->submit("インフォメーションを設定",array("class"=>"buttons","div"=>false)); ?>
 	</div>
 </div>
+
+
+
+
+<script type="text/javascript">
+aceeditor({
+	textarea:"html_textarea",
+	textdata:"html_data",
+});
+aceeditor({
+	textarea:"smp_html_textarea",
+	textdata:"smp_html_data",
+});
+$(function(){
+	radio_smp_status();
+	$(".radio_smp_status").on("change",function(){
+		radio_smp_status();
+	});
+
+	function radio_smp_status(){
+		var index=$(".radio_smp_status:checked").val();
+		console.log(index);
+		if(index==0){
+			$(".type_smp").css("display","none");
+
+		}
+		else
+		{
+			$(".type_smp").css("display","");
+
+		}
+	}
+
+});
+</script>
+
+
+
+
+
+
+
