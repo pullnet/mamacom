@@ -3,62 +3,6 @@
 <?php include("common/header.php"); ?>
 
 
-
-
-<div style="display:none">
-<div class="test_mess_box mt20" style="display:none"></div>
-<div>
-<ul>
-<li class="mt20"><button id="token_test">tokenテスト</button></li>
-<li class="mt20"><button id="token">○○テスト</button></li>
-<li class="mt20"><button id="token">○○テスト</button></li>
-</ul>
-</div>
-<script type="text/jscript">
-
-$('#token_test').on('click', function() {
-	
-	var url_method="test/token_test";
-	var token=JSession.read("token");
-	
-	if(token==null){
-		
-		$('.test_mess_box').css('display','block');
-		$('.test_mess_box').text("sessionにトークンがありません");
-		console.log("sessionにトークンがありません");
-		
-	}
-	else{
-		$.ajax({
-			url:API.domain+url_method,
-			type:"post",
-			data:{
-				send_token:token,
-			},
-			success:function(data){
-				var result=JSON.parse(data);
-				
-				console.log(result.enable+" "+result.error);
-				
-				if(result.enable){
-				$('.test_mess_box').css('display','block');
-				$('.test_mess_box').text("アクセスOK!");				
-				}
-				else{
-				$('.test_mess_box').css('display','block');	
-				$('.test_mess_box').html("アクセスが許可されていません。"+"<br>"+result.error);				
-				}
-
-			}
-		});
-	}
-});
-</script>
-</div>
-
-
-
-
 <div class="toppage">
 
 	<div class="sec01">
@@ -91,11 +35,9 @@ $('#token_test').on('click', function() {
 		</ul>
 	</div>
 	<div class="sec04">	
-    	<div class="news_box">
-			<h3><span class="ttl_img"><img src="images/top_news_ttl.jpg" alt="お知らせ情報"></span></h3>
-            <p class="mb5"><span class="icon_new">2017.09.01 </span> <a href="info.php">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</a></p>
-			<p class="mb5"><span class="icon_new">2017.09.01 </span> <a href="info.php">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</a></p>
-			<p class="mb5"><span>2017.09.01 </span> <a href="info.php">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</a></p>
+    <div class="news_box">
+			<h3><a href="info.php" content_link><span class="ttl_img"><img src="images/top_news_ttl.jpg" alt="お知らせ情報"></span></a></h3>
+
 		</div>
 	</div>
 		
@@ -105,7 +47,74 @@ $('#token_test').on('click', function() {
 
 
 
+<script type="text/javascript">
+$(function(){
 
+
+	//コンテンツの処理
+	var url_method="information/information_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token,
+				article_limit:"3",
+			},
+			success:function(data){
+				
+				var result=JSON.parse(data);
+				console.log(result);
+				
+				var item_count = Object.keys(result).length;				
+			
+				for(var i = 0; i < item_count; i++){		
+					
+					//テンプレに記入					
+					$(".copy_base_info span").text(result[i]["Information"].post_date);
+					$(".copy_base_info a").text(result[i]["Information"].title);
+					
+					
+					
+					//newアイコン処理　　　　　
+					//更新月が1か月経過でアイコンを消す（1か月：1555200000ミリ秒）
+					var today_date =new Date();
+					var new_icon_date = today_date.getTime() - 1555200000;
+					var update_date = Date.parse(result[i]["Information"].post_date);
+					
+					console.log(update_date,new_icon_date);
+				
+					if(new_icon_date < update_date){
+						$(".copy_base_info span").addClass('icon_new');	
+					}
+					else{
+						$(".copy_base_info span").removeClass('icon_new');
+					}
+					
+					
+					//書き換え処理
+					$('.news_box').append($(".copy_base_info").html());
+				}
+
+			}
+		});
+	}
+	else{
+		view_error_page();
+	}
+	
+
+});
+</script>
+
+	<div class="copy_base_info" style="display:none;">
+      <p class="mb5">
+				<span class="">2017.09.01</span>
+				<a href="info.php" content_link></a>
+			</p>
+	</div>
 
 
 

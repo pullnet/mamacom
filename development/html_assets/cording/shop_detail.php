@@ -182,7 +182,7 @@ console.log(y);
 				}
 						
 				
-				//COMTOPIA流Google MAP表示方法
+				//Google MAP表示
 				var geocoder = new google.maps.Geocoder();//Geocode APIを使います。
 				var address = "大阪市久太郎町";
 				geocoder.geocode({'address': address,'language':'ja'},function(results, status){

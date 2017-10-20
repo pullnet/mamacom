@@ -36,7 +36,7 @@
 			</tr>
 			<tr>
 				<th>メールアドレス</th>
-				<td><input name="data[Contact][mailaddress]" class="short" placeholder="例) mamacom@email.co.jp" type="text" id="ContactMailaddress"/>
+				<td><input name="data[Contact][mailaddress]" class="mb10" placeholder="例) mamacom@email.co.jp" type="text" id="ContactMailaddress"/>
 					<p>※お問い合わせ後の返答先として利用いたします。</p></td>
 			</tr>
 			<tr>
