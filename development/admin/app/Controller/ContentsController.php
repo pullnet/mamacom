@@ -62,6 +62,11 @@ class ContentsController extends AppController{
 			'order' => array(
 				'Contents.id' => 'desc',
 			),
+			'conditions' => array(
+				'NOT' => array(
+					'Contents.category_id' => array(0)
+				)
+			),
 			"limit"=>$limit,
 			"page"=>$page,
 		));
@@ -74,8 +79,6 @@ class ContentsController extends AppController{
 
 		$this->set("wwwurl",$this->Loadbasic->load("wwwurl"));
 	}
-	
-	
 	
 	//★コンテンツ登録・編集
 	public function edit($id=null){
