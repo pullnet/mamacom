@@ -26,10 +26,9 @@ class Contact extends AppModel {
 				"required"=>true,
 				'message' => 'メールアドレスが入力されていません。',
 			),
-			"a2" => array(
-				"rule"=>"Numeric",
-				"required"=>true,
-				"message"=>"メールアドレスは半角数字で入力してください",
+			"a2"=>array(
+				"rule"=>"email",
+				"message"=>"メールアドレスを入力して下さい。",
 			),
 		),
 		'post_name1' => array(

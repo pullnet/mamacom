@@ -130,11 +130,21 @@ $(function(){
 
 
 <style>
+.mtitle {
+    font-size: 20px;
+    color: #5F4B3E;
+    background: #FFFFCC;
+    padding: 7px 15px;
+    text-align: center;
+    margin-bottom: 12px;
+    position: relative;
+}
+
 .mtitle::after {
     position: absolute;
     content: "";
     display: block;
-    top: 35px;
+    top: 29px;
     left: 20px;
     width: 15px;
     height: 15px;

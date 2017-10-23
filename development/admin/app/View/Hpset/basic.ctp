@@ -32,7 +32,7 @@
 		<tr>
 			<th>設定ドメイン</th>
 			<td>
-				<table cellspacing="0" cellpadding="0">
+				<table cellspacing="0" cellpadding="0" style="margin:15px 0px 15px 0px;">
 				<tr>
 					<th>一般サイト</th>
 					<td>
@@ -90,11 +90,11 @@
 					<?php echo $this->Form->input("token"); ?>
 			</td>
 		</tr>
-<!--
+
 		<tr>
 			<th>メール設定</th>
 			<td>
-				<table cellspacing="0" cellpadding="0">
+				<table cellspacing="0" cellpadding="0" style="margin:15px 0px 15px 0px;">
 				<tr>
 					<th>メールホスト</th>
 					<td>
@@ -140,7 +140,7 @@
 				</table>
 			</td>
 		</tr>
-
+<!--
 	<tr>
 		<th>SNS設定</th>
 		<td>
