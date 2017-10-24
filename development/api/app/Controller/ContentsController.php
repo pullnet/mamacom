@@ -24,6 +24,8 @@ class ContentsController extends AppController{
 	
 	
 	public function contents_list(){
+		$page=1;
+		$limit=20;
 		
 		$domain_item=$this->Loadbasic->load("itemurl");
 		
@@ -39,6 +41,8 @@ class ContentsController extends AppController{
 					"Contents.category_id"=>$post["cid"],
 				),
 				"fields"=>array("id","title","district_id","caption"),
+				"limit"=>$limit,
+				"page"=>$post["page"],
 			));	
 
 			//コンテンツidから該当のメイン画像additemsを取得
@@ -58,8 +62,27 @@ class ContentsController extends AppController{
 				
 				$output[$i]["Contents"]=array_merge($t_["Contents"],@$test["Additems"]);
 				$i++;
-				
+		
 			}
+	
+			$totalcount=$this->Contents->find("count",array(
+				"conditions"=>array(
+					"Contents.district_id"=>$post["id"],
+					"Contents.category_id"=>$post["cid"],
+				),
+			));			
+
+			$totalpage=ceil($totalcount/$limit);
+	
+			$pager_array = array(
+				"page"=>$page,
+				"limit"=>$limit,
+				"totalcount"=>$totalcount,
+				"totalpage"=>$totalpage,
+			);
+			
+			$output = array_merge($output,$pager_array);
+			
 			return json_encode($output,JSON_UNESCAPED_UNICODE);
 		}
 		

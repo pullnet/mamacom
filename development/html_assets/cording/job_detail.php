@@ -15,8 +15,8 @@
 
 			<ul class="tab float">
 				<li><label for="content_detail" class="detail">写真</label></li>
-				<li><label for="collabo_list" class="collabo">詳細内容</label></li>
-				<li><label for="owner_data" class="owner">店舗情報</label></li>
+				<li><label for="collabo_list" class="collabo">詳細説明</label></li>
+				<li><label for="owner_data" class="owner">会社情報</label></li>
 			</ul>
 		</div><!--//.head-->
 		<div class="head_dmy"></div>
@@ -175,28 +175,9 @@ console.log(y);
 				if(new_icon_date > update_date){
 					$(".head .type").css('display','none');	
 				}
-						
-				
-				//COMTOPIA流Google MAP表示方法
-				var geocoder = new google.maps.Geocoder();//Geocode APIを使います。
-				var address = "大阪市久太郎町";
-				geocoder.geocode({'address': address,'language':'ja'},function(results, status){
-					if (status == google.maps.GeocoderStatus.OK){
-						var latlng=results[0].geometry.location;//緯度と経度を取得
-						var mapOpt = {
-										center: latlng,//取得した緯度経度を地図の真ん中に設定
-										zoom: 15,//地図倍率1～20
-										mapTypeId: google.maps.MapTypeId.ROADMAP//普通の道路マップ
-								};
-						var map = new google.maps.Map(document.getElementById('google_map'),mapOpt);
-						var marker = new google.maps.Marker({//住所のポイントにマーカーを立てる
-							position: map.getCenter(),
-							map: map
-						});
-					}else{
-						//alert("Geocode was not successful for the following reason: " + status);
-					}
-				});	
+
+				//検索用に一旦住所格納		
+				$('.copy_address').text(shop_info.address1+shop_info.address2);
 				
 			}
 		});
@@ -226,5 +207,37 @@ console.log(y);
 					</li>
 	</div>	
 
+	<div class="copy_address" style="display:none;"></div>
+	
 
+<script type="text/javascript">
 
+//タブクリックでgoogleマップ表示
+$('.owner').on('click',function(){
+	
+		var address = $('.copy_address').text();
+		//console.log(address);
+		var geocoder = new google.maps.Geocoder();//Geocode API
+		
+		geocoder.geocode({'address': address,'language':'ja'},function(results, status){
+			if (status == google.maps.GeocoderStatus.OK){
+				var latlng=results[0].geometry.location;//緯度と経度を取得
+				var mapOpt = {
+								center: latlng,//取得した緯度経度を地図の真ん中に設定
+								zoom: 15,//地図倍率1～20
+								mapTypeId: google.maps.MapTypeId.ROADMAP//普通の道路マップ
+						};
+				var map = new google.maps.Map(document.getElementById('google_map'),mapOpt);
+				var marker = new google.maps.Marker({//住所のポイントにマーカーを立てる
+					position: map.getCenter(),
+					map: map
+				});
+				
+			}else{
+				//alert("Geocode was not successful for the following reason: " + status);
+			}
+		});
+				
+});
+
+</script>

@@ -151,6 +151,8 @@ if(isset($alert))
 	<?php
 	}
 	?>
+<!--	
 	<div class="right mb10">
 		<?php echo $this->Html->link("一覧情報をcsv出力",array("controller"=>"freepage","action"=>"dataexport"),array("class"=>"buttons")); ?>
 	</div>
+-->

@@ -114,6 +114,7 @@ class EmergencyController extends AppController{
 			$post=$this->request->data;
 
 			unset($this->Contents->validate['category_id']);
+			unset($this->Contents->validate['district_id']);
 			unset($this->Contents->validate['postnumber']);
 			unset($this->Contents->validate['address1']);
 			unset($this->Contents->validate['address2']);
@@ -124,7 +125,12 @@ class EmergencyController extends AppController{
 				try{
 					
 								$this->Contents->begin();
-								
+									
+								$cid = array(
+									"category_id" => "0",
+								);
+								$post["Contents"]=array_merge($post["Contents"],$cid);
+
 								//詳細情報をJSON化して登録・更新
 								$caption=json_encode(array(
 									"ttl1"=>$post["Contents"]["ttl1"],

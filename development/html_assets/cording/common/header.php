@@ -55,6 +55,7 @@ if(!@$nohead){
 				<div class="area_list">
 				<!--js処理-->
 				</div>
+			</div>	
 		</div><!--//.window-->
 	</div>
 	<div class="header_dmy"></div>

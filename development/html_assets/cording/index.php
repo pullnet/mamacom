@@ -84,8 +84,6 @@ $(function(){
 					var today_date =new Date();
 					var new_icon_date = today_date.getTime() - 1555200000;
 					var update_date = Date.parse(result[i]["Information"].post_date);
-					
-					console.log(update_date,new_icon_date);
 				
 					if(new_icon_date < update_date){
 						$(".copy_base_info span").addClass('icon_new');	

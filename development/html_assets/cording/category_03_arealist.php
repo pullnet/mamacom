@@ -1,10 +1,8 @@
-
-
 <?php $title="ライブラリの検索結果";?>
 <?php include("common/header.php"); ?>
 
 <div class="wrapper">
-	<a href="javascript:history.back();"><h2 class="mtitle">ママ求人</h2></a>
+	<a href="category_03.php"><h2 class="mtitle">ママ求人</h2></a>
 	<h2 class="subttl m10"><!--js処理--></h2>
 	<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 
@@ -14,13 +12,8 @@
 	<!--//.contents_area-->
 	
 	<div class="pager mt10 ">
-		<ul class="float">
-			<li class="active"> <a href="#">1</a> </li>
-			<li class=""> <a href="#">2</a> </li>
-			<li class=""> <a href="#">3</a> </li>
-			<li class=""> <a href="#">4</a> </li>
-			<li class=""> <a href="#">5</a> </li>
-			<li><a href="#">&gt;</a></li>
+		<ul class="float pager_area">
+
 		</ul>
 	</div><!--//.wrapper-->
 </div>
@@ -31,8 +24,7 @@
 <script type="text/javascript">
 $(function(){
 
-
-	//パラメータから地区ID取得
+	//ＵＲＬパラメータから地区ID取得とページ番号取得
 	var arg  = new Object;
 	url = location.search.substring(1).split('&');
 	for(i=0; url[i]; i++) {
@@ -40,7 +32,13 @@ $(function(){
 		arg[k[0]] = k[1];
 	}
 	var ditrict_id = arg.id;
-		
+	
+	if('page' in arg){
+		var page_num = arg.page;
+	}else{
+		var page_num = 1;
+	}
+	
 		
 	//地区の処理
 	var url_method="category/ditrict_name";
@@ -56,6 +54,7 @@ $(function(){
 			},
 			success:function(data){
 				var result=JSON.parse(data);
+				//console.log(result[0].name);
 				
 				$(".subttl").text(result[0].name);
 				
@@ -77,18 +76,16 @@ $(function(){
 			data:{
 				send_token:token,
 				id:ditrict_id,
-				cid:"2",//カテゴリー指定
+				cid:"2",					//カテゴリー指定【個別設定】
+				page:page_num,
 			},
 			success:function(data){
-				
-				console.log("test");
 				
 				var result=JSON.parse(data);
 				console.log(result);
 				
-				var item_count = Object.keys(result).length;				
-			
-			
+				
+				var item_count = Object.keys(result).length - 4;				
 			
 				for(var i = 0; i < item_count; i++){		
 					//一部Jsonパース
@@ -107,7 +104,66 @@ $(function(){
 					$('.contents_area').append($(".copy_base").html());
 					
 				}
+
+				//ページャー処理
+				$(".serch_result_text b").text("全 "+result.totalcount+" 件");
+				$(".serch_result_text span").text("-うち"+item_count+"件表示-");
+
+				if(result.totalpage>1){
+
+						if(page_num!=1){
+							$('.copy_pager a').html("&lt;");
+							$(".copy_pager *[content_link]").attr("href","category_03_arealist.php"+"?id="+ditrict_id+"&page="+ (parseInt(page_num)-1) );
+							
+							$('.pager_area').append($(".copy_pager").html());	
+						}
+										
+						//表示はページャの5個まで
+						if(page_num>2){
+							if(result.totalpage-page_num+1 > 3){var view_limit = 3;}else{var view_limit = result.totalpage-page_num+1;}
+						}
+						else if(page_num>1){
+							if(result.totalpage-page_num+1 > 4){var view_limit = 4;}else{var view_limit = result.totalpage-page_num+1;}
+						}
+						else{
+							if(result.totalpage-page_num+1 > 5){var view_limit = 5;}else{var view_limit = result.totalpage-page_num+1;}
+						}
 						
+						if(page_num>2){
+							
+							$('.copy_pager a').html( (parseInt(page_num)-2) );
+							$(".copy_pager *[content_link]").attr("href","category_03_arealist.php"+"?id="+ditrict_id+"&page="+ (parseInt(page_num)-2) );
+							$('.pager_area').append($(".copy_pager").html());
+	
+						}
+						if(page_num>1){
+							
+							$('.copy_pager a').html( (parseInt(page_num)-1) );
+							$(".copy_pager *[content_link]").attr("href","category_03_arealist.php"+"?id="+ditrict_id+"&page="+ (parseInt(page_num)-1) );
+							$('.pager_area').append($(".copy_pager").html());
+	
+						}						
+						
+						for(i=0;i<view_limit; i++){
+						
+							if(i==0){  $('.copy_pager li').addClass("active");  }
+							else{  $('.copy_pager li').removeClass("active");  }
+							
+							$('.copy_pager a').html( (parseInt(page_num)+i) );
+							$(".copy_pager *[content_link]").attr("href","category_03_arealist.php"+"?id="+ditrict_id+"&page="+ (parseInt(page_num)+i) );
+							
+							$('.pager_area').append($(".copy_pager").html());				
+						}
+						
+						if( page_num < result.totalpage){
+							$('.copy_pager a').html("&gt;");
+							$(".copy_pager *[content_link]").attr("href","category_03_arealist.php"+"?id="+ditrict_id+"&page="+ (parseInt(page_num)+1) );
+							
+							$('.pager_area').append($(".copy_pager").html());	
+						}
+						
+				}	
+	
 			}
 		});
 	}
@@ -115,7 +171,6 @@ $(function(){
 		view_error_page();
 	}	
 	
-
 });
 </script>
 
@@ -135,4 +190,25 @@ $(function(){
 		</div>
 		<!--//.item-->
 	</div>
+
+	<div class="copy_pager" style="display:none;">
+						<li class="pager"><a content_link></a> </li>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

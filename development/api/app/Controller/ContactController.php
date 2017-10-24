@@ -72,17 +72,6 @@ class ContactController extends AppController{
 					"errors"=>"",
 				);
 				
-				/*postメモ
-				post_subject:post_subject,
-				post_name1:post_name1,
-				post_name2:post_name2,
-				post_name3:post_name3,
-				post_name4:post_name4,								
-				post_mail:post_mail,
-				post_text:post_text,
-				*/
-
-
 				$s_mail = $post["post_mail"];
 				$s_name = $post["post_name1"].' '.$post["post_name2"].'様';
 				$f_name = $post["post_name3"].' '.$post["post_name4"].'様';
@@ -116,18 +105,18 @@ $mail_text=
 それまでしばらくお待ちください。
 
 
-お名前:'.$s_name.'
+お名前:【 '.$s_name.' 】
 
-お名前(フリガナ):'.$f_name.'
+お名前(フリガナ):【 '.$f_name.' 】
 
-連絡先メールアドレス:'.$post["post_mail"].'
+連絡先メールアドレス:【 '.$post["post_mail"].' 】
 
 
 お問い合わせ件名:
-'.$post["post_subject"].'
+【 '.$post["post_subject"].' 】
 
 お問い合わせ内容:
-'.$post["post_text"].'
+【 '.$post["post_text"].' 】
 
 
 --------------------------------------------------------------------------
@@ -162,19 +151,18 @@ $mail_text=
 ご対応よろしくお願い申し上げます。
 
 
+お名前:【 '.$s_name.' 】
 
-お名前:'.$s_name.'
+お名前(フリガナ):【 '.$f_name.' 】
 
-お名前(フリガナ):'.$f_name.'
-
-連絡先メールアドレス:'.$post["post_mail"].'
+連絡先メールアドレス:【 '.$post["post_mail"].' 】
 
 
 お問い合わせ件名:
-'.$post["post_subject"].'
+【 '.$post["post_subject"].' 】
 
 お問い合わせ内容:
-'.$post["post_text"].'
+【 '.$post["post_text"].' 】
 
 
 --------------------------------------------------------------------------

@@ -11,8 +11,52 @@ if(isset($alert))
 <div class="right mb10">
 	<?php echo $this->Html->link("コンテンツ新規登録",array("controller"=>"contents","action"=>"edit"),array("class"=>"buttons")); ?>
 </div>
+
+<div class="search">
+	<input type="checkbox" id="shdk" style="display:none" <?php if(@$this->request->query){ echo "checked"; } ?>>
+	<label for="shdk" class="toggle">検索フォーム</label>
+	<div class="window">
+			<?php echo $this->Form->create(null,array(
+				"type"=>"get",
+				"url"=>array("controller"=>"contents","action"=>"index",$page),
+				"inputDefaults"=>array(
+					"div"=>false,
+					"label"=>false,
+					"legend"=>false,
+					"required"=>false,
+				),
+			));
+			?>
+			<table cellspacing="0" cellpadding="0" class="mb20">
+			<tr>
+				<th>キーワード検索</th>
+				<td>
+					<?php echo $this->Form->input("keyword",array("value"=>@$this->request->query["keyword"])); ?>
+				</td>
+			</tr>
+			<tr>
+				<th>カテゴリー</th>
+				<td>
+					<?php echo $this->Form->select("category",$category_list,array("class"=>"short","empty"=>"---","value"=>@$this->request->query["category"])); ?>
+				</td>
+			</tr>
+			<tr>
+				<th>地区</th>
+				<td>
+					<?php echo $this->Form->select("district",$district_list,array("class"=>"short","empty"=>"---","value"=>@$this->request->query["district"])); ?>
+				</td>
+			</tr>			
+			</table>
+			<div class="center">
+				<?php echo $this->Form->submit("検索する",array("div"=>false,"class"=>"buttons")); ?>
+			</div>
+		<?php echo $this->Form->end(); ?>
+	</div>
+</div><!--//.search-->
+
+
 <p class="h3">全<?php echo $totalcount; ?>件</p>
-<p class="mb10">(<?php echo $page; ?>P/<?php echo $totalpage; ?>P)</p>
+<!--<p class="mb10">(<?php echo $page; ?>P/<?php echo $totalpage; ?>P)</p>-->
 
 	<table cellspacing="0" cellpadding="0" class="list mb20">
 	<tr>
@@ -24,7 +68,8 @@ if(isset($alert))
 		<th class="minishort"></th>
 	</tr>
 	<?php
-	$count=$limit*($page-1);
+	//$count=$limit*($page-1);
+	$count=1;
 	foreach($result as $r_){
 		$count++;
 	?>
