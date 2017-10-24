@@ -45,7 +45,7 @@ echo $this->Form->hidden("id");
 			</td>
 		</tr>
 		<tr>
-			<th>地区<span class="required_red">[必須]</span></th>
+			<th>地区<span class="required_red"></span></th>
 			<td>
 				<?php echo $this->Form->select("district_id",$district_list,array("class"=>"long","empty"=>"----","required"=>false)); ?>
 				<?php echo $this->Form->error("district_id"); ?>

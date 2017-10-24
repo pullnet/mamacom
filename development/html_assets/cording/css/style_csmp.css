@@ -703,7 +703,7 @@ input.buttons{
 }
 
 .pager .float li a {
-    padding: 3px 10px;
+    padding: 3px 6px;
     font-size: 15px;
     display: block;
     margin-right: 5px;
@@ -1763,22 +1763,27 @@ margin-left:7px;
 /*問い合わせ*/
 
 .lp_contact .stitle{
-    background: #FF6486;
-    color: #FFF;
-    font-weight: normal;
-    border:none;
-    font-size: 16px;
+  background: #FF6486;
+  color: #FFF;
+  font-weight: normal;
+  border:none;
+  font-size: 16px;
 	margin-bottom:10px;
 }
 .lp_contact table tr th, table tr td {
-    display: block;
-    padding: 0px;
-    width: auto;
-    border: none;
+  display: block;
+  padding: 0px;
+  width: auto;
+  border: none;
 	background-color:#FFF;
 	padding:5px 10px;
 	text-align:left;	
 }
+/*
+.category_01 table tr th, table tr td {
+  display: table-cell;
+}
+*/
 .lp_contact table tr th.need {
     position: relative;
     padding-right: 45px;
@@ -1831,7 +1836,7 @@ margin-left:7px;
 	padding:10px 0 0;
 	font-size:20px;	
 }
-.category_01 .mtitle::after {
+.category_01 .mtitle::after{
     position: absolute;
     content: "";
     display: block;
@@ -1852,7 +1857,7 @@ margin-left:7px;
 	margin-left:6px;
 }
 .category_01 .item{
-	padding:10px 10px 10px 10px;
+	padding:5px 10px 10px 10px;
 }
 .category_01 .item:nth-child(1){
 	padding:15px 10px 10px 10px;
@@ -1863,24 +1868,25 @@ margin-left:7px;
 .category_01 .bs .l_block{
 	display:inline-block;
 	vertical-align:top;
-	vertical-align:top;
-	width:30%;
-	margin:0 0 0 3%;
+	width:100%;
+	/*width:25%;*/
+	/*margin:0 0 0 3%;*/
 }
 .category_01 .bs .r_block{
 	display:inline-block;
 	vertical-align:top;
-	width:63%;
+	width:100%;
+	/*width:67%;*/
 }
 .category_01 .s00{
-	height:90px;
-	background-color:#CCC;
-	overflow:hidden;
-	background-size:cover;
-	background-position:center;
+}
+.category_01 .s00 img{
+	width:80px;
+	height:80px;
+	margin-right: 5px;
 }
 .category_01 .buttons.f25{
-	height:70px;
+	height:80px;
 	line-height:1.3;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #2FA1BE), color-stop(0.00, #51BBD2));
 	background: -webkit-linear-gradient(#51BBD2, #2FA1BE);
@@ -1890,25 +1896,25 @@ margin-left:7px;
 	background: linear-gradient(#51BBD2, #2FA1BE);
 	border:none;
 	margin-bottom:8px;
-	padding:12px 0 0px;
+	padding:15px 0 0px;
 	position:relative;
 }
 
 .category_01 .buttons.f25 span:after{
 	position:absolute;
 	display:block;
-	top:67%;
+	top:65%;
 	left:50%;
 	content:"";
-	width:160px;
+	width:174px;
 	height:20px;
-	margin-left:-80px;
+	margin-left:-87px;
 	background-image:url(../images/tel_tap.png);
 	background-repeat:no-repeat;
 	background-size:contain;
 }
 .category_01 .buttons.f25 span{
-	font-size:23px !important;
+	font-size:24px !important;
 	color:#FFF;
 	margin-top:10px;
 }
@@ -1931,7 +1937,7 @@ margin-left:7px;
 	margin-bottom:5px;
 }
 .category_01 .bs h3{
-	font-size:18px;
+	font-size:17px;
 	line-height:1.3;
 	text-align:center;
 	color:#FFF;
@@ -1940,7 +1946,7 @@ margin-left:7px;
 }
 .category_01 .item .text{
 	padding:3%;
-	font-size:14px;
+	font-size:13px;
 	line-height:1.4;
 }
 .category_01 .red{
@@ -1953,7 +1959,7 @@ margin-left:7px;
 .category_01 .subt span{
 	display:inline-block;
 	vertical-align:top;
-	width:70%;
+	width:80%;
 	font-size:11px;
 }
 .category_01 .subt span.colon{
@@ -2100,4 +2106,8 @@ color:#950;
 .content_detail .tell_time{
 	/*margin-left:-7px;*/
 }
-
+/*
+.contents_area .item:nth-last-child(1){
+    border-bottom:none;
+}
+*/

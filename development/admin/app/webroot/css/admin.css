@@ -183,7 +183,7 @@ label{cursor:pointer;}
 /* content */
 .content
 {
-padding:20px 15px;
+padding:20px 35px;
 display:table;
 width:100%;
 }
@@ -1013,7 +1013,7 @@ table.list tr th.short{
 }
 .header_gnavi ul li{
 	float:left;
-	width:33.3%;
+	width:25%;
 }
 .header_gnavi ul li label{
 	display:block;

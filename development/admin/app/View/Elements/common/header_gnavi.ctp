@@ -20,17 +20,23 @@
 				<label>緊急お役立ち管理</label>
 				<ul class="sub2">
 					<li><?php echo $this->Html->link("緊急お役立ち一覧",array("controller"=>"emergency","action"=>"index")); ?></li>
-					<li><?php echo $this->Html->link("緊急お役立ち新規登録",array("controller"=>"Emergency","action"=>"edit")); ?></li>
+					<li><?php echo $this->Html->link("緊急お役立ち新規登録",array("controller"=>"emergency","action"=>"edit")); ?></li>
 				</ul>
 			</li>
+			<li>
+				<label>お知らせ管理</label>
+				<ul class="sub2">
+					<li><?php echo $this->Html->link("緊急お役立ち一覧",array("controller"=>"information","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("緊急お役立ち新規登録",array("controller"=>"information","action"=>"edit")); ?></li>
+				</ul>
+			</li>	
 			<li>
 				<label>その他の管理</label>
 				<ul class="sub2">
 					<li><?php echo $this->Html->link("サイト基本設定",array("controller"=>"hpset","action"=>"basic")); ?></li>
 					<li><?php echo $this->Html->link("管理アカウント一覧",array("controller"=>"account","action"=>"index")); ?></li>
-					<li><?php echo $this->Html->link("カテゴリー管理",array("controller"=>"category","action"=>"index")); ?></li>
-					<li><?php echo $this->Html->link("ページ管理",array("controller"=>"freepage","action"=>"index")); ?></li>										
-					<li><?php echo $this->Html->link("お知らせ管理",array("controller"=>"information","action"=>"index")); ?></li>	
+					<li><?php echo $this->Html->link("カテゴリー・地区管理",array("controller"=>"category","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("フリーページ管理",array("controller"=>"freepage","action"=>"index")); ?></li>
 				</ul>
 			</li>
 		</ul>
