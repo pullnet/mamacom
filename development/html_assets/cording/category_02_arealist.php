@@ -2,7 +2,7 @@
 <?php include("common/header.php"); ?>
 
 <div class="wrapper">
-	<a href="category_02.php"><h2 class="mtitle">アレルギー対応店</h2></a>
+	<a href="javascript:history.back();"><h2 class="mtitle">アレルギー対応店</h2></a>
 	<h2 class="subttl m10"><!--js処理--></h2>
 	<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 
