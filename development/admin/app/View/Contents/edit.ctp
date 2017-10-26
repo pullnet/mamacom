@@ -92,7 +92,7 @@ echo $this->Form->hidden("id");
 						$img_url=Router::url("/",true)."buffer/".date("Ymd")."/".@$this->request->data["Contents"]["img_file_sub1"];
 					}
 					else{
-						$img_url=$domain_item."app/webroot/Content/".@$find_additem0["Additems"]["content"];
+						$img_url=$domain_item."app/webroot/Content/".@$find_additem1["Additems"]["content"];
 					}
 					echo $this->Html->image($img_url,array("style"=>"width:150px;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub1")); ?>
 				</div>
@@ -134,7 +134,7 @@ echo $this->Form->hidden("id");
 						$img_url=Router::url("/",true)."buffer/".date("Ymd")."/".@$this->request->data["Contents"]["img_file_sub3"];
 					}
 					else{
-						$img_url=$domain_item."app/webroot/Content/".@$find_additem2["Additems"]["content"];
+						$img_url=$domain_item."app/webroot/Content/".@$find_additem3["Additems"]["content"];
 					}
 					echo $this->Html->image($img_url,array("style"=>"width:150px;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub3")); ?>
 				</div>
@@ -155,7 +155,7 @@ echo $this->Form->hidden("id");
 						$img_url=Router::url("/",true)."buffer/".date("Ymd")."/".@$this->request->data["Contents"]["img_file_sub4"];
 					}
 					else{
-						$img_url=$domain_item."app/webroot/Content/".@$find_additem2["Additems"]["content"];
+						$img_url=$domain_item."app/webroot/Content/".@$find_additem4["Additems"]["content"];
 					}
 					echo $this->Html->image($img_url,array("style"=>"width:150px;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub4")); ?>
 				</div>
@@ -176,7 +176,7 @@ echo $this->Form->hidden("id");
 						$img_url=Router::url("/",true)."buffer/".date("Ymd")."/".@$this->request->data["Contents"]["img_file_sub5"];
 					}
 					else{
-						$img_url=$domain_item."app/webroot/Content/".@$find_additem2["Additems"]["content"];
+						$img_url=$domain_item."app/webroot/Content/".@$find_additem5["Additems"]["content"];
 					}
 					echo $this->Html->image($img_url,array("style"=>"width:150px;display:block;","onerror"=>'this.src="'.Router::url("/",true).'img/notimage.png"',"id"=>"thumbnail_image_sub5")); ?>
 				</div>

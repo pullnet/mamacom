@@ -102,6 +102,6 @@ $.fn.Formdat=function(){
 
 //エラーページ表示処理（仮）
 function view_error_page(){
-	console.log("error_page");	
+	console.log("error_page");
+	location.reload();
 }
-

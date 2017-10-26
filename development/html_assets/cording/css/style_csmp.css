@@ -2000,6 +2000,7 @@ margin-left:7px;
 	top:26px;
 	background-color:#FFF;
 	width:100%;
+	z-index:2;
 }
 .content_detail .head .type {
     position: absolute;
@@ -2028,7 +2029,7 @@ margin-left:7px;
 }
 .content_detail .head .tab li{
 	width:30%;
-	margin:0 1.65% 10px;
+	margin:0 1.65% 0px;
 }
 .content_detail .head .tab li label{
 	display:block;

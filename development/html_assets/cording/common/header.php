@@ -81,7 +81,11 @@ $(function(){
 				
 				var result=JSON.parse(data);
 				JSession.write("token",result.access_token);
-
+				
+				if('access_token' in result){
+					location.reload() ;
+				}
+				
 			}
 		});
 	}

@@ -55,7 +55,7 @@ $(function(){
 	var url_method="information/information_list";
 	var token=JSession.read("token");
 	
-	if(token!=null){
+	//if(token!=null){
 		$.ajax({
 			url:API.domain+url_method,
 			type:"post",
@@ -99,10 +99,10 @@ $(function(){
 
 			}
 		});
-	}
-	else{
-		view_error_page();
-	}
+	//}
+	//else{
+	//	view_error_page();
+	//}
 	
 
 });

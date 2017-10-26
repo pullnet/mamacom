@@ -1,6 +1,8 @@
 <?php $title="コラボ詳細";?>
 <?php include("common/header.php"); ?>
 
+
+
 <div class="wrapper">
 
 	<div class="content_detail">
@@ -52,10 +54,9 @@
 				<p class="s5 tell_num"></p>
 				<p class="s6 tell_time mb20"></p>
 				<p class="s7 mb20"><a href=""><img src="images/tel_contact.jpg"></a></p>
-				
 				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk1EWl9nxBgzZS5FeiMzbQtjjlChviuPU" type="text/javascript"></script>
 				<div id="google_map" style="width:100%;height:300px"></div>	
-		
+
 			</div>
 
 		</div>
@@ -160,15 +161,28 @@ console.log(y);
 					}
 				}
 				
-
 				//店舗情報書き換え
-				$(".s2").text("〒"+shop_info.postnumber.substr(0,3)+"-"+shop_info.postnumber.substr(3,4));
-				$(".s3").text(shop_info.address1+shop_info.address2);
-				$(".s5").text(shop_info.tel);
-				$(".s6").text(shop_info.shop_text);	
+				if('address2' in shop_info){
+					$(".s2").text("〒"+shop_info.postnumber.substr(0,3)+"-"+shop_info.postnumber.substr(3,4));
+					$(".s3").text(shop_info.address1+shop_info.address2);				
+				}
+				else{
+					$('.s1 , .s2 , .s3 ').css('display','none');
+				}
+
+				if('tel' in shop_info){
+					$(".s5").text(shop_info.tel);				
+					var tel_number = shop_info.tel.replace( /-/g , "" ) ;　tel_number = tel_number.replace( /─/g , "" ) ;　tel_number = tel_number.replace( /一/g , "" ) ;
+					var tel_number = shop_info.tel;
+					$(".s7 a").attr('href','tel:'+tel_number);
+				}
+				else{
+					$('.s4 , .s5 , .s6 , .s7 ').css('display','none');
+				}
 				
-				var tel_number = shop_info.tel.replace( /-/g , "" ) ;　tel_number = tel_number.replace( /─/g , "" ) ;　tel_number = tel_number.replace( /一/g , "" ) ;
-				$(".s7 a").attr('href','tel:'+tel_number);	
+				if('shop_text' in shop_info){
+					$(".s6").text(shop_info.shop_text);	
+				}
 				
 				
 				//newアイコン処理　　　　　
@@ -220,6 +234,7 @@ console.log(y);
 $('.owner').on('click',function(){
 	
 		var address = $('.copy_address').text();
+		
 		//console.log(address);
 		var geocoder = new google.maps.Geocoder();//Geocode API
 		

@@ -155,16 +155,30 @@ console.log(y);
 						
 					}
 				}
-				
 
-				//店舗情報書き換え
-				$(".s2").text("〒"+shop_info.postnumber.substr(0,3)+"-"+shop_info.postnumber.substr(3,4));
-				$(".s3").text(shop_info.address1+shop_info.address2);
-				$(".s5").text(shop_info.tel);
-				$(".s6").text(shop_info.shop_text);	
 				
-				var tel_number = shop_info.tel.replace( /-/g , "" ) ;　tel_number = tel_number.replace( /─/g , "" ) ;　tel_number = tel_number.replace( /一/g , "" ) ;
-				$(".s7 a").attr('href','tel:'+tel_number);	
+				//店舗情報書き換え
+				if('address2' in shop_info){
+					$(".s2").text("〒"+shop_info.postnumber.substr(0,3)+"-"+shop_info.postnumber.substr(3,4));
+					$(".s3").text(shop_info.address1+shop_info.address2);				
+				}
+				else{
+					$('.s1 , .s2 , .s3 ').css('display','none');
+				}
+
+				if('tel' in shop_info){
+					$(".s5").text(shop_info.tel);				
+					var tel_number = shop_info.tel.replace( /-/g , "" ) ;　tel_number = tel_number.replace( /─/g , "" ) ;　tel_number = tel_number.replace( /一/g , "" ) ;
+					var tel_number = shop_info.tel;
+					$(".s7 a").attr('href','tel:'+tel_number);
+				}
+				else{
+					$('.s4 , .s5 , .s6 , .s7 ').css('display','none');
+				}
+				
+				if('shop_text' in shop_info){
+					$(".s6").text(shop_info.shop_text);	
+				}
 				
 				//newアイコン処理　　　　　
 				//更新月が1か月経過でアイコンを消す（1か月：155520000ミリ秒）
