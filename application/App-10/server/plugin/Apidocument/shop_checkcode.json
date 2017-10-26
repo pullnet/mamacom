@@ -1,0 +1,43 @@
+<?php
+$params=array(
+	"name"=>"shop_checkcode",
+	"category"=>"shop setting",
+	"title"=>"店舗コード使用確認",
+	"endpoint"=>$this->params["root"]."a1/shop_checkcode",
+	"caption"=>"入力した店舗コードの使用可否を確認。",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"code_after"=>array(
+			"name"=>"店舗コード名",
+			"type"=>"text",
+			"required"=>true,
+		),
+		"code_before"=>array(
+			"name"=>"店舗コード名(変更前)",
+			"type"=>"text",
+			"caption"=>"すでに店舗登録されている場合に必要",
+		),
+	),
+	"Response"=>array(
+		"enabled"=>array(
+			"name"=>"判定結果",
+			"type"=>"select",
+			"caption"=>"true:使用可能,false:使用不可",
+		),
+		"reason"=>array(
+			"name"=>"判定理由",
+			"caption"=>"no shop_code:店舗コードが入力されていない,
+			newly usable shop_code:この店舗コードは使用可能,
+			already shop_code:すでに店舗コードが使われているため使用不可,
+			currently using shop_code:現在の店舗コード",
+		),
+	),
+);
+
+?>

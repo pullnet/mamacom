@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style_type1.css">
+<link rel="stylesheet" type="text/css" href="css/style_type2.css">
+<link rel="stylesheet" type="text/css" href="css/style_typeapp.css">
+<link rel="stylesheet" type="text/css" href="css/style_typeapp_responsive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/api-sample.js"></script>
+</head>
+<body id="XXXXXXXXX">
+<div class="body">
+<input type="checkbox" id="alert-message" class="hidden">
+<div class="alert-message">
+	<p></p>
+	<label for="alert-message" class="close">×</label>
+</div>
+<header>
+	<label for="side_menu" class="menu_btn">▼</label>
+	<div class="title">会員仮登録完了</div>
+</header>
+<div class="sidemenu">
+	<input type="checkbox" id="side_menu" class="hidden">
+	<label for="side_menu" class="bsj"></label>
+	<div class="menu">
+		<div class="m10">
+			<div class="auth">
+				<div class="user">
+					<img src="" class="image image_usericon" auth-usericon>
+					<h3 class="username" auth-username></h3>
+				</div>
+				<p><a href="index.html">TOPページ</a></p>
+				<p><a href="uac_setting.html">会員情報変更</a></p>
+				<p><label class="btn_logout">ログアウト</label></p>
+			</div>
+			<div class="no_auth">
+				<p>まだログインしていないです....</p>
+				<p><a href="index.html">TOPページ</a></p>
+				<p><a href="login.html">ログイン</a></p>
+				<p><a href="user_regist_step1.html" class="userregist_btn">新規会員登録</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+
+	var url_get_token="token/get_token";
+	var token=JSession.read("token_"+API.authcode);
+	if(token==null){
+		$.ajax({
+			url:API.domain+url_get_token,
+			type:"post",
+			data:{
+				service_secret:API.service_secret,
+				lisence_key:API.lisence_key
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+
+				JSession.write("token_"+API.authcode,result.access_token);
+			}
+		});
+	}
+	var authdata=LSession.read("auth_"+API.authcode);
+
+	var url_check_auth="v1a/check_auth";
+	var url_logout="v1a/logout";
+
+	if(authdata!=null){
+		$(".auth").css("display","");
+		$(".no_auth").css("display","none");
+
+		$("*[auth-username]").text(authdata.username);
+		$("*[auth-usericon]").text(authdata.user_icon_path);
+		$("img[auth-usericon]").attr("src",authdata.user_icon_path);
+		$("*[auth-mailaddress]").text(authdata.mailaddress);
+	}
+	else
+	{
+		$(".auth").css("display","none");
+		$(".no_auth").css("display","");
+	}
+
+	//ログアウト
+	$(".btn_logout").on("click",function(){
+
+		$.ajax({
+			url:API.domain+url_logout,
+			type:"post",
+			data:{
+				access_token:JSession.read("token_"+API.authcode)
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+
+				if(result.mode==200){
+					LSession.delete("auth_"+API.authcode);
+					location.href="login.html";
+				}
+			}
+		});
+
+	});
+
+	//新規会員登録前処理(Sessionキャッシュの削除)
+	$(".userregist_btn").on("click",function(){
+		var href=$(this).attr("href");
+
+		JSession.delete("post_cash");
+
+		location.href=href;
+		return false;
+	});
+
+});
+</script>
+<div class="hdmy"></div>
+<div class="body">
+	<form class="submit_form">
+		<input type="hidden" name="service_secret">
+		<input type="hidden" name="lisence_key">
+		<div class="absolute_area">
+			<div class="tr">
+				<div class="t_cell">
+					<div class="m10">
+						<p class="mb20 h3">仮登録が完了しました。<br>
+						次に、仮登録コードを入力してください</p>
+
+						<input type="text" name="code" class="large" placeholder="ここに入れてください">
+						<div class="error-message" name="code"></div>
+						
+						<p class="mt20">入力したら「本登録する」ボタンを押して本登録に進みます</p>
+
+					</div>
+				</div>
+			</div>
+			<div class="tr h50">
+				<div class="t_cell middle">
+					<div class="m5">
+						<input type="submit" value="本登録する" class="buttons add submit_btn">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){
+
+	//URL list..
+	var url_submit="v1a/user_registration";
+	var url_redirect="user_regist_complete.html";
+
+	$(".submit_btn").on("click",function(){
+
+		$(".error-message").removeClass("active").text("");
+
+		var post=$(".submit_form").Formdat();
+		post.access_token=JSession.read("token_"+API.authcode);
+		
+		$.ajax({
+			url:API.domain+url_submit,
+			type:"post",
+			data:post,
+			success:function(data){
+				var result=JSON.parse(data);
+
+				if(result.mode==200){
+					//go next
+					LSession.write("auth_"+API.authcode,result.auth);
+					location.href=url_redirect;
+				}
+				else{
+					if(result.validate){
+						var colums=Object.keys(result.validate);
+						for(var us=0;us<colums.length;us++){
+							$(".error-message[name="+colums[us]+"]").addClass("active").text(result.validate[colums[us]]);
+						}
+						$(".error-message.total").addClass("active").text("入力に誤りがあります。再度ご確認ください");
+					}
+					
+					
+				}
+			}
+		});
+
+
+		return false;
+	});
+
+});
+</script>
+</div><!--//.body-->
+<div id="Modal">
+<div class="basejavar"></div>
+</div>
+</body>
+</html>

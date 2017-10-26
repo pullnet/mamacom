@@ -1,0 +1,26 @@
+<?php
+$params=array(
+	"name"=>"userset_slippinglist",
+	"category"=>"user",
+	"title"=>"会員配送先情報取得",
+	"endpoint"=>$this->params["root"]."a1/userset_slipping",
+	"caption"=>"会員配送先情報を取得するためのAPI",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"id"=>array(
+			"name"=>"配送先情報ID",
+			"type"=>"text",
+		),
+	),
+	"Response"=>array(
+		
+	),
+);
+
+?>

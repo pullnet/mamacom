@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style_type1.css">
+<link rel="stylesheet" type="text/css" href="css/style_type2.css">
+<link rel="stylesheet" type="text/css" href="css/style_typeapp.css">
+<link rel="stylesheet" type="text/css" href="css/style_typeapp_responsive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/api-sample.js"></script>
+</head>
+<body id="XXXXXXXXX">
+<div class="body">
+<input type="checkbox" id="alert-message" class="hidden">
+<div class="alert-message">
+	<p></p>
+	<label for="alert-message" class="close">×</label>
+</div>
+<header>
+	<label for="side_menu" class="menu_btn">▼</label>
+	<div class="title">Table2のリスト</div>
+</header>
+<div class="sidemenu">
+	<input type="checkbox" id="side_menu" class="hidden">
+	<label for="side_menu" class="bsj"></label>
+	<div class="menu">
+		<div class="m10">
+			<div class="auth">
+				<div class="user">
+					<img src="" class="image image_usericon" auth-usericon>
+					<h3 class="username" auth-username></h3>
+				</div>
+				<p><a href="index.html">TOPページ</a></p>
+				<p><a href="uac_setting.html">会員情報変更</a></p>
+				<p><label class="btn_logout">ログアウト</label></p>
+			</div>
+			<div class="no_auth">
+				<p>まだログインしていないです....</p>
+				<p><a href="index.html">TOPページ</a></p>
+				<p><a href="login.html">ログイン</a></p>
+				<p><a href="user_regist_step1.html" class="userregist_btn">新規会員登録</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+
+	var url_get_token="token/get_token";
+	var token=JSession.read("token_"+API.authcode);
+	if(token==null){
+		$.ajax({
+			url:API.domain+url_get_token,
+			type:"post",
+			data:{
+				service_secret:API.service_secret,
+				lisence_key:API.lisence_key
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+
+				JSession.write("token_"+API.authcode,result.access_token);
+			}
+		});
+	}
+	var authdata=LSession.read("auth_"+API.authcode);
+
+	var url_check_auth="v1a/check_auth";
+	var url_logout="v1a/logout";
+
+	if(authdata!=null){
+		$(".auth").css("display","");
+		$(".no_auth").css("display","none");
+
+		$("*[auth-username]").text(authdata.username);
+		$("*[auth-usericon]").text(authdata.user_icon_path);
+		$("img[auth-usericon]").attr("src",authdata.user_icon_path);
+		$("*[auth-mailaddress]").text(authdata.mailaddress);
+	}
+	else
+	{
+		$(".auth").css("display","none");
+		$(".no_auth").css("display","");
+	}
+
+	//ログアウト
+	$(".btn_logout").on("click",function(){
+
+		$.ajax({
+			url:API.domain+url_logout,
+			type:"post",
+			data:{
+				access_token:JSession.read("token_"+API.authcode)
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+
+				if(result.mode==200){
+					LSession.delete("auth_"+API.authcode);
+					location.href="login.html";
+				}
+			}
+		});
+
+	});
+
+	//新規会員登録前処理(Sessionキャッシュの削除)
+	$(".userregist_btn").on("click",function(){
+		var href=$(this).attr("href");
+
+		JSession.delete("post_cash");
+
+		location.href=href;
+		return false;
+	});
+
+});
+</script>
+<div class="hdmy"></div>
+
+<div class="m10">
+	<div class="mb10">
+		<a href="index.html" class="underline">戻る</a>
+	</div>
+	<div class="mb10">
+		<a href="table2_edit.html" class="buttons new btn_new">table2を新規登録</a>
+	</div>
+	<div id="source_listview" class="hidden">
+		<div class="sec" data-id="{table2_id}">
+			<ul class="table">
+				<li style="width:125px;padding-right:10px;"><img src="" class="image image_thumbnail"></li>
+				<li>
+					<p>{table2_createdate}</p>
+					<h3>{table2_name}</h3>
+					<p style="color:#aaa">{table2_colum_a}</p>
+					<p style="color:#aaa">{table2_select_b}</p>
+					<ul class="float colum3">
+						<li><a href="table2_edit.html?id={table2_id}" class="buttons edit">編集</a></li>
+						<li><a href="table2_detail.html?id={table2_id}" class="buttons preview">詳細</a></li>
+						<li><label for="delete_{table2_id}" class="buttons delete">削除</label></li>
+					</ul>
+					<div id="Modal">
+						<input type="checkbox" id="delete_{table2_id}" class="checks">
+						<label></label>
+						<label for="delete_{table2_id}" class="basejavar"></label>
+						<table class="window table dialog">
+						<tr>
+							<td class="hf head h3">
+								Table2の削除
+								<label for="delete_{table2_id}" class="f_right h3">×</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="main top h4">
+								{table2_name}を削除します<br>
+								よろしいですか？
+							</td>
+						</tr>
+						<tr>
+							<td class="hf">
+								<ul class="float">
+									<li><label for="delete_{table2_id}" class="buttons clearbtn">キャンセル</label></li>
+									<li class="f_right">
+										<label class="buttons clearbtn add delete_table2" data-id="{table2_id}">削除する</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="listview table2_listview"></div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+	//URL LIST....
+	var url_list_table2="v1/list_table2";
+	var url_delete_table2="v1/delete_table2";
+
+	//Table2リストの取得
+	var post={
+		access_token:JSession.read("token_"+API.authcode)
+	};
+
+	$.ajax({
+		url:API.domain+url_list_table2,
+		type:"post",
+		data:post,
+		success:function(data){
+			var result=JSON.parse(data);
+
+			var total=Object.keys(result).length;
+			for(var s1=0;s1<total;s1++){
+				set_table2(result[s1].Table2);
+			}
+
+		}	
+	});
+	
+	function set_table2(data){
+
+		$("#source_listview .image_thumbnail").attr("src",data.thumbnail);
+		
+		var source=$("#source_listview").html();
+		source=source.replace(/{table2_id}/g ,data.id);
+		source=source.replace(/{table2_createdate}/g ,data.create_date);
+		source=source.replace(/{table2_name}/g ,data.name);
+		source=source.replace(/{table2_colum_a}/g ,data.colum_a);
+		source=source.replace(/{table2_select_b}/g ,data.select_b);
+		$(".table2_listview").append(source);
+	}
+
+	//Table2の削除
+	$("body").on("click",".delete_table2",function(){
+		var id=$(this).attr("data-id");
+
+		var post={
+			access_token:JSession.read("token_"+API.authcode)
+		};
+
+		$.ajax({
+			url:API.domain+url_delete_table2+"/"+id,
+			type:"post",
+			data:post,
+			success:function(data){
+				var result=JSON.parse(data);
+
+				if(result.mode==200){
+					if(result.message){
+						JSession.write("alert",result.message);
+					}
+					location.href=location.href;
+				}
+			}
+		});
+	});
+
+	//新規作成前処理(Sessionキャッシュの削除)
+	$(".btn_new").on("click",function(){
+		var hrefs=$(this).attr("href");
+
+		JSession.delete("post_cash");
+
+		location.href=hrefs;
+		return false;
+	});
+
+});
+</script>
+
+
+</div><!--//.body-->
+<div id="Modal">
+<div class="basejavar"></div>
+</div>
+</body>
+</html>

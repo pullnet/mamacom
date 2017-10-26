@@ -1,0 +1,40 @@
+<?php
+include_once(Router::url("Model")."AppModel.php");
+class Userregist extends AppModel{
+
+	public $validate=array(
+		"Userregist"=>array(
+			"mailaddress"=>array(
+				"a1"=>array(
+					"rule"=>array("notBlank"),
+					"message"=>"メールアドレスが入力されていません",
+				),
+				"a2"=>array(
+					"rule"=>array("numberSingle"),
+					"message"=>"メールアドレスは半角英数字で入力してください",
+				),
+			),
+			"username"=>array(
+				"a1"=>array(
+					"rule"=>array("notBlank"),
+					"message"=>"ユーザー名が入力されていません",
+				),
+				"a2"=>array(
+					"rule"=>array("numberSingle"),
+					"message"=>"ユーザー名は半角英数字で入力してください",
+				),
+			),
+			"password"=>array(
+				"a1"=>array(
+					"rule"=>array("notBlank"),
+					"message"=>"パスワードが入力されていません",
+				),
+				"a2"=>array(
+					"rule"=>array("numberSingle"),
+					"message"=>"パスワードは半角英数字で入力してください",
+				),
+			),
+		),
+	);
+}
+?>

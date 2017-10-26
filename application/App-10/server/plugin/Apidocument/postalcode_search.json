@@ -1,0 +1,36 @@
+<?php
+$params=array(
+	"name"=>"postalcode_search",
+	"category"=>"basic",
+	"title"=>"郵便番号検索",
+	"endpoint"=>$this->params["root"]."a1/postalcode_search",
+	"caption"=>"入力した郵便番号から所在地を検索。",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"postal_code"=>array(
+			"name"=>"郵便番号",
+			"type"=>"number",
+			"required"=>true,
+			"class"=>"w150",
+		),
+	),
+	"Response"=>array(
+		"locationarea"=>array(
+			"name"=>"都道府県名",
+		),
+		"address1"=>array(
+			"name"=>"市区町村",
+		),
+		"address2"=>array(
+			"name"=>"丁目番地",
+		),
+	),
+);
+
+?>

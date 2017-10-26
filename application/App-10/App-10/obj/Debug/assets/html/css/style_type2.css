@@ -1,0 +1,550 @@
+/* #XXXXXXXXX */
+/* style_2.css */
+/* advanced css */
+
+/*
+style_type2は主にポップアップ表示や簡易アコーディオン、入力フォーム系の
+UI等おもに応用的に使うためのcss用
+(LPページ等でそれほど使用しない場合はこちらを省いてもOK)
+
+2017/4/28
+body以外は全てID名「XXXXXXXXX」の子属性を定義してあるので
+開発案件ごとに別のID名に指定すること。
+(あとこのコメントも消すこと)
+*/
+
+#XXXXXXXXX{}
+
+/*  #swradio */
+#XXXXXXXXX #swradio{
+	display:block;
+}
+#XXXXXXXXX #swradio input[type=radio]{
+	display:none;
+}
+#XXXXXXXXX #swradio label{
+	cursor:pointer;
+	display:inline-block;
+	background:#e0e0e0;
+	padding:5px 10px;
+}
+#XXXXXXXXX #swradio input[type=radio]:checked + label{
+	background:#555;
+	color:#FFF;
+}
+
+/* #swcheck */
+#XXXXXXXXX #swcheck{
+	display:block;
+}
+#XXXXXXXXX #swcheck input[type=checkbox]{
+	display:none;
+}
+#XXXXXXXXX #swcheck label{
+	cursor:pointer;
+	display:inline-block;
+	border-collapse:collapse;
+	background:#e0e0e0;
+	padding:5px 10px;
+}
+#XXXXXXXXX #swcheck input[type=checkbox]:checked + label{
+	background:#555;
+	color:#FFF;
+}
+
+/*　#menustrip */
+#XXXXXXXXX #menustrip{
+	display:block;
+}
+#XXXXXXXXX #menustrip input.mchecks{
+	display:none;
+}
+#XXXXXXXXX #menustrip .menu{
+	display:block;
+	overflow:hidden;
+	height:0px;
+}
+#XXXXXXXXX #menustrip input.mchecks:checked~.menu{
+	height:auto;
+}
+
+/* #Modal */
+#XXXXXXXXX #Modal{
+	display:block;
+}
+#XXXXXXXXX #Modal .window{
+	position:fixed;
+	z-index:-2;
+	background:#FFF;
+	width:90%;
+	height:90%;
+	left:5%;
+	top:5%;
+	opacity:0;
+	overflow:hidden;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-ms-opacity:0;
+	-o-opacity:0;
+}
+#XXXXXXXXX #Modal .basejavar{
+	position:fixed;
+	z-index:-1;
+	opacity:0;
+	background:#000;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow-y:auto;
+}
+#XXXXXXXXX #Modal input.checks{
+	display:none;
+}
+#XXXXXXXXX #Modal input.checks:checked+label~.basejavar,
+#XXXXXXXXX #Modal input.checks:checked+label~.window{
+	z-index:100;
+}
+#XXXXXXXXX #Modal input.checks:checked+label~.window{
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+	animation:Modal_open 0.3s;
+	opacity:1;
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-ms-opacity:1;
+	-o-opacity:1;
+}
+#XXXXXXXXX #Modal input.checks:checked+label~.basejavar{
+	animation:Modal_open_bsj 0.3s;
+	opacity:0.8;
+	-webkit-opacity:0.8;
+	-moz-opacity:0.8;
+	-ms-opacity:0.8;
+	-o-opacity:0.8;
+}
+#XXXXXXXXX #Modal .window{
+	border:none;
+}
+#XXXXXXXXX #Modal .window tr td{
+	padding:5px;
+	border:none;
+}
+#XXXXXXXXX #Modal .window tr .hf{
+	height:50px;
+	padding:5px 10px;
+	background:#113366;
+	color:#fff;
+}
+#XXXXXXXXX #Modal .window tr .hf .buttons{
+	color:#fff;
+	font-weight:normal;
+	border:solid 1px #fff !important;
+	padding:0px 10px;
+}
+#XXXXXXXXX #Modal .window tr .hf.head{
+	position:relative;
+}
+#XXXXXXXXX #Modal .window tr .main{
+	padding:10px 15px;
+	position:relative;
+}
+#XXXXXXXXX #Modal .window tr .main .bs{
+	position:absolute;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow:auto;
+}
+#XXXXXXXXX #Modal .window.dialog{
+	height:300px;
+	top:50%;
+	margin-top:-150px;
+}
+
+#XXXXXXXXX #Modalslide .checks{
+	display:none;
+}
+#XXXXXXXXX #Modalslide .window{
+	position:fixed;
+	width:100%;
+	height:100%;
+	right:-100%;
+	top:0px;
+	z-index:100;
+	background:#fff;
+	transition-duration:0.3s;
+	-webkit-transition-duration:0.3s;
+	-moz-transition-duration:0.3s;
+	-ms-transition-duration:0.3s;
+	-o-transition-duration:0.3s;
+
+}
+
+#XXXXXXXXX #Modalslide .window tr td{
+	border:none;
+}
+#XXXXXXXXX #Modalslide .window tr .hf{
+	height:50px;
+	padding:5px 10px;
+	background:#009;
+	color:#FFF;
+	position:relative;
+}
+#XXXXXXXXX #Modalslide .window tr .main{
+	vertical-align:top;
+}
+#XXXXXXXXX #Modalslide .window tr .main{
+	padding:10px 15px;
+	position:relative;
+}
+#XXXXXXXXX #Modalslide .window tr .main .bs{
+	position:absolute;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow:auto;
+}
+#XXXXXXXXX #Modalslide .window tr .hf .buttons{
+	color:#fff;
+	background:none;
+	border:solid 1px #fff !important;
+	padding:0px 10px;
+	font-weight:normal;
+}
+#XXXXXXXXX #Modalslide .checks:checked+.window{
+	right:0px;
+}
+
+
+
+@keyframes Modal_open{
+	0%{
+		opacity:0;
+		-webkit-opacity:0;
+		-moz-opacity:0;
+		-ms-opacity:0;
+		-o-opacity:0;
+	}
+	100%{
+		opacity:1;
+		-webkit-opacity:1;
+		-moz-opacity:1;
+		-ms-opacity:1;
+		-o-opacity:1;
+	}
+}
+@keyframes Modal_open_bsj{
+	0%{
+		opacity:0;
+		-webkit-opacity:0;
+		-moz-opacity:0;
+		-ms-opacity:0;
+		-o-opacity:0;
+	}
+	100%{
+		opacity:0.8;
+		-webkit-opacity:0.8;
+		-moz-opacity:0.8;
+		-ms-opacity:0.8;
+		-o-opacity:0.8;
+	}
+}
+
+/* #popup_mini */
+#XXXXXXXXX #popup_mini{
+	display:block;
+}
+#XXXXXXXXX #popup_mini .window{
+	margin-top:18px;
+	display:none;
+	background:#FFF;
+	position:absolute;
+	z-index:10;
+	border:solid 1px #ccc;
+}
+#XXXXXXXXX #popup_mini .window:before{
+	width:25px;
+	margin-left:15px;
+	height:25px;
+	content:"";
+	background:#FFF;
+	border:solid 1px #ccc;
+	display:block;
+	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	position:absolute;
+	margin-top:-12.5px;
+	z-index:-1;
+	border-right:none;
+	border-bottom:none;
+}
+#XXXXXXXXX #popup_mini input.popupcheck{
+	display:none;
+}
+#XXXXXXXXX #popup_mini input.popupcheck:checked~.window{
+	display:block;
+	animation:popupmini_open 0.3s;
+}
+
+
+@keyframes popupmini_open{
+	0%{
+		opacity:0;
+		-webkit-opacity:0;
+		-moz-opacity:0;
+		-ms-opacity:0;
+		-o-opacity:0;
+	}
+	100%{
+		opacity:1;
+		-webkit-opacity:1;
+		-moz-opacity:1;
+		-ms-opacity:1;
+		-o-opacity:1;
+	}
+}
+
+
+/* #popup_alert */
+#XXXXXXXXX #popup_alert{
+	display:block;
+}
+#XXXXXXXXX #popup_alert .basejavar{
+	position:fixed;
+	z-index:100;
+	background:#000;
+	opacity:0.5;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
+#XXXXXXXXX #popup_alert .window{
+	position:fixed;
+	z-index:101;
+	width:80%;
+	max-height:60%;
+	left:10%;
+	top:20%;
+	background:#FFF;
+	overflow:auto;
+}
+#XXXXXXXXX #popup_alert .checks:checked{
+	display:none;
+}
+#XXXXXXXXX #popup_alert .checks:checked~.basejavar,
+#XXXXXXXXX #popup_alert .checks:checked~.window{
+	z-index:-1;
+	opacity:0;
+	-webkit-transition-duration:0.3s;
+	-ms-transition-duration:0.3s;
+	-o-transition-duration:0.3s;
+	transition-duration:0.3s;
+}
+#XXXXXXXXX #popup_alert .checks:checked~.window{
+	z-index:-2;
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+}
+
+/* tabmenu */
+#XXXXXXXXX #tabmenu{
+
+}
+#XXXXXXXXX #tabmenu input.checks{
+	display:none;
+}
+#XXXXXXXXX #tabmenu .window{
+	border-top:solid 1px #555;
+}
+#XXXXXXXXX #tabmenu input#menu01.checks:checked~.window.menu01,
+#XXXXXXXXX #tabmenu input#menu02.checks:checked~.window.menu02,
+#XXXXXXXXX #tabmenu input#menu03.checks:checked~.window.menu03,
+#XXXXXXXXX #tabmenu input#menu04.checks:checked~.window.menu04,
+#XXXXXXXXX #tabmenu input#menu05.checks:checked~.window.menu05,
+#XXXXXXXXX #tabmenu input#menu06.checks:checked~.window.menu06{
+	display:block;
+}
+#XXXXXXXXX #tabmenu input.checks~.tab label{
+	background:#555;
+	color:#FFF;
+	padding:5px 10px;
+	display:inline-block;
+	letter-spacing:0px;
+	border:solid 1px #555;
+	border-bottom:none;
+	margin-bottom:-1px;
+}
+#XXXXXXXXX #tabmenu input.checks~.tab label:hover{
+	opacity:1;
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-ms-opacity:1;
+	-o-opacity:1;
+	background:#FFF;
+	color:#333;
+	border:solid 1px #555;
+	border-bottom:none;
+}
+#XXXXXXXXX #tabmenu input#menu01.checks:checked~.tab label.menu01,
+#XXXXXXXXX #tabmenu input#menu02.checks:checked~.tab label.menu02,
+#XXXXXXXXX #tabmenu input#menu03.checks:checked~.tab label.menu03,
+#XXXXXXXXX #tabmenu input#menu04.checks:checked~.tab label.menu04,
+#XXXXXXXXX #tabmenu input#menu05.checks:checked~.tab label.menu05,
+#XXXXXXXXX #tabmenu input#menu06.checks:checked~.tab label.menu06{
+	background:#FFF;
+	color:#333;
+	border:solid 1px #555;
+	border-bottom:none;
+}
+#XXXXXXXXX #tabmenu .window{
+	position:static;
+	display:none;
+}
+
+/* lanking */
+#XXXXXXXXX #lanking input.checks{
+	display:none;
+}
+#XXXXXXXXX #lanking label.gage{
+	color:#000;
+}
+#XXXXXXXXX #lanking input[index=lank00].checks:checked~label.gage{
+	color:#ccc;
+}
+#XXXXXXXXX #lanking input[index=lank01].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank02].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank03].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank04].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank05].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank06].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank07].checks:checked~label.gage,
+#XXXXXXXXX #lanking input[index=lank08].checks:checked~label.gage{
+	color:#CCC;
+}
+
+/* popup_hover */
+#XXXXXXXXX #popup_hover{
+	display:inline-block;
+}
+#XXXXXXXXX #popup_hover .window{
+	position:absolute;
+	background:#FFF;
+	border-radius:10px;
+	border:solid 1px #888;
+	display:none;
+	margin-top:18px;
+}
+#XXXXXXXXX #popup_hover .window:before{
+	content:"";
+	display:block;
+	position:absolute;
+	width:30px;
+	border-left:solid 1px #888;
+	border-top:solid 1px #888;
+	background:#FFF;
+	height:30px;
+	margin-top:-16px;
+	margin-left:30px;
+	transform:rotate(45deg);
+}
+#XXXXXXXXX #popup_hover .target:hover+.window{
+	display:block;
+}
+
+/* popup_realtime */
+#XXXXXXXXX #popup_realtime .window{
+	position:fixed;
+	right:10px;
+	bottom:-100px;
+	background:#FFF;
+	border:solid 2px #999;
+	transition-duration:0.6s;
+	-webkit-transition-duration:0.6s;
+	-moz-transition-duration:0.6s;
+	-ms-transition-duration:0.6s;
+	-o-transition-duration:0.6s;
+}
+#XXXXXXXXX #popup_realtime .checks{
+	display:none;
+}
+#XXXXXXXXX #popup_realtime .checks:checked+.window{
+	bottom:10px;
+}
+#XXXXXXXXX #popup_realtime .window .base{
+	padding:15px;
+	position:relative;
+}
+#XXXXXXXXX #popup_realtime .window .close{
+	background:#333;
+	color:#FFF;
+	display:block;
+	padding:3px 6px;
+	position:absolute;
+	left:-10px;
+	top:-10px;
+}
+
+/* 2017 4/15 add */
+/* selector */
+
+#XXXXXXXXX #selector{
+	border:solid 1px #ccc;
+	overflow:auto;
+}
+#XXXXXXXXX #selector input[type=radio]{
+	display:none;
+}
+#XXXXXXXXX #selector label{
+	display:block;
+	border-bottom:dashed 1px #999;
+}
+#XXXXXXXXX #selector label:last-child{
+	border-bottom:none;
+}
+#XXXXXXXXX #selector input[type=radio]:checked+label{
+	background:#e5e5e5;
+}
+
+/* multiselect */
+
+#XXXXXXXXX #multiselect{
+	border:solid 1px #ccc;
+	overflow:auto;
+}
+#XXXXXXXXX #multiselect input[type=checkbox]{
+	display:none;
+}
+#XXXXXXXXX #multiselect label{
+	display:block;
+	padding-left:55px;
+	position:relative;
+	border-bottom:dashed 1px #999;
+}
+#XXXXXXXXX #multiselect label:last-child{
+	border-bottom:none;
+}
+#XXXXXXXXX #multiselect input[type=checkbox]:checked+label{
+	background:#e5e5e5;
+}
+#XXXXXXXXX #multiselect label:before{
+	position:absolute;
+	left:15px;
+	top:15px;
+	width:25px;
+	border-radius:5px;
+	height:25px;
+	background:#fff;
+	border:solid 2px #888;
+	content:"";
+}
+#XXXXXXXXX #multiselect input[type=checkbox]:checked+label:before{
+	content:"✔";
+	font-size:20px;
+	color:#888;
+	text-align:center;
+	vertical-align:middle;
+}

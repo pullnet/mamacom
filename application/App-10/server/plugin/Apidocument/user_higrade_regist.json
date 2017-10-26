@@ -1,0 +1,35 @@
+<?php
+$params=array(
+	"name"=>"user_higrade_regist",
+	"category"=>"user setting",
+	"title"=>"会員本登録API",
+	"endpoint"=>$this->params["root"]."a1/user_higrade_regist",
+	"caption"=>"会員本登録用のAPI",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"provision_number"=>array(
+			"name"=>"仮登録コード",
+			"type"=>"text",
+			"required"=>true,
+
+		),
+	),
+	"Response"=>array(
+		"enabled"=>array(
+			"name"=>"判定結果",
+			"caption"=>"true:本登録完了,false:失敗",
+		),
+		"reason"=>array(
+			"name"=>"判定理由",
+			"type"=>"text",
+		),
+	),
+);
+
+?>

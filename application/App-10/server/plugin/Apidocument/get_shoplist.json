@@ -1,0 +1,31 @@
+<?php
+$params=array(
+	"name"=>"get_shoplist",
+	"category"=>"basic",
+	"title"=>"登録店舗リスト取得",
+	"endpoint"=>$this->params["root"]."a1/get_shoplist",
+	"caption"=>"登録店舗リストを取得。",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"type"=>array(
+			"name"=>"出力形式",
+			"type"=>"select",
+			"class"=>"w200",
+			"select"=>array(1=>"リスト形式"),
+		),
+	),
+	"Response"=>array(
+		"{shop_id}"=>array(
+			"name"=>"店舗名",
+			"caption"=>"※出力形式が1の場合、shopid:店舗ID",
+		),
+	),
+);
+
+?>

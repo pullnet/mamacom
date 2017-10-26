@@ -1,0 +1,56 @@
+<?php
+$params=array(
+	"database_001_normal"=>array(
+		"title"=>"データベース名テキストテキスト(通常)",
+		"encoding"=>"utf8mb4",
+		"Table"=>array(
+			"id"=>array(
+				"name"=>"ID(Primary Key)",
+				"type"=>"integer",
+				"length"=>11,
+				"primary_key"=>true,
+				"auto_increment"=>true,
+				"not_null"=>true,
+			),
+			"create_date"=>array(
+				"name"=>"作成日",
+				"type"=>"datetime",
+			),
+			"refresh_date"=>array(
+				"name"=>"更新日",
+				"type"=>"datetime",
+			),
+			"create_user_id"=>array(
+				"name"=>"作成ユーザーID(FK)",
+				"type"=>"varchar",
+				"length"=>11,
+			),
+			"refresh_user_id"=>array(
+				"name"=>"更新ユーザーID(FK)",
+				"type"=>"varchar",
+				"length"=>11,
+			),
+		),
+	),
+	"database_001_master"=>array(
+		"title"=>"データベース名テキストテキスト(マスター専用)",
+		"encoding"=>"utf8mb4",
+		"Table"=>array(
+			"id"=>array(
+				"name"=>"ID(Primary Key)",
+				"type"=>"integer",
+				"length"=>11,
+				"primary_key"=>true,
+			),
+			"create_date"=>array(
+				"name"=>"作成日",
+				"type"=>"datetime",
+			),
+			"refresh_date"=>array(
+				"name"=>"更新日",
+				"type"=>"datetime",
+			),
+		),
+	),
+);
+?>
