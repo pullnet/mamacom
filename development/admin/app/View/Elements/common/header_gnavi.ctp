@@ -36,7 +36,7 @@
 					<li><?php echo $this->Html->link("サイト基本設定",array("controller"=>"hpset","action"=>"basic")); ?></li>
 					<li><?php echo $this->Html->link("管理アカウント一覧",array("controller"=>"account","action"=>"index")); ?></li>
 					<li><?php echo $this->Html->link("カテゴリー・地区管理",array("controller"=>"category","action"=>"index")); ?></li>
-					<li><?php echo $this->Html->link("フリーページ管理",array("controller"=>"freepage","action"=>"index")); ?></li>
+					<?php /*<li><?php echo $this->Html->link("フリーページ管理",array("controller"=>"freepage","action"=>"index")); ?></li>*/ ?>
 				</ul>
 			</li>
 		</ul>

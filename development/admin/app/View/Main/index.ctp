@@ -74,8 +74,8 @@
 				<li>
 					<h2>お知らせ管理</h2>
 					<div class="f_clear">
-						<p><?php echo $this->Html->link("緊急お役立ち一覧",array("controller"=>"information","action"=>"index")); ?></p>
-						<p><?php echo $this->Html->link("緊急お役立ち新規登録",array("controller"=>"information","action"=>"edit")); ?></p>
+						<p><?php echo $this->Html->link("お知らせ一覧",array("controller"=>"information","action"=>"index")); ?></p>
+						<p><?php echo $this->Html->link("お知らせ新規登録",array("controller"=>"information","action"=>"edit")); ?></p>
 					</div><!--//.bs-->
 				</li>				
 				<li>
@@ -84,7 +84,7 @@
 						<p><?php echo $this->Html->link("サイト基本設定",array("controller"=>"hpset","action"=>"basic")); ?></p>
 						<p><?php echo $this->Html->link("管理アカウント一覧",array("controller"=>"account","action"=>"index")); ?></p>
 						<p><?php echo $this->Html->link("カテゴリー・地区管理",array("controller"=>"category","action"=>"index")); ?></p>
-						<p><?php echo $this->Html->link("フリーページ管理",array("controller"=>"freepage","action"=>"index")); ?></p>
+						<?php /*<p><?php echo $this->Html->link("フリーページ管理",array("controller"=>"freepage","action"=>"index")); ?></p>*/ ?>
 					</div><!--//.bs-->
 				</li>
 			</ul>
