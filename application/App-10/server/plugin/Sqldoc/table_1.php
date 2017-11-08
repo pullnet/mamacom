@@ -1,0 +1,32 @@
+<?php
+$params=array(
+	"name"=>"table_1",
+	"title"=>"テーブル名テキストテキストtype_1",
+	"Schema"=>"database_001_normal",
+	"caption"=>"説明文テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+	"Table"=>array(
+		"name"=>array(
+			"name"=>"お名前",
+			"type"=>"varchar",
+			"length"=>255,
+		),
+		"value"=>array(
+			"name"=>"値",
+			"type"=>"text",
+		),
+		"status"=>array(
+			"name"=>"ステータス",
+			"type"=>"integer",
+			"length"=>2,
+			"default"=>1,
+			"comment"=>"1:表示,2:非表示",
+		),
+		"code"=>array(
+			"name"=>"コード",
+			"type"=>"varchar",
+			"length"=>255,
+		),
+
+	),
+);
+?>

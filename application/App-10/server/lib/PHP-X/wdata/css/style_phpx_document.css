@@ -1,0 +1,146 @@
+/* style_phpx_document */
+
+#phpx_lib .header{
+	position:fixed;
+	width:100%;
+	height:10px;
+	background:#26c;
+	z-index:100;
+}
+#phpx_lib .header h1{
+	width:300px;
+	background:#26c;
+	color:#fff;
+	position:absolute;
+	left:0px;
+	top:0px;
+	padding:5px;
+	border-radius:0px 0px 10px 0px;
+}
+#phpx_lib .header .set_btm{
+	position:absolute;
+	right:0px;
+	top:0px;
+	background:#26c;
+	height:44px;
+	border-radius:0px 0px 0px 50%;
+}
+#phpx_lib .header .set_btm label{
+	display:block;
+	color:#fff;
+	width:60px;
+	text-align:center;
+	line-height:44px;
+	font-size:25px;
+}
+#phpx_lib .two_colum{
+	display:table;
+	width:100%;
+}
+#phpx_lib .two_colum .side,
+#phpx_lib .two_colum .main{
+	display:table-cell;
+	vertical-align:top;
+}
+#phpx_lib .two_colum .side{
+	background:#999;
+	width:250px;
+	border-right:solid 1px #999;
+}
+#phpx_lib .two_colum .side h1{
+	background:#c30;
+	padding-top:30px;
+	padding-bottom:10px;
+	padding-left:10px;
+	color:#fff;
+}
+#phpx_lib .two_colum .side a,
+#phpx_lib .two_colum .side label{
+	line-height:45px;
+	display:block;
+	color:#fff;
+	padding-left:10px;
+	border-bottom:solid 1px #ccc;
+	font-size:15px;
+}
+#phpx_lib .two_colum .side a.active{
+	background:#fff;
+	color:#666;
+}
+#phpx_lib .two_colum .side #menustrip .menu{
+	padding-left:10px;
+}
+#phpx_lib .two_colum .side #menustrip .menu a:before{
+	content:"L";
+	margin-right:10px;
+}
+#phpx_lib .header_dmy{
+	height:44px;
+}
+#phpx_lib .two_colum .main{
+	padding-top:10px;
+}
+
+@media print{
+
+	#phpx_lib .two_colum .side{
+		display:none;
+	}
+	#phpx_lib .header{
+		position:static;
+	}
+	#phpx_lib .header h1{
+		font-size:16px;
+		color:#333;
+		width:100%;
+		border-bottom:solid 1px #999;
+		border-radius:0px;
+	}
+	#phpx_lib .header .set_btm label{
+		display:none;
+	}
+	#phpx_lib{
+		padding-bottom:45px;
+	}
+	#phpx_lib .mtitle{
+		font-size:14px;
+		line-height:1.6em;
+		margin-bottom:5px !important;
+	}
+	#phpx_lib .header_dmy{
+		height:10px;
+	}
+	#phpx_lib p,
+	#phpx_lib a,
+	#phpx_lib table tr th,
+	#phpx_lib table tr td{
+		font-size:9px;
+	}
+	#phpx_lib table tr th,
+	#phpx_lib table tr td{
+		padding:6px 7px;
+	}
+	#phpx_lib table tr th{
+		width:180px;
+	}
+	#phpx_lib table.list tr th{
+		width:auto;
+		color:#333;
+		font-weight:bold;
+	}
+
+	#phpx_lib .no_printed{
+		display:none;
+	}
+	#phpx_lib body{
+		margin-bottom:0px;
+	}
+	#phpx_lib .mb10{margin-bottom:5px;}
+	#phpx_lib .mb15{margin-bottom:7.5px;}
+	#phpx_lib .mb20{margin-bottom:20px;}
+
+	#phpx_lib .m10{margin:5px;}
+	#phpx_lib table.list tr th.w50{ width:30px; }
+	#phpx_lib table.list tr th.w100{ width:70px; }
+	#phpx_lib table.list tr th.w150{ width:120px; }
+}

@@ -1,0 +1,10 @@
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\bin\iPhone\Debug\mamacom_ios.exe
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\bin\iPhone\Debug\mamacom_ios.pdb
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\actool\_PartialAppManifest.items
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\optimized\Entitlements.plist
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\optimized\
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\mamacom_ios.csproj.CoreCompileInputs.cache
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\mamacom_ios.exe
+C:\Users\PULL-NET101\source\repos\mamacom_ios\mamacom_ios\obj\iPhone\Debug\mamacom_ios.pdb

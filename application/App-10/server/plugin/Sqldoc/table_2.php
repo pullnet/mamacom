@@ -1,0 +1,19 @@
+<?php
+$params=array(
+	"name"=>"table_2",
+	"title"=>"テーブル名テキストテキストtype_2",
+	"Schema"=>"database_001_master",
+	"caption"=>"説明文テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+	"Table"=>array(
+		"name"=>array(
+			"name"=>"お名前",
+			"type"=>"varchar",
+			"length"=>100,
+		),
+		"value"=>array(
+			"name"=>"値",
+			"type"=>"text",
+		),
+	),
+);
+?>

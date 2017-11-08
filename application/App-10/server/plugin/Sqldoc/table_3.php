@@ -1,0 +1,20 @@
+<?php
+$params=array(
+	"name"=>"table_3",
+	"title"=>"テーブル名テキストテキストtype_3",
+	"Schema"=>"database_001_master",
+	"caption"=>"説明文だす",
+	"Table"=>array(
+		"mode"=>array(
+			"name"=>"table3のコード",
+			"type"=>"varchar",
+			"length"=>255,
+			"default"=>2,
+		),
+		"string"=>array(
+			"name"=>"the値",
+			"type"=>"text",
+		),
+	),
+);
+?>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style_type1.css">
+<link rel="stylesheet" type="text/css" href="css/style_type2.css">
+<link rel="stylesheet" type="text/css" href="css/style_typeapp.css">
+<link rel="stylesheet" type="text/css" href="css/style_typeapp_responsive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/api-sample.js"></script>
+</head>
+<body id="XXXXXXXXX">
+<div class="body">
+<input type="checkbox" id="alert-message" class="hidden">
+<div class="alert-message">
+	<p></p>
+	<label for="alert-message" class="close">×</label>
+</div>
+<header>
+	<label for="side_menu" class="menu_btn">▼</label>
+	<div class="title">Table2の登録・編集(確認画面)</div>
+</header>
+<div class="sidemenu">
+	<input type="checkbox" id="side_menu" class="hidden">
+	<label for="side_menu" class="bsj"></label>
+	<div class="menu">
+		<div class="m10">
+			<div class="auth">
+				<div class="user">
+					<img src="" class="image image_usericon" auth-usericon>
+					<h3 class="username" auth-username></h3>
+				</div>
+				<p><a href="index.html">TOPページ</a></p>
+				<p><a href="uac_setting.html">会員情報変更</a></p>
+				<p><label class="btn_logout">ログアウト</label></p>
+			</div>
+			<div class="no_auth">
+				<p>まだログインしていないです....</p>
+				<p><a href="index.html">TOPページ</a></p>
+				<p><a href="login.html">ログイン</a></p>
+				<p><a href="user_regist_step1.html" class="userregist_btn">新規会員登録</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+
+	var url_get_token="token/get_token";
+	var token=JSession.read("token_"+API.authcode);
+	if(token==null){
+		$.ajax({
+			url:API.domain+url_get_token,
+			type:"post",
+			data:{
+				service_secret:API.service_secret,
+				lisence_key:API.lisence_key
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+
+				JSession.write("token_"+API.authcode,result.access_token);
+			}
+		});
+	}
+	var authdata=LSession.read("auth_"+API.authcode);
+
+	var url_check_auth="v1a/check_auth";
+	var url_logout="v1a/logout";
+
+	if(authdata!=null){
+		$(".auth").css("display","");
+		$(".no_auth").css("display","none");
+
+		$("*[auth-username]").text(authdata.username);
+		$("*[auth-usericon]").text(authdata.user_icon_path);
+		$("img[auth-usericon]").attr("src",authdata.user_icon_path);
+		$("*[auth-mailaddress]").text(authdata.mailaddress);
+	}
+	else
+	{
+		$(".auth").css("display","none");
+		$(".no_auth").css("display","");
+	}
+
+	//ログアウト
+	$(".btn_logout").on("click",function(){
+
+		$.ajax({
+			url:API.domain+url_logout,
+			type:"post",
+			data:{
+				access_token:JSession.read("token_"+API.authcode)
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+
+				if(result.mode==200){
+					LSession.delete("auth_"+API.authcode);
+					location.href="login.html";
+				}
+			}
+		});
+
+	});
+
+	//新規会員登録前処理(Sessionキャッシュの削除)
+	$(".userregist_btn").on("click",function(){
+		var href=$(this).attr("href");
+
+		JSession.delete("post_cash");
+
+		location.href=href;
+		return false;
+	});
+
+});
+</script>
+<div class="hdmy"></div>
+<div class="body">
+	<div class="absolute_area">
+		<div class="tr">
+			<div class="t_cell">
+				<div class="m10">
+					<p class="h3 mb20">下記の内容で保存します。よろしいですか？</p>
+
+					<dl class="form table2_detail_area" style="display:none">
+						<dt>レコード名</dt>
+						<dd table2-name></dd>
+						<dt>項目名AAAA</dt>
+						<dd table2-colum_a></dd>
+						<dt>サムネイル画像</dt>
+						<dd>
+							<div class="image_w80">
+								<img src="" class="image image_thumbnail">
+							</div>
+						</dd>
+						<dt>背景画像1</dt>
+						<dd>
+							<div class="mb20">
+								<img src="" class="image image_background">
+							</div>
+						</dd>
+						<dt>選択項目BBB</dt>
+						<dd table2-select_b></dd>
+						<dt>その他備考欄</dt>
+						<dd table2-caption></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="tr h50 controls">
+			<div class="t_cell">
+				<ul class="float m5">
+					<li><a href="table2_edit.html" class="buttons backs">戻る</a></li>
+					<li class="f_right"><label class="buttons submit_btn">登録する</label></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+
+	//URL LIST...
+
+	var url_get_table2_select_b="v1/get_table2_select_b";
+	var url_submit="v1/edit_table2";
+	var url_redirect="table2_list.html";
+
+	var select_b;
+
+	//・select_aの選択項目を取得
+	var post={
+		access_token:JSession.read("token_"+API.authcode)
+	};
+
+	$.ajax({
+		url:API.domain+url_get_table2_select_b,
+		type:"post",
+		async:false,
+		data:post,
+		success:function(data){
+			var result=JSON.parse(data);
+			select_b=result;
+
+		}
+	});
+
+	//SessionからGET
+	var post_cash=JSession.read("post_cash");
+
+	if(post_cash!=null){
+
+		$(".table2_detail_area *[table2-name]").text(post_cash.name);
+		$(".table2_detail_area *[table2-colum_a]").text(post_cash.colum_a);
+		$(".table2_detail_area *[table2-select_b]").text(select_b[post_cash.select_b]);
+		$(".table2_detail_area *[table2-caption]").html(nl2br(post_cash.caption));
+		$(".image_thumbnail").attr("src",post_cash.thumbnail_path);
+		$(".image_background").attr("src",post_cash.background_path);
+
+		$(".table2_detail_area").css("display","");
+	}
+	else
+	{
+		history.back();
+	}
+
+	//・SUBMIT...
+	$(".submit_btn").on("click",function(){
+
+		var postdata=post_cash;
+		postdata.access_token=JSession.read("token_"+API.authcode);
+
+		$.ajax({
+			url:API.domain+url_submit,
+			type:"post",
+			data:postdata,
+			success:function(data){
+				var result=JSON.parse(data);
+
+				if(result.mode==200){
+					JSession.delete("post_cash");
+					JSession.write("alert",result.message);
+					location.href=url_redirect;
+				}
+			}
+		});
+		return false;
+	});
+	
+});
+</script>
+
+</div><!--//.body-->
+<div id="Modal">
+<div class="basejavar"></div>
+</div>
+</body>
+</html>

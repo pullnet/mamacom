@@ -1,0 +1,26 @@
+{
+	"name":"admin",
+	"title":"運営者情報",
+	"Schema":"___database_master",
+	"caption":"説明文テキストテキストテキストテキストテキストテキスト",
+	"create_date":"2017-06-06",
+	"create_user":"中辻",
+	"Table":{
+		"username":{
+			"name":"ユーザー名",
+			"type":"varchar",
+			"length":255
+		},
+		"password":{
+			"name":"パスワード",
+			"type":"varchar",
+			"length":255
+		},
+		"status":{
+			"name":"公開設定",
+			"type":"integer",
+			"length":2,
+			"comment":"1:利用可能,2:利用不可"
+		}
+	}
+}
