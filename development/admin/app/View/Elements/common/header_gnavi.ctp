@@ -26,8 +26,8 @@
 			<li>
 				<label>お知らせ管理</label>
 				<ul class="sub2">
-					<li><?php echo $this->Html->link("緊急お役立ち一覧",array("controller"=>"information","action"=>"index")); ?></li>
-					<li><?php echo $this->Html->link("緊急お役立ち新規登録",array("controller"=>"information","action"=>"edit")); ?></li>
+					<li><?php echo $this->Html->link("お知らせ一覧",array("controller"=>"information","action"=>"index")); ?></li>
+					<li><?php echo $this->Html->link("お知らせ新規登録",array("controller"=>"information","action"=>"edit")); ?></li>
 				</ul>
 			</li>	
 			<li>

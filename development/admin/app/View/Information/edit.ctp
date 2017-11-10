@@ -1,9 +1,9 @@
 <div class="bread">
 	<?php echo $this->Html->link("管理TOP","/"); ?>　＞　
-	<?php echo $this->Html->link("インフォメーション一覧",array("controller"=>"information","action"=>"index")); ?>　＞　
-	インフォメーション編集・登録
+	<?php echo $this->Html->link("お知らせ一覧",array("controller"=>"information","action"=>"index")); ?>　＞　
+	お知らせ編集・登録
 </div>
-<h1>インフォメーション編集・登録</h1>
+<h1>お知らせ編集・登録</h1>
 <div class="main_content">
 
 	<?php echo $this->Form->create("Information",array(

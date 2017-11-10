@@ -1,8 +1,8 @@
 <div class="bread">
 	<?php echo $this->Html->link("管理TOP","/"); ?>　＞　
-	インフォメーション一覧
+	お知らせ一覧
 </div>
-<h1>インフォメーション一覧</h1>
+<h1>お知らせ一覧</h1>
 <?php
 if(isset($alert))
 {
@@ -32,7 +32,7 @@ if(isset($alert))
 		<tr>
 			<td class="center"><?php echo $count; ?></td>
 			<td><?php echo date("Y.m.d H:i",strtotime($r_["Information"]["createdate"])); ?></td>
-			<td><?php echo $this->Html->link( $r_["Information"]["title"] ,array("controller"=>"test_view","action"=>"information",$r_["Information"]["id"]),array("class"=>"")); ?>	</td>
+			<td><?php echo $this->Html->link( $r_["Information"]["title"] , $adminurl."html/info.html?id=".$r_["Information"]["id"],array("class"=>"underline","taget"=>"_blank" )); ?>	</td>
 			<td>
 				<?php echo $this->Html->link("編集",array("controller"=>"information","action"=>"edit",$r_["Information"]["id"]),array("class"=>"buttons")); ?>
 				<label for="deletepop<?php echo $count; ?>" class="buttons">削除</label>
