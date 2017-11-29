@@ -16,14 +16,14 @@ public class AndroidJava
 	}
 
 
-	public AndroidJava () throws java.lang.Throwable
+	public AndroidJava ()
 	{
 		super ();
 		if (getClass () == AndroidJava.class)
 			mono.android.TypeManager.Activate ("App_10.AndroidJava, App-10, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public AndroidJava (android.app.Activity p0) throws java.lang.Throwable
+	public AndroidJava (android.app.Activity p0)
 	{
 		super ();
 		if (getClass () == AndroidJava.class)

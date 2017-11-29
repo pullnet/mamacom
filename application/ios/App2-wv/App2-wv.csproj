@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{8DAF5A99-2736-46B4-9365-EC0887C21F03}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>App2_wv</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>App2wv</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <BuildIpa>True</BuildIpa>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="GettingStarted.Xamarin" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ITunesArtwork Include="Resources\iTunesArtwork" />
+    <ITunesArtwork Include="Resources\iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController.cs" />
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\about.html" />
+    <Content Include="Content\area.html" />
+    <Content Include="Content\category_01.html" />
+    <Content Include="Content\category_02.html" />
+    <Content Include="Content\category_02_arealist.html" />
+    <Content Include="Content\category_03.html" />
+    <Content Include="Content\category_03_arealist.html" />
+    <Content Include="Content\category_04.html" />
+    <Content Include="Content\category_04_arealist.html" />
+    <Content Include="Content\category_05.html" />
+    <Content Include="Content\category_05_arealist.html" />
+    <Content Include="Content\category_06.html" />
+    <Content Include="Content\category_06_arealist.html" />
+    <Content Include="Content\category_07.html" />
+    <Content Include="Content\category_07_arealist.html" />
+    <Content Include="Content\contact.html" />
+    <Content Include="Content\contact_complete.html" />
+    <Content Include="Content\css\style_csmp.css" />
+    <Content Include="Content\css\style_csmp_sideways.css" />
+    <Content Include="Content\css\style_iphone.css" />
+    <Content Include="Content\css\style_type1.css" />
+    <Content Include="Content\css\style_type2.css" />
+    <Content Include="Content\css\swiper.css" />
+    <BundleResource Include="Content\images\foot_icon_01.png" />
+    <BundleResource Include="Content\images\foot_icon_01_active.png" />
+    <BundleResource Include="Content\images\foot_icon_02.png" />
+    <BundleResource Include="Content\images\foot_icon_02_active.png" />
+    <BundleResource Include="Content\images\foot_icon_03.png" />
+    <BundleResource Include="Content\images\foot_icon_03_active.png" />
+    <BundleResource Include="Content\images\foot_icon_04.png" />
+    <BundleResource Include="Content\images\foot_icon_04_active.png" />
+    <BundleResource Include="Content\images\foot_icon_05.png" />
+    <BundleResource Include="Content\images\foot_icon_05_active.png" />
+    <BundleResource Include="Content\images\header_logo.png" />
+    <BundleResource Include="Content\images\icon_hag.png" />
+    <BundleResource Include="Content\images\icon_pro.jpg" />
+    <BundleResource Include="Content\images\icon_side1.jpg" />
+    <BundleResource Include="Content\images\icon_starting.png" />
+    <BundleResource Include="Content\images\iconpeople.png" />
+    <BundleResource Include="Content\images\info_img.jpg" />
+    <BundleResource Include="Content\images\kosodate.jpg" />
+    <BundleResource Include="Content\images\kuyakusyo.jpg" />
+    <BundleResource Include="Content\images\main_icon.png" />
+    <BundleResource Include="Content\images\main_logo.png" />
+    <BundleResource Include="Content\images\noimage.png" />
+    <BundleResource Include="Content\images\pullnet.jpg" />
+    <BundleResource Include="Content\images\risbon.png" />
+    <BundleResource Include="Content\images\sakuanomiya.jpg" />
+    <BundleResource Include="Content\images\sidemenu_01.jpg" />
+    <BundleResource Include="Content\images\sidemenu_02.jpg" />
+    <BundleResource Include="Content\images\sidemenu_03.jpg" />
+    <BundleResource Include="Content\images\sidemenu_04.jpg" />
+    <BundleResource Include="Content\images\sidemenu_11.jpg" />
+    <BundleResource Include="Content\images\sidemenu_12.jpg" />
+    <BundleResource Include="Content\images\sidemenu_13.jpg" />
+    <BundleResource Include="Content\images\sidemenu_usericon.jpg" />
+    <BundleResource Include="Content\images\tel_contact.jpg" />
+    <BundleResource Include="Content\images\tel_tap.png" />
+    <BundleResource Include="Content\images\test_icon.png" />
+    <BundleResource Include="Content\images\test_img.jpg" />
+    <BundleResource Include="Content\images\test_img01.jpg" />
+    <BundleResource Include="Content\images\top_banner01.jpg" />
+    <BundleResource Include="Content\images\top_banner02.jpg" />
+    <BundleResource Include="Content\images\top_banner03.jpg" />
+    <BundleResource Include="Content\images\top_banner04.jpg" />
+    <BundleResource Include="Content\images\top_banner05.jpg" />
+    <BundleResource Include="Content\images\top_banner06.jpg" />
+    <BundleResource Include="Content\images\top_banner07.jpg" />
+    <BundleResource Include="Content\images\top_icon_new.png" />
+    <BundleResource Include="Content\images\top_main01.jpg" />
+    <BundleResource Include="Content\images\top_main01.png" />
+    <BundleResource Include="Content\images\top_news_ttl.jpg" />
+    <BundleResource Include="Content\images\tutorial_01.png" />
+    <Content Include="Content\index.html" />
+    <Content Include="Content\info.html" />
+    <Content Include="Content\job_detail.html" />
+    <Content Include="Content\js\api-sample.js" />
+    <Content Include="Content\js\jquery.bxslider.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\option.js" />
+    <Content Include="Content\js\slide_MN_04.js" />
+    <Content Include="Content\message_list.html" />
+    <Content Include="Content\message_talk.html" />
+    <Content Include="Content\portalsite_detail.html" />
+    <Content Include="Content\setting.html" />
+    <Content Include="Content\shop_detail.html" />
+    <Content Include="Entitlements.plist" />
+    <BundleResource Include="Resources\AppIcon24x24%402x.png" />
+    <BundleResource Include="Resources\AppIcon27.5x27.5%402x.png" />
+    <BundleResource Include="Resources\AppIcon40x40%402x.png" />
+    <BundleResource Include="Resources\AppIcon44x44%402x.png" />
+    <BundleResource Include="Resources\AppIcon86x86%402x.png" />
+    <BundleResource Include="Resources\AppIcon98x98%402x.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-60%403x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-83.5%402x.png" />
+    <BundleResource Include="Resources\Icon-Notification.png" />
+    <BundleResource Include="Resources\Icon-Notification%403x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\header_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

@@ -17,11 +17,10 @@ using Java.Lang;
 using Java.Interop;
 using Android.Content.Res;
 using Android.Provider;
-using Java.Lang;
 
 namespace App_10
 {
-	[Activity(Label = "ママコム", MainLauncher = true, ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
+	[Activity(Label = "アプリテスト(App-10)", MainLauncher = true, ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
 	public class MainActivity : Activity
 	{
 		public WebView Webs;
@@ -29,7 +28,7 @@ namespace App_10
 		private Android.Net.Uri m_uri;
 		private static int FILECHOOSER_RESULTCODE = 1;
 		private static int RESULT_CAMERA = 1001;
-		private static int REQUEST_CHOOSER = 1000;
+		//private static int REQUEST_CHOOSER = 1000;
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -154,7 +153,7 @@ namespace App_10
 
 			//For Android 4.1
 			[Java.Interop.Export]
-			public void openFileChooser(IValueCallback uploadMsg, Java.Lang.String acceptType, Java.Lang.String capture)
+			public void OpenFileChooser(IValueCallback uploadMsg, Java.Lang.String acceptType, Java.Lang.String capture)
 			{
 				callback(uploadMsg, acceptType, capture);
 			}

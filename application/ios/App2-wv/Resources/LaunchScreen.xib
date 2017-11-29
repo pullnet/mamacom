@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2017 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="20" y="439.5" width="440" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="153" translatesAutoresizingMaskIntoConstraints="NO" image="header_logo.png">
+                    <rect key="frame" x="120" y="164" width="240" height="128"/>
+                    <constraints>
+                        <constraint id="158" firstAttribute="width" secondItem="153" secondAttribute="height" multiplier="15:8"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
+                <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint id="154" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="153" secondAttribute="trailing" constant="120"/>
+                <constraint id="155" firstItem="153" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120"/>
+                <constraint id="156" firstItem="153" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="164"/>
+                <constraint id="157" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="153" secondAttribute="bottom" constant="188"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="548" y="455"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Content/images/foot_icon_01.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_01_active.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_02.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_02_active.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_03.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_03_active.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_04.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_04_active.png" width="100" height="80"/>
+        <image name="Content/images/foot_icon_05.png" width="240" height="224"/>
+        <image name="Content/images/foot_icon_05_active.png" width="37" height="56"/>
+        <image name="Content/images/header_logo.png" width="480" height="100"/>
+        <image name="Content/images/icon_hag.png" width="44" height="45"/>
+        <image name="Content/images/icon_pro.jpg" width="12" height="12"/>
+        <image name="Content/images/icon_side1.jpg" width="14" height="14"/>
+        <image name="Content/images/icon_starting.png" width="24" height="34"/>
+        <image name="Content/images/iconpeople.png" width="150" height="150"/>
+        <image name="Content/images/info_img.jpg" width="337" height="139"/>
+        <image name="Content/images/kosodate.jpg" width="240" height="180"/>
+        <image name="Content/images/kuyakusyo.jpg" width="500" height="375"/>
+        <image name="Content/images/main_icon.png" width="143" height="126"/>
+        <image name="Content/images/main_logo.png" width="640" height="149"/>
+        <image name="Content/images/noimage.png" width="640" height="480"/>
+        <image name="Content/images/pullnet.jpg" width="259" height="194"/>
+        <image name="Content/images/risbon.png" width="151" height="201"/>
+        <image name="Content/images/sakuanomiya.jpg" width="90" height="90"/>
+        <image name="Content/images/sidemenu_01.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_02.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_03.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_04.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_11.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_12.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_13.jpg" width="400" height="50"/>
+        <image name="Content/images/sidemenu_usericon.jpg" width="95" height="95"/>
+        <image name="Content/images/tel_contact.jpg" width="580" height="120"/>
+        <image name="Content/images/tel_tap.png" width="270" height="22"/>
+        <image name="Content/images/test_icon.png" width="300" height="300"/>
+        <image name="Content/images/test_img.jpg" width="600" height="600"/>
+        <image name="Content/images/test_img01.jpg" width="300" height="224"/>
+        <image name="Content/images/top_banner01.jpg" width="580" height="220"/>
+        <image name="Content/images/top_banner02.jpg" width="280" height="110"/>
+        <image name="Content/images/top_banner03.jpg" width="280" height="110"/>
+        <image name="Content/images/top_banner04.jpg" width="280" height="110"/>
+        <image name="Content/images/top_banner05.jpg" width="280" height="110"/>
+        <image name="Content/images/top_banner06.jpg" width="280" height="110"/>
+        <image name="Content/images/top_banner07.jpg" width="280" height="110"/>
+        <image name="Content/images/top_icon_new.png" width="65" height="30"/>
+        <image name="Content/images/top_main01.jpg" width="640" height="350"/>
+        <image name="Content/images/top_main01.png" width="640" height="350"/>
+        <image name="Content/images/top_news_ttl.jpg" width="276" height="29"/>
+        <image name="Content/images/tutorial_01.png" width="494" height="210"/>
+        <image name="AppIcon24x24.png" width="24" height="24"/>
+        <image name="AppIcon27.5x27.5.png" width="27.5" height="27.5"/>
+        <image name="AppIcon40x40.png" width="40" height="40"/>
+        <image name="AppIcon44x44.png" width="44" height="44"/>
+        <image name="AppIcon86x86.png" width="86" height="86"/>
+        <image name="AppIcon98x98.png" width="98" height="98"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-72.png" width="72" height="72"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-83.5.png" width="83.5" height="83.5"/>
+        <image name="Icon-Notification.png" width="20" height="20"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small-50.png" width="50" height="50"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="header_logo.png" width="452" height="100"/>
+    </resources>
+</document>

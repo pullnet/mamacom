@@ -16,14 +16,14 @@ public class AdvanceWebViewClient
 	}
 
 
-	public AdvanceWebViewClient () throws java.lang.Throwable
+	public AdvanceWebViewClient ()
 	{
 		super ();
 		if (getClass () == AdvanceWebViewClient.class)
 			mono.android.TypeManager.Activate ("App_10.AdvanceWebViewClient, App-10, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public AdvanceWebViewClient (android.app.Activity p0) throws java.lang.Throwable
+	public AdvanceWebViewClient (android.app.Activity p0)
 	{
 		super ();
 		if (getClass () == AdvanceWebViewClient.class)
