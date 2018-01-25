@@ -95,7 +95,10 @@ $(function(){
 					$('.news_box').append($(".copy_base_info").html());
 				}
 
-			}
+			},
+			error: function(){
+		       view_error_page();
+    		}
 		});
 	//}
 	//else{

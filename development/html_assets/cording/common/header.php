@@ -119,8 +119,11 @@ $('.menubtn').on('click', function() {
 					//書き換え処理
 					$('.area_list').append($(".contents_source2").html());
 				}
-
-			}
+			},
+			error: function(){
+		       view_error_page();
+    		}
+			
 		});
 	}
 	else{
