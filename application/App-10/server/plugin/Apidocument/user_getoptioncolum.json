@@ -1,0 +1,68 @@
+<?php
+$params=array(
+	"name"=>"user_getoptioncolum",
+	"category"=>"user setting",
+	"title"=>"会員登録時オプション設問情報",
+	"endpoint"=>$this->params["root"]."a1/user_getoptioncolum",
+	"caption"=>"会員登録時のオプション設問情報を取得",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+
+	),
+	"Response"=>array(
+		"{number}"=>array(
+			"name"=>"会員オプション設問情報",
+			"multi"=>array(
+				"name"=>array(
+					"name"=>"設問文",
+					"type"=>"text",
+				),
+				"code"=>array(
+					"name"=>"設問コード",
+					"type"=>"text",
+				),
+				"select_type"=>array(
+					"name"=>"回答方式コード",
+					"type"=>"select",
+					"caption"=>"text:テキスト,
+					text_short:テキスト(中),
+					text_short:テキスト(短),
+					textarea:テキストエリア,
+					textarea_long:テキストエリア(広め),
+					checkbox:チェックボックス,
+					radio:ラジオボタン",
+				),
+				"select_colum"=>array(
+					"name"=>"選択項目",
+					"type"=>"text",
+					"caption"=>"配列で格納,
+					回答方式をチェックボックス、またはラジオボタンの時に選択",
+				),
+				"default_value"=>array(
+					"name"=>"初期入力値",
+					"type"=>"textarea",
+				),
+				"placeholder"=>array(
+					"name"=>"placeholder",
+					"type"=>"textarea",
+				),
+				"layout_head"=>array(
+					"name"=>"表示レイアウト(上部)",
+
+				),
+				"layout_foot"=>array(
+					"name"=>"表示レイアウト(下部)",
+
+				),
+			),
+		),
+	),
+);
+
+?>

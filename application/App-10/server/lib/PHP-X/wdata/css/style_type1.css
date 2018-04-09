@@ -1,0 +1,1010 @@
+/* phpx_lib */
+/* style.css */
+/* Masato.Nakatsuji 2015-2017 */
+
+/*
+style_type1は主にfloatや中央揃え等基本的に使うcss用
+
+2017/4/28
+body以外は全てID名「phpx_lib」の子属性を定義してあるので
+開発案件ごとに別のID名に指定すること。
+(あとこのコメントも消すこと)
+*/
+#phpx_lib .error-message{
+	border:solid 2px #c00;
+	color:#c00;
+	padding:5px;
+	margin:5px 0px;
+}
+#phpx_lib{}
+
+#phpx_lib *{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size:13px;
+	box-sizing:border-box;
+	outline:none;
+}
+body{
+	margin:0px;
+	padding:0px;
+	background:#FFF;
+}
+
+
+
+/* link */
+#phpx_lib a{
+	text-decoration:none;
+	color:#555;
+	cursor:pointer;
+}
+#phpx_lib a:hover{
+	opacity:0.5;
+	-webkit-opacity:0.5;
+	-moz-opacity:0.5;
+	-ms-opacity:0.5;
+	-o-opacity:0.5;
+}
+#phpx_lib a.underline{
+	text-decoration:underline;
+}
+
+/* image */
+#phpx_lib img{
+	width:auto;
+}
+#phpx_lib img.image{
+	width:100%;
+	display:block;
+}
+
+/* mtitle */
+#phpx_lib .mtitle{
+	border-left:solid 10px #999;
+	background:#f0f0f0;
+	line-height:2em;
+	padding-left:10px;
+}
+#phpx_lib .inline-block{
+	display:inline-block;
+}
+
+/* h1-h5 */
+
+#phpx_lib h1,
+#phpx_lib h2,
+#phpx_lib h3,
+#phpx_lib h4,
+#phpx_lib h5{
+	font-weight:normal;
+}
+#phpx_lib h1,
+#phpx_lib .h1{
+	font-size:23px;
+}
+#phpx_lib h2,
+#phpx_lib .h2{
+	font-size:20px;
+}
+#phpx_lib h3,
+#phpx_lib .h3{
+	font-size:18px;
+}
+#phpx_lib h4,
+#phpx_lib .h4{
+	font-size:16px;
+}
+/* default margin */
+
+#phpx_lib .mb5{margin-bottom:5px;}
+#phpx_lib .mb10{margin-bottom:10px;}
+#phpx_lib .mb15{margin-bottom:15px;}
+#phpx_lib .mb20{margin-bottom:20px;}
+#phpx_lib .mb25{margin-bottom:25px;}
+#phpx_lib .mb30{margin-bottom:30px;}
+#phpx_lib .mb40{margin-bottom:40px;}
+#phpx_lib .mb50{margin-bottom:50px;}
+#phpx_lib .mb60{margin-bottom:60px;}
+#phpx_lib .mb70{margin-bottom:70px;}
+#phpx_lib .mb80{margin-bottom:80px;}
+#phpx_lib .mb90{margin-bottom:90px;}
+#phpx_lib .mb100{margin-bottom:100px;}
+
+#phpx_lib .mt5{margin-top:5px;}
+#phpx_lib .mt10{margin-top:10px;}
+#phpx_lib .mt15{margin-top:15px;}
+#phpx_lib .mt20{margin-top:20px;}
+#phpx_lib .mt25{margin-top:25px;}
+#phpx_lib .mt30{margin-top:30px;}
+#phpx_lib .mt40{margin-top:40px;}
+#phpx_lib .mt50{margin-top:50px;}
+#phpx_lib .mt60{margin-top:60px;}
+#phpx_lib .mt70{margin-top:70px;}
+#phpx_lib .mt80{margin-top:80px;}
+#phpx_lib .mt90{margin-top:90px;}
+#phpx_lib .mt100{margin-top:100px;}
+
+#phpx_lib .mm5{margin:5px 0px;}
+#phpx_lib .mm10{margin:10px 0px;}
+#phpx_lib .mm15{margin:15px 0px;}
+#phpx_lib .mm20{margin:20px 0px;}
+#phpx_lib .mm25{margin:25px 0px;}
+#phpx_lib .mm30{margin:30px 0px;}
+#phpx_lib .mm40{margin:40px 0px;}
+#phpx_lib .mm50{margin:50px 0px;}
+#phpx_lib .mm60{margin:60px 0px;}
+#phpx_lib .mm70{margin:70px 0px;}
+#phpx_lib .mm80{margin:80px 0px;}
+#phpx_lib .mm90{margin:90px 0px;}
+#phpx_lib .mm100{margin:100px 0px;}
+
+#phpx_lib .mauto{margin:0px auto;}
+
+#phpx_lib .m5{margin:5px;}
+#phpx_lib .m10{margin:10px;}
+#phpx_lib .m15{margin:15px;}
+#phpx_lib .m20{margin:20px;}
+#phpx_lib .m25{margin:25px;}
+#phpx_lib .m30{margin:30px;}
+#phpx_lib .m40{margin:40px;}
+#phpx_lib .m50{margin:50px;}
+#phpx_lib .m60{margin:60px;}
+#phpx_lib .m70{margin:70px;}
+#phpx_lib .m80{margin:80px;}
+#phpx_lib .m90{margin:90px;}
+#phpx_lib .m100{margin:100px;}
+
+#phpx_lib .ml5{margin-left:5px;}
+#phpx_lib .mr5{margin-right:5px;}
+#phpx_lib .ml10{margin-left:10px;}
+#phpx_lib .mr10{margin-right:10px;}
+#phpx_lib .ml15{margin-left:15px;}
+#phpx_lib .mr15{margin-right:15px;}
+#phpx_lib .ml20{margin-left:20px;}
+#phpx_lib .mr20{margin-right:20px;}
+#phpx_lib .mr25{margin-right:25px;}
+#phpx_lib .mr30{margin-right:30px;}
+
+/* hidden */
+#phpx_lib .hidden{
+	display:none
+}
+/* align */
+
+#phpx_lib .right{text-align:right;}
+#phpx_lib .left{text-align:left;}
+#phpx_lib .center{text-align:center}
+#phpx_lib .middle{vertical-align:middle;}
+#phpx_lib .top{vertical-align:top;}
+#phpx_lib .bottom{vertical-align:bottom;}
+
+/* table */
+
+#phpx_lib .table{display:table;width:100%;}
+#phpx_lib .table li{display:table-cell;vertical-align:top;}
+#phpx_lib .t_row{display:table-row;}
+#phpx_lib .t_cell{display:table-cell;}
+
+/* float */
+
+#phpx_lib .float{overflow:hidden;zoom:1;}
+#phpx_lib .float:after{clear:both;display:block;content:"";}
+#phpx_lib .float li{float:left;}
+#phpx_lib .f_left{float:left !important;}
+#phpx_lib .f_right{float:right !important;}
+#phpx_lib .f_clear{float:none !important;}
+
+/* dl-list */
+#phpx_lib dl.list{
+	margin-bottom:5px;
+}
+#phpx_lib dl.list dt{
+	font-weight:bold;
+}
+#phpx_lib dl.list dd{
+	margin-left:10px;
+}
+/* buttons */
+#phpx_lib .buttons{
+	background:#000;
+	color:#FFF;
+	font-size:14px;
+	padding:4px 12px;
+	display:inline-block;
+	border:solid 2px #000 !important;
+	line-height:1.8em;
+}
+#phpx_lib .buttons:hover{
+	background:#FFF;
+	color:#000;
+	opacity:1;
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-o-opacity:1;
+	-ms-opacity:1;
+}
+#phpx_lib .buttons.big{
+	padding:8px 20px;
+	font-size:18px;
+}
+#phpx_lib .buttons.block{
+	display:block;
+	text-align:center;
+	padding:4px 0px;
+}
+#phpx_lib .buttons.clearbtn{
+	background:none;
+	font-weight:bold;
+	border:none !important;
+	color:#000;
+}
+#phpx_lib .buttons.new{
+	background:#183;
+	border:solid 2px #183 !important;
+}
+#phpx_lib .buttons.new:hover{
+	background:#FFF;
+	color:#183;
+}
+#phpx_lib .buttons.new.clearbtn{
+	background:none;
+	border:none !important;
+	color:#183;
+}
+#phpx_lib .buttons.add{
+	background:#A00;
+	border:solid 2px #A00 !important;
+}
+#phpx_lib .buttons.add:hover{
+	background:#FFF;
+	color:#A00;
+}
+#phpx_lib .buttons.add.clearbtn{
+	background:none;
+	border:none !important;
+	color:#A00;
+}
+#phpx_lib .buttons.edit{
+	background:#11a;
+	border:solid 2px #11a !important;
+}
+#phpx_lib .buttons.edit:hover{
+	background:#FFF;
+	color:#11a;
+}
+#phpx_lib .buttons.edit.clearbtn{
+	background:none;
+	border:none !important;
+	color:#11a;
+}
+#phpx_lib .buttons.delete{
+	background:#853;
+	border:solid 2px #853 !important;
+}
+#phpx_lib .buttons.delete:hover{
+	background:#FFF;
+	color:#853;
+}
+#phpx_lib .buttons.delete.clearbtn{
+	background:none;
+	border:none !important;
+	color:#853;
+}
+#phpx_lib .buttons.preview{
+	background:#297;
+	border:solid 2px #297 !important;
+}
+#phpx_lib .buttons.preview:hover{
+	background:#FFF;
+	color:#297;
+}
+#phpx_lib .buttons.preview.clearbtn{
+	background:none;
+	border:none !important;
+	color:#297;
+}
+#phpx_lib .buttons.backbtn{
+	background:#999;
+	border:solid 2px #999 !important;
+}
+#phpx_lib .buttons.backbtn:hover{
+	background:#FFF;
+	color:#999;
+}
+#phpx_lib .buttons.backbtn.clearbtn{
+	background:none;
+	border:none !important;
+	color:#999;
+}
+#phpx_lib .buttons.black{
+	background:#000;
+	border:solid 2px #000 !important;
+}
+#phpx_lib .buttons.black:hover{
+	background:#fff;
+	color:#000;
+}
+#phpx_lib .buttons.black.clearbtn{
+	background:none;
+	border:none !important;
+	color:#000;
+}
+#phpx_lib .buttons.red{
+	background:#a00;
+	color:#fff;
+	border:solid 2px #a00 !important;
+}
+#phpx_lib .buttons.red:hover{
+	background:#fff;
+	color:#a00;
+}
+#phpx_lib .buttons.red.clearbtn{
+	background:none;
+	border:none !important;
+	color:#a00;
+}
+#phpx_lib .buttons.blue{
+	background:#11a;
+	color:#fff;
+	border:solid 2px #11a !important;
+}
+#phpx_lib .buttons.blue:hover{
+	background:#fff;
+	color:#11a;
+}
+#phpx_lib .buttons.blue.clearbtn{
+	background:none;
+	border:none !important;
+	color:#11a;
+}
+#phpx_lib .buttons.green{
+	background:#192;
+	color:#fff;
+	border:solid 2px #192 !important;
+}
+#phpx_lib .buttons.green:hover{
+	background:#fff;
+	color:#192;
+}
+#phpx_lib .buttons.green.clearbtn{
+	background:none;
+	border:none !important;
+	color:#192;
+}
+#phpx_lib .buttons.brown{
+	background:#853;
+	color:#fff;
+	border:solid 2px #853 !important;
+}
+#phpx_lib .buttons.brown:hover{
+	background:#fff;
+	color:#853;
+}
+#phpx_lib .buttons.brown.clearbtn{
+	background:none;
+	border:none !important;
+	color:#853;
+}
+#phpx_lib .buttons.orange{
+	background:#c60;
+	color:#fff;
+	border:solid 2px #c60 !important;
+}
+#phpx_lib .buttons.orange:hover{
+	background:#fff;
+	color:#c60;
+}
+#phpx_lib .buttons.orange.clearbtn{
+	background:none;
+	border:none !important;
+	color:#c60;
+}
+#phpx_lib .buttons.pink{
+	background:#a4a;
+	color:#fff;
+	border:solid 2px #a4a !important;
+}
+#phpx_lib .buttons.pink:hover{
+	background:#fff;
+	color:#a4a;
+}
+#phpx_lib .buttons.pink.clearbtn{
+	background:none;
+	border:none !important;
+	color:#a4a;
+}
+#phpx_lib .buttons.gray{
+	background:#666;
+	color:#fff;
+	border:solid 2px #666 !important;
+}
+#phpx_lib .buttons.gray:hover{
+	background:#fff;
+	color:#666;
+}
+#phpx_lib .buttons.gray.clearbtn{
+	background:none;
+	border:none !important;
+	color:#666;
+}
+#phpx_lib .buttons.lightgray{
+	background:#aaa;
+	color:#fff;
+	border:solid 2px #aaa !important;
+}
+#phpx_lib .buttons.lightgray:hover{
+	background:#fff;
+	color:#aaa;
+}
+#phpx_lib .buttons.lightgray.clearbtn{
+	background:none;
+	border:none !important;
+	color:#aaa;
+}
+
+/* overflow */
+#phpx_lib .overflow{
+	max-height:300px;
+	overflow-y:auto;
+	border:solid 1px #aaa;
+	padding:15px;
+}
+
+/* view_block */
+#phpx_lib .view_block{
+	background:#eee;
+	padding:15px;
+}
+
+/* caltion_block */
+#phpx_lib .caltion_block{
+	border:solid 2px #c00;
+	color:#c00;
+	padding:15px;
+}
+
+
+/* form */
+
+#phpx_lib input,
+#phpx_lib select,
+#phpx_lib textarea{
+	border-style:none;
+	border:solid 1px #aaa;
+	line-height:1.8em;
+	padding:6px;
+	margin:0px;
+	width:100%;
+}
+#phpx_lib input:hover,
+#phpx_lib select:hover,
+#phpx_lib textarea:hover,
+#phpx_lib input:visited,
+#phpx_lib select:visited,
+#phpx_lib textarea:visited{
+	border:solid 1px #900;
+}
+#phpx_lib label.select select{
+	height: 37px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+}
+#phpx_lib label.select{
+	display:inline-block;
+	width:100%;
+	position:relative;
+}
+#phpx_lib label.select:after{
+	content: "▼";
+	font-size: 11px;
+	position: absolute;
+	line-height: 37px;
+	width: 37px;
+	right:0px;
+	top:0px;
+	pointer-events: none;
+	text-align: center;
+}
+
+
+#phpx_lib textarea{
+	display:block;
+	resize:none;
+	height:6em;
+	line-height:1.3em;
+}
+#phpx_lib textarea.h100{
+	height:100px;
+}
+#phpx_lib textarea.h200{
+	height:200px;
+}
+#phpx_lib textarea.h300{
+	height:300px;
+}
+#phpx_lib textarea.h400{
+	height:400px;
+}
+#phpx_lib textarea.h500{
+	height:500px;
+}
+#phpx_lib textarea.h600{
+	height:600px;
+}
+#phpx_lib input[type=submit],
+#phpx_lib input[type=button],
+#phpx_lib input[type=checkbox],
+#phpx_lib input[type=radio]{
+	width:auto;
+}
+#phpx_lib input[type=submit],
+#phpx_lib input[type=text],
+#phpx_lib input[type=password],
+#phpx_lib input[type=file],
+#phpx_lib input[type=button],
+#phpx_lib textarea,
+#phpx_lib button{
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+#phpx_lib input[type=text].w50,
+#phpx_lib input[type=password].w50,
+#phpx_lib input[type=number].w50,
+#phpx_lib select.w50,
+#phpx_lib label.select.w50{
+	max-width:50px;
+}
+#phpx_lib input[type=text].w70,
+#phpx_lib input[type=password].w70,
+#phpx_lib input[type=number].w70,
+#phpx_lib select.w70,
+#phpx_lib label.select.w70{
+	max-width:70px;
+}
+#phpx_lib input[type=text].w100,
+#phpx_lib input[type=password].w100,
+#phpx_lib input[type=number].w100,
+#phpx_lib select.w100,
+#phpx_lib label.select.w100{
+	max-width:100px;
+}
+#phpx_lib input[type=text].w150,
+#phpx_lib input[type=password].w150,
+#phpx_lib input[type=number].w150,
+#phpx_lib select.w150,
+#phpx_lib label.select.w150{
+	max-width:150px;
+}
+#phpx_lib input[type=text].w200,
+#phpx_lib input[type=password].w200,
+#phpx_lib input[type=number].w200,
+#phpx_lib select.w200,
+#phpx_lib label.select.w200{
+	max-width:200px;
+}
+#phpx_lib input[type=text].w250,
+#phpx_lib input[type=password].w250,
+#phpx_lib input[type=number].w250,
+#phpx_lib select.w250,
+#phpx_lib label.select.w250{
+	max-width:250px;
+}
+#phpx_lib input[type=text].w300,
+#phpx_lib input[type=password].w300,
+#phpx_lib input[type=number].w300,
+#phpx_lib select.w300,
+#phpx_lib label.select.w300{
+	max-width:300px;
+}
+#phpx_lib input[type=text].w350,
+#phpx_lib input[type=password].w350,
+#phpx_lib input[type=number].w350,
+#phpx_lib select.w350,
+#phpx_lib label.select.w350{
+	max-width:350px;
+}
+#phpx_lib input[type=text].w400,
+#phpx_lib input[type=password].w400,
+#phpx_lib input[type=number].w400,
+#phpx_lib select.w400,
+#phpx_lib label.select.w400{
+	max-width:400px;
+}
+#phpx_lib input[type=text].w450,
+#phpx_lib input[type=password].w450,
+#phpx_lib input[type=number].w450,
+#phpx_lib select.w450,
+#phpx_lib label.select.w450{
+	max-width:450px;
+}
+#phpx_lib input[type=text].w500,
+#phpx_lib input[type=password].w500,
+#phpx_lib input[type=number].w500,
+#phpx_lib select.w500,
+#phpx_lib label.select.w500{
+	max-width:500px;
+}
+
+#phpx_lib input[type=checkbox],
+#phpx_lib input[type=radio]{
+	margin-left:5px;
+	margin-right:5px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+#phpx_lib input[type=submit]{
+	cursor:pointer;
+	display:inline-block;
+}
+#phpx_lib input[type=submit]:hover{
+	opacity:0.7;
+	-moz-opacity:0.7;
+	-ms-opacity:0.7;
+	-webkit-opacity:0.7;
+	-o-opacity:0.7;
+}
+#phpx_lib label{
+	cursor:pointer;
+}
+#phpx_lib label:hover{
+	opacity:0.7;
+	-moz-opacity:0.7;
+	-ms-opacity:0.7;
+	-webkit-opacity:0.7;
+	-o-opacity:0.7;
+}
+
+/* absolute */
+#phpx_lib .absolute{position:absolute;}
+#phpx_lib .relative{position:relative;}
+
+/* table */
+#phpx_lib table{
+	width:100%;
+	border-collapse:collapse;
+}
+#phpx_lib table tr th,
+#phpx_lib table tr td{
+	border:solid 1px #aaa;
+	vertical-align:middle;
+	padding:7px;
+}
+#phpx_lib table tr th{
+	text-align:left;
+	width:220px;
+	vertical-align:top;
+	line-height:1.8em;
+	padding-top:7px;
+}
+#phpx_lib table tr th.need{
+	position:relative;
+	padding-right:50px;
+}
+#phpx_lib table tr th.need:after{
+	content:"必須";
+	background:#c20;
+	font-weight:normal;
+	color:#FFF;
+	padding:4px 5px;
+	position:absolute;
+	right:7px;
+	top:12px;
+}
+#phpx_lib table tr th.stitle{
+	background:#777;
+	color:#fff;
+	
+	border:solid 1px #777;
+}
+
+/* table.list */
+#phpx_lib table.list tr th,
+#phpx_lib table.list tr td{
+	padding:4px;
+	vertical-align:middle;
+}
+#phpx_lib table.list tr th{
+	width:auto;
+	text-align:center;
+	background:#444;
+	color:#fff;
+}
+#phpx_lib table.list tr th.w50{width:50px;}
+#phpx_lib table.list tr th.w100{width:100px;}
+#phpx_lib table.list tr th.w150{width:150px;}
+#phpx_lib table.list tr th.w200{width:200px;}
+#phpx_lib table.list tr th.w250{width:250px;}
+#phpx_lib table.list tr th.w300{width:300px;}
+#phpx_lib table.list tr th.w350{width:350px;}
+#phpx_lib table.list tr th.w400{width:400px;}
+#phpx_lib table.list tr th.w450{width:450px;}
+#phpx_lib table.list tr th.w500{width:500px;}
+
+/* pager */
+#phpx_lib .pager{
+	text-align:center;
+}
+#phpx_lib .pager ul{
+	overflow:hidden;
+	zoom:1;
+	display:inline-block;
+}
+#phpx_lib .pager ul:after{
+	display:block;
+	clear:both;
+	content:"";
+}
+#phpx_lib .pager ul li{
+	float:left;
+
+}
+#phpx_lib .pager ul li a{
+	padding:5px 12px;
+	border:solid 2px #333;
+	background:#333;
+	color:#fff;
+	display:block;
+	margin-right:10px;
+	font-size:15px;
+	position:relative;
+}
+#phpx_lib .pager ul li.active a{
+	background:#fff;
+	color:#333;
+}
+#phpx_lib .pager ul li.prev a:before,
+#phpx_lib .pager ul li.next a:before{
+	content:"";
+	display:block;
+	border-left:solid 1px #fff;
+	border-top:solid 1px #fff;
+	width:8px;
+	height:8px;
+	position:absolute;
+	transform:rotate(-45deg);
+	left:17px;
+	top:12px;
+}
+#phpx_lib .pager ul li.next a:before{
+	left:14px;
+	transform:rotate(135deg);
+
+}
+
+/* color */
+
+#phpx_lib .red{color:#C00;}
+#phpx_lib .green{color:#2C2;}
+#phpx_lib .blue{color:#22C;}
+
+/* iframe */
+#phpx_lib iframe{
+	width:100%;
+	border:none;
+	min-height:300px;
+}
+
+/* iframe(動画レスポンシブ用) */
+#phpx_lib .movie{
+	display:block;
+	position:relative;
+	width:100%;
+}
+#phpx_lib .movie:after{
+	padding-bottom:56.25%;
+	display:block;
+	content:"";
+}
+#phpx_lib .movie p{
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+}
+#phpx_lib .movie p iframe{
+	display:table-cell;
+	width:100%;
+	height:100%;
+	min-height:0px;
+}
+
+/* tablet */
+#phpx_lib .tablet1000,
+#phpx_lib .tablet640,
+#phpx_lib .tablet480{
+	display:none;
+}
+#phpx_lib .pc1000,
+#phpx_lib .pc640,
+#phpx_lib .pc480{
+	display:block;
+}
+
+@media screen and (max-width:1000px)
+{
+	#phpx_lib .tablet1000{
+		display:block
+	}
+	#phpx_lib .pc1000{
+		display:none;
+	}
+}
+@media screen and (max-width:640px)
+{
+	#phpx_lib .tablet640{
+		display:block
+	}
+	#phpx_lib .pc640{
+		display:none;
+	}
+}
+@media screen and (max-width:480px)
+{
+	#phpx_lib .tablet480{
+		display:block
+	}
+	#phpx_lib .pc480{
+		display:none;
+	}
+}
+
+/* checkbox */
+#phpx_lib input[type=checkbox].large,
+#phpx_lib input[type=checkbox].middle,
+#phpx_lib input[type=checkbox].max,
+#phpx_lib input[type=radio].large,
+#phpx_lib input[type=radio].middle,
+#phpx_lib input[type=radio].max{
+	display:none;
+}
+#phpx_lib input[type=checkbox].large+span,
+#phpx_lib input[type=checkbox].middle+span,
+#phpx_lib input[type=checkbox].max+span,
+#phpx_lib input[type=radio].large+span,
+#phpx_lib input[type=radio].middle+span,
+#phpx_lib input[type=radio].max+span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background:#FFF;
+	font-weight:bold;
+	color:#888;
+	border:solid 2px #888;
+	text-align:center;
+	font-size:20px;
+	border-radius:5px;
+	vertical-align:middle;
+	position:relative;
+}
+#phpx_lib input[type=radio].large+span,
+#phpx_lib input[type=radio].middle+span,
+#phpx_lib input[type=radio].max+span{
+	border-radius:50%;
+}
+#phpx_lib input[type=checkbox].large.blue+span,
+#phpx_lib input[type=checkbox].middle.blue+span,
+#phpx_lib input[type=checkbox].max.blue+span,
+#phpx_lib input[type=radio].large.blue+span,
+#phpx_lib input[type=radio].middle.blue+span,
+#phpx_lib input[type=radio].max.blue+span{
+	color:#00F;
+	border:solid 2px #00F;
+}
+#phpx_lib input[type=checkbox].large.red+span,
+#phpx_lib input[type=checkbox].middle.red+span,
+#phpx_lib input[type=checkbox].max.red+span,
+#phpx_lib input[type=radio].large.red+span,
+#phpx_lib input[type=radio].middle.red+span,
+#phpx_lib input[type=radio].max.red+span{
+	color:#F00;
+	border:solid 2px #F00;
+}
+#phpx_lib input[type=checkbox].middle+span,
+#phpx_lib input[type=radio].middle+span{
+	width:20px;
+	height:20px;
+}
+#phpx_lib input[type=checkbox].max+span,
+#phpx_lib input[type=radio].max+span{
+	width:40px;
+	height:40px;
+}
+#phpx_lib input[type=checkbox].large+span:before,
+#phpx_lib input[type=checkbox].middle+span:before,
+#phpx_lib input[type=checkbox].max+span:before,
+#phpx_lib input[type=radio].large+span:before,
+#phpx_lib input[type=radio].middle+span:before,
+#phpx_lib input[type=radio].max+span:before{
+	display:block;
+	line-height:30px;
+	content:"　";
+	vertical-align:middle;
+}
+#phpx_lib input[type=radio].large+span:before
+{
+	line-height:27px;
+}
+#phpx_lib input[type=checkbox].middle+span:before,
+#phpx_lib input[type=radio].middle+span:before{
+	font-size:13px;
+	line-height:20px;
+}
+#phpx_lib input[type=radio].middle+span:before{
+	font-size:12px;
+	line-height:16px;
+}
+#phpx_lib input[type=checkbox].max+span:before,
+#phpx_lib input[type=radio].max+span:before{
+	font-size:30px;
+	line-height:40px;
+}
+#phpx_lib input[type=radio].max+span:before{
+	line-height:35px;
+}
+#phpx_lib input[type=checkbox].large:checked+span:before,
+#phpx_lib input[type=checkbox].middle:checked+span:before,
+#phpx_lib input[type=checkbox].max:checked+span:before{
+	content:"\2714";
+}
+#phpx_lib input[type=radio].large:checked+span:before,
+#phpx_lib input[type=radio].middle:checked+span:before,
+#phpx_lib input[type=radio].max:checked+span:before{
+	content:"";
+	width:60%;
+	height:60%;
+	position:absolute;
+	left:20%;
+	top:20%;
+	display:block;
+	border-radius:50%;
+	background:#888;
+}
+/* rotate */
+#phpx_lib .rotate img{
+	transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+}
+#phpx_lib .rotate.deg180 img{
+	transform:rotate(180deg);
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+}
+#phpx_lib .rotate.deg270 img{
+	transform:rotate(270deg);
+	-webkit-transform:rotate(270deg);
+	-moz-transform:rotate(270deg);
+	-o-transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+}
+
+/* background */
+#phpx_lib .bg_lightgray{
+	background:#f0f0f0;
+}
+#phpx_lib .bg_gray{
+	background:#e0e0e0;
+}
+#phpx_lib .bg_pink{
+	background:#ffe0e0;
+}
+#phpx_lib .bg_green{
+	background:#f0fff0;
+}
+#phpx_lib .bg_blue{
+	background:#e0f0ff;
+}

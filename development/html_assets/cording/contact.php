@@ -2,7 +2,7 @@
 <?php $active_contact = true;?>
 <?php include("common/header.php"); ?>
 
-
+<div class="wrapper">
 <div class="lp_contact step1">
 	<a href="index.php"><h2 class="mtitle">各種お問い合わせ</h2></a>
 	
@@ -346,7 +346,7 @@ font-size:130%;
 
 </style>
 
-
+</div>
 
 
 

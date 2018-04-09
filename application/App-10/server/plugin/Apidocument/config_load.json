@@ -1,0 +1,23 @@
+{
+	name:"config_load",
+	category:"basic",
+	title:"サイト基本情報取得",
+	endpoint:"a1/config_load",
+	caption:"サイトの基本的な情報を取得。",
+	method:"post",
+	encoding:"UTF-8",
+	autholity:"base64_encode({service_secret}:{lisence_key}}",
+	output:"json",
+	testForm:{
+		access_token:{
+			lisencekey:"d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372",
+			accesstoken:"342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f",
+		}
+	},
+	Request:{
+	},
+	Response:{
+	},
+};
+
+?>

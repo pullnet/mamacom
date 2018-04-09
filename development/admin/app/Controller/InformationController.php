@@ -34,6 +34,7 @@ class InformationController extends AppController{
 		
 
 		$this->set("wwwurl",$this->Loadbasic->load("wwwurl"));
+		$this->set("adminurl",$this->Loadbasic->load("adminurl"));
 
 		$limit=30;
 		$this->set("limit",$limit);

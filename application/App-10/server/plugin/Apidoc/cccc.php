@@ -1,0 +1,29 @@
+<?php
+$params=array(
+	"name"=>"cccc",
+	"category"=>"BBBB",
+	"title"=>"API名テキストテキストテキストcccc",
+	"endpoint"=>$this->params["root"]."a1/cccc",
+	"caption"=>"説明文テキストテキストテキストテキスト\nテキストテキストテキストテキストテキストテキスト",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"service_secret"=>"xxxxxxxxxxxxxxxxxx",
+		"lisence_key"=>"xxxxxxxxxxxxxx",
+	),
+	"Request"=>array(
+		"value1"=>array(
+			"name"=>"何らかの値",
+			"type"=>"text",
+		),
+	),
+	"Response"=>array(
+		"aaa"=>array(
+			"name"=>"出力名テキストaaa",
+			"type"=>"text",
+		),
+	),
+);
+?>

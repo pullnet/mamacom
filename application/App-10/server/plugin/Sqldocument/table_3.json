@@ -1,0 +1,15 @@
+{
+	"name":"table_3",
+	"title":"テーブル名テキストtype_3",
+	"Schema":"___database_normal",
+	"caption":"説明文テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+	"create_date":"2017-06-06",
+	"create_user":"中辻",
+	"Table":{
+		"name":{
+			"name":"項目名",
+			"type":"varchar",
+			"length":255
+		}
+	}
+}

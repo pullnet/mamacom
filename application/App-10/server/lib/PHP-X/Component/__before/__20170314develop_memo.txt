@@ -1,0 +1,61 @@
+現状作っている拡張コンポーネント
+
+・Componetn
+	コンポーネントのデフォルト
+	全てのコンポーネントはここからの派生
+
+・AuthComponent
+	ユーザー認証用コンポーネント
+
+・ConfigloadComponent
+	サイト基本情報管理用コンポーネント
+
+・CookieComponent
+	クッキー用コンポーネント
+
+・CurlComponent
+	Curl接続用コンポーネント
+
+・EmailComponent
+	メール送信用コンポーネント
+	※実際はPHPMailerを拡張しただけ
+
+・EncryptComponent
+	暗号/復号用コンポーネント
+
+・FilemanageComponent
+	ファイル管理用コンポーネント
+
+・FtpComponent
+	FTP接続用コンポーネント
+
+・ImageComponent
+	画像加工用コンポーネント
+
+・ModelmakeComponent
+	データベース自動生成用コンポーネント
+
+・SessionComponent
+	セッション用コンポーネント
+
+・BasicauthComponent
+	ベーシック認証用コンポーネント
+
+/* 2017/09/14に一応完成
+
+・CsvComponent
+	CSV形式ファイルの管理用コンポーネント
+
+・RestAPIComponent
+	RestAPI用コンポーネント
+
+-------------------------------------------------------------------
+
+/* 以下は現在開発中.. */
+
+・ZipComponent
+	Zip圧縮/解凍用コンポーネント
+	(2017年9月14日現在、圧縮のみ可能)
+
+・HtmlscrapeComponent
+	htmlスクレイピング用コンポーネント

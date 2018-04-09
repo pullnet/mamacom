@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond %{REQUEST_URI} !(^/app/)
+	RewriteRule ^(.*)$ wdata/ [L]
+	RewriteRule (.*) wdata/$1 [L]
+</IfModule>

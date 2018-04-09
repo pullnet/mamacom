@@ -45,7 +45,7 @@ if(!@$nohead){
 			<div class="bs">
 				<div class="userdata">
 					<span class="user_icon"><img src="images/sidemenu_usericon.jpg"></span>
-					<span class="user_name">Username_aaa さん<br><a href="setting.php">設定</a><span>
+					<span class="user_name">Username_aaa さん<!--<br><a href="setting.php">設定</a>--><span>
 				</div>
 				<p><a href="index.php"><img src="images/sidemenu_01.jpg" alt="ホーム"></a></p>
 				<p><a href="category_01.php"><img src="images/sidemenu_02.jpg" alt="緊急・お役立ち"></a></p>
@@ -81,7 +81,11 @@ $(function(){
 				
 				var result=JSON.parse(data);
 				JSession.write("token",result.access_token);
-
+				
+				if('access_token' in result){
+					location.reload() ;
+				}
+				
 			}
 		});
 	}
@@ -115,8 +119,11 @@ $('.menubtn').on('click', function() {
 					//書き換え処理
 					$('.area_list').append($(".contents_source2").html());
 				}
-
-			}
+			},
+			error: function(){
+		       view_error_page();
+    		}
+			
 		});
 	}
 	else{

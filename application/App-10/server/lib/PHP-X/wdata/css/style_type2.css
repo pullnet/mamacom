@@ -1,0 +1,527 @@
+/* #phpx_lib */
+/* style_2.css */
+/* advanced css */
+
+/*
+style_type2は主にポップアップ表示や簡易アコーディオン、入力フォーム系の
+UI等おもに応用的に使うためのcss用
+(LPページ等でそれほど使用しない場合はこちらを省いてもOK)
+
+2017/4/28
+body以外は全てID名「phpx_lib」の子属性を定義してあるので
+開発案件ごとに別のID名に指定すること。
+(あとこのコメントも消すこと)
+*/
+
+#phpx_lib{}
+
+/*  #swradio */
+#phpx_lib #swradio{
+	display:block;
+}
+#phpx_lib #swradio input[type=radio]{
+	display:none;
+}
+#phpx_lib #swradio label{
+	cursor:pointer;
+	display:inline-block;
+	background:#e0e0e0;
+	padding:5px 10px;
+}
+#phpx_lib #swradio input[type=radio]:checked + label{
+	background:#555;
+	color:#FFF;
+}
+
+/* #swcheck */
+#phpx_lib #swcheck{
+	display:block;
+}
+#phpx_lib #swcheck input[type=checkbox]{
+	display:none;
+}
+#phpx_lib #swcheck label{
+	cursor:pointer;
+	display:inline-block;
+	border-collapse:collapse;
+	background:#e0e0e0;
+	padding:5px 10px;
+}
+#phpx_lib #swcheck input[type=checkbox]:checked + label{
+	background:#555;
+	color:#FFF;
+}
+
+/*　#menustrip */
+#phpx_lib #menustrip{
+	display:block;
+}
+#phpx_lib #menustrip input.mchecks{
+	display:none;
+}
+#phpx_lib #menustrip .menu{
+	display:block;
+	overflow:hidden;
+	height:0px;
+}
+#phpx_lib #menustrip input.mchecks:checked~.menu{
+	height:auto;
+}
+
+/* #Modal */
+#phpx_lib #Modal{
+	display:block;
+}
+#phpx_lib #Modal .window{
+	position:fixed;
+	z-index:-2;
+	background:#FFF;
+	width:80%;
+	max-height:80%;
+	left:10%;
+	top:10%;
+	opacity:0;
+	overflow:hidden;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-ms-opacity:0;
+	-o-opacity:0;
+}
+#phpx_lib #Modal .basejavar{
+	position:fixed;
+	z-index:-1;
+	opacity:0;
+	background:#000;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow-y:auto;
+}
+#phpx_lib #Modal input.checks{
+	display:none;
+}
+#phpx_lib #Modal input.checks:checked+label~.basejavar,
+#phpx_lib #Modal input.checks:checked+label~.window{
+	z-index:100;
+}
+#phpx_lib #Modal input.checks:checked+label~.window{
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+	animation:Modal_open 0.3s;
+	opacity:1;
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-ms-opacity:1;
+	-o-opacity:1;
+}
+#phpx_lib #Modal input.checks:checked+label~.basejavar{
+	animation:Modal_open_bsj 0.3s;
+	opacity:0.8;
+	-webkit-opacity:0.8;
+	-moz-opacity:0.8;
+	-ms-opacity:0.8;
+	-o-opacity:0.8;
+}
+#phpx_lib #Modal .window.table{
+	height:80%;
+}
+#phpx_lib #Modal .window .tr{
+	display:table-row;
+}
+#phpx_lib #Modal .window .tr .hf{
+	display:table-cell;
+	height:50px;
+	padding:15px;
+}
+#phpx_lib #Modal .window .tr .hf.head{
+	background:#009;
+	color:#FFF;
+	position:relative;
+}
+#phpx_lib #Modal .window .tr .main{
+	display:table-cell;
+	padding:10px 15px;
+	position:relative;
+}
+#phpx_lib #Modal .window .tr .main .bs{
+	position:absolute;
+	width:100%;
+	left:0px;
+	top:0px;
+	height:100%;
+	overflow:auto;
+}
+#phpx_lib #Modal .window.short{
+	width:640px;
+	left:50%;
+	margin-left:-320px;
+}
+#phpx_lib #Modal .window.dialog{
+	width:400px;
+	height:300px;
+	left:50%;
+	margin-left:-200px;
+	top:50%;
+	margin-top:-150px;
+}
+
+@keyframes Modal_open{
+	0%{
+		opacity:0;
+		-webkit-opacity:0;
+		-moz-opacity:0;
+		-ms-opacity:0;
+		-o-opacity:0;
+	}
+	100%{
+		opacity:1;
+		-webkit-opacity:1;
+		-moz-opacity:1;
+		-ms-opacity:1;
+		-o-opacity:1;
+	}
+}
+@keyframes Modal_open_bsj{
+	0%{
+		opacity:0;
+		-webkit-opacity:0;
+		-moz-opacity:0;
+		-ms-opacity:0;
+		-o-opacity:0;
+	}
+	100%{
+		opacity:0.8;
+		-webkit-opacity:0.8;
+		-moz-opacity:0.8;
+		-ms-opacity:0.8;
+		-o-opacity:0.8;
+	}
+}
+
+/* #popup_mini */
+#phpx_lib #popup_mini{
+	display:block;
+}
+#phpx_lib #popup_mini .window{
+	margin-top:18px;
+	display:none;
+	background:#FFF;
+	position:absolute;
+	z-index:10;
+	border:solid 1px #ccc;
+}
+#phpx_lib #popup_mini .window:before{
+	width:25px;
+	margin-left:15px;
+	height:25px;
+	content:"";
+	background:#FFF;
+	border:solid 1px #ccc;
+	display:block;
+	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	position:absolute;
+	margin-top:-12.5px;
+	z-index:-1;
+	border-right:none;
+	border-bottom:none;
+}
+#phpx_lib #popup_mini input.popupcheck{
+	display:none;
+}
+#phpx_lib #popup_mini input.popupcheck:checked~.window{
+	display:block;
+	animation:popupmini_open 0.3s;
+}
+
+
+@keyframes popupmini_open{
+	0%{
+		opacity:0;
+		-webkit-opacity:0;
+		-moz-opacity:0;
+		-ms-opacity:0;
+		-o-opacity:0;
+	}
+	100%{
+		opacity:1;
+		-webkit-opacity:1;
+		-moz-opacity:1;
+		-ms-opacity:1;
+		-o-opacity:1;
+	}
+}
+
+
+/* #popup_alert */
+#phpx_lib #popup_alert{
+	display:block;
+}
+#phpx_lib #popup_alert .basejavar{
+	position:fixed;
+	z-index:100;
+	background:#000;
+	opacity:0.5;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
+#phpx_lib #popup_alert .window{
+	position:fixed;
+	z-index:101;
+	width:80%;
+	max-height:60%;
+	left:10%;
+	top:20%;
+	background:#FFF;
+	overflow:auto;
+}
+#phpx_lib #popup_alert .checks:checked{
+	display:none;
+}
+#phpx_lib #popup_alert .checks:checked~.basejavar,
+#phpx_lib #popup_alert .checks:checked~.window{
+	z-index:-1;
+	opacity:0;
+	-webkit-transition-duration:0.3s;
+	-ms-transition-duration:0.3s;
+	-o-transition-duration:0.3s;
+	transition-duration:0.3s;
+}
+#phpx_lib #popup_alert .checks:checked~.window{
+	z-index:-2;
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+}
+
+/* tabmenu */
+#phpx_lib #tabmenu{
+
+}
+#phpx_lib #tabmenu input.checks{
+	display:none;
+}
+#phpx_lib #tabmenu .window{
+	border-top:solid 1px #555;
+}
+#phpx_lib #tabmenu input#menu01.checks:checked~.window.menu01,
+#phpx_lib #tabmenu input#menu02.checks:checked~.window.menu02,
+#phpx_lib #tabmenu input#menu03.checks:checked~.window.menu03,
+#phpx_lib #tabmenu input#menu04.checks:checked~.window.menu04,
+#phpx_lib #tabmenu input#menu05.checks:checked~.window.menu05,
+#phpx_lib #tabmenu input#menu06.checks:checked~.window.menu06{
+	display:block;
+}
+#phpx_lib #tabmenu input.checks~.tab label{
+	background:#555;
+	color:#FFF;
+	padding:5px 10px;
+	display:inline-block;
+	letter-spacing:0px;
+	border:solid 1px #555;
+	border-bottom:none;
+	margin-bottom:-1px;
+}
+#phpx_lib #tabmenu input.checks~.tab label:hover{
+	opacity:1;
+	-webkit-opacity:1;
+	-moz-opacity:1;
+	-ms-opacity:1;
+	-o-opacity:1;
+	background:#FFF;
+	color:#333;
+	border:solid 1px #555;
+	border-bottom:none;
+}
+#phpx_lib #tabmenu input#menu01.checks:checked~.tab label.menu01,
+#phpx_lib #tabmenu input#menu02.checks:checked~.tab label.menu02,
+#phpx_lib #tabmenu input#menu03.checks:checked~.tab label.menu03,
+#phpx_lib #tabmenu input#menu04.checks:checked~.tab label.menu04,
+#phpx_lib #tabmenu input#menu05.checks:checked~.tab label.menu05,
+#phpx_lib #tabmenu input#menu06.checks:checked~.tab label.menu06{
+	background:#FFF;
+	color:#333;
+	border:solid 1px #555;
+	border-bottom:none;
+}
+#phpx_lib #tabmenu .window{
+	position:static;
+	display:none;
+}
+
+/* lanking */
+#phpx_lib #lanking input.checks{
+	display:none;
+}
+#phpx_lib #lanking label.gage{
+	color:#000;
+}
+#phpx_lib #lanking input[index=lank00].checks:checked~label.gage{
+	color:#ccc;
+}
+#phpx_lib #lanking input[index=lank01].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank02].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank03].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank04].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank05].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank06].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank07].checks:checked~label.gage,
+#phpx_lib #lanking input[index=lank08].checks:checked~label.gage{
+	color:#CCC;
+}
+
+/* popup_hover */
+#phpx_lib #popup_hover{
+	display:inline-block;
+}
+#phpx_lib #popup_hover .window{
+	position:absolute;
+	background:#FFF;
+	border-radius:10px;
+	border:solid 1px #888;
+	display:none;
+	margin-top:18px;
+}
+#phpx_lib #popup_hover .window:before{
+	content:"";
+	display:block;
+	position:absolute;
+	width:30px;
+	border-left:solid 1px #888;
+	border-top:solid 1px #888;
+	background:#FFF;
+	height:30px;
+	margin-top:-16px;
+	margin-left:30px;
+	transform:rotate(45deg);
+}
+#phpx_lib #popup_hover .target:hover+.window{
+	display:block;
+}
+
+/* popup_realtime */
+#phpx_lib #popup_realtime .window{
+	position:fixed;
+	right:10px;
+	bottom:-100px;
+	background:#FFF;
+	border:solid 2px #999;
+	transition-duration:0.6s;
+	-webkit-transition-duration:0.6s;
+	-moz-transition-duration:0.6s;
+	-ms-transition-duration:0.6s;
+	-o-transition-duration:0.6s;
+}
+#phpx_lib #popup_realtime .checks{
+	display:none;
+}
+#phpx_lib #popup_realtime .checks:checked+.window{
+	bottom:10px;
+}
+#phpx_lib #popup_realtime .window .base{
+	padding:15px;
+	position:relative;
+}
+#phpx_lib #popup_realtime .window .close{
+	background:#333;
+	color:#FFF;
+	display:block;
+	padding:3px 6px;
+	position:absolute;
+	left:-10px;
+	top:-10px;
+}
+
+
+#phpx_lib .loading_image{
+	display:inline-block;
+}
+#phpx_lib .loading_image .icon{
+	position:relative;
+	display:block;
+	width:70px;
+	height:70px;
+	border-radius:50%;
+	border:solid 3px #333;
+	animation:loading_am 0.9s linear 0s infinite;
+}
+#phpx_lib .loading_image .icon:after{
+	width:35px;
+	height:35px;
+	content:"";
+	display:block;
+	position:absolute;
+	left:-3px;
+	top:-3px;
+	background:#fff;
+}
+@keyframes loading_am {
+	0% {transform:rotate(0deg);}
+	100% {transform:rotate(360deg);}
+}
+#phpx_lib .loading_image #loading_are:checked+.view{
+	display:none;
+}
+
+/* 2017 4/15 add */
+/* selector */
+
+#phpx_lib #selector{
+	border:solid 1px #ccc;
+	overflow:auto;
+}
+#phpx_lib #selector input[type=radio]{
+	display:none;
+}
+#phpx_lib #selector label{
+	display:block;
+	border-bottom:dashed 1px #999;
+}
+#phpx_lib #selector label:last-child{
+	border-bottom:none;
+}
+#phpx_lib #selector input[type=radio]:checked+label{
+	background:#e5e5e5;
+}
+
+/* multiselect */
+
+#phpx_lib #multiselect{
+	border:solid 1px #ccc;
+	overflow:auto;
+}
+#phpx_lib #multiselect input[type=checkbox]{
+	display:none;
+}
+#phpx_lib #multiselect label{
+	display:block;
+	padding-left:55px;
+	position:relative;
+	border-bottom:dashed 1px #999;
+}
+#phpx_lib #multiselect label:last-child{
+	border-bottom:none;
+}
+#phpx_lib #multiselect input[type=checkbox]:checked+label{
+	background:#e5e5e5;
+}
+#phpx_lib #multiselect label:before{
+	position:absolute;
+	left:15px;
+	top:15px;
+	width:25px;
+	border-radius:5px;
+	height:25px;
+	background:#fff;
+	border:solid 2px #888;
+	content:"";
+}
+#phpx_lib #multiselect input[type=checkbox]:checked+label:before{
+	content:"✔";
+	font-size:20px;
+	color:#888;
+	text-align:center;
+	vertical-align:middle;
+}

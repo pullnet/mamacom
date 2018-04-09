@@ -1,0 +1,1 @@
+<?php echo $this->fetch_lib("content"); ?>

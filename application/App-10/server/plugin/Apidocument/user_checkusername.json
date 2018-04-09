@@ -1,0 +1,41 @@
+<?php
+$params=array(
+	"name"=>"user_checkusername",
+	"category"=>"user setting",
+	"title"=>"会員ユーザー名利用確認",
+	"endpoint"=>$this->params["root"]."a1/user_checkusername",
+	"caption"=>"会員ユーザー名が利用可能かを確認",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"username_after"=>array(
+			"name"=>"ユーザー名",
+			"type"=>"text",
+			"required"=>true,
+		),
+		"username_before"=>array(
+			"name"=>"ユーザー名(すでに会員登録されている場合)",
+			"type"=>"text",
+		),
+	),
+	"Response"=>array(
+		"enabled"=>array(
+			"name"=>"判定結果",
+			"caption"=>"true:利用可能,
+			false:利用不可",
+		),
+		"reason"=>array(
+			"name"=>"判定理由",
+			"caption"=>"no mailaddress:ユーザー名が未入力,
+			newly usable email:このユーザー名は利用可能,
+			",
+		),
+	),
+);
+
+?>

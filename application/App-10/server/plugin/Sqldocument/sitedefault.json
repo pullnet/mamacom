@@ -1,0 +1,19 @@
+{
+	"name":"sitedefault",
+	"title":"サイト設定情報",
+	"Schema":"___database_master",
+	"caption":"説明文テキストテキストテキストテキストテキストテキスト",
+	"create_date":"2017-06-06",
+	"create_user":"中辻",
+	"Table":{
+		"name":{
+			"name":"項目名",
+			"type":"varchar",
+			"length":255
+		},
+		"value":{
+			"name":"値",
+			"type":"text"
+		}
+	}
+}
