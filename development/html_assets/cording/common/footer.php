@@ -1,3 +1,17 @@
+
+<div id="popup">
+	<div class="basejavar"></div>
+</div>
+<script type="text/javascript">
+$(window).load(function () {
+	$('.toppage').fadeIn(500);
+	$('.wrapper').fadeIn(500);
+});
+</script>
+
+
+</div>
+
 <?php
 if(!@$nofoot){
 ?>
@@ -13,8 +27,6 @@ if(!@$nofoot){
 <?php
 }
 ?>
-<div id="popup">
-	<div class="basejavar"></div>
-</div>
+
 </body>
 </html>

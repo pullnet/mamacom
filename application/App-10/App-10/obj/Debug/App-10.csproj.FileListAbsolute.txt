@@ -1,0 +1,17 @@
+D:\local\App_resource\Xamarin\Android\App-10\App-10\bin\Debug\App-10.dll
+D:\local\App_resource\Xamarin\Android\App-10\App-10\bin\Debug\App-10.pdb
+D:\local\App_resource\Xamarin\Android\App-10\App-10\bin\Debug\App_10.App_10.apk
+D:\local\App_resource\Xamarin\Android\App-10\App-10\bin\Debug\App_10.App_10-Signed.apk
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\App-10.csproj.CoreCompileInputs.cache
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\App-10.dll
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\App-10.pdb
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\android\bin\App_10.App_10.apk
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\res\layout\main.xml
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\res\values\strings.xml
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\res\drawable\icon.png
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\res\values\styles.xml
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\R.cs.flag
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\uploadflags.txt
+D:\local\App_resource\Xamarin\Android\App-10\App-10\bin\Debug\App-10.dll.mdb
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\android\assets\App-10.dll.mdb
+D:\local\App_resource\Xamarin\Android\App-10\App-10\obj\Debug\App-10.csprojResolveAssemblyReference.cache

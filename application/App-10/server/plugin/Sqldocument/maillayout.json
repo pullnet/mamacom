@@ -1,0 +1,19 @@
+{
+	"name":"maillayout",
+	"title":"メールレイアウト情報",
+	"Schema":"___database_master",
+	"caption":"説明文テキストテキストテキストテキストテキストテキスト",
+	"create_date":"2017-06-06",
+	"create_user":"中辻",
+	"Table":{
+		"name":{
+			"name":"レイアウト名",
+			"type":"varchar",
+			"length":255
+		},
+		"layout":{
+			"name":"レイアウト文",
+			"type":"text"
+		}
+	}
+}

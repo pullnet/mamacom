@@ -45,8 +45,6 @@
 
 
 
-
-
 <script type="text/javascript">
 $(function(){
 
@@ -55,7 +53,7 @@ $(function(){
 	var url_method="information/information_list";
 	var token=JSession.read("token");
 	
-	if(token!=null){
+	//if(token!=null){
 		$.ajax({
 			url:API.domain+url_method,
 			type:"post",
@@ -84,8 +82,6 @@ $(function(){
 					var today_date =new Date();
 					var new_icon_date = today_date.getTime() - 1555200000;
 					var update_date = Date.parse(result[i]["Information"].post_date);
-					
-					console.log(update_date,new_icon_date);
 				
 					if(new_icon_date < update_date){
 						$(".copy_base_info span").addClass('icon_new');	
@@ -99,12 +95,15 @@ $(function(){
 					$('.news_box').append($(".copy_base_info").html());
 				}
 
-			}
+			},
+			error: function(){
+		       view_error_page();
+    		}
 		});
-	}
-	else{
-		view_error_page();
-	}
+	//}
+	//else{
+	//	view_error_page();
+	//}
 	
 
 });

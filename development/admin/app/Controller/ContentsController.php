@@ -34,9 +34,9 @@ class ContentsController extends AppController{
 	
 	//★コンテンツ一覧
 	public function index($page=1){
-		$limit=30;
+		//$limit=30;
 		$this->set("page",$page);
-		$this->set("limit",$limit);
+		//$this->set("limit",$limit);
 		
 		
 		//カテゴリー情報をset
@@ -57,25 +57,56 @@ class ContentsController extends AppController{
 		));
 		$this->set("district_list",$district_list);		
 		
+
+		if(@$this->request->query){
+			$query=$this->request->query;
+
+			if(@$query["keyword"]){
+				$cond_keyword=array(
+					"Or"=>array(
+						"Contents.title LIKE"=>"%".$query["keyword"]."%",
+						"Contents.number LIKE"=>"%".$query["keyword"]."%",
+					),
+				);
+			}
+			if(@$query["category"]){
+				$cond_cl=array(
+					"Contents.category_id"=>$query["category"],
+				);
+			}
+			if(@$query["district"]){
+				$cond_dl=array(
+					"Contents.district_id"=>$query["district"],
+				);
+			}			
+
+		}		
+
 		//コンテンツ情報をset
 		$result=$this->Contents->find("all",array(
 			'order' => array(
 				'Contents.id' => 'desc',
 			),
-			"limit"=>$limit,
+			'conditions' => array(
+				@$cond_keyword,
+				@$cond_cl,
+				@$cond_dl,
+				'NOT' => array(
+					'Contents.category_id' => array(0),
+				),
+			),
+			//"limit"=>$limit,
 			"page"=>$page,
 		));
 		$this->set("result",$result);
 
 		$totalcount=$result=$this->Contents->find("count");
-		$totalpage=ceil($totalcount/$limit);
+		//$totalpage=ceil($totalcount/$limit);
 		$this->set("totalcount",$totalcount);
-		$this->set("totalpage",$totalpage);
+		//$this->set("totalpage",$totalpage);
 
 		$this->set("wwwurl",$this->Loadbasic->load("wwwurl"));
 	}
-	
-	
 	
 	//★コンテンツ登録・編集
 	public function edit($id=null){

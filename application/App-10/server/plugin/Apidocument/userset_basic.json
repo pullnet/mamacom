@@ -1,0 +1,77 @@
+<?php
+$params=array(
+	"name"=>"userset_basic",
+	"category"=>"user",
+	"title"=>"会員基本情報設定API",
+	"endpoint"=>$this->params["root"]."a1/userset_basic",
+	"caption"=>"会員基本情報を設定するためのAPI",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"name_sei"=>array(
+			"name"=>"お名前(姓)",
+			"type"=>"text",
+			"required"=>true,
+		),
+		"name_mei"=>array(
+			"name"=>"お名前(名)",
+			"type"=>"text",
+			"required"=>true,
+		),
+		"name_sei_kana"=>array(
+			"name"=>"お名前(姓)フリガナ",
+			"type"=>"text",
+			"required"=>true,
+		),
+		"name_mei_kana"=>array(
+			"name"=>"お名前(名)フリガナ",
+			"type"=>"text",
+			"required"=>true,
+		),
+		"postnumber"=>array(
+			"name"=>"郵便番号",
+			"type"=>"number",
+		),
+		"locationarea"=>array(
+			"name"=>"都道府県",
+			"type"=>"text",
+		),
+		"address1"=>array(
+			"name"=>"市区町村",
+			"type"=>"text",
+		),
+		"address2"=>array(
+			"name"=>"丁目番地",
+			"type"=>"text",
+		),
+		"address3"=>array(
+			"name"=>"その他マンション",
+			"type"=>"text",
+
+		),
+	),
+	"Response"=>array(
+		"enabled"=>array(
+			"name"=>"判定結果",
+			"caption"=>"true:OK,false:失敗",
+		),
+		"error"=>array(
+			"name"=>"検証チェック内容",
+			"multi"=>array(
+				"User_regist"=>array(
+					"name"=>"User_regist",
+					"multi"=>array(
+
+					),
+				),
+			),
+		),
+	),
+);
+
+?>

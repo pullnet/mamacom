@@ -1,0 +1,1040 @@
+/* XXXXXXXXX */
+/* style.css */
+/* Masato.Nakatsuji 2015-2017 */
+
+/*
+style_type1は主にfloatや中央揃え等基本的に使うcss用
+
+2017/4/28
+body以外は全てID名「XXXXXXXXX」の子属性を定義してあるので
+開発案件ごとに別のID名に指定すること。
+(あとこのコメントも消すこと)
+*/
+
+#XXXXXXXXX{}
+
+#XXXXXXXXX *{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size:13px;
+	box-sizing:border-box;
+	outline:none;
+}
+body{
+	background:#FFF;
+}
+
+
+
+/* link */
+#XXXXXXXXX a{
+	text-decoration:none;
+	color:#555;
+	cursor:pointer;
+}
+#XXXXXXXXX a:hover{
+	opacity:0.5;
+	-webkit-opacity:0.5;
+	-moz-opacity:0.5;
+	-ms-opacity:0.5;
+	-o-opacity:0.5;
+}
+#XXXXXXXXX a.underline,
+#XXXXXXXXX label.underline{
+	text-decoration:underline;
+}
+
+/* image */
+#XXXXXXXXX img{
+	width:auto;
+}
+#XXXXXXXXX img.image{
+	width:100%;
+	display:block;
+}
+
+/* mtitle */
+#XXXXXXXXX .mtitle{
+	border-left:solid 10px #999;
+	background:#f0f0f0;
+	line-height:2em;
+	padding-left:10px;
+}
+#XXXXXXXXX .inline-block{
+	display:inline-block;
+}
+
+/* h1-h5 */
+
+#XXXXXXXXX h1,
+#XXXXXXXXX h2,
+#XXXXXXXXX h3,
+#XXXXXXXXX h4,
+#XXXXXXXXX h5{
+	font-weight:normal;
+}
+#XXXXXXXXX h1,
+#XXXXXXXXX .h1{
+	font-size:23px;
+}
+#XXXXXXXXX h2,
+#XXXXXXXXX .h2{
+	font-size:20px;
+}
+#XXXXXXXXX h3,
+#XXXXXXXXX .h3{
+	font-size:18px;
+}
+#XXXXXXXXX h4,
+#XXXXXXXXX .h4{
+	font-size:16px;
+}
+/* default margin */
+
+#XXXXXXXXX .mb5{margin-bottom:5px;}
+#XXXXXXXXX .mb10{margin-bottom:10px;}
+#XXXXXXXXX .mb15{margin-bottom:15px;}
+#XXXXXXXXX .mb20{margin-bottom:20px;}
+#XXXXXXXXX .mb25{margin-bottom:25px;}
+#XXXXXXXXX .mb30{margin-bottom:30px;}
+#XXXXXXXXX .mb40{margin-bottom:40px;}
+#XXXXXXXXX .mb50{margin-bottom:50px;}
+#XXXXXXXXX .mb60{margin-bottom:60px;}
+#XXXXXXXXX .mb70{margin-bottom:70px;}
+#XXXXXXXXX .mb80{margin-bottom:80px;}
+#XXXXXXXXX .mb90{margin-bottom:90px;}
+#XXXXXXXXX .mb100{margin-bottom:100px;}
+
+#XXXXXXXXX .mt5{margin-top:5px;}
+#XXXXXXXXX .mt10{margin-top:10px;}
+#XXXXXXXXX .mt15{margin-top:15px;}
+#XXXXXXXXX .mt20{margin-top:20px;}
+#XXXXXXXXX .mt25{margin-top:25px;}
+#XXXXXXXXX .mt30{margin-top:30px;}
+#XXXXXXXXX .mt40{margin-top:40px;}
+#XXXXXXXXX .mt50{margin-top:50px;}
+#XXXXXXXXX .mt60{margin-top:60px;}
+#XXXXXXXXX .mt70{margin-top:70px;}
+#XXXXXXXXX .mt80{margin-top:80px;}
+#XXXXXXXXX .mt90{margin-top:90px;}
+#XXXXXXXXX .mt100{margin-top:100px;}
+
+#XXXXXXXXX .mm5{margin:5px 0px;}
+#XXXXXXXXX .mm10{margin:10px 0px;}
+#XXXXXXXXX .mm15{margin:15px 0px;}
+#XXXXXXXXX .mm20{margin:20px 0px;}
+#XXXXXXXXX .mm25{margin:25px 0px;}
+#XXXXXXXXX .mm30{margin:30px 0px;}
+#XXXXXXXXX .mm40{margin:40px 0px;}
+#XXXXXXXXX .mm50{margin:50px 0px;}
+#XXXXXXXXX .mm60{margin:60px 0px;}
+#XXXXXXXXX .mm70{margin:70px 0px;}
+#XXXXXXXXX .mm80{margin:80px 0px;}
+#XXXXXXXXX .mm90{margin:90px 0px;}
+#XXXXXXXXX .mm100{margin:100px 0px;}
+
+#XXXXXXXXX .mauto{margin:0px auto;}
+
+#XXXXXXXXX .m5{margin:5px;}
+#XXXXXXXXX .m10{margin:10px;}
+#XXXXXXXXX .m15{margin:15px;}
+#XXXXXXXXX .m20{margin:20px;}
+#XXXXXXXXX .m25{margin:25px;}
+#XXXXXXXXX .m30{margin:30px;}
+#XXXXXXXXX .m40{margin:40px;}
+#XXXXXXXXX .m50{margin:50px;}
+#XXXXXXXXX .m60{margin:60px;}
+#XXXXXXXXX .m70{margin:70px;}
+#XXXXXXXXX .m80{margin:80px;}
+#XXXXXXXXX .m90{margin:90px;}
+#XXXXXXXXX .m100{margin:100px;}
+
+#XXXXXXXXX .ml5{margin-left:5px;}
+#XXXXXXXXX .mr5{margin-right:5px;}
+#XXXXXXXXX .ml10{margin-left:10px;}
+#XXXXXXXXX .mr10{margin-right:10px;}
+#XXXXXXXXX .ml15{margin-left:15px;}
+#XXXXXXXXX .mr15{margin-right:15px;}
+#XXXXXXXXX .ml20{margin-left:20px;}
+#XXXXXXXXX .mr20{margin-right:20px;}
+#XXXXXXXXX .mr25{margin-right:25px;}
+#XXXXXXXXX .mr30{margin-right:30px;}
+
+/* hidden */
+#XXXXXXXXX .hidden{
+	display:none
+}
+/* align */
+
+#XXXXXXXXX .right{text-align:right;}
+#XXXXXXXXX .left{text-align:left;}
+#XXXXXXXXX .center{text-align:center}
+#XXXXXXXXX .middle{vertical-align:middle;}
+#XXXXXXXXX .top{vertical-align:top;}
+#XXXXXXXXX .bottom{vertical-align:bottom;}
+
+/* table */
+
+#XXXXXXXXX .table{display:table;width:100%;}
+#XXXXXXXXX .table li{display:table-cell;vertical-align:top;}
+#XXXXXXXXX .t_row{display:table-row;}
+#XXXXXXXXX .t_cell{display:table-cell;}
+
+/* float */
+
+#XXXXXXXXX .float{overflow:hidden;zoom:1;}
+#XXXXXXXXX .float:after{clear:both;display:block;content:"";}
+#XXXXXXXXX .float li{float:left;}
+#XXXXXXXXX .f_left{float:left !important;}
+#XXXXXXXXX .f_right{float:right !important;}
+#XXXXXXXXX .f_clear{float:none !important;}
+
+/* dl-list */
+#XXXXXXXXX dl.list{
+	margin-bottom:5px;
+}
+#XXXXXXXXX dl.list dt{
+	font-weight:bold;
+}
+#XXXXXXXXX dl.list dd{
+	margin-left:10px;
+}
+/* buttons */
+#XXXXXXXXX .buttons{
+	background:#000;
+	color:#FFF;
+	font-size:13px;
+	display:inline-block;
+	border:solid 2px #000 !important;
+	line-height:35px;
+}
+#XXXXXXXXX .buttons:active{
+	background:#fff;
+	color:#000;
+}
+#XXXXXXXXX .buttons.big{
+	font-size:18px;
+	line-height:60px;
+}
+#XXXXXXXXX .buttons.block{
+	display:block;
+	text-align:center;
+	padding:4px 0px;
+}
+#XXXXXXXXX .buttons.clearbtn{
+	background:none;
+	font-weight:bold;
+	border:none !important;
+	color:#000;
+}
+#XXXXXXXXX .buttons.new{
+	background:#183;
+	border:solid 2px #183 !important;
+}
+#XXXXXXXXX .buttons.new:active{
+	background:#fff;
+	color:#183;
+}
+#XXXXXXXXX .buttons.new.clearbtn{
+	background:none;
+	border:none !important;
+	color:#183;
+}
+#XXXXXXXXX .buttons.add{
+	background:#A00;
+	border:solid 2px #A00 !important;
+}
+#XXXXXXXXX .buttons.add:active{
+	background:#fff;
+	color:#A00;
+}
+#XXXXXXXXX .buttons.add.clearbtn{
+	background:none;
+	border:none !important;
+	color:#A00;
+}
+#XXXXXXXXX .buttons.edit{
+	background:#11a;
+	border:solid 2px #11a !important;
+}
+#XXXXXXXXX .buttons.edit:active{
+	background:#fff;
+	color:#11a;
+}
+#XXXXXXXXX .buttons.edit.clearbtn{
+	background:none;
+	border:none !important;
+	color:#11a;
+}
+#XXXXXXXXX .buttons.delete{
+	background:#853;
+	border:solid 2px #853 !important;
+}
+#XXXXXXXXX .buttons.delete:active{
+	background:#fff;
+	color:#853;
+}
+#XXXXXXXXX .buttons.delete.clearbtn{
+	background:none;
+	border:none !important;
+	color:#853;
+}
+#XXXXXXXXX .buttons.preview{
+	background:#297;
+	border:solid 2px #297 !important;
+}
+#XXXXXXXXX .buttons.preview:active{
+	background:#fff;
+	color:#297;
+}
+#XXXXXXXXX .buttons.preview.clearbtn{
+	background:none;
+	border:none !important;
+	color:#297;
+}
+#XXXXXXXXX .buttons.backbtn{
+	background:#999;
+	border:solid 2px #999 !important;
+}
+#XXXXXXXXX .buttons.backbtn:active{
+	background:#fff;
+	color:#999;
+}
+#XXXXXXXXX .buttons.backbtn.clearbtn{
+	background:none;
+	border:none !important;
+	color:#999;
+}
+#XXXXXXXXX .buttons.black{
+	background:#000;
+	border:solid 2px #000 !important;
+}
+#XXXXXXXXX .buttons.black.clearbtn{
+	background:none;
+	border:none !important;
+	color:#000;
+}
+#XXXXXXXXX .buttons.red{
+	background:#a00;
+	color:#fff;
+	border:solid 2px #a00 !important;
+}
+#XXXXXXXXX .buttons.red:active{
+	background:#fff;
+	color:#a00;
+}
+#XXXXXXXXX .buttons.red.clearbtn{
+	background:none;
+	border:none !important;
+	color:#a00;
+}
+#XXXXXXXXX .buttons.blue{
+	background:#11a;
+	color:#fff;
+	border:solid 2px #11a !important;
+}
+#XXXXXXXXX .buttons.blue:active{
+	background:#fff;
+	color:#11a;
+}
+#XXXXXXXXX .buttons.blue.clearbtn{
+	background:none;
+	border:none !important;
+	color:#11a;
+}
+#XXXXXXXXX .buttons.green{
+	background:#192;
+	color:#fff;
+	border:solid 2px #192 !important;
+}
+#XXXXXXXXX .buttons.green:active{
+	background:#fff;
+	color:#192;
+}
+#XXXXXXXXX .buttons.green.clearbtn{
+	background:none;
+	border:none !important;
+	color:#192;
+}
+#XXXXXXXXX .buttons.brown{
+	background:#853;
+	color:#fff;
+	border:solid 2px #853 !important;
+}
+#XXXXXXXXX .buttons.brown:active{
+	background:#fff;
+	color:#853;
+}
+#XXXXXXXXX .buttons.brown.clearbtn{
+	background:none;
+	border:none !important;
+	color:#853;
+}
+#XXXXXXXXX .buttons.orange{
+	background:#c60;
+	color:#fff;
+	border:solid 2px #c60 !important;
+}
+#XXXXXXXXX .buttons.orange:active{
+	background:#fff;
+	color:#c60;
+}
+#XXXXXXXXX .buttons.orange.clearbtn{
+	background:none;
+	border:none !important;
+	color:#c60;
+}
+#XXXXXXXXX .buttons.pink{
+	background:#a4a;
+	color:#fff;
+	border:solid 2px #a4a !important;
+}
+#XXXXXXXXX .buttons.pink:active{
+	background:#fff;
+	color:#a4a;
+}
+#XXXXXXXXX .buttons.pink.clearbtn{
+	background:none;
+	border:none !important;
+	color:#a4a;
+}
+#XXXXXXXXX .buttons.gray{
+	background:#666;
+	color:#fff;
+	border:solid 2px #666 !important;
+}
+#XXXXXXXXX .buttons.gray:active{
+	background:#fff;
+	color:#666;
+}
+#XXXXXXXXX .buttons.gray.clearbtn{
+	background:none;
+	border:none !important;
+	color:#666;
+}
+#XXXXXXXXX .buttons.lightgray{
+	background:#aaa;
+	color:#fff;
+	border:solid 2px #aaa !important;
+}
+#XXXXXXXXX .buttons.lightgray:active{
+	background:#fff;
+	color:#aaa;
+}
+#XXXXXXXXX .buttons.lightgray.clearbtn{
+	background:none;
+	border:none !important;
+	color:#aaa;
+}
+
+/* overflow */
+#XXXXXXXXX .overflow{
+	max-height:300px;
+	overflow-y:auto;
+	border:solid 1px #aaa;
+	padding:15px;
+}
+
+/* view_block */
+#XXXXXXXXX .view_block{
+	background:#eee;
+	padding:15px;
+}
+
+/* caltion_block */
+#XXXXXXXXX .caltion_block{
+	border:solid 2px #c00;
+	color:#c00;
+	padding:15px;
+}
+
+
+/* form */
+
+#XXXXXXXXX input,
+#XXXXXXXXX select,
+#XXXXXXXXX textarea{
+	border-style:none;
+	border-bottom:solid 2px #aaa;
+	line-height:1.8em;
+	padding:6px;
+	margin:0px;
+	width:100%;
+}
+#XXXXXXXXX input::-webkit-input-placeholder,
+#XXXXXXXXX select::-webkit-input-placeholder,
+#XXXXXXXXX textarea::-webkit-input-placeholder{
+	color:#bbb;
+}
+#XXXXXXXXX input:hover,
+#XXXXXXXXX select:hover,
+#XXXXXXXXX textarea:hover,
+#XXXXXXXXX input:visited,
+#XXXXXXXXX select:visited,
+#XXXXXXXXX textarea:visited{
+	border-bottom:solid 2px #c50;
+}
+#XXXXXXXXX input.large{
+	font-size:20px;
+}
+
+#XXXXXXXXX label.select select{
+	height: 39px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+}
+#XXXXXXXXX label.select{
+	display:inline-block;
+	background:#fff;
+	width:100%;
+	position:relative;
+}
+#XXXXXXXXX label.select:after{
+	content: "▼";
+	font-size: 11px;
+	position: absolute;
+	line-height: 39px;
+	width: 35px;
+	right:0px;
+	top:0px;
+	pointer-events: none;
+	text-align: center;
+}
+
+
+#XXXXXXXXX textarea{
+	border:solid 2px #aaa;
+	display:block;
+	resize:none;
+	height:6em;
+	line-height:1.3em;
+}
+#XXXXXXXXX textarea:hover,
+#XXXXXXXXX textarea:visited{
+	border:solid 2px #c50;
+}
+#XXXXXXXXX textarea.h100{
+	height:100px;
+}
+#XXXXXXXXX textarea.h200{
+	height:200px;
+}
+#XXXXXXXXX textarea.h300{
+	height:300px;
+}
+#XXXXXXXXX textarea.h400{
+	height:400px;
+}
+#XXXXXXXXX textarea.h500{
+	height:500px;
+}
+#XXXXXXXXX textarea.h600{
+	height:600px;
+}
+#XXXXXXXXX input[type=submit],
+#XXXXXXXXX input[type=button],
+#XXXXXXXXX input[type=checkbox],
+#XXXXXXXXX input[type=radio]{
+	width:auto;
+}
+#XXXXXXXXX input[type=submit],
+#XXXXXXXXX input[type=text],
+#XXXXXXXXX input[type=password],
+#XXXXXXXXX input[type=file],
+#XXXXXXXXX input[type=button],
+#XXXXXXXXX textarea,
+#XXXXXXXXX button{
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+#XXXXXXXXX input[type=text].w50,
+#XXXXXXXXX input[type=password].w50,
+#XXXXXXXXX input[type=number].w50,
+#XXXXXXXXX select.w50,
+#XXXXXXXXX label.select.w50{
+	max-width:50px;
+}
+#XXXXXXXXX input[type=text].w70,
+#XXXXXXXXX input[type=password].w70,
+#XXXXXXXXX input[type=number].w70,
+#XXXXXXXXX select.w70,
+#XXXXXXXXX label.select.w70{
+	max-width:70px;
+}
+#XXXXXXXXX input[type=text].w100,
+#XXXXXXXXX input[type=password].w100,
+#XXXXXXXXX input[type=number].w100,
+#XXXXXXXXX select.w100,
+#XXXXXXXXX label.select.w100{
+	max-width:100px;
+}
+#XXXXXXXXX input[type=text].w150,
+#XXXXXXXXX input[type=password].w150,
+#XXXXXXXXX input[type=number].w150,
+#XXXXXXXXX select.w150,
+#XXXXXXXXX label.select.w150{
+	max-width:150px;
+}
+#XXXXXXXXX input[type=text].w200,
+#XXXXXXXXX input[type=password].w200,
+#XXXXXXXXX input[type=number].w200,
+#XXXXXXXXX select.w200,
+#XXXXXXXXX label.select.w200{
+	max-width:200px;
+}
+#XXXXXXXXX input[type=text].w250,
+#XXXXXXXXX input[type=password].w250,
+#XXXXXXXXX input[type=number].w250,
+#XXXXXXXXX select.w250,
+#XXXXXXXXX label.select.w250{
+	max-width:250px;
+}
+#XXXXXXXXX input[type=text].w300,
+#XXXXXXXXX input[type=password].w300,
+#XXXXXXXXX input[type=number].w300,
+#XXXXXXXXX select.w300,
+#XXXXXXXXX label.select.w300{
+	max-width:300px;
+}
+#XXXXXXXXX input[type=text].w350,
+#XXXXXXXXX input[type=password].w350,
+#XXXXXXXXX input[type=number].w350,
+#XXXXXXXXX select.w350,
+#XXXXXXXXX label.select.w350{
+	max-width:350px;
+}
+#XXXXXXXXX input[type=text].w400,
+#XXXXXXXXX input[type=password].w400,
+#XXXXXXXXX input[type=number].w400,
+#XXXXXXXXX select.w400,
+#XXXXXXXXX label.select.w400{
+	max-width:400px;
+}
+#XXXXXXXXX input[type=text].w450,
+#XXXXXXXXX input[type=password].w450,
+#XXXXXXXXX input[type=number].w450,
+#XXXXXXXXX select.w450,
+#XXXXXXXXX label.select.w450{
+	max-width:450px;
+}
+#XXXXXXXXX input[type=text].w500,
+#XXXXXXXXX input[type=password].w500,
+#XXXXXXXXX input[type=number].w500,
+#XXXXXXXXX select.w500,
+#XXXXXXXXX label.select.w500{
+	max-width:500px;
+}
+
+#XXXXXXXXX input[type=checkbox],
+#XXXXXXXXX input[type=radio]{
+	margin-left:5px;
+	margin-right:5px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+#XXXXXXXXX input[type=submit]{
+	cursor:pointer;
+	display:inline-block;
+}
+#XXXXXXXXX input[type=submit]:hover{
+	opacity:0.7;
+	-moz-opacity:0.7;
+	-ms-opacity:0.7;
+	-webkit-opacity:0.7;
+	-o-opacity:0.7;
+}
+#XXXXXXXXX label{
+	cursor:pointer;
+}
+#XXXXXXXXX label:hover{
+	opacity:0.7;
+	-moz-opacity:0.7;
+	-ms-opacity:0.7;
+	-webkit-opacity:0.7;
+	-o-opacity:0.7;
+}
+
+/* absolute */
+#XXXXXXXXX .absolute{position:absolute;}
+#XXXXXXXXX .relative{position:relative;}
+
+/* table */
+#XXXXXXXXX table{
+	width:100%;
+	border-collapse:collapse;
+}
+#XXXXXXXXX table tr th,
+#XXXXXXXXX table tr td{
+	border:solid 1px #aaa;
+	vertical-align:middle;
+	padding:10px;
+}
+#XXXXXXXXX table tr th{
+	text-align:left;
+	width:220px;
+	vertical-align:top;
+	line-height:1.8em;
+	padding-top:15px;
+}
+#XXXXXXXXX table tr th.need{
+	position:relative;
+	padding-right:50px;
+}
+#XXXXXXXXX table tr th.need:after{
+	content:"必須";
+	background:#c20;
+	font-weight:normal;
+	color:#FFF;
+	padding:4px 5px;
+	position:absolute;
+	right:7px;
+	top:12px;
+}
+#XXXXXXXXX table tr th.stitle{
+	background:#777;
+	color:#fff;
+	
+	border:solid 1px #777;
+}
+
+/* table.list */
+#XXXXXXXXX table.list tr th,
+#XXXXXXXXX table.list tr td{
+	padding:4px;
+	vertical-align:middle;
+}
+#XXXXXXXXX table.list tr th{
+	width:auto;
+	text-align:center;
+	background:#444;
+	color:#fff;
+}
+#XXXXXXXXX table.list tr th.w50{width:50px;}
+#XXXXXXXXX table.list tr th.w100{width:100px;}
+#XXXXXXXXX table.list tr th.w150{width:150px;}
+#XXXXXXXXX table.list tr th.w200{width:200px;}
+#XXXXXXXXX table.list tr th.w250{width:250px;}
+#XXXXXXXXX table.list tr th.w300{width:300px;}
+#XXXXXXXXX table.list tr th.w350{width:350px;}
+#XXXXXXXXX table.list tr th.w400{width:400px;}
+#XXXXXXXXX table.list tr th.w450{width:450px;}
+#XXXXXXXXX table.list tr th.w500{width:500px;}
+
+/* pager */
+#XXXXXXXXX .pager{
+	text-align:center;
+}
+#XXXXXXXXX .pager ul{
+	overflow:hidden;
+	zoom:1;
+	display:inline-block;
+}
+#XXXXXXXXX .pager ul:after{
+	display:block;
+	clear:both;
+	content:"";
+}
+#XXXXXXXXX .pager ul li{
+	float:left;
+
+}
+#XXXXXXXXX .pager ul li a{
+	padding:5px 12px;
+	border:solid 2px #333;
+	background:#333;
+	color:#fff;
+	display:block;
+	margin-right:10px;
+	font-size:15px;
+	position:relative;
+}
+#XXXXXXXXX .pager ul li.active a{
+	background:#fff;
+	color:#333;
+}
+#XXXXXXXXX .pager ul li.prev a:before,
+#XXXXXXXXX .pager ul li.next a:before{
+	content:"";
+	display:block;
+	border-left:solid 1px #fff;
+	border-top:solid 1px #fff;
+	width:8px;
+	height:8px;
+	position:absolute;
+	transform:rotate(-45deg);
+	left:17px;
+	top:12px;
+}
+#XXXXXXXXX .pager ul li.next a:before{
+	left:14px;
+	transform:rotate(135deg);
+
+}
+
+/* color */
+
+#XXXXXXXXX .red{color:#C00;}
+#XXXXXXXXX .green{color:#2C2;}
+#XXXXXXXXX .blue{color:#22C;}
+
+/* iframe */
+#XXXXXXXXX iframe{
+	width:100%;
+	border:none;
+	min-height:300px;
+}
+
+/* iframe(動画レスポンシブ用) */
+#XXXXXXXXX .movie{
+	display:block;
+	position:relative;
+	width:100%;
+}
+#XXXXXXXXX .movie:after{
+	padding-bottom:56.25%;
+	display:block;
+	content:"";
+}
+#XXXXXXXXX .movie p{
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+}
+#XXXXXXXXX .movie p iframe{
+	display:table-cell;
+	width:100%;
+	height:100%;
+	min-height:0px;
+}
+
+/* tablet */
+#XXXXXXXXX .tablet1000,
+#XXXXXXXXX .tablet640,
+#XXXXXXXXX .tablet480{
+	display:none;
+}
+#XXXXXXXXX .pc1000,
+#XXXXXXXXX .pc640,
+#XXXXXXXXX .pc480{
+	display:block;
+}
+
+@media screen and (max-width:1000px)
+{
+	#XXXXXXXXX .tablet1000{
+		display:block
+	}
+	#XXXXXXXXX .pc1000{
+		display:none;
+	}
+}
+@media screen and (max-width:640px)
+{
+	#XXXXXXXXX .tablet640{
+		display:block
+	}
+	#XXXXXXXXX .pc640{
+		display:none;
+	}
+}
+@media screen and (max-width:480px)
+{
+	#XXXXXXXXX .tablet480{
+		display:block
+	}
+	#XXXXXXXXX .pc480{
+		display:none;
+	}
+}
+
+/* checkbox */
+#XXXXXXXXX input[type=checkbox].large,
+#XXXXXXXXX input[type=checkbox].middle,
+#XXXXXXXXX input[type=checkbox].max,
+#XXXXXXXXX input[type=radio].large,
+#XXXXXXXXX input[type=radio].middle,
+#XXXXXXXXX input[type=radio].max{
+	display:none;
+}
+#XXXXXXXXX input[type=checkbox].large+span,
+#XXXXXXXXX input[type=checkbox].middle+span,
+#XXXXXXXXX input[type=checkbox].max+span,
+#XXXXXXXXX input[type=radio].large+span,
+#XXXXXXXXX input[type=radio].middle+span,
+#XXXXXXXXX input[type=radio].max+span{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background:#FFF;
+	font-weight:bold;
+	color:#888;
+	border:solid 2px #888;
+	text-align:center;
+	font-size:20px;
+	border-radius:5px;
+	vertical-align:middle;
+	position:relative;
+}
+#XXXXXXXXX input[type=radio].large+span,
+#XXXXXXXXX input[type=radio].middle+span,
+#XXXXXXXXX input[type=radio].max+span{
+	border-radius:50%;
+}
+#XXXXXXXXX input[type=checkbox].large.blue+span,
+#XXXXXXXXX input[type=checkbox].middle.blue+span,
+#XXXXXXXXX input[type=checkbox].max.blue+span,
+#XXXXXXXXX input[type=radio].large.blue+span,
+#XXXXXXXXX input[type=radio].middle.blue+span,
+#XXXXXXXXX input[type=radio].max.blue+span{
+	color:#00F;
+	border:solid 2px #00F;
+}
+#XXXXXXXXX input[type=checkbox].large.red+span,
+#XXXXXXXXX input[type=checkbox].middle.red+span,
+#XXXXXXXXX input[type=checkbox].max.red+span,
+#XXXXXXXXX input[type=radio].large.red+span,
+#XXXXXXXXX input[type=radio].middle.red+span,
+#XXXXXXXXX input[type=radio].max.red+span{
+	color:#F00;
+	border:solid 2px #F00;
+}
+#XXXXXXXXX input[type=checkbox].middle+span,
+#XXXXXXXXX input[type=radio].middle+span{
+	width:20px;
+	height:20px;
+}
+#XXXXXXXXX input[type=checkbox].max+span,
+#XXXXXXXXX input[type=radio].max+span{
+	width:40px;
+	height:40px;
+}
+#XXXXXXXXX input[type=checkbox].large+span:before,
+#XXXXXXXXX input[type=checkbox].middle+span:before,
+#XXXXXXXXX input[type=checkbox].max+span:before,
+#XXXXXXXXX input[type=radio].large+span:before,
+#XXXXXXXXX input[type=radio].middle+span:before,
+#XXXXXXXXX input[type=radio].max+span:before{
+	display:block;
+	line-height:30px;
+	content:"　";
+	vertical-align:middle;
+}
+#XXXXXXXXX input[type=radio].large+span:before
+{
+	line-height:27px;
+}
+#XXXXXXXXX input[type=checkbox].middle+span:before,
+#XXXXXXXXX input[type=radio].middle+span:before{
+	font-size:13px;
+	line-height:20px;
+}
+#XXXXXXXXX input[type=radio].middle+span:before{
+	font-size:12px;
+	line-height:16px;
+}
+#XXXXXXXXX input[type=checkbox].max+span:before,
+#XXXXXXXXX input[type=radio].max+span:before{
+	font-size:30px;
+	line-height:40px;
+}
+#XXXXXXXXX input[type=radio].max+span:before{
+	line-height:35px;
+}
+#XXXXXXXXX input[type=checkbox].large:checked+span:before,
+#XXXXXXXXX input[type=checkbox].middle:checked+span:before,
+#XXXXXXXXX input[type=checkbox].max:checked+span:before{
+	content:"\2714";
+}
+#XXXXXXXXX input[type=radio].large:checked+span:before,
+#XXXXXXXXX input[type=radio].middle:checked+span:before,
+#XXXXXXXXX input[type=radio].max:checked+span:before{
+	content:"";
+	width:60%;
+	height:60%;
+	position:absolute;
+	left:20%;
+	top:20%;
+	display:block;
+	border-radius:50%;
+	background:#888;
+}
+/* rotate */
+#XXXXXXXXX .rotate img{
+	transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+}
+#XXXXXXXXX .rotate.deg180 img{
+	transform:rotate(180deg);
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+}
+#XXXXXXXXX .rotate.deg270 img{
+	transform:rotate(270deg);
+	-webkit-transform:rotate(270deg);
+	-moz-transform:rotate(270deg);
+	-o-transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+}
+
+/* background */
+#XXXXXXXXX .bg_lightgray{
+	background:#f0f0f0;
+}
+#XXXXXXXXX .bg_gray{
+	background:#e0e0e0;
+}
+#XXXXXXXXX .bg_pink{
+	background:#ffe0e0;
+}
+#XXXXXXXXX .bg_green{
+	background:#f0fff0;
+}
+#XXXXXXXXX .bg_blue{
+	background:#e0f0ff;
+}
+
+/* image view */
+#XXXXXXXXX .image_w50{
+	width:50%;
+	margin:0px auto;
+}
+#XXXXXXXXX .image_w60{
+	width:60%;
+	margin:0px auto;
+}
+#XXXXXXXXX .image_w70{
+	width:70%;
+	margin:0px auto;
+}
+#XXXXXXXXX .image_w80{
+	width:80%;
+	margin:0px auto;
+}
+#XXXXXXXXX .image_max640{
+	max-width:640px;
+}
+#XXXXXXXXX img.radius5{
+	border-radius:5px;
+}
+#XXXXXXXXX img.circle{
+	border-radius:50%;
+}
+#XXXXXXXXX img.border{
+	border:solid 1px #aaa;
+	padding:5px;
+}

@@ -1,0 +1,45 @@
+<?php
+$params=array(
+	"name"=>"get_area",
+	"category"=>"basic",
+	"title"=>"地区・都道府県情報取得",
+	"endpoint"=>$this->params["root"]."a1/get_area",
+	"caption"=>"地区・都道府県情報取得を取得。",
+	"method"=>"post",
+	"encoding"=>"UTF-8",
+	"autholity"=>"base64_encode({service_secret}:{lisence_key})",
+	"output"=>"json",
+	"testForm"=>array(
+		"access_token"=>base64_encode("d2d02ea74de2c9fab1d802db969c18d409a8663a9697977bb1c98ccdd9de4372:342e489174cc8579d038ea97683b010fee86de2c274d2a2eafcb595b213e643f"),
+	),
+	"Request"=>array(
+		"type"=>array(
+			"name"=>"出力形式",
+			"type"=>"select",
+			"class"=>"w200",
+			"select"=>array(1=>"都道府県のみ(デフォルト)",2=>"地区・都道府県取得",3=>"プルダウン用"),
+		),
+	),
+	"Response"=>array(
+		"{locationarea}"=>array(
+			"name"=>"都道府県名",
+			"caption"=>"※出力形式が1の場合",
+		),
+		"{area - locationarea}"=>array(
+			"name"=>"地区名 - 都道府県名",
+			"caption"=>"※出力形式が2の場合",
+		),
+		"{area}"=>array(
+			"name"=>"地区名",
+			"multi"=>array(
+				"{locationarea}"=>array(
+					"name"=>"都道府県名",
+					"type"=>"text",
+					"caption"=>"※出力形式が2の場合",
+				),
+			),
+		),
+	),
+);
+
+?>
