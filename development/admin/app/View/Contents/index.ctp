@@ -77,8 +77,8 @@ if(isset($alert))
 		<td class="center"><?php echo $count; ?></td>
 		<td><?php echo date("Y.m.d H:i",strtotime($r_["Contents"]["createdate"])); ?></td>
 		<td><?php echo h($r_["Contents"]["title"]); ?></td>
-		<td><?php echo $category_list[ $r_["Contents"]["category_id"] ]; ?></td>
-		<td><?php echo $district_list[ $r_["Contents"]["district_id"] ]; ?></td>
+		<td><?php echo @$category_list[@$r_["Contents"]["category_id"]]; ?></td>
+		<td><?php echo @$district_list[@$r_["Contents"]["district_id"]]; ?></td>
 
 		<td>
 			<?php echo $this->Html->link("編集",array("controller"=>"contents","action"=>"edit",$r_["Contents"]["id"]),array("class"=>"buttons")); ?>

@@ -22,10 +22,8 @@
 		<li class="sec">
 			<div class="bs0">
 				<div id="html_sample001">
-                
-                
-                              <div class="pageview type_detail">
-                                  <div class="sec mainphoto_area">
+					<div class="pageview type_detail">
+						<div class="sec mainphoto_area">
                                       <!--js配置-->
                                   </div>
                                   <div class="sec">
@@ -33,9 +31,8 @@
                                           <!--js配置-->
                                       </ul>
                                   </div>
-                              </div>                
-                
-                </div>
+					</div>
+				</div>
 			</div>
 		</li>
 		<li class="sec">
@@ -44,7 +41,7 @@
                 
                               <div class="pageview type_collabo_list">
                                   <div class="collabo_list">
-                                  <!--js処理-->					
+                                  <!--js処理-->
                                   </div>
                               </div>   
                                
@@ -67,11 +64,9 @@
                                     <p class="s7 mb20"><a href=""><img src="images/tel_contact.jpg"></a></p>
                                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk1EWl9nxBgzZS5FeiMzbQtjjlChviuPU" type="text/javascript"></script>
                                     <div id="google_map" style="width:100%;height:300px"></div>	
-                    
-                                </div>
-                            </div>
-                
-                </div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</li>
 	</ul>
@@ -194,24 +189,32 @@ console.log(y);
 	
 				//詳細内容書き換え
 				var caption_array =[
-															caption.text1,
-															caption.text2,
-															caption.text3,
-															caption.text4,
-															caption.text5,
-															caption.ttl1,														
-															caption.ttl2,
-															caption.ttl3,														
-															caption.ttl4,	
-															caption.ttl5 
-														];
+					caption.text1,
+					caption.text2,
+					caption.text3,
+					caption.text4,
+					caption.text5,
+					caption.ttl1,
+					caption.ttl2,
+					caption.ttl3,
+					caption.ttl4,
+					caption.ttl5
+				];
 
 				for(var i = 0; i < 5; i++){		
 					if( caption_array[i] != "" ){
+<<<<<<< HEAD
+					
+						$(".copy_base1 .h4").text(caption_array[i+5]);
+						$(".copy_base1 .mb20").html(nl2br(caption_array[i]));
+						$('.collabo_list').append($(".copy_base1").html());
+						
+=======
 						
 							$(".copy_base1 .h4").text(caption_array[i+5]);
 							$(".copy_base1 .mb20").text(caption_array[i]);
 							$('.collabo_list').append($(".copy_base1").html());
+>>>>>>> 391edea8bc607c2c740b821510b3fc489ecc12db
 					}
 				}
 				
