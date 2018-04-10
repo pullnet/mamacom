@@ -4,11 +4,12 @@
 
 <div class="wrapper">
 
-	<div class="content_detail">
+	<div class="content_detail" style="position:fixed;width:100%;z-index:100">
 		<a href="javascript:history.back();"><h1 class="mtitle"></h1></a>
 	</div><!--//.content_detail-->
 
 </div>
+<div style="height:50px"></div>
 
 <div class="slide_page">
 	<div class="tab">
@@ -203,18 +204,9 @@ console.log(y);
 
 				for(var i = 0; i < 5; i++){		
 					if( caption_array[i] != "" ){
-<<<<<<< HEAD
-					
 						$(".copy_base1 .h4").text(caption_array[i+5]);
 						$(".copy_base1 .mb20").html(nl2br(caption_array[i]));
 						$('.collabo_list').append($(".copy_base1").html());
-						
-=======
-						
-							$(".copy_base1 .h4").text(caption_array[i+5]);
-							$(".copy_base1 .mb20").text(caption_array[i]);
-							$('.collabo_list').append($(".copy_base1").html());
->>>>>>> 391edea8bc607c2c740b821510b3fc489ecc12db
 					}
 				}
 				

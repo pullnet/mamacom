@@ -4,12 +4,12 @@
 
 <div class="wrapper">
 
-	<div class="content_detail">
+	<div class="content_detail" style="position:fixed;width:100%;z-index:100">
 		<a href="javascript:history.back();"><h1 class="mtitle"></h1></a>
 	</div><!--//.content_detail-->
 
 </div>
-
+<div style="height:50px"></div>
 <div class="slide_page">
 	<div class="tab">
 		<ul class="float">
@@ -196,25 +196,23 @@ console.log(y);
 	
 				//詳細内容書き換え
 				var caption_array =[
-															caption.text1,
-															caption.text2,
-															caption.text3,
-															caption.text4,
-															caption.text5,
-															caption.ttl1,														
-															caption.ttl2,
-															caption.ttl3,														
-															caption.ttl4,	
-															caption.ttl5 
-														];
+					caption.text1,
+					caption.text2,
+					caption.text3,
+					caption.text4,
+					caption.text5,
+					caption.ttl1,
+					caption.ttl2,
+					caption.ttl3,
+					caption.ttl4,
+					caption.ttl5 
+				];
 
 				for(var i = 0; i < 5; i++){		
 					if( caption_array[i] != "" ){
-						
-							$(".copy_base1 .h4").text(caption_array[i+5]);
-							$(".copy_base1 .mb20").text(caption_array[i]);
-							$('.collabo_list').append($(".copy_base1").html());
-						
+						$(".copy_base1 .h4").text(caption_array[i+5]);
+						$(".copy_base1 .mb20").html(nl2br(caption_array[i]));
+						$('.collabo_list').append($(".copy_base1").html());
 					}
 				}
 
