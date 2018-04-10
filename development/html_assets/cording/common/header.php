@@ -14,7 +14,6 @@
 </script>
 <link rel="stylesheet" type="text/css" href="css/style_csmp_sideways.css">
 <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0">
-<!--<meta name="viewport" content="width=640px,maximum-scale=1,user-scalable=0">-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/option.js"></script>
@@ -28,7 +27,6 @@ if(!@$nohead){
 	<div class="header">
 		<h1 class="logo">
 			<a href="index.php"><img src="images/header_logo.png"></a>
-            <!--<p><?php/* echo $title;*/ ?></p>-->
 		</h1>
 		<div class="menubtn">
 			<label for="header_menu" class="btn">

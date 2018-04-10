@@ -48,7 +48,7 @@ class LoadbasicComponent extends Component{
 			$result=$loadModel->find("list",array(
 				"fields"=>array("name","value"),
 			));
-			//有効期限を設定(24時間)
+			//有効期限を設定(1時間)
 			$result["cache_limit"]=date("Y-m-d H:i:s",strtotime("+1 hour"));
 
 			$this->Session->write("mamacom_loadbasic",$result);

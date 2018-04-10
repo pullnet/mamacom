@@ -39,7 +39,7 @@
 		</div>
 		<div class="pageview type_collabo_list">
 			<div class="collabo_list">
-			<!--js処理-->					
+			<!--js処理-->
 			</div>
 		</div>
 		<div class="pageview type_owner_data">
@@ -51,7 +51,7 @@
 				<p class="s4 h4">電話番号</p>
 				<p class="s5 tell_num"></p>
 				<p class="s6 tell_time mb20"></p>
-				<p class="s7 mb20"><a href=""><img src="images/tel_contact.jpg"></a></p>
+				<p class="s7 mb20"><a href=""><img src="images/tel_contact.jpg" onerror='this.src="images/no_image.png"'></a></p>
 				
 				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk1EWl9nxBgzZS5FeiMzbQtjjlChviuPU" type="text/javascript"></script>
 				<div id="google_map" style="width:100%;height:300px"></div>	
@@ -139,24 +139,24 @@ console.log(y);
 	
 				//詳細内容書き換え
 				var caption_array =[
-															caption.text1,
-															caption.text2,
-															caption.text3,
-															caption.text4,
-															caption.text5,
-															caption.ttl1,														
-															caption.ttl2,
-															caption.ttl3,														
-															caption.ttl4,	
-															caption.ttl5 
-														];
+					caption.text1,
+					caption.text2,
+					caption.text3,
+					caption.text4,
+					caption.text5,
+					caption.ttl1,
+					caption.ttl2,
+					caption.ttl3,
+					caption.ttl4,
+					caption.ttl5
+				];
 
 				for(var i = 0; i < 5; i++){		
 					if( caption_array[i] != "" ){
-						
-							$(".copy_base1 .h4").text(caption_array[i+5]);
-							$(".copy_base1 .mb20").text(caption_array[i]);
-							$('.collabo_list').append($(".copy_base1").html());
+					
+						$(".copy_base1 .h4").text(caption_array[i+5]);
+						$(".copy_base1 .mb20").html(nl2br(caption_array[i]));
+						$('.collabo_list').append($(".copy_base1").html());
 						
 					}
 				}
