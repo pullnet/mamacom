@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<style name="spa" parent ="@android:style/Theme.Material.NoActionBar">
+		<item name="android:windowBackground">@drawable/splash_screen</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowFullscreen">true</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowActionBar">true</item>
+	</style>
+
+	<style parent="@android:style/Theme.Material.Dialog" name="dialogs">
+
+		<item name="android:background">#444</item>
+
+		<item name="android:textColor">#fff</item>
+
+		<item name="android:colorAccent">#fff</item>
+
+	</style>
+
+	<style parent="@android:style/Theme.Material.Dialog" name="webview_layout">
+
+		<item name="android:textSize">14dp</item>
+
+	</style>
+</resources>

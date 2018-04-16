@@ -4,16 +4,13 @@
 /*	Masato Nakatsuji						*/
 /*	2016/01/21							*/
 /*									*/
-/*	Collabos_ver2.0							*/
-/*	https://image.collabos.jp					*/
-/*									*/
 /*	画像・コンテンツ管理用コントローラ				*/
 /*	MainController.php						*/
 /* ------------------------------------------------------------------- 	*/
 
-App::uses('AppController', 'Controller');
+App::uses('Controller', 'Controller');
 
-class MainController extends AppController {
+class MainController extends Controller {
 
 	public $password="buteneko";//簡易パスワード....
 	public $component=array(
@@ -51,6 +48,9 @@ class MainController extends AppController {
 	}
 	//一覧画面
 	public function index(){
-
+		$this->autoRender=false;
+		return json_encode(array(
+			"error"=>"400 Bad Request",
+		));
 	}
 }

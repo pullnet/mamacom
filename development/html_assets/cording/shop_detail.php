@@ -82,7 +82,7 @@
 <style>
 .slide_page .tab li label {
     display: block;
-    font-size: 16px;
+    font-size: 15px;
     border-bottom: solid 1px #fff;
     color: #FF6486;
     padding: 8px 0px;

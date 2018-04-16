@@ -1,5 +1,5 @@
 <?php
-	Router::connect('/', array('controller' => 'main', 'action' => 'index', 'home'));
+	Router::connect('/', array('controller' => 'main', 'action' => 'index'));
 
 	CakePlugin::routes();
 

@@ -43,7 +43,8 @@ if(!@$nohead){
 			<div class="bs">
 				<div class="userdata">
 					<span class="user_icon"><img src="images/sidemenu_usericon.jpg"></span>
-					<span class="user_name">Username_aaa さん<!--<br><a href="setting.php">設定</a>--><span>
+					<span class="user_name">メニュー<!--<br><a href="setting.php">設定</a>--></span>
+					<label for="header_menu" class="close">×</label>
 				</div>
 				<p><a href="index.php"><img src="images/sidemenu_01.jpg" alt="ホーム"></a></p>
 				<p><a href="category_01.php"><img src="images/sidemenu_02.jpg" alt="緊急・お役立ち"></a></p>
