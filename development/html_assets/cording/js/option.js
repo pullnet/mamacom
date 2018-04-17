@@ -103,7 +103,7 @@ $.fn.Formdat=function(){
 var error_flag_int = 0;
 function view_error_page(){
 	
-	location.href = "error.php";
+	location.href = "error.html";
 	
 	/*
 	error_flag_int++;

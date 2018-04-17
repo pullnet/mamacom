@@ -57,9 +57,6 @@ $(function(){
 		</div>
 	</div><!--//.contents_source-->
 
-<?php include("common/footer.php"); ?>
-
-
 <style>
 .mtitle {
     font-size: 20px;
@@ -84,3 +81,5 @@ $(function(){
     transform: rotate(-135deg);
 }
 </style>
+
+<?php include("common/footer.php"); ?>

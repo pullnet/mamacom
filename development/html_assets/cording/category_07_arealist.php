@@ -18,9 +18,6 @@
 	</div><!--//.wrapper-->
 </div>
 
-<?php include("common/footer.php"); ?>
-
-
 <script type="text/javascript">
 $(function(){
 
@@ -211,3 +208,5 @@ $(function(){
     transform: rotate(-135deg);
 }
 </style>
+
+<?php include("common/footer.php"); ?>

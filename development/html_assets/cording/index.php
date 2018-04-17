@@ -109,15 +109,14 @@ $(function(){
 });
 </script>
 
-	<div class="copy_base_info" style="display:none;">
-      <p class="mb5">
-				<span class=""></span>
-				<a hrefs="info.php" content_link></a>
-			</p>
-	</div>
+<div class="copy_base_info" style="display:none;">
+	<p class="mb5">
+		<span class=""></span>
+		<a hrefs="info.html" content_link></a>
+	</p>
+</div>
 
-
-
+<?php include("common/footer.php"); ?>
 
 
 

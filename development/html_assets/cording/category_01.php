@@ -16,10 +16,6 @@
 
 </div>
 
-
-<?php include("common/footer.php"); ?>
-
-
 <script type="text/javascript">
 $(function(){
 
@@ -248,5 +244,6 @@ body{
 </style>
 
 
+<?php include("common/footer.php"); ?>
 
 

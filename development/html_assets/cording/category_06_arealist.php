@@ -17,11 +17,6 @@
 		</ul>
 	</div>
 </div>
-
-<?php include("common/footer.php"); ?>
-
-
-
 <script type="text/javascript">
 $(function(){
 
@@ -186,3 +181,5 @@ $(function(){
 	<div class="copy_pager" style="display:none;">
 						<li class="pager"><a content_link></a> </li>
 	</div>
+
+<?php include("common/footer.php"); ?>

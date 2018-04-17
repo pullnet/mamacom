@@ -123,3 +123,5 @@ body{
 }
 
 </style>
+
+<?php include("common/footer.php"); ?>

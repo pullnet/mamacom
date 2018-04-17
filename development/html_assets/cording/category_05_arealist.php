@@ -18,10 +18,6 @@
 	</div><!--//.wrapper-->
 </div>
 
-<?php include("common/footer.php"); ?>
-
-
-
 <script type="text/javascript">
 $(function(){
 
@@ -187,3 +183,5 @@ $(function(){
 						<li class="pager"><a content_link></a> </li>
 	</div>
 
+
+<?php include("common/footer.php"); ?>

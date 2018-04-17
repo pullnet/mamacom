@@ -100,9 +100,6 @@
 	</form>
 </div>
 
-<?php include("common/footer.php"); ?>
-
-
 <script type="text/javascript">
 
 $('#ContactContactForm').submit(function(event) {
@@ -348,8 +345,4 @@ font-size:130%;
 
 </div>
 
-
-
-
-
-
+<?php include("common/footer.php"); ?>

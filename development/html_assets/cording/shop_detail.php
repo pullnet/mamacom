@@ -117,11 +117,6 @@
 }
 </style>
 
-
-<?php include("common/footer.php"); ?>
-
-
-
 <script type="text/javascript">
 $(function(){
 
@@ -318,9 +313,4 @@ $('.owner').on('click',function(){
 
 </script>
 
-
-
-
-
-
-
+<?php include("common/footer.php"); ?>
