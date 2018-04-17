@@ -176,6 +176,37 @@ namespace Mamacom_android
 		{
 			base.OnPageFinished(view, url);
 		}
+		//リンクが電話番号orメールアドレスの場合の手続き
+		public override bool ShouldOverrideUrlLoading(WebView view, string url)
+		{
+			if (url.StartsWith("mailto:") || url.StartsWith("tel:"))
+			{
+				//電話番号の場合
+				if (url.StartsWith("tel:"))
+				{
+					Intent intent = new Intent(Intent.ActionDial);
+					intent.SetData(Android.Net.Uri.Parse(url));
+					ac.StartActivity(intent);
+					return true;
+				}
+				//メールの場合(※端末のメーラー設定が必要なので、設定されてなければ「サポートされていません」と表示される)
+				else if (url.StartsWith("mailto:"))
+				{
+					Intent intent = new Intent(Intent.ActionSendto);
+					intent.SetData(Android.Net.Uri.Parse(url));
+					intent.PutExtra(Intent.ExtraSubject, "");
+					intent.PutExtra(Intent.ExtraText, "");
+					ac.StartActivity(intent);
+					return true;
+				}
+			}
+			else
+			{
+				view.LoadUrl(url);
+			}
+			return base.ShouldOverrideUrlLoading(view, url);
+		}
+
 	}
 }
 
