@@ -131,10 +131,12 @@ $('.menubtn').on('click', function() {
 	</div><!--//.contents_source-->	
 <div class="wrapper">
 	<a href="javascript:history.back();"><h2 class="mtitle">アレルギー対応店</h2></a>
-	<h2 class="subttl m10"><!--js処理--></h2>
-	<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 
-	<div class="contents_area">
+	<div class="waiting"></div>
+	<div class="contents_area hidden">
+		<h2 class="subttl m10"><!--js処理--></h2>
+
+		<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 
 	</div>
 	<!--//.contents_area-->
@@ -145,34 +147,6 @@ $('.menubtn').on('click', function() {
 		</ul>
 	</div><!--//.wrapper-->
 </div>
-
-
-<div id="popup">
-	<div class="basejavar"></div>
-</div>
-<script type="text/javascript">
-$(window).load(function () {
-	$('.toppage').fadeIn(500);
-	$('.wrapper').fadeIn(500);
-});
-</script>
-
-
-</div>
-
-<div class="footer_dmy"></div>
-<div class="footer">
-	<ul class="float">
-		<a href="index.html" class="icon01 "></a>
-		<a href="category_01.html" class="icon02 "></a>
-		<a href="info.html" class="icon03 "></a>
-		<a href="contact.html" class="icon04 "></a>
-	</ul>
-</div>
-
-</body>
-</html>
-
 
 <script type="text/javascript">
 $(function(){
@@ -233,7 +207,23 @@ $(function(){
 				page:page_num,
 			},
 			success:function(data){
-				
+
+				$(".contents_area").animate({
+					"opacity":1,
+					"-webkit-opacity":1,
+					"-moz-opacity":1,
+					"-ms-opacity":1,
+					"-o-opacity":1,
+				},500);
+
+				$(".waiting").animate({
+					"opacity":0,
+					"-webkit-opacity":0,
+					"-moz-opacity":0,
+					"-ms-opacity":0,
+					"-o-opacity":0,
+				},300);
+
 				var result=JSON.parse(data);
 				console.log(result);
 				
@@ -338,3 +328,58 @@ $(function(){
 	<div class="copy_pager" style="display:none;">
 		<li class="pager"><a content_link></a> </li>
 	</div>
+
+
+<div id="popup">
+	<div class="basejavar"></div>
+</div>
+<script type="text/javascript">
+$(window).load(function () {
+	$(".toppage").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+	$(".wrapper").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+});
+</script>
+
+
+</div>
+
+<div class="footer_dmy"></div>
+<div class="footer">
+	<ul class="float">
+		<a href="index.html" class="icon01 "></a>
+		<a href="category_01.html" class="icon02 "></a>
+		<a href="info.html" class="icon03 "></a>
+		<a href="contact.html" class="icon04 "></a>
+	</ul>
+</div>
+
+</body>
+</html>

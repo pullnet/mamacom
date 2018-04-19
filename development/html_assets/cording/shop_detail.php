@@ -11,7 +11,8 @@
 </div>
 <div style="height:50px"></div>
 
-<div class="slide_page">
+<div class="waiting"></div>
+<div class="slide_page hidden">
 	<div class="tab">
 		<ul class="float">
 			<li><a href="#" data-slide-index="0"><label for="content_detail" class="detail">写真</label></a></li>
@@ -156,6 +157,23 @@ console.log(y);
 				id:contents_id,
 			},
 			success:function(data){
+
+				$(".slide_page").animate({
+					"opacity":1,
+					"-webkit-opacity":1,
+					"-moz-opacity":1,
+					"-ms-opacity":1,
+					"-o-opacity":1,
+				},500);
+
+				$(".waiting").animate({
+					"opacity":0,
+					"-webkit-opacity":0,
+					"-moz-opacity":0,
+					"-ms-opacity":0,
+					"-o-opacity":0,
+				},300);
+
 				var result=JSON.parse(data);
 				console.log(result);
 				

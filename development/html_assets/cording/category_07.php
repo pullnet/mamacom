@@ -4,9 +4,10 @@
 <div class="wrapper">
 	<a href="index.php"><h2 class="mtitle">地元ママ応援！<br>地域のポータルサイト</h2></a>
 	
-	<p class="m10 h3">下記より地区をお選びください</p>
-	
-	<div class="contents_area">
+
+	<div class="waiting"></div>
+	<div class="contents_area hidden">
+		<p class="m10 h3">下記より地区をお選びください</p>
 	</div>
 	
 </div>
@@ -27,6 +28,23 @@ $(function(){
 				send_token:token
 			},
 			success:function(data){
+
+				$(".contents_area").animate({
+					"opacity":1,
+					"-webkit-opacity":1,
+					"-moz-opacity":1,
+					"-ms-opacity":1,
+					"-o-opacity":1,
+				},500);
+
+				$(".waiting").animate({
+					"opacity":0,
+					"-webkit-opacity":0,
+					"-moz-opacity":0,
+					"-ms-opacity":0,
+					"-o-opacity":0,
+				},300);
+
 				var result=JSON.parse(data);
 				
 				var ditrict_count = Object.keys(result).length;

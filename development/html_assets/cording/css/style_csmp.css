@@ -24,6 +24,21 @@ body{
     -webkit-animation: fadeIn 1s ease 0s 1 normal;
 	*/
 }
+.hidden{
+	opacity:0;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-ms-opacity:0;
+	-o-opacity:0;
+}
+.waiting{
+	position:fixed;
+	left:0%;
+	width:100%;
+	top:50%;
+	text-align:center;
+	font-size:14px;
+}
 
 @keyframes fadeIn {
     0% {opacity: 0}
@@ -101,9 +116,9 @@ h4,
 	font-size:12px !important;
 	border-radius:5px;
 }
-.buttons:hover{
+.buttons:visited{
 	background:#FFF;
-	color:#e81;	
+	color:#e81;
 }
 .float.colum2 li:first-child .buttons{
 	margin-right:3px;
@@ -130,7 +145,7 @@ h4,
 	background:#C00;
 	border:solid 3px #C00;
 }
-.buttons.add:hover{
+.buttons.add:visited{
 	background:#FFF;
 	color:#C00;
 }
@@ -138,7 +153,7 @@ h4,
 	border:solid 3px #C60;
 	background:#C60;
 }
-.buttons.del:hover{
+.buttons.del:visited{
 	background:#FFF;
 	color:#C60
 }
@@ -146,7 +161,7 @@ h4,
 	border:solid 3px #28a;
 	background:#28a;
 }
-.buttons.preview:hover{
+.buttons.preview:visited{
 	background:#FFF;
 	color:#28a
 }
@@ -154,7 +169,7 @@ h4,
 	border:solid 3px #AAA;
 	background:#AAA;
 }
-.buttons.backbtn:hover{
+.buttons.backbtn:visited{
 	background:#FFF;
 	color:#AAA;
 }
@@ -162,7 +177,7 @@ h4,
 	border:solid 3px #292;
 	background:#292;
 }
-.buttons.new:hover{
+.buttons.new:visited{
 	background:#FFF;
 	color:#292;
 }
@@ -170,7 +185,7 @@ h4,
 	border:solid 3px #169;
 	background:#169;
 }
-.buttons.edit:hover{
+.buttons.edit:visited{
 	background:#FFF;
 	color:#169;
 }

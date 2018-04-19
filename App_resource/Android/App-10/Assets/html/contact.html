@@ -227,33 +227,6 @@ $('.menubtn').on('click', function() {
 	</form>
 </div>
 
-
-<div id="popup">
-	<div class="basejavar"></div>
-</div>
-<script type="text/javascript">
-$(window).load(function () {
-	$('.toppage').fadeIn(500);
-	$('.wrapper').fadeIn(500);
-});
-</script>
-
-
-</div>
-
-<div class="footer_dmy"></div>
-<div class="footer">
-	<ul class="float">
-		<a href="index.html" class="icon01 "></a>
-		<a href="category_01.html" class="icon02 "></a>
-		<a href="info.html" class="icon03 "></a>
-		<a href="contact.html" class="icon04 active"></a>
-	</ul>
-</div>
-
-</body>
-</html>
-
 <script type="text/javascript">
 
 $('#ContactContactForm').submit(function(event) {
@@ -500,7 +473,56 @@ font-size:130%;
 </div>
 
 
+<div id="popup">
+	<div class="basejavar"></div>
+</div>
+<script type="text/javascript">
+$(window).load(function () {
+	$(".toppage").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+	$(".wrapper").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+});
+</script>
 
 
+</div>
 
+<div class="footer_dmy"></div>
+<div class="footer">
+	<ul class="float">
+		<a href="index.html" class="icon01 "></a>
+		<a href="category_01.html" class="icon02 "></a>
+		<a href="info.html" class="icon03 "></a>
+		<a href="contact.html" class="icon04 active"></a>
+	</ul>
+</div>
 
+</body>
+</html>

@@ -195,8 +195,36 @@ $('.menubtn').on('click', function() {
 </div>
 <script type="text/javascript">
 $(window).load(function () {
-	$('.toppage').fadeIn(500);
-	$('.wrapper').fadeIn(500);
+	$(".toppage").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+	$(".wrapper").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
 });
 </script>
 

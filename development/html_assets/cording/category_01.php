@@ -1,10 +1,13 @@
 <?php $title="ライブラリの検索結果";?>
 <?php $active_category_01 = true;?>
 <?php include("common/header.php"); ?>
+
 <div class="wrapper category_01">
 	<a href="index.php"><h2 class="mtitle">緊急・お役立ち</h2></a>
-	
-	<div class="area01">
+
+
+	<div class="waiting"></div>
+	<div class="area01 hidden">
 
 	</div>
 	
@@ -56,6 +59,24 @@ $(function(){
 				page:page_num,
 			},
 			success:function(data){
+
+				$(".area01").animate({
+					"opacity":1,
+					"-webkit-opacity":1,
+					"-moz-opacity":1,
+					"-ms-opacity":1,
+					"-o-opacity":1,
+				},500);
+
+				$(".waiting").animate({
+					"opacity":0,
+					"-webkit-opacity":0,
+					"-moz-opacity":0,
+					"-ms-opacity":0,
+					"-o-opacity":0,
+				},300);
+
+
 				var result=JSON.parse(data);
 				console.log(result);
 

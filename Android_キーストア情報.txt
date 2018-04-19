@@ -1,0 +1,12 @@
+Android キーストア情報
+
+エイリアス mamacom_android
+パスワード mama201804
+
+APIアクセス
+
+クライアントID
+354945157280-0ftfgnmhpt877i47ooh84tesneba6g5j.apps.googleusercontent.com
+
+クライアント シークレット
+GZ3yUvF4unu_SzGhK70pIWge

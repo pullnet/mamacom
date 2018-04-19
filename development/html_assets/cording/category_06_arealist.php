@@ -4,10 +4,10 @@
 <div class="wrapper">
 	<a href="javascript:history.back();"><h2 class="mtitle">授乳室マップ</h2></a>
 	<h2 class="subttl m10"><!--js処理--></h2>
-	<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 
-	<div class="contents_area">
-
+	<div class="waiting"></div>
+	<div class="contents_area hidden">
+		<p class="serch_result_text"><b>全0件</b><span>-うち0件表示-</span></p>
 	</div>
 	<!--//.contents_area-->
 	
@@ -76,7 +76,23 @@ $(function(){
 				page:page_num,
 			},
 			success:function(data){
-				
+
+				$(".contents_area").animate({
+					"opacity":1,
+					"-webkit-opacity":1,
+					"-moz-opacity":1,
+					"-ms-opacity":1,
+					"-o-opacity":1,
+				},500);
+
+				$(".waiting").animate({
+					"opacity":0,
+					"-webkit-opacity":0,
+					"-moz-opacity":0,
+					"-ms-opacity":0,
+					"-o-opacity":0,
+				},300);
+
 				var result=JSON.parse(data);
 				console.log(result);
 				
