@@ -194,9 +194,9 @@ $(function(){
 				<div class="s00" style=""><img src=""></div>
 				<div class="s01">
 					<p class="k02"></p>
-					<h3 class="k03">WEBデザイナー</h3>
-					<p class="subc k04">未経験者の方も大募集！デザインに興味ある方。週3日2h～から要相談。</p>
-					<p class="subc red k05">時給制:1000円～</p>
+					<h3 class="k03"></h3>
+					<p class="subc k04"></p>
+					<p class="subc red k05"></p>
 				</div>
 			</div>
 			</a>
@@ -205,6 +205,6 @@ $(function(){
 	</div>
 
 	<div class="copy_pager" style="display:none;">
-						<li class="pager"><a content_link></a> </li>
+		<li class="pager"><a content_link></a> </li>
 	</div>
 <?php include("common/footer.php"); ?>

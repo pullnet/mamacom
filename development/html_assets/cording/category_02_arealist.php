@@ -189,8 +189,8 @@ $(function(){
 			<div class="bs">
 				<div class="s00" style=""><img src="" onerror='this.src="images/no_image.png"'></div>
 				<div class="s01">
-					<h3>店舗名</h3>
-					<p class="subc">説明テキスト</p>
+					<h3></h3>
+					<p class="subc"></p>
 				</div>
 			</div>
 			</a>

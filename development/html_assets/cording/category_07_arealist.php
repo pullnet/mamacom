@@ -187,8 +187,8 @@ $(function(){
 			<div class="bs">
 				<div class="s00" style=""><img src=""></div>
 				<div class="s01">
-					<h3>店舗名</h3>
-					<p class="subc">説明テキスト</p>
+					<h3></h3>
+					<p class="subc"></p>
 				</div>
 			</div>
 			</a>
@@ -196,7 +196,7 @@ $(function(){
 	</div>
 
 	<div class="copy_pager" style="display:none;">
-						<li class="pager"><a content_link></a> </li>
+		<li class="pager"><a content_link></a> </li>
 	</div>
 
 

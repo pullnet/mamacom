@@ -46,7 +46,7 @@
                 
                               <div class="pageview type_collabo_list">
                                   <div class="collabo_list">
-                                  <!--js処理-->					
+                                  <!--js処理-->
                                   </div>
                               </div>   
                                

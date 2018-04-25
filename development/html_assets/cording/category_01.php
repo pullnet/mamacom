@@ -234,7 +234,7 @@ $(function(){
 
 
 	<div class="copy_pager" style="display:none;">
-						<li class="pager"><a content_link></a> </li>
+		<li class="pager"><a content_link></a> </li>
 	</div>
 
 
