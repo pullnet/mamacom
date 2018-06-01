@@ -14,7 +14,6 @@
 </script>
 <link rel="stylesheet" type="text/css" href="css/style_csmp_sideways.css">
 <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0">
-<!--<meta name="viewport" content="width=640px,maximum-scale=1,user-scalable=0">-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/option.js"></script>
@@ -25,7 +24,6 @@
 	<div class="header">
 		<h1 class="logo">
 			<a href="index.html"><img src="images/header_logo.png"></a>
-            <!--<p><?php/* echo $title;*/ ?></p>-->
 		</h1>
 		<div class="menubtn">
 			<label for="header_menu" class="btn">
@@ -42,7 +40,8 @@
 			<div class="bs">
 				<div class="userdata">
 					<span class="user_icon"><img src="images/sidemenu_usericon.jpg"></span>
-					<span class="user_name">Username_aaa さん<!--<br><a href="setting.html">設定</a>--><span>
+					<span class="user_name">メニュー<!--<br><a href="setting.html">設定</a>--></span>
+					<label for="header_menu" class="close">×</label>
 				</div>
 				<p><a href="index.html"><img src="images/sidemenu_01.jpg" alt="ホーム"></a></p>
 				<p><a href="category_01.html"><img src="images/sidemenu_02.jpg" alt="緊急・お役立ち"></a></p>
@@ -113,8 +112,11 @@ $('.menubtn').on('click', function() {
 					//書き換え処理
 					$('.area_list').append($(".contents_source2").html());
 				}
-
-			}
+			},
+			error: function(){
+		       view_error_page();
+    		}
+			
 		});
 	}
 	else{
@@ -217,6 +219,48 @@ $('.menubtn').on('click', function() {
 	</div><!--//.msgfield_list-->
 <!--//.wrapper--></div>
 
+
+<div id="popup">
+	<div class="basejavar"></div>
+</div>
+<script type="text/javascript">
+$(window).load(function () {
+	$(".toppage").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+	$(".wrapper").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+});
+</script>
+
+
+</div>
+
 <div class="footer_dmy"></div>
 <div class="footer">
 	<ul class="float">
@@ -226,8 +270,6 @@ $('.menubtn').on('click', function() {
 		<a href="contact.html" class="icon04 "></a>
 	</ul>
 </div>
-<div id="popup">
-	<div class="basejavar"></div>
-</div>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,28 +12,28 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2017 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye" misplaced="YES">
                     <rect key="frame" x="20" y="439.5" width="440" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="153" translatesAutoresizingMaskIntoConstraints="NO" image="header_logo.png">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="153">
                     <rect key="frame" x="120" y="164" width="240" height="128"/>
                     <constraints>
-                        <constraint id="158" firstAttribute="width" secondItem="153" secondAttribute="height" multiplier="15:8"/>
+                        <constraint firstAttribute="width" secondItem="153" secondAttribute="height" multiplier="15:8" id="158"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="153" secondAttribute="trailing" constant="120" id="154"/>
+                <constraint firstItem="153" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120" id="155"/>
+                <constraint firstItem="153" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="164" id="156"/>
+                <constraint firstAttribute="bottom" secondItem="153" secondAttribute="bottom" constant="188" id="157"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint id="154" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="153" secondAttribute="trailing" constant="120"/>
-                <constraint id="155" firstItem="153" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120"/>
-                <constraint id="156" firstItem="153" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="164"/>
-                <constraint id="157" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="153" secondAttribute="bottom" constant="188"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -41,6 +41,7 @@
         </view>
     </objects>
     <resources>
+        <image name="header_logo.png" width="300" height="66"/>
         <image name="Content/images/foot_icon_01.png" width="100" height="80"/>
         <image name="Content/images/foot_icon_01_active.png" width="100" height="80"/>
         <image name="Content/images/foot_icon_02.png" width="100" height="80"/>
@@ -62,6 +63,7 @@
         <image name="Content/images/kuyakusyo.jpg" width="500" height="375"/>
         <image name="Content/images/main_icon.png" width="143" height="126"/>
         <image name="Content/images/main_logo.png" width="640" height="149"/>
+        <image name="Content/images/no_image.png" width="480" height="480"/>
         <image name="Content/images/noimage.png" width="640" height="480"/>
         <image name="Content/images/pullnet.jpg" width="259" height="194"/>
         <image name="Content/images/risbon.png" width="151" height="201"/>
@@ -106,6 +108,5 @@
         <image name="Icon-Small-50.png" width="50" height="50"/>
         <image name="Icon-Small.png" width="29" height="29"/>
         <image name="Icon.png" width="57" height="57"/>
-        <image name="header_logo.png" width="452" height="100"/>
     </resources>
 </document>

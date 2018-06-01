@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style_type1.css">
+<link rel="stylesheet" type="text/css" href="css/style_type2.css">
+<link rel="stylesheet" type="text/css" href="css/style_csmp.css">
+<script type="text/javascript">
+	//iphone用css
+	var wnu=window.navigator.userAgent;
+	if(wnu.indexOf("iPhone")>0)
+	{
+		document.write('<link rel="stylesheet" type="text/css" href="css/style_iphone.css">');
+	}
+</script>
+<link rel="stylesheet" type="text/css" href="css/style_csmp_sideways.css">
+<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/api-sample.js"></script>
+
+</head>
+<body>
+	<div class="header">
+		<h1 class="logo">
+			<a href="index.html"><img src="images/header_logo.png"></a>
+		</h1>
+		<div class="menubtn">
+			<label for="header_menu" class="btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<div class="header_menu">
+		<input type="checkbox" id="header_menu" style="display:none">
+		<label for="header_menu" class="bsj"></label>
+		<div class="window">
+			<div class="bs">
+				<div class="userdata">
+					<span class="user_icon"><img src="images/sidemenu_usericon.jpg"></span>
+					<span class="user_name">メニュー<!--<br><a href="setting.html">設定</a>--></span>
+					<label for="header_menu" class="close">×</label>
+				</div>
+				<p><a href="index.html"><img src="images/sidemenu_01.jpg" alt="ホーム"></a></p>
+				<p><a href="category_01.html"><img src="images/sidemenu_02.jpg" alt="緊急・お役立ち"></a></p>
+				<p><a href="info.html"><img src="images/sidemenu_03.jpg" alt="お知らせ"></a></p>
+				<p><a href="contact.html"><img src="images/sidemenu_04.jpg" alt="お問い合わせ"></a></p>
+				<p class="httl">地域情報</p>
+				<div class="area_list">
+				<!--js処理-->
+				</div>
+			</div>	
+		</div><!--//.window-->
+	</div>
+	<div class="header_dmy"></div>
+
+<script type="text/javascript">
+$(function(){
+
+	var url_get_token="token/get_token";
+	var token=JSession.read("token");
+	
+	if(token==null){
+		$.ajax({
+			url:API.domain+url_get_token,
+			type:"post",
+			data:{
+				service_secret:API.service_secret,
+				lisence_key:API.lisence_key
+			},
+			success:function(data){
+				
+				var result=JSON.parse(data);
+				JSession.write("token",result.access_token);
+				
+				if('access_token' in result){
+					location.reload() ;
+				}
+				
+			}
+		});
+	}
+});
+</script>
+
+
+<script type="text/javascript">
+$('.menubtn').on('click', function() {
+	
+	//地区の処理
+	var url_method="category/ditrict_list";
+	var token=JSession.read("token");
+	
+	if(token!=null){
+		$.ajax({
+			url:API.domain+url_method,
+			type:"post",
+			data:{
+				send_token:token
+			},
+			success:function(data){
+				var result=JSON.parse(data);
+				
+				var ditrict_count = Object.keys(result).length;
+				for(var i = 0; i < ditrict_count; i++){
+					
+					$(".contents_source2 a").text(result[i].name);
+					$(".contents_source2 *[content_link]").attr("href",$(".contents_source2 *[content_link]").attr("hrefs")+"?id="+result[i].id);
+					
+					//書き換え処理
+					$('.area_list').append($(".contents_source2").html());
+				}
+			},
+			error: function(){
+		       view_error_page();
+    		}
+			
+		});
+	}
+	else{
+		view_error_page();
+	}	
+
+});
+</script>
+
+	<div class="contents_source2" style="display:none">
+		<p><a hrefs="area.html" content_link></a></p>
+	</div><!--//.contents_source-->	
+<style>
+/* 点滅 */
+.blinking{
+	-webkit-animation:blink 1s ease-in-out infinite alternate;
+    -moz-animation:blink 1s ease-in-out infinite alternate;
+    animation:blink 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0.3;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0.3;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0.3;}
+    100% {opacity:1;}
+}
+</style>
+
+
+<div class="toppage">
+
+	<div class="sec00 blinking" style="padding:10px;margin:20px 10px;border:solid 1px #B00;text-align:center;border-radius: 10px;">
+		<div style="color:#B00;font-size:18px;">通信エラーが発生しました。</div>
+        <div style="">電波の良いところで再度試して下さい。</div>
+	</div>
+
+	<div class="sec01">
+		<div class=""><img src="images/top_main01.jpg" alt="トップメインイメージ" class="image"></div>
+	</div>
+    
+    <div class="sec02">
+		<a href="category_01.html"><img src="images/top_banner01.jpg" alt="緊急お役立ち"></a>
+	</div>
+	<div class="sec03">
+		<ul class="" id="categorylistblock">
+			<li>
+				<a href="category_02.html"><img src="images/top_banner02.jpg" alt="バナー"></a>
+			</li>
+			<li>
+				<a href="category_03.html"><img src="images/top_banner03.jpg" alt="バナー"></a>
+			</li>
+			<li>
+				<a href="category_04.html"><img src="images/top_banner04.jpg" alt="バナー"></a>
+			</li>
+			<li>
+				<a href="category_05.html"><img src="images/top_banner05.jpg" alt="バナー"></a>
+			</li>
+			<li>
+				<a href="category_06.html"><img src="images/top_banner06.jpg" alt="バナー"></a>
+			</li>
+			<li>
+				<a href="category_07.html"><img src="images/top_banner07.jpg" alt="地元ママ応援！地域のポータルサイト"></a>
+			</li>
+		</ul>
+	</div>
+
+		
+
+<div id="popup">
+	<div class="basejavar"></div>
+</div>
+<script type="text/javascript">
+$(window).load(function () {
+	$(".toppage").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+	$(".wrapper").css({
+		"display":"block",
+		"opacity":0,
+		"-webkit-opacity":0,
+		"-moz-opacity":0,
+		"-ms-opacity":0,
+		"-o-opacity":0,
+	}).animate({
+		"opacity":1,
+		"-webkit-opacity":1,
+		"-moz-opacity":1,
+		"-ms-opacity":1,
+		"-o-opacity":1,
+	},500);
+
+});
+</script>
+
+
+</div>
+
+<div class="footer_dmy"></div>
+<div class="footer">
+	<ul class="float">
+		<a href="index.html" class="icon01 active"></a>
+		<a href="category_01.html" class="icon02 "></a>
+		<a href="info.html" class="icon03 "></a>
+		<a href="contact.html" class="icon04 "></a>
+	</ul>
+</div>
+
+</body>
+</html>
+
+
+
+

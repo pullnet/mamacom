@@ -10,16 +10,36 @@
 	-webkit-text-size-adjust:100%;
 	max-height: 999999px;
 	color:#5F4B3E;
+	-webkit-overflow-scrolling: touch;
 }
 body{
 	height:100%;
 	width:100%;
 }
-
-body{
-    animation: fadeIn 2s ease 0s 1 normal;
-    -webkit-animation: fadeIn 2s ease 0s 1 normal;
+.wrapper,
+.toppage{
+	display:none
+	/*
+    animation: fadeIn 1s ease 0s 1 normal;
+    -webkit-animation: fadeIn 1s ease 0s 1 normal;
+	*/
 }
+.hidden{
+	opacity:0;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	-ms-opacity:0;
+	-o-opacity:0;
+}
+.waiting{
+	position:fixed;
+	left:0%;
+	width:100%;
+	top:50%;
+	text-align:center;
+	font-size:14px;
+}
+
 @keyframes fadeIn {
     0% {opacity: 0}
     100% {opacity: 1}
@@ -96,9 +116,9 @@ h4,
 	font-size:12px !important;
 	border-radius:5px;
 }
-.buttons:hover{
+.buttons:visited{
 	background:#FFF;
-	color:#e81;	
+	color:#e81;
 }
 .float.colum2 li:first-child .buttons{
 	margin-right:3px;
@@ -125,7 +145,7 @@ h4,
 	background:#C00;
 	border:solid 3px #C00;
 }
-.buttons.add:hover{
+.buttons.add:visited{
 	background:#FFF;
 	color:#C00;
 }
@@ -133,7 +153,7 @@ h4,
 	border:solid 3px #C60;
 	background:#C60;
 }
-.buttons.del:hover{
+.buttons.del:visited{
 	background:#FFF;
 	color:#C60
 }
@@ -141,7 +161,7 @@ h4,
 	border:solid 3px #28a;
 	background:#28a;
 }
-.buttons.preview:hover{
+.buttons.preview:visited{
 	background:#FFF;
 	color:#28a
 }
@@ -149,7 +169,7 @@ h4,
 	border:solid 3px #AAA;
 	background:#AAA;
 }
-.buttons.backbtn:hover{
+.buttons.backbtn:visited{
 	background:#FFF;
 	color:#AAA;
 }
@@ -157,7 +177,7 @@ h4,
 	border:solid 3px #292;
 	background:#292;
 }
-.buttons.new:hover{
+.buttons.new:visited{
 	background:#FFF;
 	color:#292;
 }
@@ -165,7 +185,7 @@ h4,
 	border:solid 3px #169;
 	background:#169;
 }
-.buttons.edit:hover{
+.buttons.edit:visited{
 	background:#FFF;
 	color:#169;
 }
@@ -247,10 +267,13 @@ input.buttons{
 	margin-top:-95px;
 }
 .loading img{
+	/*
 	-webkit-animation-name:loadings;
-	-webkit-animation-duration:0.5s;
+	-webkit-animation-duration:0.2s;
 	-webkit-animation-iteration-count:infinite;
+	*/
 }
+
 .loading p{
 	font-size:22px;
 }
@@ -430,14 +453,15 @@ input.buttons{
 }
 
 /* header */
-.header{
-	position:fixed;
-	z-index:5;
-	top:0px;
-	left:0px;
-	width:100%;
-	background:#fff;
-	height:50px
+.header {
+    position: fixed;
+    z-index: 5;
+    top: -500px;
+    left: 0px;
+    width: 100%;
+    background: #fff;
+    padding-top: 500px;
+    height: 550px;
 }
 .header .logo img{
 	width:auto;
@@ -453,12 +477,12 @@ input.buttons{
 .header_dmy{
 	height:50px;
 }
-.header .menubtn .btn{
-	position:absolute;
-	right:7px;
-	top:5px;
-	width:35px;
-	height:40px;
+.header .menubtn .btn {
+    position: absolute;
+    right: 7px;
+    top: 505px;
+    width: 35px;
+    height: 40px;
 }
 .header .menubtn .btn span{
 	display:block;
@@ -495,13 +519,13 @@ input.buttons{
 }
 .header_menu #header_menu~.window{
 	background:#fff;
-	width:100%;
+	width:260px;
 	height:100%;
 	position:fixed;
 	z-index:4;
 	top:0px;
-	left:100%;
-	z-index:15;
+	right:-260px;
+	z-index:101;
 	opacity:0;
 	-webkit-opacity:0;
 	-moz-opacity:0;
@@ -520,7 +544,7 @@ input.buttons{
 	display:block;
 }
 .header_menu #header_menu:checked~.window{
-	left:60px;
+	right:0px;
 	opacity:1;
 	-webkit-opacity:1;
 	-moz-opacity:1;
@@ -609,6 +633,7 @@ input.buttons{
 	background-color:#F8AABB;
 	padding:3%;
 	overflow:hidden;
+	position:relative;
 }
 .header_menu .window .userdata span{
 	display:block;
@@ -633,6 +658,16 @@ input.buttons{
 	width:50px;
 	margin-right:10px;
 	vertical-align:middle;
+}
+.header_menu .window .userdata .close{
+	position:absolute;
+	right:10px;
+	top:5px;
+	padding:0px;
+	height:50px;
+	line-height:50px;
+	color:#fff;
+	font-size:50px;
 }
 .header_menu .window .area_list p a{
 	display:block;
@@ -733,13 +768,14 @@ input.buttons{
 .footer_dmy{
 	height:60px;
 }
-.footer{
-	position:fixed;
-	bottom:0px;
-	left:0px;
-	width:100%;
-	background: #FF6486;
-	z-index:11;
+.footer {
+    position: fixed;
+    bottom: -500px;
+    left: 0px;
+    width: 100%;
+    background: #FF6486;
+    z-index: 11;
+    height: 550px;
 }
 .footer .float a{
 	width:25%;

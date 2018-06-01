@@ -99,8 +99,29 @@ $.fn.Formdat=function(){
 	return output;
 }
 
-//エラーページ表示処理（仮）
+//エラーページ表示処理
+var error_flag_int = 0;
 function view_error_page(){
-	console.log("error_page");
-	setTimeout('location.reload();', 2000);
+	
+	location.href = "error.html";
+	
+	/*
+	error_flag_int++;
+	if(rror_flag_int<3){
+		error_flag_int=0;
+		location.href = "error.php";	
+	}
+	else{
+		setTimeout('location.reload();', 2000);	
+	}
+	
+	*/
+
 }
+
+
+
+
+
+
+
